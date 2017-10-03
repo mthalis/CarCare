@@ -5,6 +5,7 @@
  */
 package carcare;
 
+import db.ConnectionManager;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.Date;
@@ -142,10 +143,10 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 40, 120, 30));
 
         jButton2.setText("Save");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, 60, 30));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 70, 30));
 
         jButton3.setText("Clear");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 60, 30));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 70, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -165,6 +166,22 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
+        ConnectionManager.getConnection();
+        /*
+        
+        if (this.TsBtnSave.Text == "Save")
+        {
+            if (this.txtVNo.Text == "")
+            {
+                Interaction.MsgBox("Type vehicle number", MsgBoxStyle.Information, "Error");
+                this.txtVNo.Select();
+            }
+            else
+            {
+                string cmdText = "INSERT INTO CustData (Vno,Name,Address,City,JDate,LDate,FMilage,LMilage, Phone,Credit,DE_Date) Values ('" + this.txtVNo.Text + "','" + this.txtName.Text + "','" + this.txtAddr.Text + "','" + this.txtCity.Text + "',#" + this.dtp1.Value.ToString() + "#,#" + this.dtp1.Value.ToString() + "#," + this.txtKm.Text + "," + this.txtKm.Text + ",'" + this.txtPhone.Text + "',0,#" + DateTime.Now.ToString() + "#)";
+                this.oleDbCmd = new OdbcCommand(cmdText, this.oleDbCnn);
+*/
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
