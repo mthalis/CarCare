@@ -153,7 +153,7 @@ public class CarCare extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                System.out.println("hoooo" +info.getName()+"www"+info.getClassName());
+                //System.out.println("hoooo" +info.getName()+"www"+info.getClassName());
                 if ("Metalx".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;

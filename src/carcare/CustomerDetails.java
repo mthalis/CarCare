@@ -6,9 +6,16 @@
 package carcare;
 
 import db.ConnectionManager;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.Timestamp;
 import java.util.Date;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+import javax.swing.border.LineBorder;
 
 /**
  *
@@ -27,7 +34,9 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         
         Date date = new Date();
-        jDateChooser1.setDate(date);
+        txtDate.setDate(date);
+        
+        jButton4.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 
 
     }
@@ -41,6 +50,12 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
+        btnLast = new javax.swing.JButton();
+        btnNext = new javax.swing.JButton();
+        cmbJumlahBaris = new javax.swing.JComboBox();
+        btnFirst = new javax.swing.JButton();
+        btnPrev = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -49,24 +64,63 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        txtVNo = new javax.swing.JTextField();
+        txtAddr = new javax.swing.JTextField();
+        txtCity = new javax.swing.JTextField();
+        txtPhone = new javax.swing.JTextField();
+        txtLastDate = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        txtName = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        txtLastMilage = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        txtMilage = new javax.swing.JTextField();
+        txtDate = new com.toedter.calendar.JDateChooser();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
 
         setClosable(true);
         setTitle("Customer Details");
 
+        btnLast.setText("Last");
+        btnLast.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLastActionPerformed(evt);
+            }
+        });
+
+        btnNext.setText(">");
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
+
+        cmbJumlahBaris.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30", "50", "100" }));
+        cmbJumlahBaris.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbJumlahBarisItemStateChanged(evt);
+            }
+        });
+
+        btnFirst.setText("First");
+        btnFirst.setBorderPainted(false);
+        btnFirst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFirstActionPerformed(evt);
+            }
+        });
+
+        btnPrev.setText("<");
+        btnPrev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrevActionPerformed(evt);
+            }
+        });
+
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("Exit");
@@ -101,46 +155,46 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         jLabel6.setText("Phone");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 198, 80, 30));
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtVNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtVNoActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 120, 30));
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 116, 344, 30));
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 157, 344, 30));
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 198, 344, 30));
-        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 120, 30));
+        jPanel1.add(txtVNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 120, 30));
+        jPanel1.add(txtAddr, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 116, 344, 30));
+        jPanel1.add(txtCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 157, 344, 30));
+        jPanel1.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 198, 344, 30));
+        jPanel1.add(txtLastDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 120, 30));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Name");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 70, 30));
 
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                txtNameActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 344, 30));
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 344, 30));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("Last Milage");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, 80, 30));
-        jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 280, 120, 30));
+        jPanel1.add(txtLastMilage, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 280, 120, 30));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Milage");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 80, 30));
 
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        txtMilage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                txtMilageActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 120, 30));
+        jPanel1.add(txtMilage, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 120, 30));
 
-        jDateChooser1.setDateFormatString("dd-MMM-yyyy");
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 40, 120, 30));
+        txtDate.setDateFormatString("dd-MMM-yyyy");
+        jPanel1.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 40, 120, 30));
 
         jButton2.setText("Save");
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 70, 30));
@@ -148,25 +202,109 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         jButton3.setText("Clear");
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 70, 30));
 
+        jButton4.setForeground(new java.awt.Color(240, 240, 240));
+        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Dinesh\\Documents\\icons8-File-20.png")); // NOI18N
+        jButton4.setBorder(null);
+        jButton4.setBorderPainted(false);
+
+        jLabel10.setText("New");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 20, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnFirst)
+                .addGap(18, 18, 18)
+                .addComponent(btnPrev)
+                .addGap(18, 18, 18)
+                .addComponent(cmbJumlahBaris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnNext)
+                .addGap(18, 18, 18)
+                .addComponent(btnLast)
+                .addGap(81, 81, 81))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmbJumlahBaris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnPrev)
+                            .addComponent(btnFirst)
+                            .addComponent(btnNext)
+                            .addComponent(btnLast))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel10)))
+                .addGap(41, 41, 41)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if(txtVNo.getText() == null || txtVNo.getText().equals("")){
+            JOptionPane.showMessageDialog(jPanel1, "Please enter Vehicle no ");
+            txtVNo.requestFocus();
+        }else if(txtMilage.getText() != null && !Pattern.matches("^\\d*$", txtMilage.getText())){
+            JOptionPane.showMessageDialog(jPanel1, "Please enter correct Milage");
+            txtMilage.requestFocus();
+        }else{
+            
+            String sql = "INSERT INTO CustData (Vno,Name,Address,City,JDate,LDate,FMilage,LMilage, Phone,Credit,DE_Date) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            try( Connection connection = ConnectionManager.getConnection();
+                    PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+                preparedStatement.setString(1, txtVNo.getText().trim().toUpperCase());
+                preparedStatement.setString(2, txtName.getText() != null ? txtName.getText().trim().toUpperCase() : null);
+                preparedStatement.setString(3, txtAddr.getText() != null ? txtAddr.getText().trim().toUpperCase() : null);
+                preparedStatement.setString(4, txtCity.getText() != null ? txtCity.getText().trim().toUpperCase() : null);
+                preparedStatement.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
+                preparedStatement.setTimestamp(6, new Timestamp(System.currentTimeMillis()));
+                preparedStatement.setInt(7, txtMilage.getText() != null ? Integer.parseInt(txtMilage.getText()) : 0);
+                preparedStatement.setInt(8, txtMilage.getText() != null ? Integer.parseInt(txtMilage.getText()) : 0);
+                preparedStatement.setString(9, txtPhone.getText() != null ? txtPhone.getText().trim().toUpperCase() : null);
+                preparedStatement.setInt(10, 0);
+                preparedStatement.setTimestamp(11, new Timestamp(System.currentTimeMillis()));
+                
+                preparedStatement.executeUpdate();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         dispose();
-        ConnectionManager.getConnection();
+        
         /*
         
         if (this.TsBtnSave.Text == "Save")
@@ -184,25 +322,62 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtVNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVNoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtVNoActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_txtNameActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void txtMilageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMilageActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_txtMilageActionPerformed
+
+    private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
+        // TODO add your handling code here:
+        //pagination.lastPage();
+        //refreshTable();
+    }//GEN-LAST:event_btnLastActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        // TODO add your handling code here:
+        //pagination.nextPage();
+        //refreshTable();
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void cmbJumlahBarisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbJumlahBarisItemStateChanged
+        // TODO add your handling code here:
+       /* int jumlahBaris = Integer.parseInt(cmbJumlahBaris.getSelectedItem().toString());
+        pagination = new LKPaginationController(jumlahBaris, pegawaiCtrl.getPegawaiCount());
+        refreshTable();*/
+    }//GEN-LAST:event_cmbJumlahBarisItemStateChanged
+
+    private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
+        // TODO add your handling code here:
+        //pagination.prevPage();
+        //refreshTable();
+    }//GEN-LAST:event_btnPrevActionPerformed
+
+    private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
+        // TODO add your handling code here:
+        //pagination.firstPage();
+        //refreshTable();
+    }//GEN-LAST:event_btnFirstActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFirst;
+    private javax.swing.JButton btnLast;
+    private javax.swing.JButton btnNext;
+    private javax.swing.JButton btnPrev;
+    private javax.swing.JComboBox cmbJumlahBaris;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -212,13 +387,15 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField txtAddr;
+    private javax.swing.JTextField txtCity;
+    private com.toedter.calendar.JDateChooser txtDate;
+    private javax.swing.JTextField txtLastDate;
+    private javax.swing.JTextField txtLastMilage;
+    private javax.swing.JTextField txtMilage;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPhone;
+    private javax.swing.JTextField txtVNo;
     // End of variables declaration//GEN-END:variables
 }

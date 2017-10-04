@@ -17,11 +17,12 @@ public class ConnectionManager {
     private static final String PASSWORD = "123456";
 
     public static Connection getConnection() {
-        try (Connection con = DriverManager.getConnection(URL, USERNAME, PASSWORD);) {
-            return con;
+        Connection con = null;
+        try{
+            con = DriverManager.getConnection(URL, USERNAME, PASSWORD);            
         }catch (SQLException ex) {
             LOGGER.fatal("Failed to create the database connection. "+ ex.getMessage()); 
         }
-        return null;
+        return con;
     }
 }
