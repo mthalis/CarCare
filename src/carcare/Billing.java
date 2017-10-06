@@ -223,9 +223,17 @@ public class Billing extends javax.swing.JInternalFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel2.add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 23, -1, -1));
+
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 40, 30));
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/first.png"))); // NOI18N
         jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, 30));
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/next.png"))); // NOI18N
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 40, 30));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/last.png"))); // NOI18N
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 40, 30));
 
         jLabel32.setText("Close");
