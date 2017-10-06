@@ -197,7 +197,7 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         jPanel1.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 40, 120, 30));
 
         jButton2.setText("Save");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 70, 30));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 90, 30));
 
         jButton3.setText("Clear");
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 70, 30));
@@ -244,8 +244,7 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
                             .addComponent(btnPrev)
                             .addComponent(btnFirst)
                             .addComponent(btnNext)
-                            .addComponent(btnLast))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnLast)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
