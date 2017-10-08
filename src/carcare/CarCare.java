@@ -151,6 +151,12 @@ public class CarCare extends javax.swing.JFrame {
         Billing billing = new Billing();
         jDesktopPane1.add(billing);
         billing.setVisible(true);
+        
+        //SearchVehicle searchVehicle = new SearchVehicle();
+        //jDesktopPane1.add(searchVehicle);
+        //this.getContentPane().add(searchVehicle);
+        //this.setFocusable(false);
+        //searchVehicle.setVisible(true);
     }//GEN-LAST:event_cutMenuItemActionPerformed
 
     /**
@@ -203,7 +209,7 @@ public class CarCare extends javax.swing.JFrame {
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    public static javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;
