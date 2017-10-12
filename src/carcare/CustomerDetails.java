@@ -5,22 +5,18 @@
  */
 package carcare;
 
-import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
-import db.ConnectionManager;
-import java.awt.Color;
+import carcare.controller.CustdataJpaController;
+import carcare.controller.LKController;
+import carcare.controller.PaginationController;
+import carcare.model.Custdata;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.regex.Pattern;
-import javax.swing.BorderFactory;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
-import javax.swing.border.LineBorder;
 
 /**
  *
@@ -28,7 +24,10 @@ import javax.swing.border.LineBorder;
  */
 public class CustomerDetails extends javax.swing.JInternalFrame {
 
+    public static EntityManagerFactory EMF = Persistence.createEntityManagerFactory("carcare?zeroDateTimeBehavior=convertToNullPU");
     String actionType = null;
+    PaginationController pagination;
+    CustdataJpaController custdataJpaController = new CustdataJpaController(EMF);
     
     public CustomerDetails() {
         initComponents();
@@ -39,38 +38,17 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         Date date = new Date();
         txtDate.setDate(date);
         
-        //jButton8.setBorder(BorderFactory.createEmptyBorder());
-        jButton4.setContentAreaFilled(false);
-        jButton5.setContentAreaFilled(false);
-        jButton6.setContentAreaFilled(false);
-        btnSearch.setContentAreaFilled(false);
-        jButton8.setContentAreaFilled(false);
-        btnAdd.setContentAreaFilled(false);
-        btnEdit.setContentAreaFilled(false);
-        btnSave.setContentAreaFilled(false);
-        
-        btnSave.setEnabled(false);
-        //txtVNo.requestFocusInWindow();
-        
-        txtName.setText("rrr");
+        LKController.resizeColumnWidth(jTable1);
+        int jumlahBaris = Integer.parseInt(cmbJumlahBaris.getSelectedItem().toString());
+        pagination = new PaginationController(jumlahBaris, custdataJpaController.getCustdataCount());
+        refreshTable();
      
+        //hide Last Date & Last Milage in add case
+        jLabel4.setVisible(false);
+        jLabel9.setVisible(false);       
+        txtLastDate.setVisible(false);
+        txtLastMilage.setVisible(false);
     }
-    
-    public CustomerDetails(String aa) {
-        //revalidate();
-        //repaint();
-        
-        initComponents();
-        
-        txtCity.setText(aa);
-        
-    }
-    
-    public void setValuesx(){
-        System.out.println("hoooooo");
-        txtName.setText("unchecked");
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -79,7 +57,11 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
+        entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("carcare?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
+        custdataQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT c FROM Custdata c").setMaxResults(30);
+        custdataList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : custdataQuery.getResultList();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -103,24 +85,17 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         txtDate = new com.toedter.calendar.JDateChooser();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
-        jLabel13 = new javax.swing.JLabel();
-        btnSearch = new javax.swing.JButton();
-        jLabel14 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        btnAdd = new javax.swing.JButton();
-        btnEdit = new javax.swing.JButton();
-        btnSave = new javax.swing.JButton();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        btnFirst = new javax.swing.JButton();
+        btnPrev = new javax.swing.JButton();
+        cmbJumlahBaris = new javax.swing.JComboBox();
+        btnNext = new javax.swing.JButton();
+        btnLast = new javax.swing.JButton();
+        jTextField2 = new javax.swing.JTextField();
+        btnSearchv = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Customer Details");
@@ -202,116 +177,162 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         jPanel1.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 40, 120, 30));
 
         jButton2.setText("Save");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 90, 30));
 
         jButton3.setText("Clear");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 70, 30));
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Next");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 36, 40, 10));
-
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/next.png"))); // NOI18N
-        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 40, 25));
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Back");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 36, 40, 10));
-
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
-        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 40, 25));
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("First");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 36, 40, 10));
-
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/first.png"))); // NOI18N
-        jPanel3.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 40, 25));
-
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setText("Find");
-        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 36, 40, 10));
-
-        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/find.png"))); // NOI18N
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.setText("Add");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
-        jPanel3.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 40, 25));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 80, 30));
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("Last");
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 36, 40, 10));
-
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/last.png"))); // NOI18N
-        jPanel3.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 40, 25));
-        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 60, 25));
-
-        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new.png"))); // NOI18N
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, custdataList, jTable1);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${vno}"));
+        columnBinding.setColumnName("Vehicle No");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${name}"));
+        columnBinding.setColumnName("Name");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${address}"));
+        columnBinding.setColumnName("Address");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${jdate}"));
+        columnBinding.setColumnName("Date");
+        columnBinding.setColumnClass(java.util.Date.class);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
             }
         });
-        jPanel3.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, 25));
+        jScrollPane1.setViewportView(jTable1);
 
-        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
-        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+        btnFirst.setText("First");
+        btnFirst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditActionPerformed(evt);
+                btnFirstActionPerformed(evt);
             }
         });
-        jPanel3.add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 40, 25));
 
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
+        btnPrev.setText("<");
+        btnPrev.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
+                btnPrevActionPerformed(evt);
             }
         });
-        jPanel3.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 40, 25));
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("New");
-        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 36, 40, 10));
+        cmbJumlahBaris.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10", "20", "30" }));
+        cmbJumlahBaris.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbJumlahBarisItemStateChanged(evt);
+            }
+        });
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("Edit");
-        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 36, 40, 10));
+        btnNext.setText(">");
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setText("Save");
-        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 36, 40, 10));
+        btnLast.setText("Last");
+        btnLast.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLastActionPerformed(evt);
+            }
+        });
+
+        jTextField2.setText("Vehicle No");
+        jTextField2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField2MouseClicked(evt);
+            }
+        });
+
+        btnSearchv.setText("Search");
+        btnSearchv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchvActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnFirst)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPrev)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cmbJumlahBaris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnNext)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnLast)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSearchv)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnFirst)
+                    .addComponent(btnPrev)
+                    .addComponent(cmbJumlahBaris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNext)
+                    .addComponent(btnLast)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearchv))
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE))
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -319,37 +340,25 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
+
+        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
-        
-        /*
-        
-        if (this.TsBtnSave.Text == "Save")
-        {
-            if (this.txtVNo.Text == "")
-            {
-                Interaction.MsgBox("Type vehicle number", MsgBoxStyle.Information, "Error");
-                this.txtVNo.Select();
-            }
-            else
-            {
-                string cmdText = "INSERT INTO CustData (Vno,Name,Address,City,JDate,LDate,FMilage,LMilage, Phone,Credit,DE_Date) Values ('" + this.txtVNo.Text + "','" + this.txtName.Text + "','" + this.txtAddr.Text + "','" + this.txtCity.Text + "',#" + this.dtp1.Value.ToString() + "#,#" + this.dtp1.Value.ToString() + "#," + this.txtKm.Text + "," + this.txtKm.Text + ",'" + this.txtPhone.Text + "',0,#" + DateTime.Now.ToString() + "#)";
-                this.oleDbCmd = new OdbcCommand(cmdText, this.oleDbCnn);
-*/
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtVNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVNoActionPerformed
@@ -364,168 +373,129 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMilageActionPerformed
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-       
-       
-       jLabel4.setVisible(false);
-       jLabel9.setVisible(false);
-       
-       txtLastDate.setVisible(false);
-       txtLastMilage.setVisible(false);
-       
-       
-       jLabel16.setText("Cancel");
-       btnAdd.setEnabled(false);
-       btnSave.setEnabled(true);
-       
-    
-       txtVNo.setText("");
-       txtName.setText("");
-       txtAddr.setText("");
-       txtCity.setText("");
-       txtDate.setDate(new Date());
-       txtMilage.setText("");
-       txtPhone.setText("");
-       
-       actionType = "insert";
-    }//GEN-LAST:event_btnAddActionPerformed
+    private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
+        pagination.firstPage();
+        refreshTable();
+    }//GEN-LAST:event_btnFirstActionPerformed
 
-    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-       jLabel4.setVisible(true);
-       jLabel9.setVisible(true);
-       
-       txtLastDate.setVisible(true);
-       txtLastMilage.setVisible(true);
-       
-       if(jLabel16.getText().equals("Cancel")){
-           jLabel16.setText("Edit");
-           btnAdd.setEnabled(true);
-        if (jLabel17.getText().equals("Update"))
-        {
-            jLabel17.setText("Save");
-        }
-        btnSave.setEnabled(false);
-        
-       }else{
-           jLabel16.setText("Cancel");
-        btnAdd.setEnabled(false);
-        btnSave.setEnabled(true);
-        jLabel17.setText("Update");
-       }
-       
-        
-       
-      /* if(actionType.equals("update")){
-           btnAdd.setEnabled(false);
-           jLabel16.setText("Cancel");
-           btnSave.setEnabled(true);
-           jLabel17.setText("Update");
-       }
-       
-       if(actionType.equals("insert")){
-        btnAdd.setEnabled(true);
-        jLabel16.setText("Edit");
-        btnSave.setEnabled(false);
-        jLabel17.setText("Save");
-       }
-*/
-       actionType = "update";
-    }//GEN-LAST:event_btnEditActionPerformed
+    private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
+        // TODO add your handling code here:
+        pagination.prevPage();
+        refreshTable();
+    }//GEN-LAST:event_btnPrevActionPerformed
 
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        SearchVehicle searchVehicle = new SearchVehicle();
-        CarCare.jDesktopPane1.add(searchVehicle);
-        searchVehicle.setVisible(true);
-        
-        String sql = "Select * from CustData where Vno = ? ";
-        try( Connection connection = ConnectionManager.getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setString(1, "62-5805");//56-3424
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                String vno = rs.getString("Vno");
-                String name = rs.getString("Name");
-                String address = rs.getString("Address");
-                String city = rs.getString("City");
-                Date jDate = rs.getDate("JDate");
-                //String lDate = rs.getString("LDate");
-                String fMilage = Integer.toString(rs.getInt("FMilage"));
-                String lMilage = Integer.toString(rs.getInt("LMilage"));
-                String phone = rs.getString("Phone");
-                //String dE_Date = rs.getString("DE_Date");
-                
-                txtVNo.setText(vno);
-                txtName.setText(name);
-                txtAddr.setText(address);
-                txtCity.setText(city);
-                txtDate.setDate(jDate);
-                txtMilage.setText(fMilage);
-                txtLastMilage.setText(lMilage);
-                txtPhone.setText(phone);
-            }
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_btnSearchActionPerformed
+    private void cmbJumlahBarisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbJumlahBarisItemStateChanged
+        int jumlahBaris = Integer.parseInt(cmbJumlahBaris.getSelectedItem().toString());
+        pagination = new PaginationController(jumlahBaris, custdataJpaController.getCustdataCount());
+        refreshTable();
+    }//GEN-LAST:event_cmbJumlahBarisItemStateChanged
 
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        System.out.println("hhhhh "+actionType);
-        if(actionType !=null && actionType.equals("insert")){
-            if(txtVNo.getText() == null || txtVNo.getText().equals("")){
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        pagination.nextPage();
+        refreshTable();
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
+        pagination.lastPage();
+        refreshTable();
+    }//GEN-LAST:event_btnLastActionPerformed
+
+    private void jTextField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseClicked
+        jTextField2.setText("");
+    }//GEN-LAST:event_jTextField2MouseClicked
+
+    private void btnSearchvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchvActionPerformed
+        String vNo = jTextField2.getText() != null ? jTextField2.getText() : "";
+        custdataList.clear();
+        custdataList.addAll(custdataJpaController.findCustdataByVno(vNo));
+        jTable1.updateUI();
+    }//GEN-LAST:event_btnSearchvActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if(txtVNo.getText() == null || txtVNo.getText().equals("")){
                 JOptionPane.showMessageDialog(jPanel1, "Please enter Vehicle no ");
                 txtVNo.requestFocus();
             }else if(txtMilage.getText() != null && !Pattern.matches("^\\d*$", txtMilage.getText())){
                 JOptionPane.showMessageDialog(jPanel1, "Please enter correct Milage");
                 txtMilage.requestFocus();
             }else{
-
-                String sql = "INSERT INTO CustData (Vno,Name,Address,City,JDate,LDate,FMilage,LMilage, Phone,Credit,DE_Date) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                try( Connection connection = ConnectionManager.getConnection();
-                        PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-
-                    preparedStatement.setString(1, txtVNo.getText().trim().toUpperCase());
-                    preparedStatement.setString(2, txtName.getText() != null ? txtName.getText().trim().toUpperCase() : null);
-                    preparedStatement.setString(3, txtAddr.getText() != null ? txtAddr.getText().trim().toUpperCase() : null);
-                    preparedStatement.setString(4, txtCity.getText() != null ? txtCity.getText().trim().toUpperCase() : null);
-                    preparedStatement.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
-                    preparedStatement.setTimestamp(6, new Timestamp(System.currentTimeMillis()));
-                    preparedStatement.setInt(7, txtMilage.getText() != null ? Integer.parseInt(txtMilage.getText()) : 0);
-                    preparedStatement.setInt(8, txtMilage.getText() != null ? Integer.parseInt(txtMilage.getText()) : 0);
-                    preparedStatement.setString(9, txtPhone.getText() != null ? txtPhone.getText().trim().toUpperCase() : null);
-                    preparedStatement.setInt(10, 0);
-                    preparedStatement.setTimestamp(11, new Timestamp(System.currentTimeMillis()));
-
-                    preparedStatement.executeUpdate();
+                Custdata custdata= new Custdata(); 
+                custdata.setVno(txtVNo.getText().trim().toUpperCase());
+                custdata.setName(txtName.getText() != null ? txtName.getText().trim().toUpperCase() : null);
+                custdata.setAddress(txtAddr.getText() != null ? txtAddr.getText().trim().toUpperCase() : null);
+                custdata.setCity(txtCity.getText() != null ? txtCity.getText().trim().toUpperCase() : null);
+                custdata.setJdate(new Timestamp(System.currentTimeMillis()));
+                custdata.setLdate(new Timestamp(System.currentTimeMillis()));
+                custdata.setFmilage(txtMilage.getText() != null ? Double.parseDouble(txtMilage.getText()) : 0);
+                custdata.setLmilage(txtMilage.getText() != null ? Double.parseDouble(txtMilage.getText()) : 0);
+                custdata.setPhone(txtPhone.getText() != null ? txtPhone.getText().trim().toUpperCase() : null);
+                custdata.setCredit(0.0);
+                custdata.setDeDate(new Timestamp(System.currentTimeMillis()));
+                
+                try{
+                    custdataJpaController.create(custdata);
+                    clear();
+                    refreshTable();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-        }
-    }//GEN-LAST:event_btnSaveActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        clear();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        jLabel4.setVisible(true);
+        jLabel9.setVisible(true);       
+        txtLastDate.setVisible(true);
+        txtLastMilage.setVisible(true);
+        
+        // get the selected row index
+        int selectedRowIndex = jTable1.getSelectedRow();
+        Custdata cusdate = custdataList.get(jTable1.convertRowIndexToModel(selectedRowIndex));
+        txtVNo.setText(cusdate.getVno());
+        txtName.setText(cusdate.getName());
+        txtAddr.setText(cusdate.getAddress());
+        txtCity.setText(cusdate.getCity());
+        txtDate.setDate(cusdate.getJdate());
+        txtMilage.setText(Double.toString(cusdate.getFmilage()));
+        txtLastMilage.setText(Double.toString(cusdate.getLmilage()));
+        txtPhone.setText(cusdate.getPhone());
+        
+        jButton2.setText("Update");
+
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        clear();
+        
+        //hide Last Date & Last Milage in add case
+        jLabel4.setVisible(false);
+        jLabel9.setVisible(false);       
+        txtLastDate.setVisible(false);
+        txtLastMilage.setVisible(false);
+        
+        jButton2.setText("Save");
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnEdit;
-    private javax.swing.JButton btnSave;
-    private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnFirst;
+    private javax.swing.JButton btnLast;
+    private javax.swing.JButton btnNext;
+    private javax.swing.JButton btnPrev;
+    private javax.swing.JButton btnSearchv;
+    private javax.swing.JComboBox cmbJumlahBaris;
+    private java.util.List<carcare.model.Custdata> custdataList;
+    private javax.persistence.Query custdataQuery;
+    private javax.persistence.EntityManager entityManager;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -536,8 +506,10 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField txtAddr;
     private javax.swing.JTextField txtCity;
     private com.toedter.calendar.JDateChooser txtDate;
@@ -547,5 +519,30 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtVNo;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
+    
+    private void refreshTable() {
+        custdataList.clear();
+        custdataList.addAll(custdataJpaController.findCustdataEntities(pagination.getPageSize(), pagination.getCurrentItem()));
+        jTable1.updateUI();
+        
+        btnFirst.setEnabled(pagination.isHasPrevPage());
+        btnPrev.setEnabled(pagination.isHasPrevPage());
+        btnNext.setEnabled(pagination.isHasNextPage());
+        btnLast.setEnabled(pagination.isHasNextPage());
+    }
+    
+    public void clear(){
+        txtVNo.setText("");
+        txtName.setText("");
+        txtAddr.setText("");
+        txtCity.setText("");
+        txtDate.setDate(new Date());
+        txtMilage.setText("");
+        txtPhone.setText("");
+        txtLastDate.setText("");
+        txtLastMilage.setText("");
+    }
+
 }
