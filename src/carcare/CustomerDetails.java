@@ -44,10 +44,14 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         refreshTable();
      
         //hide Last Date & Last Milage in add case
-        jLabel4.setVisible(false);
-        jLabel9.setVisible(false);       
-        txtLastDate.setVisible(false);
-        txtLastMilage.setVisible(false);
+        jLabel4.setEnabled(false);
+        jLabel9.setEnabled(false);       
+        txtLastDate.setEnabled(false);
+        txtLastMilage.setEnabled(false);
+        
+        actionType = "save";
+        
+        txtCusId.setVisible(false);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -86,6 +90,7 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        txtCusId = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
@@ -199,6 +204,7 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 80, 30));
+        jPanel1.add(txtCusId, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 30, -1));
 
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, custdataList, jTable1);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${vno}"));
@@ -412,34 +418,42 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSearchvActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        final String regExp = "[0-9]+([.][0-9]{1,2})?";
         if(txtVNo.getText() == null || txtVNo.getText().equals("")){
-                JOptionPane.showMessageDialog(jPanel1, "Please enter Vehicle no ");
-                txtVNo.requestFocus();
-            }else if(txtMilage.getText() != null && !Pattern.matches("^\\d*$", txtMilage.getText())){
-                JOptionPane.showMessageDialog(jPanel1, "Please enter correct Milage");
-                txtMilage.requestFocus();
-            }else{
-                Custdata custdata= new Custdata(); 
-                custdata.setVno(txtVNo.getText().trim().toUpperCase());
-                custdata.setName(txtName.getText() != null ? txtName.getText().trim().toUpperCase() : null);
-                custdata.setAddress(txtAddr.getText() != null ? txtAddr.getText().trim().toUpperCase() : null);
-                custdata.setCity(txtCity.getText() != null ? txtCity.getText().trim().toUpperCase() : null);
-                custdata.setJdate(new Timestamp(System.currentTimeMillis()));
-                custdata.setLdate(new Timestamp(System.currentTimeMillis()));
-                custdata.setFmilage(txtMilage.getText() != null ? Double.parseDouble(txtMilage.getText()) : 0);
-                custdata.setLmilage(txtMilage.getText() != null ? Double.parseDouble(txtMilage.getText()) : 0);
-                custdata.setPhone(txtPhone.getText() != null ? txtPhone.getText().trim().toUpperCase() : null);
-                custdata.setCredit(0.0);
-                custdata.setDeDate(new Timestamp(System.currentTimeMillis()));
-                
-                try{
+            JOptionPane.showMessageDialog(jPanel1, "Please enter Vehicle no ");
+            txtVNo.requestFocus();
+        }else if(txtMilage.getText() != null && !Pattern.matches(regExp, txtMilage.getText())){
+            JOptionPane.showMessageDialog(jPanel1, "Please enter correct Milage");
+            txtMilage.requestFocus();
+        }else{
+            Custdata custdata= new Custdata(); 
+            custdata.setVno(txtVNo.getText().trim().toUpperCase());
+            custdata.setName(txtName.getText() != null ? txtName.getText().trim().toUpperCase() : null);
+            custdata.setAddress(txtAddr.getText() != null ? txtAddr.getText().trim().toUpperCase() : null);
+            custdata.setCity(txtCity.getText() != null ? txtCity.getText().trim().toUpperCase() : null);
+            //custdata.setJdate(new Timestamp(System.currentTimeMillis()));//wrong
+            //custdata.setLdate(new Timestamp(System.currentTimeMillis()));
+            custdata.setFmilage(txtMilage.getText() != null ? Double.parseDouble(txtMilage.getText()) : 0);
+            custdata.setLmilage(txtMilage.getText() != null ? Double.parseDouble(txtMilage.getText()) : 0);
+            custdata.setPhone(txtPhone.getText() != null ? txtPhone.getText().trim().toUpperCase() : null);
+            custdata.setCredit(0.0);
+            //custdata.setDeDate(new Timestamp(System.currentTimeMillis()));
+
+            try{
+                if(null != actionType && actionType.equals("save")){
                     custdataJpaController.create(custdata);
-                    clear();
-                    refreshTable();
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Successfuly save record !");
+                }else if(null != actionType && actionType.equals("edit")){
+                    custdata.setId(Integer.parseInt(txtCusId.getText()));
+                    custdataJpaController.edit(custdata);
+                    JOptionPane.showMessageDialog(null, "Successfuly edit record !");
                 }
+                clear();
+                refreshTable();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -447,14 +461,15 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        jLabel4.setVisible(true);
-        jLabel9.setVisible(true);       
-        txtLastDate.setVisible(true);
-        txtLastMilage.setVisible(true);
+        jLabel4.setEnabled(true);
+        jLabel9.setEnabled(true);       
+        txtLastDate.setEnabled(true);
+        txtLastMilage.setEnabled(true);
         
         // get the selected row index
         int selectedRowIndex = jTable1.getSelectedRow();
         Custdata cusdate = custdataList.get(jTable1.convertRowIndexToModel(selectedRowIndex));
+        txtCusId.setText(Integer.toString(cusdate.getId()));
         txtVNo.setText(cusdate.getVno());
         txtName.setText(cusdate.getName());
         txtAddr.setText(cusdate.getAddress());
@@ -465,6 +480,8 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         txtPhone.setText(cusdate.getPhone());
         
         jButton2.setText("Update");
+        
+        actionType = "edit";
 
     }//GEN-LAST:event_jTable1MouseClicked
 
@@ -472,12 +489,13 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         clear();
         
         //hide Last Date & Last Milage in add case
-        jLabel4.setVisible(false);
-        jLabel9.setVisible(false);       
-        txtLastDate.setVisible(false);
-        txtLastMilage.setVisible(false);
+        jLabel4.setEnabled(false);
+        jLabel9.setEnabled(false);       
+        txtLastDate.setEnabled(false);
+        txtLastMilage.setEnabled(false);
         
         jButton2.setText("Save");
+        actionType = "save";
     }//GEN-LAST:event_jButton4ActionPerformed
 
 
@@ -512,6 +530,7 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField txtAddr;
     private javax.swing.JTextField txtCity;
+    private javax.swing.JTextField txtCusId;
     private com.toedter.calendar.JDateChooser txtDate;
     private javax.swing.JTextField txtLastDate;
     private javax.swing.JTextField txtLastMilage;
