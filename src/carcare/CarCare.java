@@ -104,6 +104,11 @@ public class CarCare extends javax.swing.JFrame {
 
         copyMenuItem.setMnemonic('y');
         copyMenuItem.setText("Check Sheet");
+        copyMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                copyMenuItemActionPerformed(evt);
+            }
+        });
         editMenu.add(copyMenuItem);
 
         pasteMenuItem.setMnemonic('p');
@@ -158,6 +163,12 @@ public class CarCare extends javax.swing.JFrame {
         //this.setFocusable(false);
         //searchVehicle.setVisible(true);
     }//GEN-LAST:event_cutMenuItemActionPerformed
+
+    private void copyMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyMenuItemActionPerformed
+        Billing1 billing = new Billing1();
+        jDesktopPane1.add(billing);
+        billing.setVisible(true);
+    }//GEN-LAST:event_copyMenuItemActionPerformed
 
     /**
      * @param args the command line arguments

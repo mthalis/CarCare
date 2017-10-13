@@ -79,7 +79,6 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         txtAddr = new javax.swing.JTextField();
         txtCity = new javax.swing.JTextField();
         txtPhone = new javax.swing.JTextField();
-        txtLastDate = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -91,6 +90,7 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         txtCusId = new javax.swing.JTextField();
+        txtLastDate = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
@@ -145,11 +145,10 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
                 txtVNoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtVNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 120, 30));
-        jPanel1.add(txtAddr, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 116, 344, 30));
-        jPanel1.add(txtCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 157, 344, 30));
-        jPanel1.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 198, 344, 30));
-        jPanel1.add(txtLastDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 120, 30));
+        jPanel1.add(txtVNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 120, 25));
+        jPanel1.add(txtAddr, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 116, 344, 25));
+        jPanel1.add(txtCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 157, 344, 25));
+        jPanel1.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 198, 344, 25));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Name");
@@ -160,12 +159,12 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
                 txtNameActionPerformed(evt);
             }
         });
-        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 344, 30));
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 344, 25));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("Last Milage");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, 80, 30));
-        jPanel1.add(txtLastMilage, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 280, 120, 30));
+        jPanel1.add(txtLastMilage, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 280, 120, 25));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Milage");
@@ -176,10 +175,10 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
                 txtMilageActionPerformed(evt);
             }
         });
-        jPanel1.add(txtMilage, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 120, 30));
+        jPanel1.add(txtMilage, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 120, 25));
 
         txtDate.setDateFormatString("dd-MMM-yyyy");
-        jPanel1.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 40, 120, 30));
+        jPanel1.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 40, 120, 25));
 
         jButton2.setText("Save");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -205,6 +204,7 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 80, 30));
         jPanel1.add(txtCusId, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 30, -1));
+        jPanel1.add(txtLastDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 120, 25));
 
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, custdataList, jTable1);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${vno}"));
@@ -333,12 +333,12 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -532,7 +532,7 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtCity;
     private javax.swing.JTextField txtCusId;
     private com.toedter.calendar.JDateChooser txtDate;
-    private javax.swing.JTextField txtLastDate;
+    private com.toedter.calendar.JDateChooser txtLastDate;
     private javax.swing.JTextField txtLastMilage;
     private javax.swing.JTextField txtMilage;
     private javax.swing.JTextField txtName;
@@ -560,7 +560,7 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         txtDate.setDate(new Date());
         txtMilage.setText("");
         txtPhone.setText("");
-        txtLastDate.setText("");
+        txtLastDate.setDate(new Date());
         txtLastMilage.setText("");
     }
 
