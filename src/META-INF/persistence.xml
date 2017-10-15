@@ -3,6 +3,8 @@
   <persistence-unit name="carcare?zeroDateTimeBehavior=convertToNullPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>carcare.model.Custdata</class>
+    <class>carcare.model.Billccc</class>
+    <class>carcare.model.Billcce</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/carcare?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

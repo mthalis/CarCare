@@ -113,6 +113,11 @@ public class CarCare extends javax.swing.JFrame {
 
         pasteMenuItem.setMnemonic('p');
         pasteMenuItem.setText("Day Summery");
+        pasteMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pasteMenuItemActionPerformed(evt);
+            }
+        });
         editMenu.add(pasteMenuItem);
 
         menuBar.add(editMenu);
@@ -169,6 +174,12 @@ public class CarCare extends javax.swing.JFrame {
         jDesktopPane1.add(billing);
         billing.setVisible(true);
     }//GEN-LAST:event_copyMenuItemActionPerformed
+
+    private void pasteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pasteMenuItemActionPerformed
+        ViewBill viewBill = new ViewBill();
+        jDesktopPane1.add(viewBill);
+        viewBill.setVisible(true);
+    }//GEN-LAST:event_pasteMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
