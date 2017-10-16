@@ -5,7 +5,7 @@
  */
 package carcare.controller;
 
-import carcare.exceptions.NonexistentEntityException;
+import carcare.controller.exceptions.NonexistentEntityException;
 import carcare.model.Billcce;
 import java.io.Serializable;
 import java.util.List;
@@ -135,4 +135,14 @@ public class BillcceJpaController implements Serializable {
         }
     }
     
+    public List<Billcce> findBillcceByVno(String Vno) {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT c FROM Billcce c WHERE c.vno = :vno order by c.billNo desc", Billcce.class);
+            query.setParameter("vno", Vno);
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
 }

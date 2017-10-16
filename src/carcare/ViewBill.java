@@ -5,10 +5,13 @@
  */
 package carcare;
 
+import static carcare.CarCare.jDesktopPane1;
+import carcare.controller.BillcccJpaController;
 import carcare.controller.BillcceJpaController;
-import carcare.controller.CustdataJpaController;
 import carcare.controller.LKController;
 import carcare.controller.PaginationController;
+import carcare.model.Billccc;
+import carcare.model.Billcce;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.persistence.EntityManagerFactory;
@@ -23,7 +26,9 @@ public class ViewBill extends javax.swing.JInternalFrame {
     public static EntityManagerFactory EMF = Persistence.createEntityManagerFactory("carcare?zeroDateTimeBehavior=convertToNullPU");
     String actionType = null;
     PaginationController pagination;
+    PaginationController pagination1;
     BillcceJpaController billcceJpaController = new BillcceJpaController(EMF);
+    BillcccJpaController billcccJpaController = new BillcccJpaController(EMF);
     
     public ViewBill() {
         initComponents();
@@ -33,7 +38,8 @@ public class ViewBill extends javax.swing.JInternalFrame {
         
         LKController.resizeColumnWidth(jTable1);
         int jumlahBaris = Integer.parseInt(cmbJumlahBaris.getSelectedItem().toString());
-        pagination = new PaginationController(15, billcceJpaController.getBillcceCount());
+        pagination = new PaginationController(17, billcceJpaController.getBillcceCount());
+        pagination1 = new PaginationController(17, billcccJpaController.getBillcccCount());
         refreshTable();
     }
 
@@ -48,9 +54,9 @@ public class ViewBill extends javax.swing.JInternalFrame {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("carcare?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
-        billcccQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT b FROM Billccc b").setMaxResults(15);
+        billcccQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT b FROM Billccc b").setMaxResults(17);
         billcccList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : billcccQuery.getResultList();
-        billcceQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT b FROM Billcce b").setMaxResults(15);
+        billcceQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT b FROM Billcce b").setMaxResults(17);
         billcceList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : billcceQuery.getResultList();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -76,6 +82,7 @@ public class ViewBill extends javax.swing.JInternalFrame {
         setClosable(true);
         setTitle("View Bill");
 
+        jPanel1.setPreferredSize(new java.awt.Dimension(862, 430));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("carcare center"));
@@ -95,9 +102,14 @@ public class ViewBill extends javax.swing.JInternalFrame {
         columnBinding.setColumnClass(String.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 87, 426, 370));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 420, 340));
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder("carcare enterprise"));
 
@@ -116,9 +128,14 @@ public class ViewBill extends javax.swing.JInternalFrame {
         columnBinding.setColumnClass(String.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 418, 370));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, 420, 340));
 
         btnFirst.setText("First");
         btnFirst.addActionListener(new java.awt.event.ActionListener() {
@@ -185,7 +202,7 @@ public class ViewBill extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 470, 410, 40));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, 410, 40));
 
         btnFirst1.setText("First");
         btnFirst1.addActionListener(new java.awt.event.ActionListener() {
@@ -252,7 +269,7 @@ public class ViewBill extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 420, 40));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 420, 40));
 
         jTextField2.setText("Vehicle No");
         jTextField2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -289,17 +306,19 @@ public class ViewBill extends javax.swing.JInternalFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 420, 50));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 420, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         bindingGroup.bind();
@@ -335,11 +354,13 @@ public class ViewBill extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnLastActionPerformed
 
     private void btnFirst1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirst1ActionPerformed
-        // TODO add your handling code here:
+        pagination1.firstPage();
+        refreshTable1();
     }//GEN-LAST:event_btnFirst1ActionPerformed
 
     private void btnPrev1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrev1ActionPerformed
-        // TODO add your handling code here:
+        pagination1.prevPage();
+        refreshTable1();
     }//GEN-LAST:event_btnPrev1ActionPerformed
 
     private void cmbJumlahBaris1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbJumlahBaris1ItemStateChanged
@@ -347,11 +368,13 @@ public class ViewBill extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cmbJumlahBaris1ItemStateChanged
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
-        // TODO add your handling code here:
+        pagination1.nextPage();
+        refreshTable1();
     }//GEN-LAST:event_btnNext1ActionPerformed
 
     private void btnLast1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLast1ActionPerformed
-        // TODO add your handling code here:
+        pagination1.lastPage();
+        refreshTable1();
     }//GEN-LAST:event_btnLast1ActionPerformed
 
     private void jTextField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseClicked
@@ -359,11 +382,33 @@ public class ViewBill extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField2MouseClicked
 
     private void btnSearchvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchvActionPerformed
-        //String vNo = jTextField2.getText() != null ? jTextField2.getText() : "";
-        //billcceList.clear();
-        //billcceList.addAll(custdataJpaController.findCustdataByVno(vNo));
-        //jTable1.updateUI();
+        String vNo = jTextField2.getText() != null ? jTextField2.getText() : "";
+        billcccList.clear();
+        billcccList.addAll(billcccJpaController.findBillcccByVno(vNo));
+        jTable1.updateUI();
+        
+        billcceList.clear();
+        billcceList.addAll(billcceJpaController.findBillcceByVno(vNo));
+        jTable2.updateUI();
     }//GEN-LAST:event_btnSearchvActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int selectedRowIndex = jTable1.getSelectedRow();
+        Billccc billccc = billcccList.get(jTable1.convertRowIndexToModel(selectedRowIndex));
+        
+        Billing billing = new Billing(billccc);
+        jDesktopPane1.add(billing);
+        billing.setVisible(true);
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        int selectedRowIndex = jTable2.getSelectedRow();
+        Billcce billcce = billcceList.get(jTable2.convertRowIndexToModel(selectedRowIndex));
+        
+        Billing billing = new Billing(billcce);
+        jDesktopPane1.add(billing);
+        billing.setVisible(true);
+    }//GEN-LAST:event_jTable2MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -404,5 +449,16 @@ public class ViewBill extends javax.swing.JInternalFrame {
         btnPrev.setEnabled(pagination.isHasPrevPage());
         btnNext.setEnabled(pagination.isHasNextPage());
         btnLast.setEnabled(pagination.isHasNextPage());
+    }
+    
+    private void refreshTable1() {
+        billcccList.clear();
+        billcccList.addAll(billcccJpaController.findBillcccEntities(pagination1.getPageSize(), pagination1.getCurrentItem()));
+        jTable1.updateUI();
+        
+        btnFirst1.setEnabled(pagination1.isHasPrevPage());
+        btnPrev1.setEnabled(pagination1.isHasPrevPage());
+        btnNext1.setEnabled(pagination1.isHasNextPage());
+        btnLast1.setEnabled(pagination1.isHasNextPage());
     }
 }

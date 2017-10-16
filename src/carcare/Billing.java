@@ -6,20 +6,16 @@
 package carcare;
 
 import carcare.controller.CustdataJpaController;
-import carcare.controller.PaginationController;
-import carcare.model.Custdata;
-import db.ConnectionManager;
+import carcare.model.Billccc;
+import carcare.model.Billcce;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -37,7 +33,65 @@ public class Billing extends javax.swing.JInternalFrame {
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         
         Date date = new Date();
-        jDateChooser1.setDate(date);
+        dateBill.setDate(date);
+    }
+
+    Billing(Billccc billccc) {
+        initComponents();
+        
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();        
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        
+        String biillNo = Double.toString(billccc.getBillNo());
+        
+        txtBillNo.setText(biillNo.substring(0, biillNo.length()- 2));
+        dateBill.setDate(billccc.getDate());
+        txtVNo.setText(billccc.getVno());
+        txtMilage.setText(billccc.getMillage().toString());
+        txtName.setText(billccc.getName());
+        txtAddr.setText(billccc.getAddress());
+        txtPhone.setText(billccc.getPhone());
+        txtChasiNo.setText(billccc.getChasiNo());
+        txtChkAlign.setText(billccc.getChkAlign().toString());
+        txtAdstToe.setText(billccc.getAjstToe().toString());
+        txtCamber.setText(billccc.getCamber().toString());
+        txtCaster.setText(billccc.getCaster().toString());
+        txtBHight.setText(billccc.getBHight().toString());
+        txtReToe.setText(billccc.getReToe().toString());
+        txtReCamber.setText(billccc.getReCamber().toString());
+        txtAnyOther.setText(billccc.getAnyOther().toString());
+        txtSusTest.setText(billccc.getSusTest().toString());
+        txtHLTest.setText(billccc.getHLTest().toString());
+        chkFreeAlign.setSelected(billccc.getFreeAlign());
+        chkFreeToe.setSelected(billccc.getFreeToe());
+        chkFreeCamb.setSelected(billccc.getFreeCamb());
+        chkFreeCast.setSelected(billccc.getFreeCast());
+        chkFreeBHgt.setSelected(billccc.getFreeBhgt());
+        chkFreeRToe.setSelected(billccc.getFreeRToe());
+        chkFreeRCam.setSelected(billccc.getFreeRCam());
+        chkFreeAnyO.setSelected(billccc.getFreeAnyo());
+        chkFreeST.setSelected(billccc.getFreeSt());
+        chkFreeHLT.setSelected(billccc.getFreeHlt());
+        txtCCCTotal.setText(billccc.getAmount().toString());
+        
+    }
+
+    Billing(Billcce billccc) {
+        initComponents();
+        
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();        
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        
+        String biillNo = Double.toString(billccc.getBillNo());
+        txtBillNo.setText(biillNo.substring(0, biillNo.length()- 2));
+        dateBill.setDate(billccc.getDate());
+        txtVNo.setText(billccc.getVno());
+        txtMilage.setText(billccc.getMillage().toString());
+        txtName.setText(billccc.getName());
+        txtAddr.setText(billccc.getAddress());
+        txtPhone.setText(billccc.getPhone());
+        txtChasiNo.setText(billccc.getChasiNo());
+        
     }
     
     void drawLines(Graphics g) {
@@ -66,10 +120,10 @@ public class Billing extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        dateBill = new com.toedter.calendar.JDateChooser();
         txtVNo = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtChasiNo = new javax.swing.JTextField();
+        txtMilage = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -79,16 +133,13 @@ public class Billing extends javax.swing.JInternalFrame {
         jLabel31 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
-        jPanel2 = new javax.swing.JPanel();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(1, 0), new java.awt.Dimension(1, 0), new java.awt.Dimension(1, 32767));
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        txtBillNo = new javax.swing.JTextField();
+        jLabel36 = new javax.swing.JLabel();
+        txtLoguser = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -100,28 +151,28 @@ public class Billing extends javax.swing.JInternalFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
-        jCheckBox7 = new javax.swing.JCheckBox();
-        jCheckBox8 = new javax.swing.JCheckBox();
-        jCheckBox9 = new javax.swing.JCheckBox();
-        jCheckBox10 = new javax.swing.JCheckBox();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
-        jTextField14 = new javax.swing.JTextField();
-        jTextField15 = new javax.swing.JTextField();
-        jTextField16 = new javax.swing.JTextField();
+        chkFreeHLT = new javax.swing.JCheckBox();
+        chkFreeToe = new javax.swing.JCheckBox();
+        chkFreeCamb = new javax.swing.JCheckBox();
+        chkFreeCast = new javax.swing.JCheckBox();
+        chkFreeBHgt = new javax.swing.JCheckBox();
+        chkFreeRToe = new javax.swing.JCheckBox();
+        chkFreeRCam = new javax.swing.JCheckBox();
+        chkFreeAnyO = new javax.swing.JCheckBox();
+        chkFreeST = new javax.swing.JCheckBox();
+        chkFreeAlign = new javax.swing.JCheckBox();
+        txtChkAlign = new javax.swing.JTextField();
+        txtAdstToe = new javax.swing.JTextField();
+        txtCamber = new javax.swing.JTextField();
+        txtCaster = new javax.swing.JTextField();
+        txtBHight = new javax.swing.JTextField();
+        txtReToe = new javax.swing.JTextField();
+        txtReCamber = new javax.swing.JTextField();
+        txtAnyOther = new javax.swing.JTextField();
+        txtSusTest = new javax.swing.JTextField();
+        txtHLTest = new javax.swing.JTextField();
         jTextField17 = new javax.swing.JTextField();
-        jTextField18 = new javax.swing.JTextField();
+        txtCCCTotal = new javax.swing.JTextField();
         jTextField19 = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -168,6 +219,8 @@ public class Billing extends javax.swing.JInternalFrame {
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jTextField46 = new javax.swing.JTextField();
+        btnExit = new javax.swing.JButton();
+        btnPrint = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Billing");
@@ -177,50 +230,50 @@ public class Billing extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Date");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 13, 64, 25));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 64, 25));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("V/ No");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 45, 72, 25));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 72, 25));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Chasi No");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 77, 72, 25));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 72, 25));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Millage");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 109, 72, 25));
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 13, 120, 25));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 72, 25));
+        jPanel1.add(dateBill, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 120, 25));
 
         txtVNo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtVNoFocusLost(evt);
             }
         });
-        jPanel1.add(txtVNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 45, 120, 25));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 77, 120, 25));
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 109, 120, 25));
+        jPanel1.add(txtVNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 120, 25));
+        jPanel1.add(txtChasiNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 120, 25));
+        jPanel1.add(txtMilage, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 120, 25));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Payment Method");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 120, 25));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 70, 120, 25));
 
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNameActionPerformed(evt);
             }
         });
-        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 13, 344, 25));
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 10, 330, 25));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("Address");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 45, 70, 25));
-        jPanel1.add(txtAddr, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 45, 344, 25));
+        jPanel1.add(txtAddr, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 40, 330, 25));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Phone");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 77, 70, 25));
-        jPanel1.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 77, 120, 25));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 70, 25));
+        jPanel1.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 70, 105, 25));
 
         jLabel31.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel31.setText("Name");
@@ -232,37 +285,45 @@ public class Billing extends javax.swing.JInternalFrame {
                 jRadioButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, -1, -1));
+        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, -1, -1));
 
         jRadioButton2.setText("Credit");
-        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 110, -1, -1));
+        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, -1, -1));
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel2.add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 23, -1, -1));
+        txtBillNo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtBillNoFocusLost(evt);
+            }
+        });
+        jPanel1.add(txtBillNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 13, 120, 25));
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 40, 30));
+        jLabel36.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel36.setText("Bill No");
+        jPanel1.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 13, 72, 25));
+        jPanel1.add(txtLoguser, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 100, 120, 25));
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/first.png"))); // NOI18N
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, 30));
+        jLabel32.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel32.setText("Logged User");
+        jPanel1.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 90, 25));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/next.png"))); // NOI18N
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 40, 30));
+        jButton1.setText("Update");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 160, 90, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/last.png"))); // NOI18N
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 40, 30));
+        jTextField1.setText("Enter password ");
+        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 130, -1));
 
-        jLabel32.setText("Close");
-        jPanel2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 43, -1, -1));
-
-        jLabel33.setText("Cancel");
-        jPanel2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 43, -1, -1));
-
-        jLabel34.setText("Print");
-        jPanel2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 43, -1, -1));
-
-        jLabel35.setText("New");
-        jPanel2.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 43, -1, -1));
+        jLabel33.setText("Update Customer Details");
+        jPanel1.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 170, 20));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("CAR CARE CENTER"));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -297,87 +358,87 @@ public class Billing extends javax.swing.JInternalFrame {
         jLabel17.setText("Head Light Test");
         jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 205, 120, 20));
 
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        chkFreeHLT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                chkFreeHLTActionPerformed(evt);
             }
         });
-        jPanel3.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
+        jPanel3.add(chkFreeHLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
 
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+        chkFreeToe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
+                chkFreeToeActionPerformed(evt);
             }
         });
-        jPanel3.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, -1, -1));
+        jPanel3.add(chkFreeToe, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, -1, -1));
 
-        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+        chkFreeCamb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox3ActionPerformed(evt);
+                chkFreeCambActionPerformed(evt);
             }
         });
-        jPanel3.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, -1, -1));
+        jPanel3.add(chkFreeCamb, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, -1, -1));
 
-        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
+        chkFreeCast.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox4ActionPerformed(evt);
+                chkFreeCastActionPerformed(evt);
             }
         });
-        jPanel3.add(jCheckBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, -1, -1));
+        jPanel3.add(chkFreeCast, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, -1, -1));
 
-        jCheckBox5.addActionListener(new java.awt.event.ActionListener() {
+        chkFreeBHgt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox5ActionPerformed(evt);
+                chkFreeBHgtActionPerformed(evt);
             }
         });
-        jPanel3.add(jCheckBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
+        jPanel3.add(chkFreeBHgt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
 
-        jCheckBox6.addActionListener(new java.awt.event.ActionListener() {
+        chkFreeRToe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox6ActionPerformed(evt);
+                chkFreeRToeActionPerformed(evt);
             }
         });
-        jPanel3.add(jCheckBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, -1, -1));
+        jPanel3.add(chkFreeRToe, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, -1, -1));
 
-        jCheckBox7.addActionListener(new java.awt.event.ActionListener() {
+        chkFreeRCam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox7ActionPerformed(evt);
+                chkFreeRCamActionPerformed(evt);
             }
         });
-        jPanel3.add(jCheckBox7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, -1, -1));
+        jPanel3.add(chkFreeRCam, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, -1, -1));
 
-        jCheckBox8.addActionListener(new java.awt.event.ActionListener() {
+        chkFreeAnyO.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox8ActionPerformed(evt);
+                chkFreeAnyOActionPerformed(evt);
             }
         });
-        jPanel3.add(jCheckBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, -1, -1));
+        jPanel3.add(chkFreeAnyO, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, -1, -1));
 
-        jCheckBox9.addActionListener(new java.awt.event.ActionListener() {
+        chkFreeST.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox9ActionPerformed(evt);
+                chkFreeSTActionPerformed(evt);
             }
         });
-        jPanel3.add(jCheckBox9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, -1, -1));
+        jPanel3.add(chkFreeST, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, -1, -1));
 
-        jCheckBox10.addActionListener(new java.awt.event.ActionListener() {
+        chkFreeAlign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox10ActionPerformed(evt);
+                chkFreeAlignActionPerformed(evt);
             }
         });
-        jPanel3.add(jCheckBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
-        jPanel3.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 60, -1));
-        jPanel3.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 60, -1));
-        jPanel3.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 60, -1));
-        jPanel3.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 60, -1));
-        jPanel3.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 60, -1));
-        jPanel3.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 60, -1));
-        jPanel3.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 60, -1));
-        jPanel3.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 60, -1));
-        jPanel3.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 60, -1));
-        jPanel3.add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 60, -1));
+        jPanel3.add(chkFreeAlign, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
+        jPanel3.add(txtChkAlign, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 60, -1));
+        jPanel3.add(txtAdstToe, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 60, -1));
+        jPanel3.add(txtCamber, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 60, -1));
+        jPanel3.add(txtCaster, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 60, -1));
+        jPanel3.add(txtBHight, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 60, -1));
+        jPanel3.add(txtReToe, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 60, -1));
+        jPanel3.add(txtReCamber, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 60, -1));
+        jPanel3.add(txtAnyOther, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 60, -1));
+        jPanel3.add(txtSusTest, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 60, -1));
+        jPanel3.add(txtHLTest, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 60, -1));
         jPanel3.add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 60, -1));
-        jPanel3.add(jTextField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 274, 60, -1));
+        jPanel3.add(txtCCCTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 274, 60, -1));
         jPanel3.add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 60, -1));
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -491,13 +552,23 @@ public class Billing extends javax.swing.JInternalFrame {
         jPanel5.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 70, -1));
         jPanel5.add(jTextField46, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 70, -1));
 
+        btnExit.setText("Exit");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 70, -1));
+
+        btnPrint.setText("Re Print");
+        jPanel5.add(btnPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 90, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -511,13 +582,12 @@ public class Billing extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -528,45 +598,45 @@ public class Billing extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void chkFreeHLTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkFreeHLTActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_chkFreeHLTActionPerformed
 
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+    private void chkFreeToeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkFreeToeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
+    }//GEN-LAST:event_chkFreeToeActionPerformed
 
-    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+    private void chkFreeCambActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkFreeCambActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox3ActionPerformed
+    }//GEN-LAST:event_chkFreeCambActionPerformed
 
-    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+    private void chkFreeCastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkFreeCastActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox4ActionPerformed
+    }//GEN-LAST:event_chkFreeCastActionPerformed
 
-    private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
+    private void chkFreeBHgtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkFreeBHgtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox5ActionPerformed
+    }//GEN-LAST:event_chkFreeBHgtActionPerformed
 
-    private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
+    private void chkFreeRToeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkFreeRToeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox6ActionPerformed
+    }//GEN-LAST:event_chkFreeRToeActionPerformed
 
-    private void jCheckBox7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox7ActionPerformed
+    private void chkFreeRCamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkFreeRCamActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox7ActionPerformed
+    }//GEN-LAST:event_chkFreeRCamActionPerformed
 
-    private void jCheckBox8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox8ActionPerformed
+    private void chkFreeAnyOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkFreeAnyOActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox8ActionPerformed
+    }//GEN-LAST:event_chkFreeAnyOActionPerformed
 
-    private void jCheckBox9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox9ActionPerformed
+    private void chkFreeSTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkFreeSTActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox9ActionPerformed
+    }//GEN-LAST:event_chkFreeSTActionPerformed
 
-    private void jCheckBox10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox10ActionPerformed
+    private void chkFreeAlignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkFreeAlignActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox10ActionPerformed
+    }//GEN-LAST:event_chkFreeAlignActionPerformed
 
     private void jCheckBox11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox11ActionPerformed
         // TODO add your handling code here:
@@ -593,56 +663,45 @@ public class Billing extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void txtVNoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtVNoFocusLost
-        String vNo = jTextField2.getText() != null ? jTextField2.getText() : "";
-        List<Custdata> cusdate = custdataJpaController.findCustdataByVno(vNo);
-        //txtCusId.setText(Integer.toString(cusdate.getId()));
-        /*txtName.setText(cusdate.getName());
-        txtAddr.setText(cusdate.getAddress());
-        txtPhone.setText(cusdate.getPhone());*/
-        
-        
-        String sql = "Select * from CustData where Vno = ? ";
-        try( Connection connection = ConnectionManager.getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setString(1, "56-3424");//56-3424
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                String phone = rs.getString("Phone");
-                String name = rs.getString("Name");
-                String address = rs.getString("Address");
-                
-                txtName.setText(name);
-                txtAddr.setText(address);
-                txtPhone.setText(phone);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         
     }//GEN-LAST:event_txtVNoFocusLost
 
+    private void txtBillNoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBillNoFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBillNoFocusLost
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnExitActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JOptionPane.showMessageDialog(null, "You are not authorize to update Customer Details !");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
+        jTextField1.setText("");
+    }//GEN-LAST:event_jTextField1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.Box.Filler filler1;
+    private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnPrint;
+    private javax.swing.JCheckBox chkFreeAlign;
+    private javax.swing.JCheckBox chkFreeAnyO;
+    private javax.swing.JCheckBox chkFreeBHgt;
+    private javax.swing.JCheckBox chkFreeCamb;
+    private javax.swing.JCheckBox chkFreeCast;
+    private javax.swing.JCheckBox chkFreeHLT;
+    private javax.swing.JCheckBox chkFreeRCam;
+    private javax.swing.JCheckBox chkFreeRToe;
+    private javax.swing.JCheckBox chkFreeST;
+    private javax.swing.JCheckBox chkFreeToe;
+    private com.toedter.calendar.JDateChooser dateBill;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox10;
     private javax.swing.JCheckBox jCheckBox11;
     private javax.swing.JCheckBox jCheckBox12;
     private javax.swing.JCheckBox jCheckBox13;
     private javax.swing.JCheckBox jCheckBox14;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
-    private javax.swing.JCheckBox jCheckBox7;
-    private javax.swing.JCheckBox jCheckBox8;
-    private javax.swing.JCheckBox jCheckBox9;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -670,8 +729,7 @@ public class Billing extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -679,22 +737,13 @@ public class Billing extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;
@@ -705,7 +754,6 @@ public class Billing extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField27;
     private javax.swing.JTextField jTextField28;
     private javax.swing.JTextField jTextField29;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField30;
     private javax.swing.JTextField jTextField31;
     private javax.swing.JTextField jTextField32;
@@ -723,12 +771,24 @@ public class Billing extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField44;
     private javax.swing.JTextField jTextField45;
     private javax.swing.JTextField jTextField46;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField txtAddr;
+    private javax.swing.JTextField txtAdstToe;
+    private javax.swing.JTextField txtAnyOther;
+    private javax.swing.JTextField txtBHight;
+    private javax.swing.JTextField txtBillNo;
+    private javax.swing.JTextField txtCCCTotal;
+    private javax.swing.JTextField txtCamber;
+    private javax.swing.JTextField txtCaster;
+    private javax.swing.JTextField txtChasiNo;
+    private javax.swing.JTextField txtChkAlign;
+    private javax.swing.JTextField txtHLTest;
+    private javax.swing.JTextField txtLoguser;
+    private javax.swing.JTextField txtMilage;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPhone;
+    private javax.swing.JTextField txtReCamber;
+    private javax.swing.JTextField txtReToe;
+    private javax.swing.JTextField txtSusTest;
     private javax.swing.JTextField txtVNo;
     // End of variables declaration//GEN-END:variables
 }
