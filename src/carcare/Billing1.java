@@ -13,6 +13,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -263,11 +264,21 @@ public class Billing1 extends javax.swing.JInternalFrame {
                 txtChkAlignFocusLost(evt);
             }
         });
+        txtChkAlign.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtChkAlignKeyTyped(evt);
+            }
+        });
         jPanel3.add(txtChkAlign, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 60, -1));
 
         txtAdstToe.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtAdstToeFocusLost(evt);
+            }
+        });
+        txtAdstToe.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAdstToeKeyTyped(evt);
             }
         });
         jPanel3.add(txtAdstToe, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 60, -1));
@@ -862,6 +873,24 @@ public class Billing1 extends javax.swing.JInternalFrame {
         setCCTotal();
     }//GEN-LAST:event_chkFreeHLTMouseClicked
 
+    private void txtChkAlignKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtChkAlignKeyTyped
+        keyTyped(evt);
+    }//GEN-LAST:event_txtChkAlignKeyTyped
+
+    private void txtAdstToeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAdstToeKeyTyped
+        keyTyped(evt);
+    }//GEN-LAST:event_txtAdstToeKeyTyped
+
+    public void keyTyped(KeyEvent e) {
+      char c = e.getKeyChar();
+      if (!((c >= '0') && (c <= '9') ||
+         (c == KeyEvent.VK_BACK_SPACE) ||
+         (c == KeyEvent.VK_DELETE))) {
+        getToolkit().beep();
+        e.consume();
+      }
+    }
+    
     private void setCCTotal(){
         int outPut = 0;
         int chkAlign = !chkFreeAlign.isSelected()? (Integer.parseInt(!txtChkAlign.getText().isEmpty() ? txtChkAlign.getText() : "0")) : 0 ;
