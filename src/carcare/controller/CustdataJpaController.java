@@ -138,7 +138,7 @@ public class CustdataJpaController implements Serializable {
     public List<Custdata> findCustdataByVno(String Vno) {
         EntityManager em = getEntityManager();
         try {
-            Query query = em.createQuery("SELECT c FROM Custdata c WHERE c.vno = :vno", Custdata.class);
+            Query query = em.createQuery("SELECT c FROM Custdata c WHERE c.vno = :vno ORDER BY c.id DESC", Custdata.class);
             query.setParameter("vno", Vno);
             return query.getResultList();
         } finally {

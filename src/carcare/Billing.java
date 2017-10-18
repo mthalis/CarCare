@@ -42,9 +42,9 @@ public class Billing extends javax.swing.JInternalFrame {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();        
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         
-        String biillNo = Double.toString(billccc.getBillNo());
+        //String biillNo = Double.toString(billccc.getBillNo());
         
-        txtBillNo.setText(biillNo.substring(0, biillNo.length()- 2));
+        //txtBillNo.setText(biillNo.substring(0, biillNo.length()- 2));
         dateBill.setDate(billccc.getDate());
         txtVNo.setText(billccc.getVno());
         txtMilage.setText(billccc.getMillage().toString());
@@ -72,6 +72,7 @@ public class Billing extends javax.swing.JInternalFrame {
         chkFreeAnyO.setSelected(billccc.getFreeAnyo());
         chkFreeST.setSelected(billccc.getFreeSt());
         chkFreeHLT.setSelected(billccc.getFreeHlt());
+        txtCCCSubTotal.setText(billccc.getAmount().toString());
         txtCCCTotal.setText(billccc.getAmount().toString());
         
     }
@@ -242,7 +243,7 @@ public class Billing extends javax.swing.JInternalFrame {
         txtAnyOther = new javax.swing.JTextField();
         txtSusTest = new javax.swing.JTextField();
         txtHLTest = new javax.swing.JTextField();
-        jTextField17 = new javax.swing.JTextField();
+        txtCCCSubTotal = new javax.swing.JTextField();
         txtCCCTotal = new javax.swing.JTextField();
         jTextField19 = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
@@ -482,8 +483,8 @@ public class Billing extends javax.swing.JInternalFrame {
         txtHLTest.setEnabled(false);
         jPanel3.add(txtHLTest, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 60, -1));
 
-        jTextField17.setEnabled(false);
-        jPanel3.add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 60, -1));
+        txtCCCSubTotal.setEnabled(false);
+        jPanel3.add(txtCCCSubTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 60, -1));
 
         txtCCCTotal.setEnabled(false);
         jPanel3.add(txtCCCTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 274, 60, -1));
@@ -754,7 +755,6 @@ public class Billing extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField21;
@@ -788,6 +788,7 @@ public class Billing extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtAnyOther;
     private javax.swing.JTextField txtBHight;
     private javax.swing.JTextField txtBillNo;
+    private javax.swing.JTextField txtCCCSubTotal;
     private javax.swing.JTextField txtCCCTotal;
     private javax.swing.JTextField txtCamber;
     private javax.swing.JTextField txtCaster;

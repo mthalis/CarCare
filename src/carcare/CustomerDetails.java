@@ -68,7 +68,7 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         custdataList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : custdataQuery.getResultList();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -86,9 +86,9 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         txtMilage = new javax.swing.JTextField();
         txtDate = new com.toedter.calendar.JDateChooser();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnSaveUpdate = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
+        btnAdd = new javax.swing.JButton();
         txtCusId = new javax.swing.JTextField();
         txtLastDate = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -108,13 +108,13 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Exit");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnExit.setText("Exit");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnExitActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, 73, 30));
+        jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, 73, 30));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Date");
@@ -180,29 +180,29 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         txtDate.setDateFormatString("dd-MMM-yyyy");
         jPanel1.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 40, 120, 25));
 
-        jButton2.setText("Save");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSaveUpdate.setText("Save");
+        btnSaveUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSaveUpdateActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 90, 30));
+        jPanel1.add(btnSaveUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 90, 30));
 
-        jButton3.setText("Clear");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnClearActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 70, 30));
+        jPanel1.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 70, 30));
 
-        jButton4.setText("Add");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnAdd.setText("Add");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnAddActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 80, 30));
+        jPanel1.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 80, 30));
         jPanel1.add(txtCusId, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 30, -1));
         jPanel1.add(txtLastDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 120, 25));
 
@@ -361,9 +361,9 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnExitActionPerformed
 
     private void txtVNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVNoActionPerformed
         // TODO add your handling code here:
@@ -415,7 +415,7 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         jTable1.updateUI();
     }//GEN-LAST:event_btnSearchvActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnSaveUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveUpdateActionPerformed
         final String regExp = "[0-9]+([.][0-9]{1,2})?";
         if(txtVNo.getText() == null || txtVNo.getText().equals("")){
             JOptionPane.showMessageDialog(jPanel1, "Please enter Vehicle no ");
@@ -429,8 +429,8 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
             custdata.setName(txtName.getText() != null ? txtName.getText().trim().toUpperCase() : null);
             custdata.setAddress(txtAddr.getText() != null ? txtAddr.getText().trim().toUpperCase() : null);
             custdata.setCity(txtCity.getText() != null ? txtCity.getText().trim().toUpperCase() : null);
-            //custdata.setJdate(new Timestamp(System.currentTimeMillis()));//wrong
-            //custdata.setLdate(new Timestamp(System.currentTimeMillis()));
+            custdata.setJdate(txtDate.getDate());
+            custdata.setLdate(txtDate.getDate());
             custdata.setFmilage(txtMilage.getText() != null ? Double.parseDouble(txtMilage.getText()) : 0);
             custdata.setLmilage(txtMilage.getText() != null ? Double.parseDouble(txtMilage.getText()) : 0);
             custdata.setPhone(txtPhone.getText() != null ? txtPhone.getText().trim().toUpperCase() : null);
@@ -452,11 +452,11 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
                 e.printStackTrace();
             }
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnSaveUpdateActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         clear();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnClearActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         jLabel4.setEnabled(true);
@@ -477,13 +477,13 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         txtLastMilage.setText(Double.toString(cusdate.getLmilage()));
         txtPhone.setText(cusdate.getPhone());
         
-        jButton2.setText("Update");
+        btnSaveUpdate.setText("Update");
         
         actionType = "edit";
 
     }//GEN-LAST:event_jTable1MouseClicked
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         clear();
         
         //hide Last Date & Last Milage in add case
@@ -492,25 +492,25 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         txtLastDate.setEnabled(false);
         txtLastMilage.setEnabled(false);
         
-        jButton2.setText("Save");
+        btnSaveUpdate.setText("Save");
         actionType = "save";
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnAddActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnFirst;
     private javax.swing.JButton btnLast;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnPrev;
+    private javax.swing.JButton btnSaveUpdate;
     private javax.swing.JButton btnSearchv;
     private javax.swing.JComboBox cmbJumlahBaris;
     private java.util.List<carcare.model.Custdata> custdataList;
     private javax.persistence.Query custdataQuery;
     private javax.persistence.EntityManager entityManager;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

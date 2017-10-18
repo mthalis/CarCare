@@ -41,6 +41,16 @@ public class ViewBill extends javax.swing.JInternalFrame {
         pagination = new PaginationController(17, billcceJpaController.getBillcceCount());
         pagination1 = new PaginationController(17, billcccJpaController.getBillcccCount());
         refreshTable();
+       
+        /*
+         "UPDATE Logfile SET RBILLNO = RBILLNO+1";
+        cmdText = "UPDATE Logfile SET CCCBILLNO = CCCBILLNO+1";
+        this.oleDbCmd = new OdbcCommand("UPDATE Logfile SET CCEBILLNO = CCEBILLNO+1", this.oleDbCnn1);
+        cmdText = "INSERT INTO custdata(VNO,NAME,ADDRESS,PHONE,FMILAGE,LMILAGE) VALUES('" + this.txtVNo.Text + "','" + this.txtName.Text + "','" + this.txtAddress.Text + "','" + this.txtPhone.Text + "'," + this.txtMilage.Text + "," + this.txtMilage.Text + ")";
+        cmdText = "UPDATE custdata SET LDATE = #" + DateAndTime.Now.ToString() + "#,LMILAGE =" + this.txtMilage.Text + " WHERE VNo ='" + this.txtVNo.Text + "' ";
+        
+        
+        */
     }
 
     /**

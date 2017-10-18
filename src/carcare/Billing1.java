@@ -5,8 +5,12 @@
  */
 package carcare;
 
+import static carcare.ViewBill.EMF;
+import carcare.controller.BillcccJpaController;
+import carcare.controller.BillcceJpaController;
 import carcare.controller.CustdataJpaController;
 import carcare.controller.PaginationController;
+import carcare.model.Billccc;
 import carcare.model.Custdata;
 import db.ConnectionManager;
 import java.awt.Dimension;
@@ -17,6 +21,7 @@ import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
@@ -32,6 +37,8 @@ public class Billing1 extends javax.swing.JInternalFrame {
 
     public static EntityManagerFactory EMF = Persistence.createEntityManagerFactory("carcare?zeroDateTimeBehavior=convertToNullPU");
     CustdataJpaController custdataJpaController = new CustdataJpaController(EMF);
+    BillcccJpaController billcccJpaController = new BillcccJpaController(EMF);
+    BillcceJpaController billcceJpaController = new BillcceJpaController(EMF);
     
     public Billing1() {
         initComponents();
@@ -40,9 +47,7 @@ public class Billing1 extends javax.swing.JInternalFrame {
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         
         Date date = new Date();
-        jDateChooser1.setDate(date);
-        
-        jRadioButton1.setSelected(true);
+        txtDate.setDate(date);
     }
     
     void drawLines(Graphics g) {
@@ -66,10 +71,11 @@ public class Billing1 extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        txtDate = new com.toedter.calendar.JDateChooser();
         txtVNo = new javax.swing.JTextField();
         txtName = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -118,10 +124,6 @@ public class Billing1 extends javax.swing.JInternalFrame {
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jTextField20 = new javax.swing.JTextField();
-        jTextField21 = new javax.swing.JTextField();
-        jTextField22 = new javax.swing.JTextField();
-        jTextField23 = new javax.swing.JTextField();
-        jTextField24 = new javax.swing.JTextField();
         jTextField25 = new javax.swing.JTextField();
         jTextField26 = new javax.swing.JTextField();
         jTextField27 = new javax.swing.JTextField();
@@ -131,49 +133,55 @@ public class Billing1 extends javax.swing.JInternalFrame {
         jTextField31 = new javax.swing.JTextField();
         jTextField32 = new javax.swing.JTextField();
         jTextField33 = new javax.swing.JTextField();
-        jTextField34 = new javax.swing.JTextField();
         jTextField35 = new javax.swing.JTextField();
-        jTextField36 = new javax.swing.JTextField();
         jTextField37 = new javax.swing.JTextField();
-        jTextField38 = new javax.swing.JTextField();
-        jTextField39 = new javax.swing.JTextField();
-        jTextField40 = new javax.swing.JTextField();
         jCheckBox11 = new javax.swing.JCheckBox();
         jCheckBox12 = new javax.swing.JCheckBox();
         jCheckBox13 = new javax.swing.JCheckBox();
         jCheckBox14 = new javax.swing.JCheckBox();
-        jTextField41 = new javax.swing.JTextField();
-        jTextField42 = new javax.swing.JTextField();
-        jTextField43 = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        jTextField44 = new javax.swing.JTextField();
-        jTextField45 = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
+        jTextField43 = new javax.swing.JTextField();
+        jTextField42 = new javax.swing.JTextField();
+        jTextField21 = new javax.swing.JTextField();
+        jTextField22 = new javax.swing.JTextField();
+        jTextField23 = new javax.swing.JTextField();
+        jTextField24 = new javax.swing.JTextField();
+        jTextField34 = new javax.swing.JTextField();
+        jTextField40 = new javax.swing.JTextField();
+        jTextField39 = new javax.swing.JTextField();
+        jTextField38 = new javax.swing.JTextField();
+        jTextField41 = new javax.swing.JTextField();
+        jTextField36 = new javax.swing.JTextField();
+        jTextField45 = new javax.swing.JTextField();
+        jTextField44 = new javax.swing.JTextField();
         jTextField46 = new javax.swing.JTextField();
+        btnPrint = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         txtPhone = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtMilage = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtChashiNo = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jLabel32 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtAddby = new javax.swing.JTextField();
 
         setClosable(true);
         setTitle("Billing");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -183,7 +191,7 @@ public class Billing1 extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("V/ No");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 45, 72, 25));
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 13, 120, 25));
+        jPanel1.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 13, 120, 25));
 
         txtVNo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -205,16 +213,18 @@ public class Billing1 extends javax.swing.JInternalFrame {
                 txtNameActionPerformed(evt);
             }
         });
-        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 280, 25));
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 280, 25));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("Address");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 70, 25));
-        jPanel1.add(txtAddr, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, 280, 25));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 70, 25));
+        jPanel1.add(txtAddr, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, 280, 25));
 
         jLabel31.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel31.setText("Name");
-        jPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 70, 25));
+        jPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 70, 25));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 680, 80));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("CAR CARE CENTER"));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -288,11 +298,21 @@ public class Billing1 extends javax.swing.JInternalFrame {
                 txtCamberFocusLost(evt);
             }
         });
+        txtCamber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCamberKeyTyped(evt);
+            }
+        });
         jPanel3.add(txtCamber, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 60, -1));
 
         txtCaster.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtCasterFocusLost(evt);
+            }
+        });
+        txtCaster.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCasterKeyTyped(evt);
             }
         });
         jPanel3.add(txtCaster, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 60, -1));
@@ -302,11 +322,21 @@ public class Billing1 extends javax.swing.JInternalFrame {
                 txtBHightFocusLost(evt);
             }
         });
+        txtBHight.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBHightKeyTyped(evt);
+            }
+        });
         jPanel3.add(txtBHight, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 60, -1));
 
         txtReToe.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtReToeFocusLost(evt);
+            }
+        });
+        txtReToe.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtReToeKeyTyped(evt);
             }
         });
         jPanel3.add(txtReToe, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 60, -1));
@@ -316,11 +346,21 @@ public class Billing1 extends javax.swing.JInternalFrame {
                 txtReCamberFocusLost(evt);
             }
         });
+        txtReCamber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtReCamberKeyTyped(evt);
+            }
+        });
         jPanel3.add(txtReCamber, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 60, -1));
 
         txtAnyOther.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtAnyOtherFocusLost(evt);
+            }
+        });
+        txtAnyOther.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAnyOtherKeyTyped(evt);
             }
         });
         jPanel3.add(txtAnyOther, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 60, -1));
@@ -330,6 +370,11 @@ public class Billing1 extends javax.swing.JInternalFrame {
                 txtSusTestFocusLost(evt);
             }
         });
+        txtSusTest.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSusTestKeyTyped(evt);
+            }
+        });
         jPanel3.add(txtSusTest, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 60, -1));
 
         txtHLTest.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -337,7 +382,14 @@ public class Billing1 extends javax.swing.JInternalFrame {
                 txtHLTestFocusLost(evt);
             }
         });
+        txtHLTest.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtHLTestKeyTyped(evt);
+            }
+        });
         jPanel3.add(txtHLTest, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 60, -1));
+
+        txtSubCCCTotal.setEnabled(false);
         jPanel3.add(txtSubCCCTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 60, -1));
 
         txtDisCCCTotal.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -345,7 +397,14 @@ public class Billing1 extends javax.swing.JInternalFrame {
                 txtDisCCCTotalFocusLost(evt);
             }
         });
+        txtDisCCCTotal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDisCCCTotalKeyTyped(evt);
+            }
+        });
         jPanel3.add(txtDisCCCTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 60, -1));
+
+        txtCCCTotal.setEnabled(false);
         jPanel3.add(txtCCCTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 274, 60, -1));
 
         chkFreeAlign.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -418,6 +477,8 @@ public class Billing1 extends javax.swing.JInternalFrame {
         });
         jPanel3.add(chkFreeHLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
 
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 301, 339));
+
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("CAR CARE ENTERPRISES"));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -434,10 +495,6 @@ public class Billing1 extends javax.swing.JInternalFrame {
         jLabel24.setText("Wheel Balancing");
         jPanel5.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 60, 130, -1));
         jPanel5.add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 40, -1));
-        jPanel5.add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 40, -1));
-        jPanel5.add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 40, -1));
-        jPanel5.add(jTextField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 40, -1));
-        jPanel5.add(jTextField24, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 40, -1));
         jPanel5.add(jTextField25, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 40, -1));
         jPanel5.add(jTextField26, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 40, -1));
         jPanel5.add(jTextField27, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 40, -1));
@@ -447,13 +504,8 @@ public class Billing1 extends javax.swing.JInternalFrame {
         jPanel5.add(jTextField31, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 40, -1));
         jPanel5.add(jTextField32, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 40, -1));
         jPanel5.add(jTextField33, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 40, -1));
-        jPanel5.add(jTextField34, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 70, -1));
         jPanel5.add(jTextField35, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 70, -1));
-        jPanel5.add(jTextField36, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 70, -1));
         jPanel5.add(jTextField37, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 180, 110, -1));
-        jPanel5.add(jTextField38, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 70, -1));
-        jPanel5.add(jTextField39, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 70, -1));
-        jPanel5.add(jTextField40, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 70, -1));
 
         jCheckBox11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -482,18 +534,6 @@ public class Billing1 extends javax.swing.JInternalFrame {
             }
         });
         jPanel5.add(jCheckBox14, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 120, -1, -1));
-        jPanel5.add(jTextField41, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 70, -1));
-
-        jTextField42.setText("Tyre Change");
-        jTextField42.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField42ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jTextField42, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 160, 110, -1));
-
-        jTextField43.setText("N2");
-        jPanel5.add(jTextField43, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 140, 110, -1));
 
         jLabel25.setText("Weights");
         jPanel5.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 80, 130, -1));
@@ -505,8 +545,6 @@ public class Billing1 extends javax.swing.JInternalFrame {
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel27.setText("Rate");
         jPanel5.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 40, -1));
-        jPanel5.add(jTextField44, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 70, -1));
-        jPanel5.add(jTextField45, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 70, -1));
 
         jLabel28.setText("Sub Total");
         jPanel5.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 205, 80, -1));
@@ -517,7 +555,75 @@ public class Billing1 extends javax.swing.JInternalFrame {
         jLabel30.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel30.setText("TOTAL");
         jPanel5.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 70, -1));
+
+        jTextField43.setText("N2");
+        jTextField43.setEnabled(false);
+        jPanel5.add(jTextField43, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 140, 110, -1));
+
+        jTextField42.setText("Tyre Change");
+        jTextField42.setEnabled(false);
+        jPanel5.add(jTextField42, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 160, 110, -1));
+
+        jTextField21.setText("1");
+        jTextField21.setEnabled(false);
+        jPanel5.add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 40, -1));
+
+        jTextField22.setText("1");
+        jTextField22.setEnabled(false);
+        jPanel5.add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 40, -1));
+
+        jTextField23.setText("1");
+        jTextField23.setEnabled(false);
+        jPanel5.add(jTextField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 40, -1));
+
+        jTextField24.setText("4");
+        jTextField24.setEnabled(false);
+        jPanel5.add(jTextField24, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 40, -1));
+
+        jTextField34.setEnabled(false);
+        jPanel5.add(jTextField34, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 70, -1));
+
+        jTextField40.setEnabled(false);
+        jPanel5.add(jTextField40, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 70, -1));
+
+        jTextField39.setEnabled(false);
+        jPanel5.add(jTextField39, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 70, -1));
+
+        jTextField38.setEnabled(false);
+        jPanel5.add(jTextField38, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 70, -1));
+
+        jTextField41.setEnabled(false);
+        jPanel5.add(jTextField41, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 70, -1));
+
+        jTextField36.setEnabled(false);
+        jPanel5.add(jTextField36, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 70, -1));
+
+        jTextField45.setEnabled(false);
+        jPanel5.add(jTextField45, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 70, -1));
+
+        jTextField44.setEnabled(false);
+        jPanel5.add(jTextField44, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 70, -1));
+
+        jTextField46.setEnabled(false);
         jPanel5.add(jTextField46, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 70, -1));
+
+        btnPrint.setText("Print");
+        btnPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 90, -1));
+
+        btnExit.setText("Exit");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 70, -1));
+
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 380, 339));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -529,7 +635,15 @@ public class Billing1 extends javax.swing.JInternalFrame {
             new String [] {
                 "Name", "Address", "Phone"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -543,8 +657,8 @@ public class Billing1 extends javax.swing.JInternalFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -554,128 +668,49 @@ public class Billing1 extends javax.swing.JInternalFrame {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 93, 420, -1));
+
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Phone");
+        jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, 25));
+        jPanel6.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 120, 25));
+        jPanel6.add(txtMilage, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 120, 25));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Millage");
+        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 72, 25));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Chasi No");
+        jPanel6.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 72, 25));
+        jPanel6.add(txtChashiNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 120, 25));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel7.setText("Payment Method");
+        jLabel7.setText("Payment ");
+        jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 72, 25));
 
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setSelected(true);
         jRadioButton1.setText("Cash");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton1ActionPerformed(evt);
             }
         });
+        jPanel6.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, -1, -1));
 
+        buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Credit");
+        jPanel6.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, -1, -1));
 
         jLabel32.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel32.setText("Add By");
+        jPanel6.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 76, 25));
+        jPanel6.add(txtAddby, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 120, 25));
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(jRadioButton1)
-                        .addGap(21, 21, 21)
-                        .addComponent(jRadioButton2))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 9, Short.MAX_VALUE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(jTextField1)))
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 809, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 250, 170));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -700,10 +735,6 @@ public class Billing1 extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox14ActionPerformed
 
-    private void jTextField42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField42ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField42ActionPerformed
-
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
@@ -718,56 +749,22 @@ public class Billing1 extends javax.swing.JInternalFrame {
                 Custdata cus = cusdate.get(i);
                 model.addRow(new Object[]{cus.getName(), cus.getAddress(), cus.getPhone()});
             }
+            Custdata cus = cusdate.get(0);
+            txtName.setText(cus.getName());
+            txtAddr.setText(cus.getAddress());
+            txtPhone.setText(cus.getPhone());
+            txtMilage.requestFocus();
         }else{
             model.getDataVector().removeAllElements();
             model.fireTableDataChanged(); 
-            JOptionPane.showMessageDialog(jPanel1, "Could not able to find Vehicle no, Please enter manually !");
+            JOptionPane.showMessageDialog(jPanel1, "Vehicle number did not find !");
             
             txtName.setText("");
             txtAddr.setText("");
             txtPhone.setText("");
+            txtName.requestFocus();
         }
         jTable1.setModel(model);
-        
-        /*String vNo = txtVNo.getText() != null ? txtVNo.getText() : "";
-        List<Custdata> cusdate = custdataJpaController.findCustdataByVno(vNo);
-
-        if(cusdate != null){
-            DefaultTableModel model = new DefaultTableModel(new String[]{"Name", "Address", "Phone"}, 0);        
-            for (int i = 0; i < cusdate.size(); i++) {
-                Custdata cus = cusdate.get(i);
-                model.addRow(new Object[]{cus.getName(), cus.getAddress(), cus.getPhone()});
-            }
-            jTable1.setModel(model);
-        }else{
-            JOptionPane.showMessageDialog(jPanel1, "Could not able to find Vehicle no, Please enter manually !");
-        }
-        */
-        
-        //txtCusId.setText(Integer.toString(cusdate.getId()));
-        /*txtName.setText(cusdate.getName());
-        txtAddr.setText(cusdate.getAddress());
-        txtPhone.setText(cusdate.getPhone());*/
-        
-        
-       /* String sql = "Select * from CustData where Vno = ? ";
-        try( Connection connection = ConnectionManager.getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setString(1, "56-3424");//56-3424
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                String phone = rs.getString("Phone");
-                String name = rs.getString("Name");
-                String address = rs.getString("Address");
-                
-                txtName.setText(name);
-                txtAddr.setText(address);
-                txtPhone.setText(phone);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
-        
     }//GEN-LAST:event_txtVNoFocusLost
 
     private void txtVNoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtVNoMouseClicked
@@ -776,13 +773,14 @@ public class Billing1 extends javax.swing.JInternalFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         int row = jTable1.getSelectedRow();
-        String name = jTable1.getModel().getValueAt(row, 0).toString();
-        String address = jTable1.getModel().getValueAt(row, 1).toString();
-        String phone = jTable1.getModel().getValueAt(row, 2).toString();
+        String name = jTable1.getModel().getValueAt(row, 0)!= null ? jTable1.getModel().getValueAt(row, 0).toString() : "";
+        String address = jTable1.getModel().getValueAt(row, 1)!= null ? jTable1.getModel().getValueAt(row, 1).toString() : "";
+        String phone = jTable1.getModel().getValueAt(row, 2)!= null ? jTable1.getModel().getValueAt(row, 2).toString() : "";
         
         txtName.setText(name);
         txtAddr.setText(address);
         txtPhone.setText(phone);
+        txtMilage.requestFocus();
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void txtVNoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtVNoMouseReleased
@@ -881,6 +879,95 @@ public class Billing1 extends javax.swing.JInternalFrame {
         keyTyped(evt);
     }//GEN-LAST:event_txtAdstToeKeyTyped
 
+    private void txtCamberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCamberKeyTyped
+        keyTyped(evt);
+    }//GEN-LAST:event_txtCamberKeyTyped
+
+    private void txtCasterKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCasterKeyTyped
+        keyTyped(evt);
+    }//GEN-LAST:event_txtCasterKeyTyped
+
+    private void txtBHightKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBHightKeyTyped
+        keyTyped(evt);
+    }//GEN-LAST:event_txtBHightKeyTyped
+
+    private void txtReToeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtReToeKeyTyped
+        keyTyped(evt);
+    }//GEN-LAST:event_txtReToeKeyTyped
+
+    private void txtReCamberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtReCamberKeyTyped
+        keyTyped(evt);
+    }//GEN-LAST:event_txtReCamberKeyTyped
+
+    private void txtAnyOtherKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnyOtherKeyTyped
+        keyTyped(evt);
+    }//GEN-LAST:event_txtAnyOtherKeyTyped
+
+    private void txtSusTestKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSusTestKeyTyped
+        keyTyped(evt);
+    }//GEN-LAST:event_txtSusTestKeyTyped
+
+    private void txtHLTestKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHLTestKeyTyped
+        keyTyped(evt);
+    }//GEN-LAST:event_txtHLTestKeyTyped
+
+    private void txtDisCCCTotalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDisCCCTotalKeyTyped
+        keyTyped(evt);
+    }//GEN-LAST:event_txtDisCCCTotalKeyTyped
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnExitActionPerformed
+
+    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
+        if(txtVNo.getText() == null || txtVNo.getText().equals("")){
+            JOptionPane.showMessageDialog(jPanel1, "Please enter Vehicle no !");
+            txtVNo.requestFocus();
+        } else if(txtAddby.getText() == null || txtAddby.getText().equals("")){
+            JOptionPane.showMessageDialog(jPanel1, "Please enter Add by !");
+            txtAddby.requestFocus();
+        } else {
+            
+            Billccc billccc = new Billccc();
+            //billccc.setBillNo(Double.NaN);
+            billccc.setVno(txtVNo.getText().trim().toUpperCase());
+            billccc.setDate(txtDate.getDate());
+            billccc.setName(txtName.getText() != null ? txtName.getText().trim().toUpperCase() : null);
+            billccc.setAddress(txtAddr.getText() != null ? txtAddr.getText().trim().toUpperCase() : null);
+            billccc.setPhone(txtPhone.getText() != null ? txtPhone.getText().trim().toUpperCase() : null);
+            billccc.setMillage(txtMilage.getText() != null ? Double.parseDouble(txtMilage.getText()) : 0);
+            billccc.setChasiNo(txtChashiNo.getText() != null ? txtChashiNo.getText().trim().toUpperCase() : null);
+            
+            billccc.setChkAlign(txtChkAlign.getText() != null ? Integer.parseInt(txtChkAlign.getText()) : 0); //need to check here
+            billccc.setAjstToe(txtAdstToe.getText() != null ? Integer.parseInt(txtAdstToe.getText()) : 0);
+            billccc.setCamber(txtCamber.getText() != null ? Integer.parseInt(txtCamber.getText()) : 0);
+            billccc.setCaster(txtCaster.getText() != null ? Integer.parseInt(txtCaster.getText()) : 0);
+            billccc.setBHight(txtBHight.getText() != null ? Integer.parseInt(txtBHight.getText()) : 0);
+            billccc.setReToe(txtReToe.getText() != null ? Integer.parseInt(txtReToe.getText()) : 0);
+            billccc.setReCamber(txtReCamber.getText() != null ? Integer.parseInt(txtReCamber.getText()) : 0);
+            billccc.setAnyOther(txtAnyOther.getText() != null ? Integer.parseInt(txtAnyOther.getText()) : 0);
+            billccc.setSusTest(txtSusTest.getText() != null ? Integer.parseInt(txtSusTest.getText()) : 0);
+            billccc.setHLTest(txtHLTest.getText() != null ? Integer.parseInt(txtHLTest.getText()) : 0);
+            //billccc.setD(txtDisCCCTotal.getText() != null ? Integer.parseInt(txtDisCCCTotal.getText()) : 0);
+            
+            
+            billccc.setFreeAlign(chkFreeAlign.isSelected());
+            billccc.setFreeToe(chkFreeToe.isSelected());
+            billccc.setFreeCamb(chkFreeCamb.isSelected());
+            billccc.setFreeCast(chkFreeCast.isSelected());
+            billccc.setFreeBhgt(chkFreeBHgt.isSelected());
+            billccc.setFreeRToe(chkFreeRToe.isSelected());
+            billccc.setFreeRCam(chkFreeRCam.isSelected());
+            billccc.setFreeAnyo(chkFreeAnyO.isSelected());
+            billccc.setFreeSt(chkFreeST.isSelected());
+            billccc.setFreeHlt(chkFreeHLT.isSelected());
+            
+            billccc.setAmount(txtCCCTotal.getText() != null ? Integer.parseInt(txtCCCTotal.getText()) : 0);
+            billcccJpaController.create(billccc);
+            
+        }
+    }//GEN-LAST:event_btnPrintActionPerformed
+
     public void keyTyped(KeyEvent e) {
       char c = e.getKeyChar();
       if (!((c >= '0') && (c <= '9') ||
@@ -912,6 +999,9 @@ public class Billing1 extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnPrint;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox chkFreeAlign;
     private javax.swing.JCheckBox chkFreeAnyO;
     private javax.swing.JCheckBox chkFreeBHgt;
@@ -926,7 +1016,6 @@ public class Billing1 extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBox jCheckBox12;
     private javax.swing.JCheckBox jCheckBox13;
     private javax.swing.JCheckBox jCheckBox14;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -968,8 +1057,6 @@ public class Billing1 extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;
@@ -980,7 +1067,6 @@ public class Billing1 extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField27;
     private javax.swing.JTextField jTextField28;
     private javax.swing.JTextField jTextField29;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField30;
     private javax.swing.JTextField jTextField31;
     private javax.swing.JTextField jTextField32;
@@ -998,6 +1084,7 @@ public class Billing1 extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField44;
     private javax.swing.JTextField jTextField45;
     private javax.swing.JTextField jTextField46;
+    private javax.swing.JTextField txtAddby;
     private javax.swing.JTextField txtAddr;
     private javax.swing.JTextField txtAdstToe;
     private javax.swing.JTextField txtAnyOther;
@@ -1005,9 +1092,12 @@ public class Billing1 extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtCCCTotal;
     private javax.swing.JTextField txtCamber;
     private javax.swing.JTextField txtCaster;
+    private javax.swing.JTextField txtChashiNo;
     private javax.swing.JTextField txtChkAlign;
+    private com.toedter.calendar.JDateChooser txtDate;
     private javax.swing.JTextField txtDisCCCTotal;
     private javax.swing.JTextField txtHLTest;
+    private javax.swing.JTextField txtMilage;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtReCamber;
