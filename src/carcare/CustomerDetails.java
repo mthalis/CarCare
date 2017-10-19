@@ -18,6 +18,8 @@ import java.util.regex.Pattern;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.DocumentFilter;
 
 /**
  *
@@ -32,6 +34,13 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
     
     public CustomerDetails() {
         initComponents();
+        
+        DocumentFilter filter = new UppercaseDocumentFilter ();
+        ((AbstractDocument) txtVNo.getDocument()).setDocumentFilter(filter);
+        ((AbstractDocument) txtName.getDocument()).setDocumentFilter(filter);
+        ((AbstractDocument) txtAddr.getDocument()).setDocumentFilter(filter);
+        ((AbstractDocument) txtCity.getDocument()).setDocumentFilter(filter);
+        ((AbstractDocument) txtPhone.getDocument()).setDocumentFilter(filter);
         
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();        
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
