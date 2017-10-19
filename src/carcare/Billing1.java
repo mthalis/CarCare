@@ -920,6 +920,7 @@ public class Billing1 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
+       System.out.println("hooooo - > " +buttonGroup1.getSelection().getActionCommand() + "--"+ jRadioButton1.isSelected()  + "--"+  jRadioButton2.isSelected());
         if(txtVNo.getText() == null || txtVNo.getText().equals("")){
             JOptionPane.showMessageDialog(jPanel1, "Please enter Vehicle no !");
             txtVNo.requestFocus();
@@ -929,27 +930,28 @@ public class Billing1 extends javax.swing.JInternalFrame {
         } else {
             
             Billccc billccc = new Billccc();
-            //billccc.setBillNo(Double.NaN);
+            
             billccc.setVno(txtVNo.getText().trim().toUpperCase());
             billccc.setDate(txtDate.getDate());
             billccc.setName(txtName.getText() != null ? txtName.getText().trim().toUpperCase() : null);
             billccc.setAddress(txtAddr.getText() != null ? txtAddr.getText().trim().toUpperCase() : null);
             billccc.setPhone(txtPhone.getText() != null ? txtPhone.getText().trim().toUpperCase() : null);
-            billccc.setMillage(txtMilage.getText() != null ? Double.parseDouble(txtMilage.getText()) : 0);
+            billccc.setMillage((txtMilage.getText() != null  && !txtMilage.getText().isEmpty()) ? Double.parseDouble(txtMilage.getText()) : 0);
             billccc.setChasiNo(txtChashiNo.getText() != null ? txtChashiNo.getText().trim().toUpperCase() : null);
+            billccc.setPaymethod(jRadioButton1.isSelected());
+            billccc.setAddby(txtAddby.getText());
             
-            billccc.setChkAlign(txtChkAlign.getText() != null ? Integer.parseInt(txtChkAlign.getText()) : 0); //need to check here
-            billccc.setAjstToe(txtAdstToe.getText() != null ? Integer.parseInt(txtAdstToe.getText()) : 0);
-            billccc.setCamber(txtCamber.getText() != null ? Integer.parseInt(txtCamber.getText()) : 0);
-            billccc.setCaster(txtCaster.getText() != null ? Integer.parseInt(txtCaster.getText()) : 0);
-            billccc.setBHight(txtBHight.getText() != null ? Integer.parseInt(txtBHight.getText()) : 0);
-            billccc.setReToe(txtReToe.getText() != null ? Integer.parseInt(txtReToe.getText()) : 0);
-            billccc.setReCamber(txtReCamber.getText() != null ? Integer.parseInt(txtReCamber.getText()) : 0);
-            billccc.setAnyOther(txtAnyOther.getText() != null ? Integer.parseInt(txtAnyOther.getText()) : 0);
-            billccc.setSusTest(txtSusTest.getText() != null ? Integer.parseInt(txtSusTest.getText()) : 0);
-            billccc.setHLTest(txtHLTest.getText() != null ? Integer.parseInt(txtHLTest.getText()) : 0);
-            //billccc.setD(txtDisCCCTotal.getText() != null ? Integer.parseInt(txtDisCCCTotal.getText()) : 0);
-            
+            billccc.setChkAlign((txtChkAlign.getText() != null && !txtChkAlign.getText().isEmpty()) ? Integer.parseInt(txtChkAlign.getText()) : 0);
+            billccc.setAjstToe((txtAdstToe.getText() != null && !txtAdstToe.getText().isEmpty()) ? Integer.parseInt(txtAdstToe.getText()) : 0);
+            billccc.setCamber((txtCamber.getText() != null && !txtCamber.getText().isEmpty()) ? Integer.parseInt(txtCamber.getText()) : 0);
+            billccc.setCaster((txtCaster.getText() != null && !txtCaster.getText().isEmpty()) ? Integer.parseInt(txtCaster.getText()) : 0);
+            billccc.setBHight((txtBHight.getText() != null && !txtBHight.getText().isEmpty()) ? Integer.parseInt(txtBHight.getText()) : 0);
+            billccc.setReToe((txtReToe.getText() != null && !txtReToe.getText().isEmpty()) ? Integer.parseInt(txtReToe.getText()) : 0);
+            billccc.setReCamber((txtReCamber.getText() != null && !txtReCamber.getText().isEmpty()) ? Integer.parseInt(txtReCamber.getText()) : 0);
+            billccc.setAnyOther((txtAnyOther.getText() != null && !txtAnyOther.getText().isEmpty()) ? Integer.parseInt(txtAnyOther.getText()) : 0);
+            billccc.setSusTest((txtSusTest.getText() != null && !txtSusTest.getText().isEmpty()) ? Integer.parseInt(txtSusTest.getText()) : 0);
+            billccc.setHLTest((txtHLTest.getText() != null && !txtHLTest.getText().isEmpty()) ? Integer.parseInt(txtHLTest.getText()) : 0);
+            billccc.setDiscount(txtDisCCCTotal.getText() != null ? Integer.parseInt(txtDisCCCTotal.getText()) : 0);            
             
             billccc.setFreeAlign(chkFreeAlign.isSelected());
             billccc.setFreeToe(chkFreeToe.isSelected());
@@ -964,6 +966,7 @@ public class Billing1 extends javax.swing.JInternalFrame {
             
             billccc.setAmount(txtCCCTotal.getText() != null ? Integer.parseInt(txtCCCTotal.getText()) : 0);
             billcccJpaController.create(billccc);
+            
             
         }
     }//GEN-LAST:event_btnPrintActionPerformed

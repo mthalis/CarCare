@@ -64,10 +64,10 @@ public class ViewBill extends javax.swing.JInternalFrame {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("carcare?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
-        billcccQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT b FROM Billccc b").setMaxResults(17);
-        billcccList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : billcccQuery.getResultList();
         billcceQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT b FROM Billcce b").setMaxResults(17);
         billcceList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : billcceQuery.getResultList();
+        billcccQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT b FROM Billccc b").setMaxResults(17);
+        billcccList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : billcccQuery.getResultList();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();

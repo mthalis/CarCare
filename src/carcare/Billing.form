@@ -276,7 +276,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtLoguser">
+        <Component class="javax.swing.JTextField" name="txtAddby">
           <Properties>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
@@ -670,7 +670,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField19">
+        <Component class="javax.swing.JTextField" name="txtDisCCCTotal">
           <Properties>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>

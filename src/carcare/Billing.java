@@ -42,9 +42,9 @@ public class Billing extends javax.swing.JInternalFrame {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();        
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         
-        //String biillNo = Double.toString(billccc.getBillNo());
+        String biillNo = Double.toString(billccc.getBillNo());
         
-        //txtBillNo.setText(biillNo.substring(0, biillNo.length()- 2));
+        txtBillNo.setText(biillNo.substring(0, biillNo.length()- 2));
         dateBill.setDate(billccc.getDate());
         txtVNo.setText(billccc.getVno());
         txtMilage.setText(billccc.getMillage().toString());
@@ -52,6 +52,12 @@ public class Billing extends javax.swing.JInternalFrame {
         txtAddr.setText(billccc.getAddress());
         txtPhone.setText(billccc.getPhone());
         txtChasiNo.setText(billccc.getChasiNo());
+        if(billccc.getPaymethod()){
+           jRadioButton1.setSelected(true);
+        }else{
+           jRadioButton2.setSelected(true);
+        }        
+        txtAddby.setText(billccc.getAddby());
         txtChkAlign.setText(billccc.getChkAlign().toString());
         txtAdstToe.setText(billccc.getAjstToe().toString());
         txtCamber.setText(billccc.getCamber().toString());
@@ -73,6 +79,7 @@ public class Billing extends javax.swing.JInternalFrame {
         chkFreeST.setSelected(billccc.getFreeSt());
         chkFreeHLT.setSelected(billccc.getFreeHlt());
         txtCCCSubTotal.setText(billccc.getAmount().toString());
+        txtDisCCCTotal.setText(billccc.getDiscount().toString());
         txtCCCTotal.setText(billccc.getAmount().toString());
         
     }
@@ -207,7 +214,7 @@ public class Billing extends javax.swing.JInternalFrame {
         jRadioButton2 = new javax.swing.JRadioButton();
         txtBillNo = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
-        txtLoguser = new javax.swing.JTextField();
+        txtAddby = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
@@ -245,7 +252,7 @@ public class Billing extends javax.swing.JInternalFrame {
         txtHLTest = new javax.swing.JTextField();
         txtCCCSubTotal = new javax.swing.JTextField();
         txtCCCTotal = new javax.swing.JTextField();
-        jTextField19 = new javax.swing.JTextField();
+        txtDisCCCTotal = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
@@ -364,8 +371,8 @@ public class Billing extends javax.swing.JInternalFrame {
         jLabel36.setText("Bill No");
         jPanel1.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 13, 72, 25));
 
-        txtLoguser.setEnabled(false);
-        jPanel1.add(txtLoguser, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 105, 25));
+        txtAddby.setEnabled(false);
+        jPanel1.add(txtAddby, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 105, 25));
 
         jLabel32.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel32.setText("Add By");
@@ -489,8 +496,8 @@ public class Billing extends javax.swing.JInternalFrame {
         txtCCCTotal.setEnabled(false);
         jPanel3.add(txtCCCTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 274, 60, -1));
 
-        jTextField19.setEnabled(false);
-        jPanel3.add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 60, -1));
+        txtDisCCCTotal.setEnabled(false);
+        jPanel3.add(txtDisCCCTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 60, -1));
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel18.setText("TOTAL");
@@ -755,7 +762,6 @@ public class Billing extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;
@@ -783,6 +789,7 @@ public class Billing extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField44;
     private javax.swing.JTextField jTextField45;
     private javax.swing.JTextField jTextField46;
+    private javax.swing.JTextField txtAddby;
     private javax.swing.JTextField txtAddr;
     private javax.swing.JTextField txtAdstToe;
     private javax.swing.JTextField txtAnyOther;
@@ -794,8 +801,8 @@ public class Billing extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtCaster;
     private javax.swing.JTextField txtChasiNo;
     private javax.swing.JTextField txtChkAlign;
+    private javax.swing.JTextField txtDisCCCTotal;
     private javax.swing.JTextField txtHLTest;
-    private javax.swing.JTextField txtLoguser;
     private javax.swing.JTextField txtMilage;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPhone;

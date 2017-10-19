@@ -13,6 +13,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 import java.util.regex.Pattern;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -40,7 +41,7 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         
         LKController.resizeColumnWidth(jTable1);
         int jumlahBaris = Integer.parseInt(cmbJumlahBaris.getSelectedItem().toString());
-        pagination = new PaginationController(jumlahBaris, custdataJpaController.getCustdataCount());
+        pagination = new PaginationController(15, custdataJpaController.getCustdataCount());
         refreshTable();
      
         //hide Last Date & Last Milage in add case
@@ -100,7 +101,7 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         btnNext = new javax.swing.JButton();
         btnLast = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
-        btnSearchv = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Customer Details");
@@ -270,10 +271,10 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
             }
         });
 
-        btnSearchv.setText("Search");
-        btnSearchv.addActionListener(new java.awt.event.ActionListener() {
+        btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchvActionPerformed(evt);
+                btnSearchActionPerformed(evt);
             }
         });
 
@@ -295,7 +296,7 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSearchv)
+                .addComponent(btnSearch)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -309,7 +310,7 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
                     .addComponent(btnNext)
                     .addComponent(btnLast)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearchv))
+                    .addComponent(btnSearch))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -408,12 +409,22 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         jTextField2.setText("");
     }//GEN-LAST:event_jTextField2MouseClicked
 
-    private void btnSearchvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchvActionPerformed
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         String vNo = jTextField2.getText() != null ? jTextField2.getText() : "";
-        custdataList.clear();
-        custdataList.addAll(custdataJpaController.findCustdataByVno(vNo));
-        jTable1.updateUI();
-    }//GEN-LAST:event_btnSearchvActionPerformed
+        if(!vNo.isEmpty()){
+            custdataList.clear();
+            List<Custdata> cusDataList = custdataJpaController.findCustdataByVno(vNo);
+            if(cusDataList !=null && cusDataList.size() > 0){
+                custdataList.addAll(cusDataList);
+                jTable1.updateUI();
+            }else{
+                JOptionPane.showMessageDialog(jPanel1, "Vehicle number not found !");
+                btnSearch.requestFocus();
+            }
+        }else{
+            refreshTable();
+        }
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnSaveUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveUpdateActionPerformed
         final String regExp = "[0-9]+([.][0-9]{1,2})?";
@@ -428,20 +439,24 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
             custdata.setVno(txtVNo.getText().trim().toUpperCase());
             custdata.setName(txtName.getText() != null ? txtName.getText().trim().toUpperCase() : null);
             custdata.setAddress(txtAddr.getText() != null ? txtAddr.getText().trim().toUpperCase() : null);
-            custdata.setCity(txtCity.getText() != null ? txtCity.getText().trim().toUpperCase() : null);
-            custdata.setJdate(txtDate.getDate());
-            custdata.setLdate(txtDate.getDate());
-            custdata.setFmilage(txtMilage.getText() != null ? Double.parseDouble(txtMilage.getText()) : 0);
-            custdata.setLmilage(txtMilage.getText() != null ? Double.parseDouble(txtMilage.getText()) : 0);
+            custdata.setCity(txtCity.getText() != null ? txtCity.getText().trim().toUpperCase() : null);            
+            custdata.setFmilage(txtMilage.getText() != null ? Double.parseDouble(txtMilage.getText()) : 0);            
             custdata.setPhone(txtPhone.getText() != null ? txtPhone.getText().trim().toUpperCase() : null);
             custdata.setCredit(0.0);
-            //custdata.setDeDate(new Timestamp(System.currentTimeMillis()));
-
+            custdata.setDeDate(new Timestamp(System.currentTimeMillis()));
+            
             try{
                 if(null != actionType && actionType.equals("save")){
+                    custdata.setJdate(txtDate.getDate());
+                    custdata.setLdate(txtDate.getDate());
+                    custdata.setLmilage(txtMilage.getText() != null ? Double.parseDouble(txtMilage.getText()) : 0);
+                    
                     custdataJpaController.create(custdata);
                     JOptionPane.showMessageDialog(null, "Successfuly save record !");
                 }else if(null != actionType && actionType.equals("edit")){
+                    custdata.setJdate(txtDate.getDate());
+                    custdata.setLdate(txtLastDate.getDate());
+                    custdata.setLmilage(txtLastMilage.getText() != null ? Double.parseDouble(txtLastMilage.getText()) : 0);
                     custdata.setId(Integer.parseInt(txtCusId.getText()));
                     custdataJpaController.edit(custdata);
                     JOptionPane.showMessageDialog(null, "Successfuly edit record !");
@@ -476,7 +491,7 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         txtMilage.setText(Double.toString(cusdate.getFmilage()));
         txtLastMilage.setText(Double.toString(cusdate.getLmilage()));
         txtPhone.setText(cusdate.getPhone());
-        
+        txtLastDate.setDate(cusdate.getLdate());
         btnSaveUpdate.setText("Update");
         
         actionType = "edit";
@@ -506,7 +521,7 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnPrev;
     private javax.swing.JButton btnSaveUpdate;
-    private javax.swing.JButton btnSearchv;
+    private javax.swing.JButton btnSearch;
     private javax.swing.JComboBox cmbJumlahBaris;
     private java.util.List<carcare.model.Custdata> custdataList;
     private javax.persistence.Query custdataQuery;
