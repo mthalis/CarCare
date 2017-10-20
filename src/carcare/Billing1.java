@@ -11,6 +11,7 @@ import carcare.controller.BillcceJpaController;
 import carcare.controller.CustdataJpaController;
 import carcare.controller.PaginationController;
 import carcare.model.Billccc;
+import carcare.model.Billcce;
 import carcare.model.Custdata;
 import db.ConnectionManager;
 import java.awt.Dimension;
@@ -28,6 +29,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.DocumentFilter;
 
 /**
  *
@@ -42,6 +45,14 @@ public class Billing1 extends javax.swing.JInternalFrame {
     
     public Billing1() {
         initComponents();
+        
+        DocumentFilter filter = new UppercaseDocumentFilter ();
+        ((AbstractDocument) txtVNo.getDocument()).setDocumentFilter(filter);
+        ((AbstractDocument) txtName.getDocument()).setDocumentFilter(filter);
+        ((AbstractDocument) txtAddr.getDocument()).setDocumentFilter(filter);
+        ((AbstractDocument) txtPhone.getDocument()).setDocumentFilter(filter);
+        ((AbstractDocument) txtChashiNo.getDocument()).setDocumentFilter(filter);
+        ((AbstractDocument) txtAddby.getDocument()).setDocumentFilter(filter);
         
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();        
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
@@ -133,7 +144,7 @@ public class Billing1 extends javax.swing.JInternalFrame {
         jTextField31 = new javax.swing.JTextField();
         jTextField32 = new javax.swing.JTextField();
         jTextField33 = new javax.swing.JTextField();
-        jTextField35 = new javax.swing.JTextField();
+        txtDisCCETotal = new javax.swing.JTextField();
         jTextField37 = new javax.swing.JTextField();
         jCheckBox11 = new javax.swing.JCheckBox();
         jCheckBox12 = new javax.swing.JCheckBox();
@@ -158,8 +169,8 @@ public class Billing1 extends javax.swing.JInternalFrame {
         jTextField41 = new javax.swing.JTextField();
         jTextField36 = new javax.swing.JTextField();
         jTextField45 = new javax.swing.JTextField();
-        jTextField44 = new javax.swing.JTextField();
-        jTextField46 = new javax.swing.JTextField();
+        txtSubCCETotal = new javax.swing.JTextField();
+        txtCCETotal = new javax.swing.JTextField();
         btnPrint = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
@@ -494,43 +505,164 @@ public class Billing1 extends javax.swing.JInternalFrame {
 
         jLabel24.setText("Wheel Balancing");
         jPanel5.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 60, 130, -1));
+
+        jTextField20.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField20FocusLost(evt);
+            }
+        });
+        jTextField20.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField20KeyTyped(evt);
+            }
+        });
         jPanel5.add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 40, -1));
+
+        jTextField25.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField25FocusLost(evt);
+            }
+        });
+        jTextField25.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField25KeyTyped(evt);
+            }
+        });
         jPanel5.add(jTextField25, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 40, -1));
+
+        jTextField26.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField26FocusLost(evt);
+            }
+        });
+        jTextField26.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField26KeyTyped(evt);
+            }
+        });
         jPanel5.add(jTextField26, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 40, -1));
+
+        jTextField27.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField27FocusLost(evt);
+            }
+        });
+        jTextField27.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField27KeyTyped(evt);
+            }
+        });
         jPanel5.add(jTextField27, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 40, -1));
+
+        jTextField28.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField28FocusLost(evt);
+            }
+        });
+        jTextField28.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField28KeyTyped(evt);
+            }
+        });
         jPanel5.add(jTextField28, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 40, -1));
+
+        jTextField29.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField29FocusLost(evt);
+            }
+        });
+        jTextField29.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField29KeyTyped(evt);
+            }
+        });
         jPanel5.add(jTextField29, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 40, -1));
+
+        jTextField30.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField30FocusLost(evt);
+            }
+        });
+        jTextField30.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField30KeyTyped(evt);
+            }
+        });
         jPanel5.add(jTextField30, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 40, -1));
+
+        jTextField31.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField31FocusLost(evt);
+            }
+        });
+        jTextField31.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField31KeyTyped(evt);
+            }
+        });
         jPanel5.add(jTextField31, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 40, -1));
+
+        jTextField32.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField32FocusLost(evt);
+            }
+        });
+        jTextField32.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField32KeyTyped(evt);
+            }
+        });
         jPanel5.add(jTextField32, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 40, -1));
+
+        jTextField33.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField33FocusLost(evt);
+            }
+        });
+        jTextField33.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField33KeyTyped(evt);
+            }
+        });
         jPanel5.add(jTextField33, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 40, -1));
-        jPanel5.add(jTextField35, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 70, -1));
+
+        txtDisCCETotal.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDisCCETotalFocusLost(evt);
+            }
+        });
+        txtDisCCETotal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDisCCETotalKeyTyped(evt);
+            }
+        });
+        jPanel5.add(txtDisCCETotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 70, -1));
         jPanel5.add(jTextField37, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 180, 110, -1));
 
-        jCheckBox11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox11ActionPerformed(evt);
+        jCheckBox11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCheckBox11MouseClicked(evt);
             }
         });
         jPanel5.add(jCheckBox11, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 60, -1, -1));
 
-        jCheckBox12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox12ActionPerformed(evt);
+        jCheckBox12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCheckBox12MouseClicked(evt);
             }
         });
         jPanel5.add(jCheckBox12, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 80, -1, -1));
 
-        jCheckBox13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox13ActionPerformed(evt);
+        jCheckBox13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCheckBox13MouseClicked(evt);
             }
         });
         jPanel5.add(jCheckBox13, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 100, -1, -1));
 
-        jCheckBox14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox14ActionPerformed(evt);
+        jCheckBox14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCheckBox14MouseClicked(evt);
             }
         });
         jPanel5.add(jCheckBox14, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 120, -1, -1));
@@ -596,16 +728,16 @@ public class Billing1 extends javax.swing.JInternalFrame {
         jPanel5.add(jTextField41, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 70, -1));
 
         jTextField36.setEnabled(false);
-        jPanel5.add(jTextField36, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 70, -1));
+        jPanel5.add(jTextField36, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 70, 20));
 
         jTextField45.setEnabled(false);
         jPanel5.add(jTextField45, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 70, -1));
 
-        jTextField44.setEnabled(false);
-        jPanel5.add(jTextField44, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 70, -1));
+        txtSubCCETotal.setEnabled(false);
+        jPanel5.add(txtSubCCETotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 70, -1));
 
-        jTextField46.setEnabled(false);
-        jPanel5.add(jTextField46, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 70, -1));
+        txtCCETotal.setEnabled(false);
+        jPanel5.add(txtCCETotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 70, -1));
 
         btnPrint.setText("Print");
         btnPrint.addActionListener(new java.awt.event.ActionListener() {
@@ -676,6 +808,12 @@ public class Billing1 extends javax.swing.JInternalFrame {
         jLabel6.setText("Phone");
         jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, 25));
         jPanel6.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 120, 25));
+
+        txtMilage.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMilageKeyTyped(evt);
+            }
+        });
         jPanel6.add(txtMilage, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 120, 25));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -718,22 +856,6 @@ public class Billing1 extends javax.swing.JInternalFrame {
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
-
-    private void jCheckBox11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox11ActionPerformed
-
-    private void jCheckBox12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox12ActionPerformed
-
-    private void jCheckBox13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox13ActionPerformed
-
-    private void jCheckBox14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox14ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
@@ -788,87 +910,87 @@ public class Billing1 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtVNoMouseReleased
 
     private void txtChkAlignFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtChkAlignFocusLost
-        setCCTotal();
+        setCCCTotal();
     }//GEN-LAST:event_txtChkAlignFocusLost
 
     private void txtAdstToeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAdstToeFocusLost
-        setCCTotal();
+        setCCCTotal();
     }//GEN-LAST:event_txtAdstToeFocusLost
 
     private void txtCamberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCamberFocusLost
-        setCCTotal();
+        setCCCTotal();
     }//GEN-LAST:event_txtCamberFocusLost
 
     private void txtCasterFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCasterFocusLost
-        setCCTotal();
+        setCCCTotal();
     }//GEN-LAST:event_txtCasterFocusLost
 
     private void txtBHightFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBHightFocusLost
-        setCCTotal();
+        setCCCTotal();
     }//GEN-LAST:event_txtBHightFocusLost
 
     private void txtReToeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtReToeFocusLost
-        setCCTotal();
+        setCCCTotal();
     }//GEN-LAST:event_txtReToeFocusLost
 
     private void txtReCamberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtReCamberFocusLost
-        setCCTotal();
+        setCCCTotal();
     }//GEN-LAST:event_txtReCamberFocusLost
 
     private void txtAnyOtherFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAnyOtherFocusLost
-        setCCTotal();
+        setCCCTotal();
     }//GEN-LAST:event_txtAnyOtherFocusLost
 
     private void txtSusTestFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSusTestFocusLost
-        setCCTotal();
+        setCCCTotal();
     }//GEN-LAST:event_txtSusTestFocusLost
 
     private void txtHLTestFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHLTestFocusLost
-        setCCTotal();
+        setCCCTotal();
     }//GEN-LAST:event_txtHLTestFocusLost
 
     private void txtDisCCCTotalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDisCCCTotalFocusLost
-        setCCTotal();
+        setCCCTotal();
     }//GEN-LAST:event_txtDisCCCTotalFocusLost
 
     private void chkFreeAlignMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkFreeAlignMouseClicked
-        setCCTotal();
+        setCCCTotal();
     }//GEN-LAST:event_chkFreeAlignMouseClicked
 
     private void chkFreeToeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkFreeToeMouseClicked
-        setCCTotal();
+        setCCCTotal();
     }//GEN-LAST:event_chkFreeToeMouseClicked
 
     private void chkFreeCambMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkFreeCambMouseClicked
-        setCCTotal();
+        setCCCTotal();
     }//GEN-LAST:event_chkFreeCambMouseClicked
 
     private void chkFreeCastMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkFreeCastMouseClicked
-        setCCTotal();
+        setCCCTotal();
     }//GEN-LAST:event_chkFreeCastMouseClicked
 
     private void chkFreeBHgtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkFreeBHgtMouseClicked
-        setCCTotal();
+        setCCCTotal();
     }//GEN-LAST:event_chkFreeBHgtMouseClicked
 
     private void chkFreeRToeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkFreeRToeMouseClicked
-        setCCTotal();
+        setCCCTotal();
     }//GEN-LAST:event_chkFreeRToeMouseClicked
 
     private void chkFreeRCamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkFreeRCamMouseClicked
-        setCCTotal();
+        setCCCTotal();
     }//GEN-LAST:event_chkFreeRCamMouseClicked
 
     private void chkFreeAnyOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkFreeAnyOMouseClicked
-        setCCTotal();
+        setCCCTotal();
     }//GEN-LAST:event_chkFreeAnyOMouseClicked
 
     private void chkFreeSTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkFreeSTMouseClicked
-        setCCTotal();
+        setCCCTotal();
     }//GEN-LAST:event_chkFreeSTMouseClicked
 
     private void chkFreeHLTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkFreeHLTMouseClicked
-        setCCTotal();
+        setCCCTotal();
     }//GEN-LAST:event_chkFreeHLTMouseClicked
 
     private void txtChkAlignKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtChkAlignKeyTyped
@@ -931,13 +1053,13 @@ public class Billing1 extends javax.swing.JInternalFrame {
             
             Billccc billccc = new Billccc();
             
-            billccc.setVno(txtVNo.getText().trim().toUpperCase());
+            billccc.setVno(txtVNo.getText());
             billccc.setDate(txtDate.getDate());
-            billccc.setName(txtName.getText() != null ? txtName.getText().trim().toUpperCase() : null);
-            billccc.setAddress(txtAddr.getText() != null ? txtAddr.getText().trim().toUpperCase() : null);
-            billccc.setPhone(txtPhone.getText() != null ? txtPhone.getText().trim().toUpperCase() : null);
+            billccc.setName(txtName.getText());
+            billccc.setAddress(txtAddr.getText());
+            billccc.setPhone(txtPhone.getText());
             billccc.setMillage((txtMilage.getText() != null  && !txtMilage.getText().isEmpty()) ? Double.parseDouble(txtMilage.getText()) : 0);
-            billccc.setChasiNo(txtChashiNo.getText() != null ? txtChashiNo.getText().trim().toUpperCase() : null);
+            billccc.setChasiNo(txtChashiNo.getText());
             billccc.setPaymethod(jRadioButton1.isSelected());
             billccc.setAddby(txtAddby.getText());
             
@@ -965,11 +1087,195 @@ public class Billing1 extends javax.swing.JInternalFrame {
             billccc.setFreeHlt(chkFreeHLT.isSelected());
             
             billccc.setAmount(txtCCCTotal.getText() != null ? Integer.parseInt(txtCCCTotal.getText()) : 0);
-            billcccJpaController.create(billccc);
+            if(billccc.getAmount() > 0 ){
+                billcccJpaController.create(billccc);
+            }
+            
+            Billcce billcce = new Billcce();
+            
+            billcce.setVno(txtVNo.getText());
+            billcce.setDate(txtDate.getDate());
+            billcce.setName(txtName.getText());
+            billcce.setAddress(txtAddr.getText());
+            billcce.setPhone(txtPhone.getText());
+            billcce.setMillage((txtMilage.getText() != null  && !txtMilage.getText().isEmpty()) ? Double.parseDouble(txtMilage.getText()) : 0);
+            billcce.setChasiNo(txtChashiNo.getText());
+            billcce.setPaymethod(jRadioButton1.isSelected());
+            billcce.setAddby(txtAddby.getText());
+            
             
             
         }
     }//GEN-LAST:event_btnPrintActionPerformed
+
+    private void txtMilageKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMilageKeyTyped
+         keyTyped(evt);
+    }//GEN-LAST:event_txtMilageKeyTyped
+
+    private void jTextField27FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField27FocusLost
+        int val1 = Integer.parseInt(!jTextField20.getText().isEmpty() ? jTextField20.getText() : "0"); 
+        int val2 = Integer.parseInt(!jTextField27.getText().isEmpty() ? jTextField27.getText() : "0");         
+        jTextField34.setText(Integer.toString(val1*val2));
+        setCCETotal();
+    }//GEN-LAST:event_jTextField27FocusLost
+
+    private void jTextField33FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField33FocusLost
+        jTextField40.setText(jTextField33.getText());
+        setCCETotal();
+    }//GEN-LAST:event_jTextField33FocusLost
+
+    private void jTextField32FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField32FocusLost
+        jTextField39.setText(jTextField32.getText());
+        setCCETotal();
+    }//GEN-LAST:event_jTextField32FocusLost
+
+    private void jTextField31FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField31FocusLost
+        jTextField38.setText(jTextField31.getText());
+        setCCETotal();
+    }//GEN-LAST:event_jTextField31FocusLost
+
+    private void jTextField30FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField30FocusLost
+        int outPut = Integer.parseInt(!jTextField30.getText().isEmpty() ? jTextField30.getText() : "0")*4; 
+        jTextField41.setText(Integer.toString(outPut));
+        setCCETotal();
+    }//GEN-LAST:event_jTextField30FocusLost
+
+    private void jTextField29FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField29FocusLost
+        int val1 = Integer.parseInt(!jTextField25.getText().isEmpty() ? jTextField25.getText() : "0"); 
+        int val2 = Integer.parseInt(!jTextField29.getText().isEmpty() ? jTextField29.getText() : "0");         
+        jTextField36.setText(Integer.toString(val1*val2));
+        setCCETotal();
+    }//GEN-LAST:event_jTextField29FocusLost
+
+    private void jTextField28FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField28FocusLost
+        if(jTextField37.getText() != null && !jTextField37.getText().isEmpty()){
+            int val1 = Integer.parseInt(!jTextField26.getText().isEmpty() ? jTextField26.getText() : "0"); 
+            int val2 = Integer.parseInt(!jTextField28.getText().isEmpty() ? jTextField28.getText() : "0");         
+            jTextField45.setText(Integer.toString(val1*val2));
+            setCCETotal();
+        }
+    }//GEN-LAST:event_jTextField28FocusLost
+
+    private void jTextField20FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField20FocusLost
+        int val1 = Integer.parseInt(!jTextField20.getText().isEmpty() ? jTextField20.getText() : "0"); 
+        int val2 = Integer.parseInt(!jTextField27.getText().isEmpty() ? jTextField27.getText() : "0");         
+        jTextField34.setText(Integer.toString(val1*val2));
+        setCCETotal();
+    }//GEN-LAST:event_jTextField20FocusLost
+
+    private void jTextField25FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField25FocusLost
+        int val1 = Integer.parseInt(!jTextField25.getText().isEmpty() ? jTextField25.getText() : "0"); 
+        int val2 = Integer.parseInt(!jTextField29.getText().isEmpty() ? jTextField29.getText() : "0");         
+        jTextField36.setText(Integer.toString(val1*val2));
+        setCCETotal();
+    }//GEN-LAST:event_jTextField25FocusLost
+
+    private void jTextField26FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField26FocusLost
+        if(jTextField37.getText() != null && !jTextField37.getText().isEmpty()){
+            int val1 = Integer.parseInt(!jTextField26.getText().isEmpty() ? jTextField26.getText() : "0"); 
+            int val2 = Integer.parseInt(!jTextField28.getText().isEmpty() ? jTextField28.getText() : "0");         
+            jTextField45.setText(Integer.toString(val1*val2));
+            setCCETotal();
+        }
+    }//GEN-LAST:event_jTextField26FocusLost
+
+    private void txtDisCCETotalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDisCCETotalFocusLost
+        setCCETotal();
+    }//GEN-LAST:event_txtDisCCETotalFocusLost
+
+    private void jCheckBox11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox11MouseClicked
+        setCCETotal();
+    }//GEN-LAST:event_jCheckBox11MouseClicked
+
+    private void jCheckBox12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox12MouseClicked
+        setCCETotal();
+    }//GEN-LAST:event_jCheckBox12MouseClicked
+
+    private void jCheckBox13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox13MouseClicked
+        setCCETotal();
+    }//GEN-LAST:event_jCheckBox13MouseClicked
+
+    private void jCheckBox14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox14MouseClicked
+        setCCETotal();
+    }//GEN-LAST:event_jCheckBox14MouseClicked
+
+    private void jTextField20KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField20KeyTyped
+        keyTyped(evt);
+        if(jTextField20.getText().length()>=4) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField20KeyTyped
+
+    private void jTextField27KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField27KeyTyped
+        keyTyped(evt);        
+        if(jTextField27.getText().length()>=4) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField27KeyTyped
+
+    private void jTextField33KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField33KeyTyped
+        keyTyped(evt);
+        if(jTextField33.getText().length()>=4) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField33KeyTyped
+
+    private void jTextField32KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField32KeyTyped
+        keyTyped(evt);
+        if(jTextField32.getText().length()>=4) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField32KeyTyped
+
+    private void jTextField31KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField31KeyTyped
+        keyTyped(evt);
+        if(jTextField31.getText().length()>=4) {
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_jTextField31KeyTyped
+
+    private void jTextField30KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField30KeyTyped
+        keyTyped(evt);
+        if(jTextField30.getText().length()>=4) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField30KeyTyped
+
+    private void jTextField29KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField29KeyTyped
+        keyTyped(evt);
+        if(jTextField29.getText().length()>=4) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField29KeyTyped
+
+    private void jTextField28KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField28KeyTyped
+        keyTyped(evt);
+        if(jTextField28.getText().length()>=4) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField28KeyTyped
+
+    private void jTextField25KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField25KeyTyped
+        keyTyped(evt);
+        if(jTextField25.getText().length()>=4) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField25KeyTyped
+
+    private void jTextField26KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField26KeyTyped
+        keyTyped(evt);
+        if(jTextField26.getText().length()>=4) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField26KeyTyped
+
+    private void txtDisCCETotalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDisCCETotalKeyTyped
+        keyTyped(evt);
+        if(txtDisCCETotal.getText().length()>=4) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtDisCCETotalKeyTyped
 
     public void keyTyped(KeyEvent e) {
       char c = e.getKeyChar();
@@ -981,7 +1287,7 @@ public class Billing1 extends javax.swing.JInternalFrame {
       }
     }
     
-    private void setCCTotal(){
+    private void setCCCTotal(){
         int outPut = 0;
         int chkAlign = !chkFreeAlign.isSelected()? (Integer.parseInt(!txtChkAlign.getText().isEmpty() ? txtChkAlign.getText() : "0")) : 0 ;
         int adstToe = !chkFreeToe.isSelected()? (Integer.parseInt(!txtAdstToe.getText().isEmpty() ? txtAdstToe.getText() : "0")) : 0 ;
@@ -999,6 +1305,23 @@ public class Billing1 extends javax.swing.JInternalFrame {
         txtSubCCCTotal.setText(Integer.toString(outPut));
         int discount = Integer.parseInt(!txtDisCCCTotal.getText().isEmpty() ? txtDisCCCTotal.getText() : "0"); 
         txtCCCTotal.setText(Integer.toString(outPut > discount ? outPut - discount : 0));
+    }
+    
+    private void setCCETotal(){
+        int outPut = 0;
+        int chkAlign = !jCheckBox11.isSelected()? (Integer.parseInt(!jTextField34.getText().isEmpty() ? jTextField34.getText() : "0")) : 0 ;
+        int adstToe = !jCheckBox12.isSelected()? (Integer.parseInt(!jTextField40.getText().isEmpty() ? jTextField40.getText() : "0")) : 0 ;
+        int camber = !jCheckBox13.isSelected()? (Integer.parseInt(!jTextField39.getText().isEmpty() ? jTextField39.getText() : "0")) : 0 ;
+        int caster = !jCheckBox14.isSelected()? (Integer.parseInt(!jTextField38.getText().isEmpty() ? jTextField38.getText() : "0")) : 0 ;
+        int bHight = Integer.parseInt(!jTextField41.getText().isEmpty() ? jTextField41.getText() : "0");
+        int reToe = Integer.parseInt(!jTextField36.getText().isEmpty() ? jTextField36.getText() : "0");
+        int reCamber = Integer.parseInt(!jTextField45.getText().isEmpty() ? jTextField45.getText() : "0");
+        
+        outPut = chkAlign + adstToe + camber + caster + bHight + reToe + reCamber;
+        
+        txtSubCCETotal.setText(Integer.toString(outPut));
+        int discount = Integer.parseInt(!txtDisCCETotal.getText().isEmpty() ? txtDisCCETotal.getText() : "0"); 
+        txtCCETotal.setText(Integer.toString(outPut > discount ? outPut - discount : 0));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1075,7 +1398,6 @@ public class Billing1 extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField32;
     private javax.swing.JTextField jTextField33;
     private javax.swing.JTextField jTextField34;
-    private javax.swing.JTextField jTextField35;
     private javax.swing.JTextField jTextField36;
     private javax.swing.JTextField jTextField37;
     private javax.swing.JTextField jTextField38;
@@ -1084,21 +1406,21 @@ public class Billing1 extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField41;
     private javax.swing.JTextField jTextField42;
     private javax.swing.JTextField jTextField43;
-    private javax.swing.JTextField jTextField44;
     private javax.swing.JTextField jTextField45;
-    private javax.swing.JTextField jTextField46;
     private javax.swing.JTextField txtAddby;
     private javax.swing.JTextField txtAddr;
     private javax.swing.JTextField txtAdstToe;
     private javax.swing.JTextField txtAnyOther;
     private javax.swing.JTextField txtBHight;
     private javax.swing.JTextField txtCCCTotal;
+    private javax.swing.JTextField txtCCETotal;
     private javax.swing.JTextField txtCamber;
     private javax.swing.JTextField txtCaster;
     private javax.swing.JTextField txtChashiNo;
     private javax.swing.JTextField txtChkAlign;
     private com.toedter.calendar.JDateChooser txtDate;
     private javax.swing.JTextField txtDisCCCTotal;
+    private javax.swing.JTextField txtDisCCETotal;
     private javax.swing.JTextField txtHLTest;
     private javax.swing.JTextField txtMilage;
     private javax.swing.JTextField txtName;
@@ -1106,6 +1428,7 @@ public class Billing1 extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtReCamber;
     private javax.swing.JTextField txtReToe;
     private javax.swing.JTextField txtSubCCCTotal;
+    private javax.swing.JTextField txtSubCCETotal;
     private javax.swing.JTextField txtSusTest;
     private javax.swing.JTextField txtVNo;
     // End of variables declaration//GEN-END:variables
