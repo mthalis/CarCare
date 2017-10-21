@@ -78,7 +78,7 @@ public class Billing extends javax.swing.JInternalFrame {
         chkFreeAnyO.setSelected(billccc.getFreeAnyo());
         chkFreeST.setSelected(billccc.getFreeSt());
         chkFreeHLT.setSelected(billccc.getFreeHlt());
-        txtCCCSubTotal.setText(billccc.getAmount().toString());
+        txtCCCSubTotal.setText(Integer.toString(billccc.getAmount()+ billccc.getDiscount()));
         txtDisCCCTotal.setText(billccc.getDiscount().toString());
         txtCCCTotal.setText(billccc.getAmount().toString());
         
@@ -120,7 +120,7 @@ public class Billing extends javax.swing.JInternalFrame {
         jTextField25.setText(billcce.getOther2Qt().toString());
         jTextField26.setText(billcce.getOther3Qt().toString());
         
-        jTextField44.setText(billcce.getAmount().toString());
+        jTextField44.setText(Integer.toString(billcce.getAmount()+ billcce.getDiscount()));
         jTextField35.setText(billcce.getDiscount().toString());
         jTextField46.setText(billcce.getAmount().toString());
         
