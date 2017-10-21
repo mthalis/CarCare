@@ -5,17 +5,33 @@
  */
 package carcare;
 
+import carcare.controller.CustdataJpaController;
+import carcare.model.Custdata;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.util.Date;
+import java.util.List;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Dinesh
  */
 public class CheckSheet extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form CheckSheet
-     */
+    public static EntityManagerFactory EMF = Persistence.createEntityManagerFactory("carcare?zeroDateTimeBehavior=convertToNullPU");
+    CustdataJpaController custdataJpaController = new CustdataJpaController(EMF);
+    
     public CheckSheet() {
         initComponents();
+        
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();        
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        
+        Date date = new Date();
+        jDateChooser1.setDate(date);
     }
 
     /**
@@ -29,134 +45,596 @@ public class CheckSheet extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
         jTextField11 = new javax.swing.JTextField();
         jTextField12 = new javax.swing.JTextField();
+        jLabel51 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        jPanel3 = new javax.swing.JPanel();
+        jTextField7 = new javax.swing.JTextField();
+        jTextField13 = new javax.swing.JTextField();
+        jTextField14 = new javax.swing.JTextField();
+        jTextField15 = new javax.swing.JTextField();
+        jTextField16 = new javax.swing.JTextField();
+        jTextField17 = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jTextField34 = new javax.swing.JTextField();
+        jTextField35 = new javax.swing.JTextField();
+        jTextField36 = new javax.swing.JTextField();
+        jTextField37 = new javax.swing.JTextField();
+        jTextField38 = new javax.swing.JTextField();
+        jTextField39 = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jTextField23 = new javax.swing.JTextField();
+        jTextField24 = new javax.swing.JTextField();
+        jTextField25 = new javax.swing.JTextField();
+        jTextField26 = new javax.swing.JTextField();
+        jTextField27 = new javax.swing.JTextField();
+        jTextField28 = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jTextField29 = new javax.swing.JTextField();
+        jTextField30 = new javax.swing.JTextField();
+        jTextField31 = new javax.swing.JTextField();
+        jTextField32 = new javax.swing.JTextField();
+        jTextField33 = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField10 = new javax.swing.JTextField();
+        jTextField18 = new javax.swing.JTextField();
+        jTextField19 = new javax.swing.JTextField();
+        jTextField20 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jTextField21 = new javax.swing.JTextField();
+        jTextField22 = new javax.swing.JTextField();
+        jTextField40 = new javax.swing.JTextField();
+        jTextField41 = new javax.swing.JTextField();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField51 = new javax.swing.JTextField();
+        jTextField52 = new javax.swing.JTextField();
+        jTextField53 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        jLabel47 = new javax.swing.JLabel();
+        jTextField54 = new javax.swing.JTextField();
+        jTextField55 = new javax.swing.JTextField();
+        jTextField56 = new javax.swing.JTextField();
+        jTextField57 = new javax.swing.JTextField();
+        jLabel48 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
+        jLabel50 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        txtVNo = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        jLabel36 = new javax.swing.JLabel();
+        txtAddr = new javax.swing.JTextField();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jTextField8 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        txtMilage = new javax.swing.JTextField();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        txtPhone = new javax.swing.JTextField();
+        txtDate = new javax.swing.JTextField();
+        jLabel39 = new javax.swing.JLabel();
 
         setClosable(true);
         setTitle("Check Sheet");
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Front", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 0, 51))); // NOI18N
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 55, -1));
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 55, -1));
-        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 55, -1));
-        jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 55, -1));
-        jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 55, -1));
-        jPanel2.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 55, -1));
 
-        jLabel1.setText("Toe");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 40, -1));
+        jLabel7.setText("Add by");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 34, 60, -1));
 
-        jLabel2.setText("Cam R");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 40, -1));
+        jLabel8.setText("Job by");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 12, 60, -1));
+        jPanel2.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 80, -1));
+        jPanel2.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 80, -1));
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Pr.");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 53, -1));
+        jLabel51.setText("Head Lights");
+        jPanel2.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 100, -1));
 
-        jLabel4.setText("Cas R");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 40, -1));
+        jLabel52.setText("N2");
+        jPanel2.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 100, -1));
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Aj.");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 53, -1));
+        jLabel53.setText("Suspension");
+        jPanel2.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 100, -1));
+        jPanel2.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
+        jPanel2.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+        jPanel2.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jLabel6.setText("S-B");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 40, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, 326, 80));
 
-        jLabel7.setText("L");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 20, -1));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tyre Condition", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 0, 51))); // NOI18N
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel3.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 55, -1));
+        jPanel3.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 55, -1));
+        jPanel3.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 55, -1));
+        jPanel3.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 70, 55, -1));
+        jPanel3.add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 50, 55, -1));
+        jPanel3.add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 90, 55, -1));
 
-        jLabel8.setText("L");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 20, -1));
-        jPanel2.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 55, -1));
-        jPanel2.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 55, -1));
-        jPanel2.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 55, -1));
-        jPanel2.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 55, -1));
-        jPanel2.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 55, -1));
+        jLabel11.setText("Toe");
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 40, -1));
 
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Aj.");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 53, -1));
+        jLabel12.setText("Cam R");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 40, -1));
 
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Pr.");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 53, -1));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("Normal");
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 53, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(764, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(507, Short.MAX_VALUE))
-        );
+        jLabel14.setText("Cas R");
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 40, -1));
+
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("Out");
+        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 53, -1));
+        jPanel3.add(jTextField34, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 55, -1));
+        jPanel3.add(jTextField35, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 55, -1));
+        jPanel3.add(jTextField36, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 55, -1));
+        jPanel3.add(jTextField37, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 55, -1));
+        jPanel3.add(jTextField38, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 55, -1));
+        jPanel3.add(jTextField39, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 110, 55, -1));
+
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("In");
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 53, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 326, 190));
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Front", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 0, 51))); // NOI18N
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel4.add(jTextField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 55, -1));
+        jPanel4.add(jTextField24, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 55, -1));
+        jPanel4.add(jTextField25, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 55, -1));
+        jPanel4.add(jTextField26, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 50, 55, -1));
+        jPanel4.add(jTextField27, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 30, 55, -1));
+        jPanel4.add(jTextField28, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 70, 55, -1));
+
+        jLabel22.setText("Toe");
+        jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 40, -1));
+
+        jLabel23.setText("Cam R");
+        jPanel4.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 40, -1));
+
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setText("Pr.");
+        jPanel4.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 53, -1));
+
+        jLabel25.setText("Cas R");
+        jPanel4.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 40, -1));
+
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel26.setText("Aj.");
+        jPanel4.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 53, -1));
+
+        jLabel27.setText("S-B");
+        jPanel4.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 40, -1));
+
+        jLabel28.setText("L");
+        jPanel4.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 20, -1));
+
+        jLabel29.setText("L");
+        jPanel4.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 20, -1));
+        jPanel4.add(jTextField29, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 55, -1));
+        jPanel4.add(jTextField30, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 55, -1));
+        jPanel4.add(jTextField31, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 70, 55, -1));
+        jPanel4.add(jTextField32, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 50, 55, -1));
+        jPanel4.add(jTextField33, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 30, 55, -1));
+
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel30.setText("Aj.");
+        jPanel4.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 53, -1));
+
+        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel31.setText("Pr.");
+        jPanel4.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 53, -1));
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 326, 100));
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Rear", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 0, 51))); // NOI18N
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel5.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 55, -1));
+        jPanel5.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 55, -1));
+        jPanel5.add(jTextField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 50, 55, -1));
+        jPanel5.add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 30, 55, -1));
+        jPanel5.add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 70, 55, -1));
+
+        jLabel4.setText("Toe");
+        jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 40, -1));
+
+        jLabel6.setText("Cam R");
+        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 40, -1));
+
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setText("S-B");
+        jPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 75, 53, -1));
+
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("Aj.");
+        jPanel5.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 53, -1));
+
+        jLabel19.setText("L");
+        jPanel5.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 20, -1));
+
+        jLabel20.setText("L");
+        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 20, -1));
+        jPanel5.add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 55, -1));
+        jPanel5.add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 55, -1));
+        jPanel5.add(jTextField40, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 50, 55, -1));
+        jPanel5.add(jTextField41, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 30, 55, -1));
+
+        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel32.setText("Aj.");
+        jPanel5.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 53, -1));
+
+        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel33.setText("Pr.");
+        jPanel5.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 53, -1));
+
+        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel34.setText("Pr.");
+        jPanel5.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 53, -1));
+
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 326, 100));
+
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Balancing Weight", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 0, 51))); // NOI18N
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel7.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 55, -1));
+        jPanel7.add(jTextField51, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 55, -1));
+        jPanel7.add(jTextField52, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 55, -1));
+        jPanel7.add(jTextField53, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 55, -1));
+
+        jLabel3.setText("Fr R");
+        jPanel7.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 40, -1));
+
+        jLabel44.setText("Re R");
+        jPanel7.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 40, -1));
+
+        jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel45.setText("Out");
+        jPanel7.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 53, -1));
+
+        jLabel46.setText("L");
+        jPanel7.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 20, -1));
+
+        jLabel47.setText("L");
+        jPanel7.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 20, -1));
+        jPanel7.add(jTextField54, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 55, -1));
+        jPanel7.add(jTextField55, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 55, -1));
+        jPanel7.add(jTextField56, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 55, -1));
+        jPanel7.add(jTextField57, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 55, -1));
+
+        jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel48.setText("Out");
+        jPanel7.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 53, -1));
+
+        jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel49.setText("In");
+        jPanel7.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 53, -1));
+
+        jLabel50.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel50.setText("In");
+        jPanel7.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 53, -1));
+
+        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 326, 100));
+
+        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Remarks", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 0, 51))); // NOI18N
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jPanel8.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 620, 50));
+
+        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 660, 80));
+
+        txtVNo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtVNoFocusLost(evt);
+            }
+        });
+        txtVNo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtVNoMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                txtVNoMouseReleased(evt);
+            }
+        });
+        jPanel1.add(txtVNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 120, 25));
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel21.setText("V/ No");
+        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 72, 25));
+
+        jLabel35.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel35.setText("Name");
+        jPanel1.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 70, 25));
+
+        txtName.setEnabled(false);
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 280, 25));
+
+        jLabel36.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel36.setText("Address");
+        jPanel1.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 70, 25));
+
+        txtAddr.setEnabled(false);
+        jPanel1.add(txtAddr, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, 280, 25));
+
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setText("Date");
+        jPanel9.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 76, 21));
+        jPanel9.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 112, 25));
+
+        jLabel5.setText("Milage Km");
+        jPanel9.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 76, 21));
+        jPanel9.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 112, 25));
+
+        jLabel9.setText("Next Milage Km");
+        jPanel9.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 110, 21));
+        jPanel9.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 112, 25));
+        jPanel9.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 112, 25));
+
+        jLabel10.setText("Amount");
+        jPanel9.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 76, 21));
+
+        jButton1.setText("Clear");
+        jPanel9.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 90, -1));
+
+        jButton2.setText("Close");
+        jPanel9.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 90, -1));
+
+        jButton3.setText("Save");
+        jPanel9.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 90, -1));
+
+        jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, 133, 360));
+
+        txtMilage.setEnabled(false);
+        jPanel1.add(txtMilage, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 120, 25));
+
+        jLabel37.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel37.setText("Millage");
+        jPanel1.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 72, 25));
+
+        jLabel38.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel38.setText("Phone");
+        jPanel1.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 60, 25));
+
+        txtPhone.setEnabled(false);
+        jPanel1.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, 120, 25));
+
+        txtDate.setEnabled(false);
+        jPanel1.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 40, 120, 25));
+
+        jLabel39.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel39.setText("Date");
+        jPanel1.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, 60, 25));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 802, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 10, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtVNoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtVNoFocusLost
+        String vNo = txtVNo.getText() != null ? txtVNo.getText() : "";
+        List<Custdata> cusdate = custdataJpaController.findCustdataByVno(vNo);
+
+        if(cusdate != null && cusdate.size() > 0){
+            
+            Custdata cus = cusdate.get(0);
+            txtName.setText(cus.getName());
+            txtAddr.setText(cus.getAddress());
+            txtPhone.setText(cus.getPhone());
+            txtMilage.setText(Double.toString(cus.getLmilage()));
+            //txtDate.setText(cus.getLdate());
+            //txtPhone.setText(cus.getPhone());
+            //txtMilage.requestFocus();
+        }else{
+            JOptionPane.showMessageDialog(jPanel1, "Vehicle number did not find !");
+
+            txtName.setText("");
+            txtAddr.setText("");
+            txtPhone.setText("");
+            txtName.requestFocus();
+        }
+    }//GEN-LAST:event_txtVNoFocusLost
+
+    private void txtVNoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtVNoMouseClicked
+
+    }//GEN-LAST:event_txtVNoMouseClicked
+
+    private void txtVNoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtVNoMouseReleased
+
+    }//GEN-LAST:event_txtVNoMouseReleased
+
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField13;
+    private javax.swing.JTextField jTextField14;
+    private javax.swing.JTextField jTextField15;
+    private javax.swing.JTextField jTextField16;
+    private javax.swing.JTextField jTextField17;
+    private javax.swing.JTextField jTextField18;
+    private javax.swing.JTextField jTextField19;
+    private javax.swing.JTextField jTextField20;
+    private javax.swing.JTextField jTextField21;
+    private javax.swing.JTextField jTextField22;
+    private javax.swing.JTextField jTextField23;
+    private javax.swing.JTextField jTextField24;
+    private javax.swing.JTextField jTextField25;
+    private javax.swing.JTextField jTextField26;
+    private javax.swing.JTextField jTextField27;
+    private javax.swing.JTextField jTextField28;
+    private javax.swing.JTextField jTextField29;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField30;
+    private javax.swing.JTextField jTextField31;
+    private javax.swing.JTextField jTextField32;
+    private javax.swing.JTextField jTextField33;
+    private javax.swing.JTextField jTextField34;
+    private javax.swing.JTextField jTextField35;
+    private javax.swing.JTextField jTextField36;
+    private javax.swing.JTextField jTextField37;
+    private javax.swing.JTextField jTextField38;
+    private javax.swing.JTextField jTextField39;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField40;
+    private javax.swing.JTextField jTextField41;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField51;
+    private javax.swing.JTextField jTextField52;
+    private javax.swing.JTextField jTextField53;
+    private javax.swing.JTextField jTextField54;
+    private javax.swing.JTextField jTextField55;
+    private javax.swing.JTextField jTextField56;
+    private javax.swing.JTextField jTextField57;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField txtAddr;
+    private javax.swing.JTextField txtDate;
+    private javax.swing.JTextField txtMilage;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPhone;
+    private javax.swing.JTextField txtVNo;
     // End of variables declaration//GEN-END:variables
 }
