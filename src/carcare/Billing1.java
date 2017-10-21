@@ -135,8 +135,8 @@ public class Billing1 extends javax.swing.JInternalFrame {
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jTextField20 = new javax.swing.JTextField();
-        jTextField25 = new javax.swing.JTextField();
-        jTextField26 = new javax.swing.JTextField();
+        txtOther2Qt = new javax.swing.JTextField();
+        txtOther3Qt = new javax.swing.JTextField();
         jTextField27 = new javax.swing.JTextField();
         jTextField28 = new javax.swing.JTextField();
         jTextField29 = new javax.swing.JTextField();
@@ -145,7 +145,7 @@ public class Billing1 extends javax.swing.JInternalFrame {
         jTextField32 = new javax.swing.JTextField();
         jTextField33 = new javax.swing.JTextField();
         txtDisCCETotal = new javax.swing.JTextField();
-        jTextField37 = new javax.swing.JTextField();
+        txtOther3Txt = new javax.swing.JTextField();
         jCheckBox11 = new javax.swing.JCheckBox();
         jCheckBox12 = new javax.swing.JCheckBox();
         jCheckBox13 = new javax.swing.JCheckBox();
@@ -156,12 +156,12 @@ public class Billing1 extends javax.swing.JInternalFrame {
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
-        jTextField43 = new javax.swing.JTextField();
-        jTextField42 = new javax.swing.JTextField();
+        txtOther1Txt = new javax.swing.JTextField();
+        txtOther2Txt = new javax.swing.JTextField();
         jTextField21 = new javax.swing.JTextField();
         jTextField22 = new javax.swing.JTextField();
         jTextField23 = new javax.swing.JTextField();
-        jTextField24 = new javax.swing.JTextField();
+        txtOther1Qt = new javax.swing.JTextField();
         jTextField34 = new javax.swing.JTextField();
         jTextField40 = new javax.swing.JTextField();
         jTextField39 = new javax.swing.JTextField();
@@ -516,31 +516,31 @@ public class Billing1 extends javax.swing.JInternalFrame {
                 jTextField20KeyTyped(evt);
             }
         });
-        jPanel5.add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 40, -1));
+        jPanel5.add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 40, 20));
 
-        jTextField25.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtOther2Qt.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField25FocusLost(evt);
+                txtOther2QtFocusLost(evt);
             }
         });
-        jTextField25.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtOther2Qt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField25KeyTyped(evt);
+                txtOther2QtKeyTyped(evt);
             }
         });
-        jPanel5.add(jTextField25, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 40, -1));
+        jPanel5.add(txtOther2Qt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 40, -1));
 
-        jTextField26.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtOther3Qt.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField26FocusLost(evt);
+                txtOther3QtFocusLost(evt);
             }
         });
-        jTextField26.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtOther3Qt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField26KeyTyped(evt);
+                txtOther3QtKeyTyped(evt);
             }
         });
-        jPanel5.add(jTextField26, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 40, -1));
+        jPanel5.add(txtOther3Qt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 40, -1));
 
         jTextField27.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -637,7 +637,7 @@ public class Billing1 extends javax.swing.JInternalFrame {
             }
         });
         jPanel5.add(txtDisCCETotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 70, -1));
-        jPanel5.add(jTextField37, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 180, 110, -1));
+        jPanel5.add(txtOther3Txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 180, 110, -1));
 
         jCheckBox11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -688,13 +688,13 @@ public class Billing1 extends javax.swing.JInternalFrame {
         jLabel30.setText("TOTAL");
         jPanel5.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 70, -1));
 
-        jTextField43.setText("N2");
-        jTextField43.setEnabled(false);
-        jPanel5.add(jTextField43, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 140, 110, -1));
+        txtOther1Txt.setText("N2");
+        txtOther1Txt.setEnabled(false);
+        jPanel5.add(txtOther1Txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 140, 110, -1));
 
-        jTextField42.setText("Tyre Change");
-        jTextField42.setEnabled(false);
-        jPanel5.add(jTextField42, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 160, 110, -1));
+        txtOther2Txt.setText("Tyre Change");
+        txtOther2Txt.setEnabled(false);
+        jPanel5.add(txtOther2Txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 160, 110, -1));
 
         jTextField21.setText("1");
         jTextField21.setEnabled(false);
@@ -708,9 +708,9 @@ public class Billing1 extends javax.swing.JInternalFrame {
         jTextField23.setEnabled(false);
         jPanel5.add(jTextField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 40, -1));
 
-        jTextField24.setText("4");
-        jTextField24.setEnabled(false);
-        jPanel5.add(jTextField24, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 40, -1));
+        txtOther1Qt.setText("4");
+        txtOther1Qt.setEnabled(false);
+        jPanel5.add(txtOther1Qt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 40, -1));
 
         jTextField34.setEnabled(false);
         jPanel5.add(jTextField34, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 70, -1));
@@ -1073,7 +1073,7 @@ public class Billing1 extends javax.swing.JInternalFrame {
             billccc.setAnyOther((txtAnyOther.getText() != null && !txtAnyOther.getText().isEmpty()) ? Integer.parseInt(txtAnyOther.getText()) : 0);
             billccc.setSusTest((txtSusTest.getText() != null && !txtSusTest.getText().isEmpty()) ? Integer.parseInt(txtSusTest.getText()) : 0);
             billccc.setHLTest((txtHLTest.getText() != null && !txtHLTest.getText().isEmpty()) ? Integer.parseInt(txtHLTest.getText()) : 0);
-            billccc.setDiscount(txtDisCCCTotal.getText() != null ? Integer.parseInt(txtDisCCCTotal.getText()) : 0);            
+            billccc.setDiscount((txtDisCCCTotal.getText() != null && !txtDisCCCTotal.getText().isEmpty()) ? Integer.parseInt(txtDisCCCTotal.getText()) : 0);            
             
             billccc.setFreeAlign(chkFreeAlign.isSelected());
             billccc.setFreeToe(chkFreeToe.isSelected());
@@ -1086,7 +1086,7 @@ public class Billing1 extends javax.swing.JInternalFrame {
             billccc.setFreeSt(chkFreeST.isSelected());
             billccc.setFreeHlt(chkFreeHLT.isSelected());
             
-            billccc.setAmount(txtCCCTotal.getText() != null ? Integer.parseInt(txtCCCTotal.getText()) : 0);
+            billccc.setAmount((txtCCCTotal.getText() != null && !txtCCCTotal.getText().isEmpty()) ? Integer.parseInt(txtCCCTotal.getText()) : 0);            
             if(billccc.getAmount() > 0 ){
                 billcccJpaController.create(billccc);
             }
@@ -1103,8 +1103,40 @@ public class Billing1 extends javax.swing.JInternalFrame {
             billcce.setPaymethod(jRadioButton1.isSelected());
             billcce.setAddby(txtAddby.getText());
             
+            int chkAlign = !jCheckBox11.isSelected()? (Integer.parseInt(!jTextField27.getText().isEmpty() ? jTextField27.getText() : "0")) : 0 ;
+            int adstToe = !jCheckBox12.isSelected()? (Integer.parseInt(!jTextField33.getText().isEmpty() ? jTextField33.getText() : "0")) : 0 ;
+            int camber = !jCheckBox13.isSelected()? (Integer.parseInt(!jTextField32.getText().isEmpty() ? jTextField32.getText() : "0")) : 0 ;
+            int caster = !jCheckBox14.isSelected()? (Integer.parseInt(!jTextField31.getText().isEmpty() ? jTextField31.getText() : "0")) : 0 ;
+        
+            billcce.setWbRa(chkAlign);
+            billcce.setWRa(adstToe);
+            billcce.setFixCmRF(camber);
+            billcce.setFixCmRR(caster);
+            billcce.setOther1Ra((jTextField30.getText() != null && !jTextField30.getText().isEmpty()) ? Integer.parseInt(jTextField30.getText()) : 0);
+            billcce.setOther2Ra((jTextField29.getText() != null && !jTextField29.getText().isEmpty()) ? Integer.parseInt(jTextField29.getText()) : 0);
+            billcce.setOther3Ra((jTextField28.getText() != null && !jTextField28.getText().isEmpty()) ? Integer.parseInt(jTextField28.getText()) : 0);
             
+            billcce.setOTHER1Txt(txtOther1Txt.getText());
+            billcce.setOTHER2Txt(jTextField32.getText());
+            billcce.setOTHER3Txt(txtOther3Txt.getText());
             
+            billcce.setWbQt(Integer.parseInt(!jTextField20.getText().isEmpty() ? jTextField20.getText() : "0"));
+            billcce.setWQt(Integer.parseInt(!jTextField21.getText().isEmpty() ? jTextField21.getText() : "0"));
+            billcce.setOther1Qt(Integer.parseInt(!txtOther1Qt.getText().isEmpty() ? txtOther1Qt.getText() : "0"));
+            billcce.setOther2Qt(Integer.parseInt(!txtOther2Qt.getText().isEmpty() ? txtOther2Qt.getText() : "0"));
+            billcce.setOther3Qt(Integer.parseInt(!txtOther3Qt.getText().isEmpty() ? txtOther3Qt.getText() : "0"));
+            
+            billcce.setFree1(jCheckBox11.isSelected());
+            billcce.setFree2(jCheckBox12.isSelected());
+            billcce.setFree3(jCheckBox13.isSelected());
+            billcce.setFree4(jCheckBox14.isSelected());
+            
+            billcce.setDiscount((txtDisCCETotal.getText() != null && !txtDisCCETotal.getText().isEmpty()) ? Integer.parseInt(txtDisCCETotal.getText()) : 0);
+            billcce.setAmount((txtCCETotal.getText() != null && !txtCCETotal.getText().isEmpty()) ? Integer.parseInt(txtCCETotal.getText()) : 0);                        
+                        
+            if(billcce.getAmount() > 0 ){
+                billcceJpaController.create(billcce);
+            }
         }
     }//GEN-LAST:event_btnPrintActionPerformed
 
@@ -1141,15 +1173,15 @@ public class Billing1 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField30FocusLost
 
     private void jTextField29FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField29FocusLost
-        int val1 = Integer.parseInt(!jTextField25.getText().isEmpty() ? jTextField25.getText() : "0"); 
+        int val1 = Integer.parseInt(!txtOther2Qt.getText().isEmpty() ? txtOther2Qt.getText() : "0"); 
         int val2 = Integer.parseInt(!jTextField29.getText().isEmpty() ? jTextField29.getText() : "0");         
         jTextField36.setText(Integer.toString(val1*val2));
         setCCETotal();
     }//GEN-LAST:event_jTextField29FocusLost
 
     private void jTextField28FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField28FocusLost
-        if(jTextField37.getText() != null && !jTextField37.getText().isEmpty()){
-            int val1 = Integer.parseInt(!jTextField26.getText().isEmpty() ? jTextField26.getText() : "0"); 
+        if(txtOther3Txt.getText() != null && !txtOther3Txt.getText().isEmpty()){
+            int val1 = Integer.parseInt(!txtOther3Qt.getText().isEmpty() ? txtOther3Qt.getText() : "0"); 
             int val2 = Integer.parseInt(!jTextField28.getText().isEmpty() ? jTextField28.getText() : "0");         
             jTextField45.setText(Integer.toString(val1*val2));
             setCCETotal();
@@ -1163,21 +1195,21 @@ public class Billing1 extends javax.swing.JInternalFrame {
         setCCETotal();
     }//GEN-LAST:event_jTextField20FocusLost
 
-    private void jTextField25FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField25FocusLost
-        int val1 = Integer.parseInt(!jTextField25.getText().isEmpty() ? jTextField25.getText() : "0"); 
+    private void txtOther2QtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtOther2QtFocusLost
+        int val1 = Integer.parseInt(!txtOther2Qt.getText().isEmpty() ? txtOther2Qt.getText() : "0"); 
         int val2 = Integer.parseInt(!jTextField29.getText().isEmpty() ? jTextField29.getText() : "0");         
         jTextField36.setText(Integer.toString(val1*val2));
         setCCETotal();
-    }//GEN-LAST:event_jTextField25FocusLost
+    }//GEN-LAST:event_txtOther2QtFocusLost
 
-    private void jTextField26FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField26FocusLost
-        if(jTextField37.getText() != null && !jTextField37.getText().isEmpty()){
-            int val1 = Integer.parseInt(!jTextField26.getText().isEmpty() ? jTextField26.getText() : "0"); 
+    private void txtOther3QtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtOther3QtFocusLost
+        if(txtOther3Txt.getText() != null && !txtOther3Txt.getText().isEmpty()){
+            int val1 = Integer.parseInt(!txtOther3Qt.getText().isEmpty() ? txtOther3Qt.getText() : "0"); 
             int val2 = Integer.parseInt(!jTextField28.getText().isEmpty() ? jTextField28.getText() : "0");         
             jTextField45.setText(Integer.toString(val1*val2));
             setCCETotal();
         }
-    }//GEN-LAST:event_jTextField26FocusLost
+    }//GEN-LAST:event_txtOther3QtFocusLost
 
     private void txtDisCCETotalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDisCCETotalFocusLost
         setCCETotal();
@@ -1256,19 +1288,19 @@ public class Billing1 extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jTextField28KeyTyped
 
-    private void jTextField25KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField25KeyTyped
+    private void txtOther2QtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtOther2QtKeyTyped
         keyTyped(evt);
-        if(jTextField25.getText().length()>=4) {
+        if(txtOther2Qt.getText().length()>=4) {
             evt.consume();
         }
-    }//GEN-LAST:event_jTextField25KeyTyped
+    }//GEN-LAST:event_txtOther2QtKeyTyped
 
-    private void jTextField26KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField26KeyTyped
+    private void txtOther3QtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtOther3QtKeyTyped
         keyTyped(evt);
-        if(jTextField26.getText().length()>=4) {
+        if(txtOther3Qt.getText().length()>=4) {
             evt.consume();
         }
-    }//GEN-LAST:event_jTextField26KeyTyped
+    }//GEN-LAST:event_txtOther3QtKeyTyped
 
     private void txtDisCCETotalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDisCCETotalKeyTyped
         keyTyped(evt);
@@ -1387,9 +1419,6 @@ public class Billing1 extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;
     private javax.swing.JTextField jTextField23;
-    private javax.swing.JTextField jTextField24;
-    private javax.swing.JTextField jTextField25;
-    private javax.swing.JTextField jTextField26;
     private javax.swing.JTextField jTextField27;
     private javax.swing.JTextField jTextField28;
     private javax.swing.JTextField jTextField29;
@@ -1399,13 +1428,10 @@ public class Billing1 extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField33;
     private javax.swing.JTextField jTextField34;
     private javax.swing.JTextField jTextField36;
-    private javax.swing.JTextField jTextField37;
     private javax.swing.JTextField jTextField38;
     private javax.swing.JTextField jTextField39;
     private javax.swing.JTextField jTextField40;
     private javax.swing.JTextField jTextField41;
-    private javax.swing.JTextField jTextField42;
-    private javax.swing.JTextField jTextField43;
     private javax.swing.JTextField jTextField45;
     private javax.swing.JTextField txtAddby;
     private javax.swing.JTextField txtAddr;
@@ -1424,6 +1450,12 @@ public class Billing1 extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtHLTest;
     private javax.swing.JTextField txtMilage;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtOther1Qt;
+    private javax.swing.JTextField txtOther1Txt;
+    private javax.swing.JTextField txtOther2Qt;
+    private javax.swing.JTextField txtOther2Txt;
+    private javax.swing.JTextField txtOther3Qt;
+    private javax.swing.JTextField txtOther3Txt;
     private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtReCamber;
     private javax.swing.JTextField txtReToe;

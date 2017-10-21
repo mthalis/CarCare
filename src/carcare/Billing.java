@@ -100,6 +100,9 @@ public class Billing extends javax.swing.JInternalFrame {
         txtPhone.setText(billcce.getPhone());
         txtChasiNo.setText(billcce.getChasiNo());
         jTextField20.setText(billcce.getWbQt().toString());
+        jTextField21.setText(billcce.getWQt().toString());
+        //jTextField22.setText(billcce.getWbQt().toString());
+        //jTextField23.setText(billcce.getWbQt().toString());
         jTextField27.setText(billcce.getWbRa().toString());
         //jTextField34.setText(billcce.getFixCmRR().toString());
         //jTextField20.setText(billcce.getWbQt().toString());
@@ -117,8 +120,6 @@ public class Billing extends javax.swing.JInternalFrame {
         jTextField25.setText(billcce.getOther2Qt().toString());
         jTextField26.setText(billcce.getOther3Qt().toString());
         
-        jTextField44.setText(billcce.getAmount().toString());
-        jTextField35.setText(billcce.getDiscount().toString());
         jTextField44.setText(billcce.getAmount().toString());
         jTextField35.setText(billcce.getDiscount().toString());
         jTextField46.setText(billcce.getAmount().toString());

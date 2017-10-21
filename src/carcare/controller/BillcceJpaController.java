@@ -7,7 +7,9 @@ package carcare.controller;
 
 import carcare.controller.exceptions.NonexistentEntityException;
 import carcare.model.Billcce;
+import carcare.model.Logfile;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -36,7 +38,21 @@ public class BillcceJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            
+            Logfile logfile = em.find(Logfile.class, 1);
+            int billcceNo = logfile.getCcebillno();
+            billcceNo++;
+            logfile.setCcebillno(billcceNo);
+            
+            billcce.setBillNo((double)billcceNo);
             em.persist(billcce);
+            
+            Query query = em.createQuery("UPDATE Custdata c set c.ldate = :ladte , c.lmilage = :lmilage where c.vno = :vno ");
+            query.setParameter("ladte", new Timestamp(System.currentTimeMillis()));
+            query.setParameter("lmilage", billcce.getMillage());
+            query.setParameter("vno", billcce.getVno());
+            query.executeUpdate();
+            
             em.getTransaction().commit();
         } finally {
             if (em != null) {
