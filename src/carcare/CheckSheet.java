@@ -6,6 +6,7 @@
 package carcare;
 
 import carcare.controller.CustdataJpaController;
+import carcare.model.Chksht;
 import carcare.model.Custdata;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -74,6 +75,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         jTextField38 = new javax.swing.JTextField();
         jTextField39 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jTextField23 = new javax.swing.JTextField();
         jTextField24 = new javax.swing.JTextField();
@@ -199,18 +201,18 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         jPanel3.add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 50, 55, -1));
         jPanel3.add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 90, 55, -1));
 
-        jLabel11.setText("Toe");
+        jLabel11.setText("Fr L");
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 40, -1));
 
-        jLabel12.setText("Cam R");
+        jLabel12.setText("Fr R");
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 40, -1));
 
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Normal");
         jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 53, -1));
 
-        jLabel14.setText("Cas R");
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 40, -1));
+        jLabel14.setText("Re R");
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 40, -1));
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Out");
@@ -225,6 +227,9 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText("In");
         jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 53, -1));
+
+        jLabel40.setText("Re L");
+        jPanel3.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 40, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 326, 190));
 
@@ -439,6 +444,11 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         jPanel9.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 90, -1));
 
         jButton3.setText("Save");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel9.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 90, -1));
 
         jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, 133, 360));
@@ -511,12 +521,78 @@ public class CheckSheet extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtVNoMouseClicked
 
     private void txtVNoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtVNoMouseReleased
+        String vNo = txtVNo.getText() != null ? txtVNo.getText() : "";
+        List<Custdata> cusdate = custdataJpaController.findCustdataByVno(vNo);
 
+        if(cusdate != null && cusdate.size() > 0){
+            
+            Custdata cus = cusdate.get(0);
+            txtName.setText(cus.getName());
+            txtAddr.setText(cus.getAddress());
+            txtPhone.setText(cus.getPhone());
+            txtMilage.setText(Double.toString(cus.getLmilage()));
+            //txtDate.setText(cus.getLdate());
+            //txtPhone.setText(cus.getPhone());
+            //txtMilage.requestFocus();
+        }else{
+            JOptionPane.showMessageDialog(jPanel1, "Vehicle number did not find !");
+
+            txtName.setText("");
+            txtAddr.setText("");
+            txtPhone.setText("");
+            txtName.requestFocus();
+        }
     }//GEN-LAST:event_txtVNoMouseReleased
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if(txtVNo.getText() == null || txtVNo.getText().equals("")){
+            JOptionPane.showMessageDialog(jPanel1, "Please enter Vehicle no !");
+            txtVNo.requestFocus();
+        } else{
+            Chksht checkSheet = new Chksht();
+            
+            checkSheet.setFrToe(jTextField23.getText());
+            checkSheet.setFrToe1(jTextField27.getText());
+            checkSheet.setFrCmR(jTextField24.getText());
+            checkSheet.setFrCmR1(jTextField26.getText());
+            checkSheet.setFrCsR(jTextField25.getText());
+            checkSheet.setFrCsR1(jTextField28.getText());
+
+            checkSheet.setFrSb(jTextField33.getText());
+            checkSheet.setFrCmL(jTextField29.getText());
+            checkSheet.setFrCmL1(jTextField32.getText());
+            checkSheet.setFrCsL(jTextField30.getText());
+            checkSheet.setFrCsL1(jTextField31.getText());
+            
+            checkSheet.setReToeR(jTextField3.getText());
+            checkSheet.setReToeR1(jTextField19.getText());
+            checkSheet.setReCmR(jTextField10.getText());
+            checkSheet.setReCmR1(jTextField18.getText());
+            checkSheet.setReSb(jTextField20.getText());
+            
+            checkSheet.setReToeL(jTextField22.getText());
+            checkSheet.setReToeL1(jTextField41.getText());
+            checkSheet.setReCmL(jTextField21.getText());
+            checkSheet.setReCmL1(jTextField40.getText());
+            
+            checkSheet.setTc1N(jTextField7.getText());
+            checkSheet.setTc1I(jTextField16.getText());
+            checkSheet.setTc1O(jTextField36.getText());
+            checkSheet.setTc2N(jTextField13.getText());
+            checkSheet.setTc2I(jTextField15.getText());
+            checkSheet.setTc2O(jTextField37.getText());
+            checkSheet.setTc3N(jTextField14.getText());
+            checkSheet.setTc3I(jTextField17.getText());
+            checkSheet.setTc3O(jTextField38.getText());
+            checkSheet.setTc4N(jTextField35.getText());
+            checkSheet.setTc4I(jTextField34.getText());
+            checkSheet.setTc4O(jTextField39.getText());
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -560,6 +636,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
