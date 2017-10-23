@@ -135,4 +135,15 @@ public class ChkshtJpaController implements Serializable {
         }
     }
     
+    public List<Object[]> getChkshtList(int maxResults, int firstResult){
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createNativeQuery("SELECT a.VNO, b.name, b.ADDRESS,a.date FROM chksht a JOIN custdata b ON a.VNO = b.VNO");
+            query.setMaxResults(maxResults);
+            query.setFirstResult(firstResult);
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
 }

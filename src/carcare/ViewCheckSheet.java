@@ -5,7 +5,12 @@
  */
 package carcare;
 
-import java.util.ArrayList;
+import carcare.controller.ChkshtJpaController;
+import carcare.controller.PaginationController;
+import java.util.List;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,13 +18,16 @@ import java.util.ArrayList;
  */
 public class ViewCheckSheet extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form ViewCheckSheet
-     */
+    public static EntityManagerFactory EMF = Persistence.createEntityManagerFactory("carcare?zeroDateTimeBehavior=convertToNullPU");
+    ChkshtJpaController chkshtJpaController = new ChkshtJpaController(EMF);
+    PaginationController pagination;
+    
     public ViewCheckSheet() {
         initComponents();
         
-        
+        pagination = new PaginationController(15, chkshtJpaController.getChkshtCount());
+        refreshTable();
+
     }
 
     /**
@@ -30,65 +38,206 @@ public class ViewCheckSheet extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        entityManager0 = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("carcare?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
-        chkshtQuery = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT c.vno FROM Chksht c", carcare.model.Chksht.class).setMaxResults(5);
-        chkshtList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : chkshtQuery.getResultList();
+        jPanel4 = new javax.swing.JPanel();
+        btnFirst = new javax.swing.JButton();
+        btnPrev = new javax.swing.JButton();
+        cmbJumlahBaris = new javax.swing.JComboBox();
+        btnNext = new javax.swing.JButton();
+        btnLast = new javax.swing.JButton();
+        jTextField2 = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
+        jTable2 = new javax.swing.JTable();
 
         setClosable(true);
         setTitle("View Check Sheet");
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, chkshtList, jTable1);
-        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${vno}"));
-        columnBinding.setColumnName("VNo");
-        columnBinding.setColumnClass(String.class);
-        bindingGroup.addBinding(jTableBinding);
-        jTableBinding.bind();
-        jScrollPane1.setViewportView(jTable1);
+        btnFirst.setText("First");
+        btnFirst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFirstActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        btnPrev.setText("<");
+        btnPrev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrevActionPerformed(evt);
+            }
+        });
+
+        cmbJumlahBaris.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10", "20", "30" }));
+        cmbJumlahBaris.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbJumlahBarisItemStateChanged(evt);
+            }
+        });
+
+        btnNext.setText(">");
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
+
+        btnLast.setText("Last");
+        btnLast.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLastActionPerformed(evt);
+            }
+        });
+
+        jTextField2.setText("Vehicle No");
+        jTextField2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField2MouseClicked(evt);
+            }
+        });
+
+        btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnFirst)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPrev)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cmbJumlahBaris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnNext)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnLast)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 293, Short.MAX_VALUE)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSearch)
+                .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 75, Short.MAX_VALUE)
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnFirst)
+                    .addComponent(btnPrev)
+                    .addComponent(cmbJumlahBaris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNext)
+                    .addComponent(btnLast)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Vno", "Amount", "ID", "Milage"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
+        pagination.firstPage();
+        refreshTable();
+    }//GEN-LAST:event_btnFirstActionPerformed
+
+    private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
+        pagination.prevPage();
+        refreshTable();
+    }//GEN-LAST:event_btnPrevActionPerformed
+
+    private void cmbJumlahBarisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbJumlahBarisItemStateChanged
+        //int jumlahBaris = Integer.parseInt(cmbJumlahBaris.getSelectedItem().toString());
+        //pagination = new PaginationController(jumlahBaris, custdataJpaController.getCustdataCount());
+        //refreshTable();
+    }//GEN-LAST:event_cmbJumlahBarisItemStateChanged
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        pagination.nextPage();
+        refreshTable();
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
+        pagination.lastPage();
+        refreshTable();
+    }//GEN-LAST:event_btnLastActionPerformed
+
+    private void jTextField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseClicked
+        jTextField2.setText("");
+    }//GEN-LAST:event_jTextField2MouseClicked
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        
+    }//GEN-LAST:event_btnSearchActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.util.List<carcare.model.Chksht> chkshtList;
-    private javax.persistence.Query chkshtQuery;
-    private javax.persistence.EntityManager entityManager0;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton btnFirst;
+    private javax.swing.JButton btnLast;
+    private javax.swing.JButton btnNext;
+    private javax.swing.JButton btnPrev;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JComboBox cmbJumlahBaris;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
+
+    private void refreshTable() {
+      
+        DefaultTableModel y =(DefaultTableModel)jTable2.getModel();       
+        y.setRowCount(0);        
+        List<Object[]> aa = chkshtJpaController.getChkshtList(pagination.getPageSize(), pagination.getCurrentItem());
+        
+        for(Object[] xx :aa){
+            y.addRow(xx);
+        }
+        jTable2.updateUI();
+        
+        btnFirst.setEnabled(pagination.isHasPrevPage());
+        btnPrev.setEnabled(pagination.isHasPrevPage());
+        btnNext.setEnabled(pagination.isHasNextPage());
+        btnLast.setEnabled(pagination.isHasNextPage());
+        
+    }
 }
