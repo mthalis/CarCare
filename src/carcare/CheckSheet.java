@@ -5,16 +5,21 @@
  */
 package carcare;
 
+import carcare.controller.ChkshtJpaController;
 import carcare.controller.CustdataJpaController;
 import carcare.model.Chksht;
 import carcare.model.Custdata;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.DocumentFilter;
 
 /**
  *
@@ -24,6 +29,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
 
     public static EntityManagerFactory EMF = Persistence.createEntityManagerFactory("carcare?zeroDateTimeBehavior=convertToNullPU");
     CustdataJpaController custdataJpaController = new CustdataJpaController(EMF);
+    ChkshtJpaController chkshtJpaController = new ChkshtJpaController(EMF);
     
     public CheckSheet() {
         initComponents();
@@ -33,6 +39,11 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         
         Date date = new Date();
         jDateChooser1.setDate(date);
+        
+        DocumentFilter filter = new UppercaseDocumentFilter ();
+        ((AbstractDocument) txtVNo.getDocument()).setDocumentFilter(filter);
+        ((AbstractDocument) jTextField12.getDocument()).setDocumentFilter(filter);
+        ((AbstractDocument) jTextField11.getDocument()).setDocumentFilter(filter);
     }
 
     /**
@@ -152,15 +163,15 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jTextField8 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         txtMilage = new javax.swing.JTextField();
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
         txtPhone = new javax.swing.JTextField();
-        txtDate = new javax.swing.JTextField();
         jLabel39 = new javax.swing.JLabel();
+        txtDate = new com.toedter.calendar.JDateChooser();
 
         setClosable(true);
         setTitle("Check Sheet");
@@ -331,9 +342,33 @@ public class CheckSheet extends javax.swing.JInternalFrame {
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Balancing Weight", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 0, 51))); // NOI18N
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField6KeyTyped(evt);
+            }
+        });
         jPanel7.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 55, -1));
+
+        jTextField51.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField51KeyTyped(evt);
+            }
+        });
         jPanel7.add(jTextField51, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 55, -1));
+
+        jTextField52.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField52KeyTyped(evt);
+            }
+        });
         jPanel7.add(jTextField52, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 55, -1));
+
+        jTextField53.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField53KeyTyped(evt);
+            }
+        });
         jPanel7.add(jTextField53, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 55, -1));
 
         jLabel3.setText("Fr R");
@@ -351,9 +386,33 @@ public class CheckSheet extends javax.swing.JInternalFrame {
 
         jLabel47.setText("L");
         jPanel7.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 20, -1));
+
+        jTextField54.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField54KeyTyped(evt);
+            }
+        });
         jPanel7.add(jTextField54, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 55, -1));
+
+        jTextField55.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField55KeyTyped(evt);
+            }
+        });
         jPanel7.add(jTextField55, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 55, -1));
+
+        jTextField56.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField56KeyTyped(evt);
+            }
+        });
         jPanel7.add(jTextField56, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 55, -1));
+
+        jTextField57.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField57KeyTyped(evt);
+            }
+        });
         jPanel7.add(jTextField57, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 55, -1));
 
         jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -423,25 +482,58 @@ public class CheckSheet extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Date");
         jPanel9.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 76, 21));
+
+        jTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField4FocusLost(evt);
+            }
+        });
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField4KeyTyped(evt);
+            }
+        });
         jPanel9.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 112, 25));
 
         jLabel5.setText("Milage Km");
         jPanel9.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 76, 21));
+
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField5KeyTyped(evt);
+            }
+        });
         jPanel9.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 112, 25));
 
         jLabel9.setText("Next Milage Km");
         jPanel9.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 110, 21));
         jPanel9.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 112, 25));
+
+        jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField8KeyTyped(evt);
+            }
+        });
         jPanel9.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 112, 25));
 
         jLabel10.setText("Amount");
         jPanel9.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 76, 21));
 
-        jButton1.setText("Clear");
-        jPanel9.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 90, -1));
+        btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+        jPanel9.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 90, -1));
 
-        jButton2.setText("Close");
-        jPanel9.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 90, -1));
+        btnClose.setText("Close");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
+        jPanel9.add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 90, -1));
 
         jButton3.setText("Save");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -457,7 +549,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         jPanel1.add(txtMilage, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 120, 25));
 
         jLabel37.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel37.setText("Millage");
+        jLabel37.setText("L /Millage");
         jPanel1.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 72, 25));
 
         jLabel38.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -467,12 +559,12 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         txtPhone.setEnabled(false);
         jPanel1.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, 120, 25));
 
-        txtDate.setEnabled(false);
-        jPanel1.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 40, 120, 25));
-
         jLabel39.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel39.setText("Date");
         jPanel1.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, 60, 25));
+
+        txtDate.setEnabled(false);
+        jPanel1.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 40, 120, 25));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -493,9 +585,11 @@ public class CheckSheet extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtVNoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtVNoFocusLost
-        String vNo = txtVNo.getText() != null ? txtVNo.getText() : "";
-        List<Custdata> cusdate = custdataJpaController.findCustdataByVno(vNo);
-
+        String vNo = txtVNo.getText();
+        List<Custdata> cusdate = null;
+        if(vNo != null && !vNo.isEmpty()){
+            cusdate = custdataJpaController.findCustdataByVno(vNo);
+        }
         if(cusdate != null && cusdate.size() > 0){
             
             Custdata cus = cusdate.get(0);
@@ -503,16 +597,16 @@ public class CheckSheet extends javax.swing.JInternalFrame {
             txtAddr.setText(cus.getAddress());
             txtPhone.setText(cus.getPhone());
             txtMilage.setText(Double.toString(cus.getLmilage()));
-            //txtDate.setText(cus.getLdate());
-            //txtPhone.setText(cus.getPhone());
+            txtDate.setDate(cus.getLdate());
             //txtMilage.requestFocus();
         }else{
             JOptionPane.showMessageDialog(jPanel1, "Vehicle number did not find !");
-
+            txtVNo.setText("");
             txtName.setText("");
             txtAddr.setText("");
             txtPhone.setText("");
-            txtName.requestFocus();
+            txtDate.setDate(null);
+            txtVNo.requestFocus();
         }
     }//GEN-LAST:event_txtVNoFocusLost
 
@@ -521,7 +615,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtVNoMouseClicked
 
     private void txtVNoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtVNoMouseReleased
-        String vNo = txtVNo.getText() != null ? txtVNo.getText() : "";
+        /*String vNo = txtVNo.getText() != null ? txtVNo.getText() : "";
         List<Custdata> cusdate = custdataJpaController.findCustdataByVno(vNo);
 
         if(cusdate != null && cusdate.size() > 0){
@@ -541,7 +635,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
             txtAddr.setText("");
             txtPhone.setText("");
             txtName.requestFocus();
-        }
+        }*/
     }//GEN-LAST:event_txtVNoMouseReleased
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
@@ -552,8 +646,25 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         if(txtVNo.getText() == null || txtVNo.getText().equals("")){
             JOptionPane.showMessageDialog(jPanel1, "Please enter Vehicle no !");
             txtVNo.requestFocus();
-        } else{
+        } else if(jTextField12.getText() == null || jTextField12.getText().equals("")){
+            JOptionPane.showMessageDialog(jPanel1, "Please enter Job by !");
+            jTextField12.requestFocus();
+        }else if(jTextField11.getText() == null || jTextField11.getText().equals("")){
+            JOptionPane.showMessageDialog(jPanel1, "Please enter Add by !");
+            jTextField11.requestFocus();
+        }else if(jTextField4.getText() == null || jTextField4.getText().equals("")){
+            JOptionPane.showMessageDialog(jPanel1, "Please enter Milage !");
+            jTextField4.requestFocus();
+        }else if(jTextField8.getText() == null || jTextField8.getText().equals("")){
+            JOptionPane.showMessageDialog(jPanel1, "Please enter Amount !");
+            jTextField8.requestFocus();
+        }else{
             Chksht checkSheet = new Chksht();
+            
+            checkSheet.setVno(txtVNo.getText());
+            checkSheet.setDate(jDateChooser1.getDate());
+            checkSheet.setMilage(Double.parseDouble(jTextField4.getText()));
+            checkSheet.setNmilage(Double.parseDouble(jTextField5.getText()));
             
             checkSheet.setFrToe(jTextField23.getText());
             checkSheet.setFrToe1(jTextField27.getText());
@@ -591,13 +702,174 @@ public class CheckSheet extends javax.swing.JInternalFrame {
             checkSheet.setTc4N(jTextField35.getText());
             checkSheet.setTc4I(jTextField34.getText());
             checkSheet.setTc4O(jTextField39.getText());
+            
+            checkSheet.setBwi1(!jTextField6.getText().isEmpty() ? Integer.parseInt(jTextField6.getText()) : 0);
+            checkSheet.setBw1(!jTextField6.getText().isEmpty() ? Integer.parseInt(jTextField53.getText()): 0);
+            checkSheet.setBwi3(!jTextField6.getText().isEmpty() ? Integer.parseInt(jTextField51.getText()): 0);
+            checkSheet.setBw3(!jTextField6.getText().isEmpty() ? Integer.parseInt(jTextField52.getText()): 0);
+            
+            checkSheet.setBwi2(!jTextField6.getText().isEmpty() ? Integer.parseInt(jTextField55.getText()): 0);
+            checkSheet.setBw2(!jTextField6.getText().isEmpty() ? Integer.parseInt(jTextField57.getText()): 0);
+            checkSheet.setBwi4(!jTextField6.getText().isEmpty() ? Integer.parseInt(jTextField54.getText()): 0);
+            checkSheet.setBw4(!jTextField6.getText().isEmpty() ? Integer.parseInt(jTextField56.getText()): 0);
+            
+            checkSheet.setSt(jCheckBox3.isSelected());
+            checkSheet.setHlt(jCheckBox1.isSelected());
+            checkSheet.setN2(jCheckBox2.isSelected());
+            
+            checkSheet.setRem(jTextArea1.getText());
+            
+            checkSheet.setJobby(jTextField12.getText());
+            checkSheet.setAddby(jTextField11.getText());
+            
+            checkSheet.setBAmount(Integer.parseInt(jTextField8.getText()));
+            checkSheet.setDeDate(new Timestamp(System.currentTimeMillis()));
+            
+            chkshtJpaController.create(checkSheet);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyTyped
+        keyTyped(evt);
+    }//GEN-LAST:event_jTextField6KeyTyped
+
+    private void jTextField53KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField53KeyTyped
+        keyTyped(evt);
+    }//GEN-LAST:event_jTextField53KeyTyped
+
+    private void jTextField51KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField51KeyTyped
+        keyTyped(evt);
+    }//GEN-LAST:event_jTextField51KeyTyped
+
+    private void jTextField52KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField52KeyTyped
+        keyTyped(evt);
+    }//GEN-LAST:event_jTextField52KeyTyped
+
+    private void jTextField55KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField55KeyTyped
+        keyTyped(evt);
+    }//GEN-LAST:event_jTextField55KeyTyped
+
+    private void jTextField57KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField57KeyTyped
+        keyTyped(evt);
+    }//GEN-LAST:event_jTextField57KeyTyped
+
+    private void jTextField54KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField54KeyTyped
+        keyTyped(evt);
+    }//GEN-LAST:event_jTextField54KeyTyped
+
+    private void jTextField56KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField56KeyTyped
+       keyTyped(evt);
+    }//GEN-LAST:event_jTextField56KeyTyped
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+        keyTyped(evt);
+    }//GEN-LAST:event_jTextField4KeyTyped
+
+    private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
+        keyTyped(evt);
+    }//GEN-LAST:event_jTextField5KeyTyped
+
+    private void jTextField8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyTyped
+        keyTyped(evt);
+    }//GEN-LAST:event_jTextField8KeyTyped
+
+    private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
+        if(!jTextField4.getText().isEmpty()){
+            int milage = Integer.parseInt(jTextField4.getText());
+            int newMilage = milage + 6000;
+            jTextField5.setText(Integer.toString(newMilage));
+        }else{
+           jTextField5.setText(""); 
+        }
+    }//GEN-LAST:event_jTextField4FocusLost
+
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        txtVNo.setText("");
+        txtName.setText("");
+        txtAddr.setText("");
+        txtMilage.setText("");
+        txtPhone.setText("");
+        txtDate.setDate(null);
+        jDateChooser1.setDate(new Date());
+        jTextField4.setText("");
+        jTextField5.setText("");
+            
+        jTextField23.setText("");
+        jTextField27.setText("");
+        jTextField24.setText("");
+        jTextField26.setText("");
+        jTextField25.setText("");
+        jTextField28.setText("");
+
+        jTextField33.setText("");
+        jTextField29.setText("");
+        jTextField32.setText("");
+        jTextField30.setText("");
+        jTextField31.setText("");
+
+        jTextField3.setText("");
+        jTextField19.setText("");
+        jTextField10.setText("");
+        jTextField18.setText("");
+        jTextField20.setText("");
+
+        jTextField22.setText("");
+        jTextField41.setText("");
+        jTextField21.setText("");
+        jTextField40.setText("");
+
+        jTextField7.setText("");
+        jTextField16.setText("");
+        jTextField36.setText("");
+        jTextField13.setText("");
+        jTextField15.setText("");
+        jTextField37.setText("");
+        jTextField14.setText("");
+        jTextField17.setText("");
+        jTextField38.setText("");
+        jTextField35.setText("");
+        jTextField34.setText("");
+        jTextField39.setText("");
+
+        jTextField6.setText("");
+        jTextField53.setText("");
+        jTextField51.setText("");
+        jTextField52.setText("");
+
+        jTextField55.setText("");
+        jTextField57.setText("");
+        jTextField54.setText("");
+        jTextField56.setText("");
+
+        jCheckBox3.setSelected(false);
+        jCheckBox1.setSelected(false);
+        jCheckBox2.setSelected(false);
+
+        jTextArea1.setText("");
+
+        jTextField12.setText("");
+        jTextField11.setText("");
+
+        jTextField8.setText("");
+    }//GEN-LAST:event_btnClearActionPerformed
+
+    public void keyTyped(KeyEvent e) {
+      char c = e.getKeyChar();
+      if (!((c >= '0') && (c <= '9') ||
+         (c == KeyEvent.VK_BACK_SPACE) ||
+         (c == KeyEvent.VK_DELETE))) {
+        getToolkit().beep();
+        e.consume();
+      }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnClose;
     private javax.swing.JButton jButton3;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
@@ -708,7 +980,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField txtAddr;
-    private javax.swing.JTextField txtDate;
+    private com.toedter.calendar.JDateChooser txtDate;
     private javax.swing.JTextField txtMilage;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPhone;

@@ -5,6 +5,8 @@
  */
 package carcare;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author lenovo
@@ -16,6 +18,8 @@ public class ViewCheckSheet extends javax.swing.JInternalFrame {
      */
     public ViewCheckSheet() {
         initComponents();
+        
+        
     }
 
     /**
@@ -28,8 +32,8 @@ public class ViewCheckSheet extends javax.swing.JInternalFrame {
     private void initComponents() {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("carcare?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
-        chkshtQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT c FROM Chksht c").setMaxResults(17);
+        entityManager0 = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("carcare?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
+        chkshtQuery = java.beans.Beans.isDesignTime() ? null : entityManager0.createQuery("SELECT c.vno FROM Chksht c", carcare.model.Chksht.class).setMaxResults(5);
         chkshtList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : chkshtQuery.getResultList();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -42,9 +46,6 @@ public class ViewCheckSheet extends javax.swing.JInternalFrame {
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${vno}"));
         columnBinding.setColumnName("VNo");
         columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${date}"));
-        columnBinding.setColumnName("Date");
-        columnBinding.setColumnClass(java.util.Date.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
         jScrollPane1.setViewportView(jTable1);
@@ -84,7 +85,7 @@ public class ViewCheckSheet extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.util.List<carcare.model.Chksht> chkshtList;
     private javax.persistence.Query chkshtQuery;
-    private javax.persistence.EntityManager entityManager;
+    private javax.persistence.EntityManager entityManager0;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

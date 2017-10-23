@@ -42,6 +42,7 @@ public class CarCare extends javax.swing.JFrame {
         copyMenuItem = new javax.swing.JMenuItem();
         pasteMenuItem = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         contentsMenuItem = new javax.swing.JMenuItem();
 
@@ -129,6 +130,14 @@ public class CarCare extends javax.swing.JFrame {
         });
         editMenu.add(jMenuItem1);
 
+        jMenuItem2.setText("jMenuItem2");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        editMenu.add(jMenuItem2);
+
         menuBar.add(editMenu);
 
         helpMenu.setMnemonic('h');
@@ -196,6 +205,12 @@ public class CarCare extends javax.swing.JFrame {
         checkSheet.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        ViewCheckSheet checkSheet = new ViewCheckSheet();
+        jDesktopPane1.add(checkSheet);
+        checkSheet.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -248,6 +263,7 @@ public class CarCare extends javax.swing.JFrame {
     private javax.swing.JMenu helpMenu;
     public static javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;
