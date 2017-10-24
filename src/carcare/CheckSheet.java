@@ -15,8 +15,6 @@ import java.awt.event.KeyEvent;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.DocumentFilter;
@@ -27,9 +25,8 @@ import javax.swing.text.DocumentFilter;
  */
 public class CheckSheet extends javax.swing.JInternalFrame {
 
-    public static EntityManagerFactory EMF = Persistence.createEntityManagerFactory("carcare?zeroDateTimeBehavior=convertToNullPU");
-    CustdataJpaController custdataJpaController = new CustdataJpaController(EMF);
-    ChkshtJpaController chkshtJpaController = new ChkshtJpaController(EMF);
+    CustdataJpaController custdataJpaController = new CustdataJpaController(CarCare.EMF);
+    ChkshtJpaController chkshtJpaController = new ChkshtJpaController(CarCare.EMF);
     
     public CheckSheet() {
         initComponents();
@@ -589,24 +586,25 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         List<Custdata> cusdate = null;
         if(vNo != null && !vNo.isEmpty()){
             cusdate = custdataJpaController.findCustdataByVno(vNo);
-        }
-        if(cusdate != null && cusdate.size() > 0){
-            
-            Custdata cus = cusdate.get(0);
-            txtName.setText(cus.getName());
-            txtAddr.setText(cus.getAddress());
-            txtPhone.setText(cus.getPhone());
-            txtMilage.setText(Double.toString(cus.getLmilage()));
-            txtDate.setDate(cus.getLdate());
-            //txtMilage.requestFocus();
-        }else{
-            JOptionPane.showMessageDialog(jPanel1, "Vehicle number did not find !");
-            txtVNo.setText("");
-            txtName.setText("");
-            txtAddr.setText("");
-            txtPhone.setText("");
-            txtDate.setDate(null);
-            txtVNo.requestFocus();
+        
+            if(cusdate != null && cusdate.size() > 0){
+
+                Custdata cus = cusdate.get(0);
+                txtName.setText(cus.getName());
+                txtAddr.setText(cus.getAddress());
+                txtPhone.setText(cus.getPhone());
+                txtMilage.setText(Double.toString(cus.getLmilage()));
+                txtDate.setDate(cus.getLdate());
+                //txtMilage.requestFocus();
+            }else{
+                JOptionPane.showMessageDialog(jPanel1, "Vehicle number did not find !");
+                txtVNo.setText("");
+                txtName.setText("");
+                txtAddr.setText("");
+                txtPhone.setText("");
+                txtDate.setDate(null);
+                txtVNo.requestFocus();
+            }
         }
     }//GEN-LAST:event_txtVNoFocusLost
 

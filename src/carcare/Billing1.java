@@ -5,28 +5,19 @@
  */
 package carcare;
 
-import static carcare.ViewBill.EMF;
 import carcare.controller.BillcccJpaController;
 import carcare.controller.BillcceJpaController;
 import carcare.controller.CustdataJpaController;
-import carcare.controller.PaginationController;
 import carcare.model.Billccc;
 import carcare.model.Billcce;
 import carcare.model.Custdata;
-import db.ConnectionManager;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.AbstractDocument;
@@ -38,10 +29,9 @@ import javax.swing.text.DocumentFilter;
  */
 public class Billing1 extends javax.swing.JInternalFrame {
 
-    public static EntityManagerFactory EMF = Persistence.createEntityManagerFactory("carcare?zeroDateTimeBehavior=convertToNullPU");
-    CustdataJpaController custdataJpaController = new CustdataJpaController(EMF);
-    BillcccJpaController billcccJpaController = new BillcccJpaController(EMF);
-    BillcceJpaController billcceJpaController = new BillcceJpaController(EMF);
+    CustdataJpaController custdataJpaController = new CustdataJpaController(CarCare.EMF);
+    BillcccJpaController billcccJpaController = new BillcccJpaController(CarCare.EMF);
+    BillcceJpaController billcceJpaController = new BillcceJpaController(CarCare.EMF);
     
     public Billing1() {
         initComponents();

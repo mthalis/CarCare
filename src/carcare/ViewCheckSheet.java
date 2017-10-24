@@ -5,11 +5,16 @@
  */
 package carcare;
 
+import static carcare.CarCare.jDesktopPane1;
 import carcare.controller.ChkshtJpaController;
 import carcare.controller.PaginationController;
+import carcare.model.Chksht;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,13 +23,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ViewCheckSheet extends javax.swing.JInternalFrame {
 
-    public static EntityManagerFactory EMF = Persistence.createEntityManagerFactory("carcare?zeroDateTimeBehavior=convertToNullPU");
-    ChkshtJpaController chkshtJpaController = new ChkshtJpaController(EMF);
+    ChkshtJpaController chkshtJpaController = new ChkshtJpaController(CarCare.EMF);
     PaginationController pagination;
     
     public ViewCheckSheet() {
         initComponents();
         
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();        
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         pagination = new PaginationController(15, chkshtJpaController.getChkshtCount());
         refreshTable();
 
@@ -135,7 +141,7 @@ public class ViewCheckSheet extends javax.swing.JInternalFrame {
                     .addComponent(btnLast)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch))
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -143,7 +149,7 @@ public class ViewCheckSheet extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Vno", "Amount", "ID", "Milage"
+                "Vehicle No", "Name", "Address", "Date"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -152,6 +158,11 @@ public class ViewCheckSheet extends javax.swing.JInternalFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jTable2);
@@ -168,7 +179,7 @@ public class ViewCheckSheet extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -206,8 +217,57 @@ public class ViewCheckSheet extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField2MouseClicked
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        String vNo = jTextField2.getText() != null ? jTextField2.getText() : "";
+        if(!vNo.isEmpty()){
+            DefaultTableModel y =(DefaultTableModel)jTable2.getModel();       
+            y.setRowCount(0);
+            List<Object[]> aa = chkshtJpaController.getChkshtListByVNo(vNo);
+            if(aa !=null && aa.size() > 0){
+                 for(Object[] xx :aa){
+                    y.addRow(xx);
+                }
+                jTable2.updateUI();
+            }else{
+                jTable2.updateUI();
+                btnSearch.requestFocus();
+            }
+            btnFirst.setEnabled(false);
+            btnPrev.setEnabled(false);
+            btnNext.setEnabled(false);
+            btnLast.setEnabled(false);
+        }else{
+            refreshTable();
+        }
+        
         
     }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        /*int selectedRowIndex = jTable1.getSelectedRow();
+        Billccc billccc = billcccList.get(jTable1.convertRowIndexToModel(selectedRowIndex));
+        */
+        CheckSheet checkSheet = new CheckSheet();
+        jDesktopPane1.add(checkSheet);
+        checkSheet.setVisible(true);
+        
+        int selectedRowIndex = jTable2.getSelectedRow();
+        String vno = jTable2.getValueAt(selectedRowIndex, 0).toString();
+        String date = jTable2.getValueAt(selectedRowIndex, 3).toString();
+        
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date dates = new Date();
+        try {
+            dates = formatter.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        
+        List<Chksht> aa = chkshtJpaController.getChkshtListByVnoDate(vno, dates);
+        if(aa != null && aa.size() >0){
+            Chksht chksht = aa.get(0);
+            System.out.println(chksht.getVno());
+        }
+    }//GEN-LAST:event_jTable2MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

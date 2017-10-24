@@ -5,6 +5,8 @@
  */
 package carcare;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.swing.JFrame;
 import style.Styling;
 
@@ -14,9 +16,8 @@ import style.Styling;
  */
 public class CarCare extends javax.swing.JFrame {
 
-    /**
-     * Creates new form NewApplication
-     */
+    public static EntityManagerFactory EMF = Persistence.createEntityManagerFactory("carcare?zeroDateTimeBehavior=convertToNullPU");
+    
     public CarCare() {
         initComponents();
         

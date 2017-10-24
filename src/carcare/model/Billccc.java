@@ -28,7 +28,7 @@ import javax.persistence.Transient;
  */
 @Entity
 @Table(name = "billccc", catalog = "carcare", schema = "")
-@NamedQueries({
+/*@NamedQueries({
     @NamedQuery(name = "Billccc.findAll", query = "SELECT b FROM Billccc b")
     , @NamedQuery(name = "Billccc.findByBillNo", query = "SELECT b FROM Billccc b WHERE b.billNo = :billNo")
     , @NamedQuery(name = "Billccc.findByDate", query = "SELECT b FROM Billccc b WHERE b.date = :date")
@@ -67,7 +67,7 @@ import javax.persistence.Transient;
     , @NamedQuery(name = "Billccc.findById", query = "SELECT b FROM Billccc b WHERE b.id = :id")
     , @NamedQuery(name = "Billccc.findByDiscount", query = "SELECT b FROM Billccc b WHERE b.discount = :discount")
     , @NamedQuery(name = "Billccc.findByAddby", query = "SELECT b FROM Billccc b WHERE b.addby = :addby")
-    , @NamedQuery(name = "Billccc.findByPaymethod", query = "SELECT b FROM Billccc b WHERE b.paymethod = :paymethod")})
+    , @NamedQuery(name = "Billccc.findByPaymethod", query = "SELECT b FROM Billccc b WHERE b.paymethod = :paymethod")})*/
 public class Billccc implements Serializable {
 
     @Transient

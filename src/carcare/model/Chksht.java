@@ -29,7 +29,7 @@ import javax.persistence.Transient;
  */
 @Entity
 @Table(name = "chksht", catalog = "carcare", schema = "")
-@NamedQueries({
+/*@NamedQueries({
     @NamedQuery(name = "Chksht.findAll", query = "SELECT c FROM Chksht c")
     , @NamedQuery(name = "Chksht.findByVno", query = "SELECT c FROM Chksht c WHERE c.vno = :vno")
     , @NamedQuery(name = "Chksht.findByDate", query = "SELECT c FROM Chksht c WHERE c.date = :date")
@@ -88,7 +88,7 @@ import javax.persistence.Transient;
     , @NamedQuery(name = "Chksht.findByBAmount", query = "SELECT c FROM Chksht c WHERE c.bAmount = :bAmount")
     , @NamedQuery(name = "Chksht.findByAddby", query = "SELECT c FROM Chksht c WHERE c.addby = :addby")
     , @NamedQuery(name = "Chksht.findByDeDate", query = "SELECT c FROM Chksht c WHERE c.deDate = :deDate")
-    , @NamedQuery(name = "Chksht.findById", query = "SELECT c FROM Chksht c WHERE c.id = :id")})
+    , @NamedQuery(name = "Chksht.findById", query = "SELECT c FROM Chksht c WHERE c.id = :id")})*/
 public class Chksht implements Serializable {
 
     @Transient

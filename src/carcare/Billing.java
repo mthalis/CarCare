@@ -13,8 +13,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.util.Date;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,8 +21,7 @@ import javax.swing.JOptionPane;
  */
 public class Billing extends javax.swing.JInternalFrame {
 
-    public static EntityManagerFactory EMF = Persistence.createEntityManagerFactory("carcare?zeroDateTimeBehavior=convertToNullPU");
-    CustdataJpaController custdataJpaController = new CustdataJpaController(EMF);
+    CustdataJpaController custdataJpaController = new CustdataJpaController(CarCare.EMF);
     
     public Billing() {
         initComponents();

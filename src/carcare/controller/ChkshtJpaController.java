@@ -8,6 +8,7 @@ package carcare.controller;
 import carcare.exceptions.NonexistentEntityException;
 import carcare.model.Chksht;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -141,6 +142,28 @@ public class ChkshtJpaController implements Serializable {
             Query query = em.createNativeQuery("SELECT a.VNO, b.name, b.ADDRESS,a.date FROM chksht a JOIN custdata b ON a.VNO = b.VNO");
             query.setMaxResults(maxResults);
             query.setFirstResult(firstResult);
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    public List<Object[]> getChkshtListByVNo(String vNo) {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createNativeQuery("SELECT a.VNO, b.name, b.ADDRESS,a.date FROM chksht a JOIN custdata b ON a.VNO = b.VNO where a.VNO = ? ");
+            query.setParameter(1, vNo);
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+    public List<Chksht> getChkshtListByVnoDate(String vNo, Date date){
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT c FROM Chksht c where c.vno = :vno and c.date = :date", Chksht.class);
+            query.setParameter("vno", vNo);
+            query.setParameter("date", date);
             return query.getResultList();
         } finally {
             em.close();

@@ -15,8 +15,6 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Pattern;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.DocumentFilter;
@@ -27,10 +25,9 @@ import javax.swing.text.DocumentFilter;
  */
 public class CustomerDetails extends javax.swing.JInternalFrame {
 
-    public static EntityManagerFactory EMF = Persistence.createEntityManagerFactory("carcare?zeroDateTimeBehavior=convertToNullPU");
     String actionType = null;
     PaginationController pagination;
-    CustdataJpaController custdataJpaController = new CustdataJpaController(EMF);
+    CustdataJpaController custdataJpaController = new CustdataJpaController(CarCare.EMF);
     
     public CustomerDetails() {
         initComponents();
@@ -427,9 +424,14 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
                 custdataList.addAll(cusDataList);
                 jTable1.updateUI();
             }else{
+                jTable1.updateUI();
                 JOptionPane.showMessageDialog(jPanel1, "Vehicle number not found !");
                 btnSearch.requestFocus();
             }
+            btnFirst.setEnabled(false);
+            btnPrev.setEnabled(false);
+            btnNext.setEnabled(false);
+            btnLast.setEnabled(false);
         }else{
             refreshTable();
         }

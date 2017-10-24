@@ -14,8 +14,8 @@ import carcare.model.Billccc;
 import carcare.model.Billcce;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,12 +23,11 @@ import javax.persistence.Persistence;
  */
 public class ViewBill extends javax.swing.JInternalFrame {
 
-    public static EntityManagerFactory EMF = Persistence.createEntityManagerFactory("carcare?zeroDateTimeBehavior=convertToNullPU");
     String actionType = null;
     PaginationController pagination;
     PaginationController pagination1;
-    BillcceJpaController billcceJpaController = new BillcceJpaController(EMF);
-    BillcccJpaController billcccJpaController = new BillcccJpaController(EMF);
+    BillcceJpaController billcceJpaController = new BillcceJpaController(CarCare.EMF);
+    BillcccJpaController billcccJpaController = new BillcccJpaController(CarCare.EMF);
     
     public ViewBill() {
         initComponents();
@@ -393,13 +392,40 @@ public class ViewBill extends javax.swing.JInternalFrame {
 
     private void btnSearchvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchvActionPerformed
         String vNo = jTextField2.getText() != null ? jTextField2.getText() : "";
-        billcccList.clear();
-        billcccList.addAll(billcccJpaController.findBillcccByVno(vNo));
-        jTable1.updateUI();
-        
-        billcceList.clear();
-        billcceList.addAll(billcceJpaController.findBillcceByVno(vNo));
-        jTable2.updateUI();
+        if(!vNo.isEmpty()){
+            billcccList.clear();
+            List<Billccc> billcccListVal = billcccJpaController.findBillcccByVno(vNo);
+            if(billcccListVal !=null && billcccListVal.size() > 0){
+                billcccList.addAll(billcccListVal);
+                jTable1.updateUI();
+            }else{
+                jTable1.updateUI();
+                jTextField2.requestFocus();
+            }
+
+            btnFirst.setEnabled(false);
+            btnPrev.setEnabled(false);
+            btnNext.setEnabled(false);
+            btnLast.setEnabled(false);
+
+            billcceList.clear();
+            List<Billcce> billcceListVal = billcceJpaController.findBillcceByVno(vNo);
+            if(billcceListVal !=null && billcceListVal.size() > 0){
+                billcceList.addAll(billcceListVal);
+                jTable2.updateUI();
+            }else{
+                jTable2.updateUI();
+                jTextField2.requestFocus();
+            }
+
+            btnFirst1.setEnabled(false);
+            btnPrev1.setEnabled(false);
+            btnNext1.setEnabled(false);
+            btnLast1.setEnabled(false);
+        }else{
+            refreshTable();
+            refreshTable1();
+        }
     }//GEN-LAST:event_btnSearchvActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
