@@ -44,7 +44,11 @@ public class ViewCheckSheet extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
+        entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("carcare?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
+        chkshtQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT c FROM Chksht c").setMaxResults(20);
+        chkshtList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : chkshtQuery.getResultList();
         jPanel4 = new javax.swing.JPanel();
         btnFirst = new javax.swing.JButton();
         btnPrev = new javax.swing.JButton();
@@ -55,6 +59,8 @@ public class ViewCheckSheet extends javax.swing.JInternalFrame {
         btnSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setClosable(true);
         setTitle("View Check Sheet");
@@ -167,21 +173,48 @@ public class ViewCheckSheet extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTable2);
 
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, chkshtList, jTable1);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${id}"));
+        columnBinding.setColumnName("Id");
+        columnBinding.setColumnClass(Integer.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${custdata.name}"));
+        columnBinding.setColumnName("Name");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${custdata.vno}"));
+        columnBinding.setColumnName("vno");
+        columnBinding.setColumnClass(String.class);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 681, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
+
+        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -218,7 +251,7 @@ public class ViewCheckSheet extends javax.swing.JInternalFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         String vNo = jTextField2.getText() != null ? jTextField2.getText() : "";
-        if(!vNo.isEmpty()){
+        /*if(!vNo.isEmpty()){
             DefaultTableModel y =(DefaultTableModel)jTable2.getModel();       
             y.setRowCount(0);
             List<Object[]> aa = chkshtJpaController.getChkshtListByVNo(vNo);
@@ -237,18 +270,35 @@ public class ViewCheckSheet extends javax.swing.JInternalFrame {
             btnLast.setEnabled(false);
         }else{
             refreshTable();
+        }*/
+        
+        
+        if(!vNo.isEmpty()){
+            chkshtList.clear();
+            List<Chksht> chkshts = chkshtJpaController.findChkshtdataByVno(vNo);
+            if(chkshts !=null && chkshts.size() > 0){
+                chkshtList.addAll(chkshts);
+                jTable1.updateUI();
+            }else{
+                jTable1.updateUI();
+                btnSearch.requestFocus();
+            }
+            btnFirst.setEnabled(false);
+            btnPrev.setEnabled(false);
+            btnNext.setEnabled(false);
+            btnLast.setEnabled(false);
+        }else{
+            refreshTable();
         }
         
+       /* Chksht  aa = chkshtJpaController.findChksht(Integer.parseInt(vNo));
+        System.out.println("sss" + aa.getDate());
+        System.out.println(aa.getCustdata().getVno());
+        System.out.println(aa.getCustdata().getName());*/
         
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
-        /*int selectedRowIndex = jTable1.getSelectedRow();
-        Billccc billccc = billcccList.get(jTable1.convertRowIndexToModel(selectedRowIndex));
-        */
-        CheckSheet checkSheet = new CheckSheet();
-        jDesktopPane1.add(checkSheet);
-        checkSheet.setVisible(true);
         
         int selectedRowIndex = jTable2.getSelectedRow();
         String vno = jTable2.getValueAt(selectedRowIndex, 0).toString();
@@ -265,9 +315,19 @@ public class ViewCheckSheet extends javax.swing.JInternalFrame {
         List<Chksht> aa = chkshtJpaController.getChkshtListByVnoDate(vno, dates);
         if(aa != null && aa.size() >0){
             Chksht chksht = aa.get(0);
-            System.out.println(chksht.getVno());
+            CheckSheet checkSheet = new CheckSheet(chksht);
+            jDesktopPane1.add(checkSheet);
+            checkSheet.setVisible(true);
         }
     }//GEN-LAST:event_jTable2MouseClicked
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int selectedRowIndex = jTable1.getSelectedRow();
+        Chksht chksht= chkshtList.get(jTable1.convertRowIndexToModel(selectedRowIndex));
+        CheckSheet checkSheet = new CheckSheet(chksht);
+        jDesktopPane1.add(checkSheet);
+        checkSheet.setVisible(true);
+    }//GEN-LAST:event_jTable1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -276,23 +336,31 @@ public class ViewCheckSheet extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnPrev;
     private javax.swing.JButton btnSearch;
+    private java.util.List<carcare.model.Chksht> chkshtList;
+    private javax.persistence.Query chkshtQuery;
     private javax.swing.JComboBox cmbJumlahBaris;
+    private javax.persistence.EntityManager entityManager;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField2;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
     private void refreshTable() {
       
-        DefaultTableModel y =(DefaultTableModel)jTable2.getModel();       
+        /*DefaultTableModel y =(DefaultTableModel)jTable2.getModel();       
         y.setRowCount(0);        
         List<Object[]> aa = chkshtJpaController.getChkshtList(pagination.getPageSize(), pagination.getCurrentItem());
         
         for(Object[] xx :aa){
             y.addRow(xx);
-        }
-        jTable2.updateUI();
+        }*/
+        chkshtList.clear();
+        chkshtList.addAll(chkshtJpaController.findChkshtEntities(pagination.getPageSize(), pagination.getCurrentItem()));        
+        jTable1.updateUI();
         
         btnFirst.setEnabled(pagination.isHasPrevPage());
         btnPrev.setEnabled(pagination.isHasPrevPage());

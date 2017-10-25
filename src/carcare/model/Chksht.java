@@ -12,12 +12,15 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -95,8 +98,14 @@ public class Chksht implements Serializable {
     private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
 
     private static final long serialVersionUID = 1L;
-    @Column(name = "VNO")
-    private String vno;
+    
+    //@Column(name = "VNO")
+    //private String vno;
+   
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="VNO", referencedColumnName="VNO")
+    private Custdata custdata;
+    
     @Basic(optional = false)
     @Column(name = "DATE")
     @Temporal(TemporalType.TIMESTAMP)
@@ -236,7 +245,17 @@ public class Chksht implements Serializable {
         this.deDate = deDate;
     }
 
-    public String getVno() {
+    public Custdata getCustdata() {
+        return custdata;
+    }
+
+    public void setCustdata(Custdata custdata) {
+        this.custdata = custdata;
+    }
+
+    
+    
+    /*public String getVno() {
         return vno;
     }
 
@@ -244,7 +263,7 @@ public class Chksht implements Serializable {
         String oldVno = this.vno;
         this.vno = vno;
         changeSupport.firePropertyChange("vno", oldVno, vno);
-    }
+    }*/
 
     public Date getDate() {
         return date;

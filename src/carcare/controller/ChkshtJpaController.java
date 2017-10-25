@@ -161,9 +161,20 @@ public class ChkshtJpaController implements Serializable {
     public List<Chksht> getChkshtListByVnoDate(String vNo, Date date){
         EntityManager em = getEntityManager();
         try {
-            Query query = em.createQuery("SELECT c FROM Chksht c where c.vno = :vno and c.date = :date", Chksht.class);
+            Query query = em.createQuery("SELECT c FROM Chksht c where c.custdata.vno = :vno and c.date = :date", Chksht.class);
             query.setParameter("vno", vNo);
             query.setParameter("date", date);
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+    
+     public List<Chksht> findChkshtdataByVno(String Vno) {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT c FROM Chksht c WHERE c.custdata.vno = :vno ORDER BY c.id DESC", Chksht.class);
+            query.setParameter("vno", Vno);
             return query.getResultList();
         } finally {
             em.close();

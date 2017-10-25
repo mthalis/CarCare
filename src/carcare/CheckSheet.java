@@ -43,6 +43,86 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         ((AbstractDocument) jTextField11.getDocument()).setDocumentFilter(filter);
     }
 
+    CheckSheet(Chksht checkSheet) {
+        initComponents();
+        
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();        
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        
+        DocumentFilter filter = new UppercaseDocumentFilter ();
+        ((AbstractDocument) txtVNo.getDocument()).setDocumentFilter(filter);
+        ((AbstractDocument) jTextField12.getDocument()).setDocumentFilter(filter);
+        ((AbstractDocument) jTextField11.getDocument()).setDocumentFilter(filter);
+        
+        txtVNo.setText(checkSheet.getCustdata().getVno());
+        jDateChooser1.setDate(checkSheet.getDate());
+        jTextField4.setText(Double.toString(checkSheet.getMilage()));
+
+        jTextField23.setText(checkSheet.getFrToe());
+        jTextField27.setText(checkSheet.getFrToe1());
+        jTextField24.setText(checkSheet.getFrCmR());
+        jTextField26.setText(checkSheet.getFrCmR1());
+        jTextField25.setText(checkSheet.getFrCsR());
+        jTextField28.setText(checkSheet.getFrCsR1());
+
+        jTextField33.setText(checkSheet.getFrSb());
+        jTextField29.setText(checkSheet.getFrCmL());
+        jTextField32.setText(checkSheet.getFrCmL1());
+        jTextField30.setText(checkSheet.getFrCsL());
+        jTextField31.setText(checkSheet.getFrCsL1());
+
+        jTextField3.setText(checkSheet.getReToeR());
+        jTextField19.setText(checkSheet.getReToeR1());
+        jTextField10.setText(checkSheet.getReCmR());
+        jTextField18.setText(checkSheet.getReCmR1());
+        jTextField20.setText(checkSheet.getReSb());
+
+        jTextField22.setText(checkSheet.getReToeL());
+        jTextField41.setText(checkSheet.getReToeL1());
+        jTextField21.setText(checkSheet.getReCmL());
+        jTextField40.setText(checkSheet.getReCmL1());
+
+        jTextField7.setText(checkSheet.getTc1N());
+        jTextField16.setText(checkSheet.getTc1I());
+        jTextField36.setText(checkSheet.getTc1O());
+        jTextField13.setText(checkSheet.getTc2N());
+        jTextField15.setText(checkSheet.getTc2I());
+        jTextField37.setText(checkSheet.getTc2O());
+        jTextField14.setText(checkSheet.getTc3N());
+        jTextField17.setText(checkSheet.getTc3I());
+        jTextField38.setText(checkSheet.getTc3O());
+        jTextField35.setText(checkSheet.getTc4N());
+        jTextField34.setText(checkSheet.getTc4I());
+        jTextField39.setText(checkSheet.getTc4O());
+
+        jTextField6.setText(Integer.toString(checkSheet.getBwi1()));
+        jTextField53.setText(Integer.toString(checkSheet.getBw1()));
+        jTextField51.setText(Integer.toString(checkSheet.getBwi3()));
+        jTextField52.setText(Integer.toString(checkSheet.getBw3()));
+
+        jTextField55.setText(Integer.toString(checkSheet.getBwi2()));
+        jTextField57.setText(Integer.toString(checkSheet.getBw2()));
+        jTextField54.setText(Integer.toString(checkSheet.getBwi4()));
+        jTextField56.setText(Integer.toString(checkSheet.getBw4()));
+
+        jCheckBox3.setSelected(checkSheet.getSt());
+        jCheckBox1.setSelected(checkSheet.getHlt());
+        jCheckBox2.setSelected(checkSheet.getN2());
+
+        jTextArea1.setText(checkSheet.getRem());
+
+        jTextField12.setText(checkSheet.getJobby());
+        jTextField11.setText(checkSheet.getAddby());
+
+        jTextField8.setText(Integer.toString(checkSheet.getBAmount()));            
+            
+        jButton3.setText("Edit");
+           /*
+                checkSheet.setDeDate(new Timestamp(System.currentTimeMillis()));
+            */
+        
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -603,6 +683,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                 txtAddr.setText("");
                 txtPhone.setText("");
                 txtDate.setDate(null);
+                txtMilage.setText("");
                 txtVNo.requestFocus();
             }
         }
@@ -659,7 +740,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         }else{
             Chksht checkSheet = new Chksht();
             
-            checkSheet.setVno(txtVNo.getText());
+            //checkSheet.setVno(txtVNo.getText());
             checkSheet.setDate(jDateChooser1.getDate());
             checkSheet.setMilage(Double.parseDouble(jTextField4.getText()));
             checkSheet.setNmilage(Double.parseDouble(jTextField5.getText()));
