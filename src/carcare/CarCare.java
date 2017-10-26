@@ -5,9 +5,14 @@
  */
 package carcare;
 
+import de.muntjak.tinylookandfeel.TinyLookAndFeel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import style.Styling;
 
 /**
@@ -216,15 +221,21 @@ public class CarCare extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
+            /* Set the Nimbus look and feel */
+            //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+            /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+            * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+            */
+            UIManager.setLookAndFeel(new TinyLookAndFeel());
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(CarCare.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                //System.out.println("hoooo" +info.getName()+"www"+info.getClassName());
-                if ("Metalx".equals(info.getName())) {
+                System.out.println("hoooo" +info.getName()+"www"+info.getClassName());
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -243,7 +254,7 @@ public class CarCare extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(CarCare.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(CarCare.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        }*/
         //</editor-fold>
         //</editor-fold>
 
