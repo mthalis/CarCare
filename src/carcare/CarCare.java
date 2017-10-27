@@ -128,7 +128,7 @@ public class CarCare extends javax.swing.JFrame {
         });
         editMenu.add(pasteMenuItem);
 
-        jMenuItem1.setText("jMenuItem1");
+        jMenuItem1.setText("Check Sheet");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -136,7 +136,7 @@ public class CarCare extends javax.swing.JFrame {
         });
         editMenu.add(jMenuItem1);
 
-        jMenuItem2.setText("jMenuItem2");
+        jMenuItem2.setText("View Check Sheet");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);

@@ -439,14 +439,14 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                 jTextField52KeyTyped(evt);
             }
         });
-        jPanel7.add(jTextField52, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 55, -1));
+        jPanel7.add(jTextField52, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 60, 55, -1));
 
         jTextField53.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField53KeyTyped(evt);
             }
         });
-        jPanel7.add(jTextField53, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 55, -1));
+        jPanel7.add(jTextField53, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 40, 55, -1));
 
         jLabel3.setText("Fr R");
         jPanel7.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 40, -1));
@@ -483,14 +483,14 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                 jTextField56KeyTyped(evt);
             }
         });
-        jPanel7.add(jTextField56, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 55, -1));
+        jPanel7.add(jTextField56, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 60, 55, -1));
 
         jTextField57.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField57KeyTyped(evt);
             }
         });
-        jPanel7.add(jTextField57, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 55, -1));
+        jPanel7.add(jTextField57, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 40, 55, -1));
 
         jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel48.setText("Out");
