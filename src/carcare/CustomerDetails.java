@@ -443,6 +443,8 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        clear();
+        
         jLabel4.setEnabled(true);
         jLabel9.setEnabled(true);       
         txtLastDate.setEnabled(true);
