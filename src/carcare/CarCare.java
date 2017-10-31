@@ -22,6 +22,11 @@ import style.Styling;
 public class CarCare extends javax.swing.JFrame {
 
     public static EntityManagerFactory EMF = Persistence.createEntityManagerFactory("carcare?zeroDateTimeBehavior=convertToNullPU");
+    public static int cus_window = 0;
+    public static int bill_window = 0;
+    public static int check_window = 0;
+    public static int window = 0;
+    
     
     public CarCare() {
         initComponents();
@@ -166,9 +171,12 @@ public class CarCare extends javax.swing.JFrame {
     }//GEN-LAST:event_openMenuItemMouseClicked
 
     private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
-        CustomerDetails customerDetails = new CustomerDetails();
-        jDesktopPane1.add(customerDetails);
-        customerDetails.setVisible(true);
+        if(cus_window == 0) {
+            CustomerDetails customerDetails = new CustomerDetails();
+            jDesktopPane1.add(customerDetails);
+            customerDetails.setVisible(true);
+            cus_window = 1;
+        }
     }//GEN-LAST:event_openMenuItemActionPerformed
 
     private void cutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cutMenuItemActionPerformed

@@ -15,6 +15,7 @@ import carcare.model.Billcce;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.List;
+import javax.swing.table.TableColumnModel;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.DocumentFilter;
 
@@ -36,14 +37,24 @@ public class ViewBill extends javax.swing.JInternalFrame {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();        
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         
-        LKController.resizeColumnWidth(jTable1);
         pagination = new PaginationController(17, billcceJpaController.getBillcceCount());
         pagination1 = new PaginationController(17, billcccJpaController.getBillcccCount());
         refreshTable();
         
         DocumentFilter filter = new UppercaseDocumentFilter ();
         ((AbstractDocument) txtVnoSearch.getDocument()).setDocumentFilter(filter);
+        
+        TableColumnModel columnModel = jTable1.getColumnModel();
+        columnModel.getColumn(0).setPreferredWidth(30);
+        columnModel.getColumn(1).setPreferredWidth(30);
+        columnModel.getColumn(2).setPreferredWidth(30);
+        columnModel.getColumn(3).setPreferredWidth(110);
        
+        TableColumnModel columnModel1 = jTable2.getColumnModel();
+        columnModel1.getColumn(0).setPreferredWidth(30);
+        columnModel1.getColumn(1).setPreferredWidth(30);
+        columnModel1.getColumn(2).setPreferredWidth(30);
+        columnModel1.getColumn(3).setPreferredWidth(110);
         /*
          "UPDATE Logfile SET RBILLNO = RBILLNO+1";
         cmdText = "UPDATE Logfile SET CCCBILLNO = CCCBILLNO+1";
@@ -95,7 +106,7 @@ public class ViewBill extends javax.swing.JInternalFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(862, 430));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("carcare center"));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CARCARE CENTER", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 0, 51))); // NOI18N
 
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, billcccList, jTable1);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${vno}"));
@@ -121,7 +132,7 @@ public class ViewBill extends javax.swing.JInternalFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 420, 340));
 
-        jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder("carcare enterprise"));
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CARCARE ENTERPRISE", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 0, 51))); // NOI18N
 
         jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, billcceList, jTable2);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${vno}"));

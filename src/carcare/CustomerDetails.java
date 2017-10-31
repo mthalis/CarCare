@@ -5,6 +5,7 @@
  */
 package carcare;
 
+import static carcare.CarCare.cus_window;
 import carcare.controller.CustdataJpaController;
 import carcare.controller.LKController;
 import carcare.controller.PaginationController;
@@ -110,6 +111,23 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setTitle("Customer Details");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -346,6 +364,7 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        CarCare.cus_window = 0;  
         dispose();
     }//GEN-LAST:event_btnExitActionPerformed
 
@@ -516,6 +535,11 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_txtVNoFocusLost
+
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        CarCare.cus_window = 0;  
+        dispose();
+    }//GEN-LAST:event_formInternalFrameClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
