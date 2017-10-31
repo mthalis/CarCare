@@ -87,13 +87,11 @@
                   <Component id="btnFirst" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnPrev" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="cmbJumlahBaris" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnNext" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnLast" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="275" max="32767" attributes="0"/>
+                  <EmptySpace pref="310" max="32767" attributes="0"/>
                   <Component id="jTextField2" min="-2" pref="140" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnSearch" min="-2" pref="75" max="-2" attributes="0"/>
@@ -108,7 +106,6 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnFirst" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="btnPrev" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="cmbJumlahBaris" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="btnNext" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="btnLast" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="jTextField2" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
@@ -134,20 +131,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPrevActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="cmbJumlahBaris">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="10"/>
-                <StringItem index="1" value="20"/>
-                <StringItem index="2" value="30"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbJumlahBarisItemStateChanged"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnNext">

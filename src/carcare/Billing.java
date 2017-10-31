@@ -173,11 +173,15 @@ public class Billing extends javax.swing.JInternalFrame {
     
     void drawLines(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawLine(45, 587, 272, 587);
- 
-        g2d.drawLine(45, 610, 272, 610);
+        g2d.drawLine(38, 526, 263, 526); 
+        g2d.drawLine(38, 550, 263, 550);
+        
+        
+        g2d.drawLine(355, 500, 666, 500); 
+        g2d.drawLine(355, 527, 666, 527);
     }
  
+    @Override
     public void paint(Graphics g) {
         super.paint(g);
         drawLines(g);
@@ -320,8 +324,11 @@ public class Billing extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Millage");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 72, 25));
+
+        dateBill.setEnabled(false);
         jPanel1.add(dateBill, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 120, 25));
 
+        txtVNo.setEnabled(false);
         txtVNo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtVNoFocusLost(evt);
@@ -395,7 +402,7 @@ public class Billing extends javax.swing.JInternalFrame {
         jLabel33.setText("Update Customer Details");
         jPanel1.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 170, 20));
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("CAR CARE CENTER"));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CAR CARE CENTER", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 0, 51))); // NOI18N
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setText("Checking Align");
@@ -498,6 +505,7 @@ public class Billing extends javax.swing.JInternalFrame {
         jPanel3.add(txtDisCCCTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 60, -1));
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 0, 51));
         jLabel18.setText("TOTAL");
         jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 273, 80, -1));
 
@@ -507,7 +515,7 @@ public class Billing extends javax.swing.JInternalFrame {
         jLabel20.setText("Sub Total");
         jPanel3.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 233, 90, -1));
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("CAR CARE ENTERPRISES"));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CAR CARE ENTERPRISES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 0, 51))); // NOI18N
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel21.setText("Fixed Camber Fr.");
@@ -637,6 +645,7 @@ public class Billing extends javax.swing.JInternalFrame {
         jPanel5.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 225, 80, -1));
 
         jLabel30.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(255, 0, 51));
         jLabel30.setText("TOTAL");
         jPanel5.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 70, -1));
 

@@ -27,6 +27,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
 
     CustdataJpaController custdataJpaController = new CustdataJpaController(CarCare.EMF);
     ChkshtJpaController chkshtJpaController = new ChkshtJpaController(CarCare.EMF);
+    boolean vNoEventFire = true;
     
     public CheckSheet() {
         initComponents();
@@ -46,6 +47,8 @@ public class CheckSheet extends javax.swing.JInternalFrame {
     CheckSheet(Chksht checkSheet) {
         initComponents();
         
+        vNoEventFire = false;
+        
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();        
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         
@@ -54,9 +57,18 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         ((AbstractDocument) jTextField12.getDocument()).setDocumentFilter(filter);
         ((AbstractDocument) jTextField11.getDocument()).setDocumentFilter(filter);
         
+        txtVNo.setEnabled(false);
         txtVNo.setText(checkSheet.getCustdata().getVno());
         jDateChooser1.setDate(checkSheet.getDate());
         jTextField4.setText(Double.toString(checkSheet.getMilage()));
+        
+        
+        Custdata cus = checkSheet.getCustdata();
+        txtName.setText(cus.getName());
+        txtAddr.setText(cus.getAddress());
+        txtPhone.setText(cus.getPhone());
+        txtMilage.setText(Double.toString(cus.getLmilage()));
+        txtDate.setDate(cus.getLdate());
 
         jTextField23.setText(checkSheet.getFrToe());
         jTextField27.setText(checkSheet.getFrToe1());
@@ -120,6 +132,8 @@ public class CheckSheet extends javax.swing.JInternalFrame {
            /*
                 checkSheet.setDeDate(new Timestamp(System.currentTimeMillis()));
             */
+        int newMilage = (int) (checkSheet.getMilage() + 6000);
+        jTextField5.setText(Integer.toString(newMilage));
         
     }
 
@@ -662,29 +676,31 @@ public class CheckSheet extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtVNoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtVNoFocusLost
-        String vNo = txtVNo.getText();
-        List<Custdata> cusdate = null;
-        if(vNo != null && !vNo.isEmpty()){
-            cusdate = custdataJpaController.findCustdataByVno(vNo);
-        
-            if(cusdate != null && cusdate.size() > 0){
+        if(vNoEventFire){
+            String vNo = txtVNo.getText();
+            List<Custdata> cusdate = null;
+            if(vNo != null && !vNo.isEmpty()){
+                cusdate = custdataJpaController.findCustdataByVno(vNo);
 
-                Custdata cus = cusdate.get(0);
-                txtName.setText(cus.getName());
-                txtAddr.setText(cus.getAddress());
-                txtPhone.setText(cus.getPhone());
-                txtMilage.setText(Double.toString(cus.getLmilage()));
-                txtDate.setDate(cus.getLdate());
-                //txtMilage.requestFocus();
-            }else{
-                JOptionPane.showMessageDialog(jPanel1, "Vehicle number did not find !");
-                txtVNo.setText("");
-                txtName.setText("");
-                txtAddr.setText("");
-                txtPhone.setText("");
-                txtDate.setDate(null);
-                txtMilage.setText("");
-                txtVNo.requestFocus();
+                if(cusdate != null && cusdate.size() > 0){
+
+                    Custdata cus = cusdate.get(0);
+                    txtName.setText(cus.getName());
+                    txtAddr.setText(cus.getAddress());
+                    txtPhone.setText(cus.getPhone());
+                    txtMilage.setText(Double.toString(cus.getLmilage()));
+                    txtDate.setDate(cus.getLdate());
+                    //txtMilage.requestFocus();
+                }else{
+                    JOptionPane.showMessageDialog(jPanel1, "Vehicle number did not find !");
+                    txtVNo.setText("");
+                    txtName.setText("");
+                    txtAddr.setText("");
+                    txtPhone.setText("");
+                    txtDate.setDate(null);
+                    txtMilage.setText("");
+                    txtVNo.requestFocus();
+                }
             }
         }
     }//GEN-LAST:event_txtVNoFocusLost
@@ -805,6 +821,8 @@ public class CheckSheet extends javax.swing.JInternalFrame {
             checkSheet.setDeDate(new Timestamp(System.currentTimeMillis()));
             
             chkshtJpaController.create(checkSheet);
+            
+            dispose();
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 

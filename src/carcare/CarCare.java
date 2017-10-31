@@ -45,7 +45,6 @@ public class CarCare extends javax.swing.JFrame {
         openMenuItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         cutMenuItem = new javax.swing.JMenuItem();
-        copyMenuItem = new javax.swing.JMenuItem();
         pasteMenuItem = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -102,7 +101,7 @@ public class CarCare extends javax.swing.JFrame {
         editMenu.setText("Utility");
 
         cutMenuItem.setMnemonic('t');
-        cutMenuItem.setText("Billing");
+        cutMenuItem.setText("Add Billing");
         cutMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cutMenuItemActionPerformed(evt);
@@ -110,17 +109,8 @@ public class CarCare extends javax.swing.JFrame {
         });
         editMenu.add(cutMenuItem);
 
-        copyMenuItem.setMnemonic('y');
-        copyMenuItem.setText("Check Sheet");
-        copyMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                copyMenuItemActionPerformed(evt);
-            }
-        });
-        editMenu.add(copyMenuItem);
-
         pasteMenuItem.setMnemonic('p');
-        pasteMenuItem.setText("Day Summery");
+        pasteMenuItem.setText("View Billing");
         pasteMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pasteMenuItemActionPerformed(evt);
@@ -128,7 +118,7 @@ public class CarCare extends javax.swing.JFrame {
         });
         editMenu.add(pasteMenuItem);
 
-        jMenuItem1.setText("Check Sheet");
+        jMenuItem1.setText("Add Check Sheet");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -182,22 +172,10 @@ public class CarCare extends javax.swing.JFrame {
     }//GEN-LAST:event_openMenuItemActionPerformed
 
     private void cutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cutMenuItemActionPerformed
-        Billing billing = new Billing();
+        AddBilling billing = new AddBilling();
         jDesktopPane1.add(billing);
         billing.setVisible(true);
-        
-        //SearchVehicle searchVehicle = new SearchVehicle();
-        //jDesktopPane1.add(searchVehicle);
-        //this.getContentPane().add(searchVehicle);
-        //this.setFocusable(false);
-        //searchVehicle.setVisible(true);
     }//GEN-LAST:event_cutMenuItemActionPerformed
-
-    private void copyMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyMenuItemActionPerformed
-        Billing1 billing = new Billing1();
-        jDesktopPane1.add(billing);
-        billing.setVisible(true);
-    }//GEN-LAST:event_copyMenuItemActionPerformed
 
     private void pasteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pasteMenuItemActionPerformed
         ViewBill viewBill = new ViewBill();
@@ -268,7 +246,6 @@ public class CarCare extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem contentsMenuItem;
-    private javax.swing.JMenuItem copyMenuItem;
     private javax.swing.JMenuItem cutMenuItem;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenu fileMenu;

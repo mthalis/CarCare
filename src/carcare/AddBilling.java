@@ -19,7 +19,6 @@ import java.awt.event.KeyEvent;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.DocumentFilter;
 
@@ -27,13 +26,13 @@ import javax.swing.text.DocumentFilter;
  *
  * @author lenovo
  */
-public class Billing1 extends javax.swing.JInternalFrame {
+public class AddBilling extends javax.swing.JInternalFrame {
 
     CustdataJpaController custdataJpaController = new CustdataJpaController(CarCare.EMF);
     BillcccJpaController billcccJpaController = new BillcccJpaController(CarCare.EMF);
     BillcceJpaController billcceJpaController = new BillcceJpaController(CarCare.EMF);
     
-    public Billing1() {
+    public AddBilling() {
         initComponents();
         
         DocumentFilter filter = new UppercaseDocumentFilter ();
@@ -49,15 +48,22 @@ public class Billing1 extends javax.swing.JInternalFrame {
         
         Date date = new Date();
         txtDate.setDate(date);
+        
+        jRadioButton1.setSelected(true);
+        buttonGroup1.add(jRadioButton1);
+        buttonGroup1.add(jRadioButton2);
     }
     
     void drawLines(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawLine(45, 587, 272, 587);
- 
-        g2d.drawLine(45, 610, 272, 610);
+        g2d.drawLine(38, 455, 263, 455);
+        g2d.drawLine(38, 479, 263, 479);
+        
+        g2d.drawLine(355, 430, 666, 430); 
+        g2d.drawLine(355, 460, 666, 460);
     }
  
+    @Override
     public void paint(Graphics g) {
         super.paint(g);
         drawLines(g);
@@ -73,15 +79,6 @@ public class Billing1 extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtDate = new com.toedter.calendar.JDateChooser();
-        txtVNo = new javax.swing.JTextField();
-        txtName = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        txtAddr = new javax.swing.JTextField();
-        jLabel31 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -163,71 +160,31 @@ public class Billing1 extends javax.swing.JInternalFrame {
         txtCCETotal = new javax.swing.JTextField();
         btnPrint = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jPanel6 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtDate = new com.toedter.calendar.JDateChooser();
+        txtVNo = new javax.swing.JTextField();
+        txtChashiNo = new javax.swing.JTextField();
+        txtMilage = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtAddr = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtPhone = new javax.swing.JTextField();
-        txtMilage = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        txtChashiNo = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
-        jLabel32 = new javax.swing.JLabel();
         txtAddby = new javax.swing.JTextField();
+        jLabel32 = new javax.swing.JLabel();
 
         setClosable(true);
-        setTitle("Billing");
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setTitle("Add Billing");
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("Date");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 13, 64, 25));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setText("V/ No");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 45, 72, 25));
-        jPanel1.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 13, 120, 25));
-
-        txtVNo.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtVNoFocusLost(evt);
-            }
-        });
-        txtVNo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtVNoMouseClicked(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                txtVNoMouseReleased(evt);
-            }
-        });
-        jPanel1.add(txtVNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 45, 120, 25));
-
-        txtName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 280, 25));
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel5.setText("Address");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 70, 25));
-        jPanel1.add(txtAddr, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, 280, 25));
-
-        jLabel31.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel31.setText("Name");
-        jPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 70, 25));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 680, 80));
-
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("CAR CARE CENTER"));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CAR CARE CENTER", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 0, 51))); // NOI18N
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setText("Checking Align");
@@ -261,6 +218,7 @@ public class Billing1 extends javax.swing.JInternalFrame {
         jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 205, 120, 20));
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 0, 51));
         jLabel18.setText("TOTAL");
         jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 273, 80, -1));
 
@@ -478,9 +436,7 @@ public class Billing1 extends javax.swing.JInternalFrame {
         });
         jPanel3.add(chkFreeHLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 301, 339));
-
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("CAR CARE ENTERPRISES"));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CAR CARE ENTERPRISES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 0, 51))); // NOI18N
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel21.setText("Fixed Camber Fr.");
@@ -675,6 +631,7 @@ public class Billing1 extends javax.swing.JInternalFrame {
         jPanel5.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 225, 80, -1));
 
         jLabel30.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(255, 0, 51));
         jLabel30.setText("TOTAL");
         jPanel5.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 70, -1));
 
@@ -745,159 +702,95 @@ public class Billing1 extends javax.swing.JInternalFrame {
         });
         jPanel5.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 70, -1));
 
-        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 380, 339));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Name", "Address", "Phone"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setText("Date");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 10, 64, 25));
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 93, 420, -1));
-
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel6.setText("Phone");
-        jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, 25));
-        jPanel6.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 120, 25));
-
-        txtMilage.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtMilageKeyTyped(evt);
-            }
-        });
-        jPanel6.add(txtMilage, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 120, 25));
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel4.setText("Millage");
-        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 72, 25));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setText("V/ No");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 40, 72, 25));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Chasi No");
-        jPanel6.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 72, 25));
-        jPanel6.add(txtChashiNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 120, 25));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 70, 72, 25));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel7.setText("Payment ");
-        jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 72, 25));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setText("Millage");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 100, 72, 25));
+        jPanel1.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 120, 25));
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setSelected(true);
-        jRadioButton1.setText("Cash");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+        txtVNo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtVNoFocusLost(evt);
             }
         });
-        jPanel6.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, -1, -1));
+        jPanel1.add(txtVNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 120, 25));
+        jPanel1.add(txtChashiNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 120, 25));
+        jPanel1.add(txtMilage, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 120, 25));
 
-        buttonGroup1.add(jRadioButton2);
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel7.setText("Payment Method");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 70, 120, 25));
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 330, 25));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setText("Address");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 70, 25));
+        jPanel1.add(txtAddr, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 330, 25));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setText("Phone");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 70, 25));
+        jPanel1.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 105, 25));
+
+        jLabel31.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel31.setText("Name");
+        jPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 70, 25));
+
+        jRadioButton1.setText("Cash");
+        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, -1, -1));
+
         jRadioButton2.setText("Credit");
-        jPanel6.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, -1, -1));
+        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, -1, -1));
+        jPanel1.add(txtAddby, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 105, 25));
 
         jLabel32.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel32.setText("Add By");
-        jPanel6.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 76, 25));
-        jPanel6.add(txtAddby, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 120, 25));
+        jPanel1.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 70, 30));
 
-        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 250, 170));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameActionPerformed
-
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
-
-    private void txtVNoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtVNoFocusLost
-        String vNo = txtVNo.getText() != null ? txtVNo.getText() : "";
-        List<Custdata> cusdate = custdataJpaController.findCustdataByVno(vNo);
-        
-        DefaultTableModel model = new DefaultTableModel(new String[]{"Name", "Address", "Phone"}, 0);
-        if(cusdate != null && cusdate.size() > 0){                    
-            for (int i = 0; i < cusdate.size(); i++) {
-                Custdata cus = cusdate.get(i);
-                model.addRow(new Object[]{cus.getName(), cus.getAddress(), cus.getPhone()});
-            }
-            Custdata cus = cusdate.get(0);
-            txtName.setText(cus.getName());
-            txtAddr.setText(cus.getAddress());
-            txtPhone.setText(cus.getPhone());
-            txtMilage.requestFocus();
-        }else{
-            model.getDataVector().removeAllElements();
-            model.fireTableDataChanged(); 
-            JOptionPane.showMessageDialog(jPanel1, "Vehicle number did not find !");
-            
-            txtName.setText("");
-            txtAddr.setText("");
-            txtPhone.setText("");
-            txtName.requestFocus();
-        }
-        jTable1.setModel(model);
-    }//GEN-LAST:event_txtVNoFocusLost
-
-    private void txtVNoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtVNoMouseClicked
-        
-    }//GEN-LAST:event_txtVNoMouseClicked
-
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        int row = jTable1.getSelectedRow();
-        String name = jTable1.getModel().getValueAt(row, 0)!= null ? jTable1.getModel().getValueAt(row, 0).toString() : "";
-        String address = jTable1.getModel().getValueAt(row, 1)!= null ? jTable1.getModel().getValueAt(row, 1).toString() : "";
-        String phone = jTable1.getModel().getValueAt(row, 2)!= null ? jTable1.getModel().getValueAt(row, 2).toString() : "";
-        
-        txtName.setText(name);
-        txtAddr.setText(address);
-        txtPhone.setText(phone);
-        txtMilage.requestFocus();
-    }//GEN-LAST:event_jTable1MouseClicked
-
-    private void txtVNoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtVNoMouseReleased
-        
-    }//GEN-LAST:event_txtVNoMouseReleased
 
     private void txtChkAlignFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtChkAlignFocusLost
         setCCCTotal();
@@ -1032,7 +925,6 @@ public class Billing1 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
-       System.out.println("hooooo - > " +buttonGroup1.getSelection().getActionCommand() + "--"+ jRadioButton1.isSelected()  + "--"+  jRadioButton2.isSelected());
         if(txtVNo.getText() == null || txtVNo.getText().equals("")){
             JOptionPane.showMessageDialog(jPanel1, "Please enter Vehicle no !");
             txtVNo.requestFocus();
@@ -1125,14 +1017,18 @@ public class Billing1 extends javax.swing.JInternalFrame {
             billcce.setAmount((txtCCETotal.getText() != null && !txtCCETotal.getText().isEmpty()) ? Integer.parseInt(txtCCETotal.getText()) : 0);                        
                         
             if(billcce.getAmount() > 0 ){
-                billcceJpaController.create(billcce);
+                billcceJpaController.create(billcce);                
             }
+            
+            if(billcce.getAmount() > 0 || billccc.getAmount() > 0 ){
+                JOptionPane.showMessageDialog(jPanel1, "Successfuly save record !");
+                dispose();
+            }else{
+                JOptionPane.showMessageDialog(jPanel1, "Bill amount Zero !");
+            }
+            
         }
     }//GEN-LAST:event_btnPrintActionPerformed
-
-    private void txtMilageKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMilageKeyTyped
-         keyTyped(evt);
-    }//GEN-LAST:event_txtMilageKeyTyped
 
     private void jTextField27FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField27FocusLost
         int val1 = Integer.parseInt(!jTextField20.getText().isEmpty() ? jTextField20.getText() : "0"); 
@@ -1299,6 +1195,24 @@ public class Billing1 extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtDisCCETotalKeyTyped
 
+    private void txtVNoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtVNoFocusLost
+        String vNo = txtVNo.getText() != null ? txtVNo.getText() : "";
+        List<Custdata> cusdate = custdataJpaController.findCustdataByVno(vNo);
+        
+        if(cusdate != null && cusdate.size() > 0){                    
+            Custdata cus = cusdate.get(0);
+            txtName.setText(cus.getName());
+            txtAddr.setText(cus.getAddress());
+            txtPhone.setText(cus.getPhone());
+            txtMilage.requestFocus();
+        }else{
+            txtName.setText("");
+            txtAddr.setText("");
+            txtPhone.setText("");
+            txtName.requestFocus();
+        }
+    }//GEN-LAST:event_txtVNoFocusLost
+
     public void keyTyped(KeyEvent e) {
       char c = e.getKeyChar();
       if (!((c >= '0') && (c <= '9') ||
@@ -1398,13 +1312,9 @@ public class Billing1 extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;

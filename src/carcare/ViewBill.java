@@ -15,7 +15,8 @@ import carcare.model.Billcce;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.List;
-import javax.swing.JOptionPane;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.DocumentFilter;
 
 /**
  *
@@ -36,10 +37,12 @@ public class ViewBill extends javax.swing.JInternalFrame {
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         
         LKController.resizeColumnWidth(jTable1);
-        int jumlahBaris = Integer.parseInt(cmbJumlahBaris.getSelectedItem().toString());
         pagination = new PaginationController(17, billcceJpaController.getBillcceCount());
         pagination1 = new PaginationController(17, billcccJpaController.getBillcccCount());
         refreshTable();
+        
+        DocumentFilter filter = new UppercaseDocumentFilter ();
+        ((AbstractDocument) txtVnoSearch.getDocument()).setDocumentFilter(filter);
        
         /*
          "UPDATE Logfile SET RBILLNO = RBILLNO+1";
@@ -75,17 +78,15 @@ public class ViewBill extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         btnFirst = new javax.swing.JButton();
         btnPrev = new javax.swing.JButton();
-        cmbJumlahBaris = new javax.swing.JComboBox();
         btnNext = new javax.swing.JButton();
         btnLast = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         btnFirst1 = new javax.swing.JButton();
         btnPrev1 = new javax.swing.JButton();
-        cmbJumlahBaris1 = new javax.swing.JComboBox();
         btnNext1 = new javax.swing.JButton();
         btnLast1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
+        txtVnoSearch = new javax.swing.JTextField();
         btnSearchv = new javax.swing.JButton();
 
         setClosable(true);
@@ -160,13 +161,6 @@ public class ViewBill extends javax.swing.JInternalFrame {
             }
         });
 
-        cmbJumlahBaris.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10", "20", "30" }));
-        cmbJumlahBaris.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbJumlahBarisItemStateChanged(evt);
-            }
-        });
-
         btnNext.setText(">");
         btnNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,9 +184,7 @@ public class ViewBill extends javax.swing.JInternalFrame {
                 .addComponent(btnFirst)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPrev)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cmbJumlahBaris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(53, 53, 53)
                 .addComponent(btnNext)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLast)
@@ -205,7 +197,6 @@ public class ViewBill extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFirst)
                     .addComponent(btnPrev)
-                    .addComponent(cmbJumlahBaris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNext)
                     .addComponent(btnLast))
                 .addContainerGap())
@@ -224,13 +215,6 @@ public class ViewBill extends javax.swing.JInternalFrame {
         btnPrev1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPrev1ActionPerformed(evt);
-            }
-        });
-
-        cmbJumlahBaris1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10", "20", "30" }));
-        cmbJumlahBaris1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbJumlahBaris1ItemStateChanged(evt);
             }
         });
 
@@ -257,9 +241,7 @@ public class ViewBill extends javax.swing.JInternalFrame {
                 .addComponent(btnFirst1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPrev1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cmbJumlahBaris1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(53, 53, 53)
                 .addComponent(btnNext1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLast1)
@@ -272,7 +254,6 @@ public class ViewBill extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFirst1)
                     .addComponent(btnPrev1)
-                    .addComponent(cmbJumlahBaris1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNext1)
                     .addComponent(btnLast1))
                 .addContainerGap())
@@ -280,10 +261,10 @@ public class ViewBill extends javax.swing.JInternalFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 420, 40));
 
-        jTextField2.setText("Vehicle No");
-        jTextField2.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtVnoSearch.setText("Vehicle No");
+        txtVnoSearch.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField2MouseClicked(evt);
+                txtVnoSearchMouseClicked(evt);
             }
         });
 
@@ -300,7 +281,7 @@ public class ViewBill extends javax.swing.JInternalFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtVnoSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSearchv)
                 .addContainerGap(195, Short.MAX_VALUE))
@@ -310,7 +291,7 @@ public class ViewBill extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtVnoSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearchv))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
@@ -346,12 +327,6 @@ public class ViewBill extends javax.swing.JInternalFrame {
         refreshTable();
     }//GEN-LAST:event_btnPrevActionPerformed
 
-    private void cmbJumlahBarisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbJumlahBarisItemStateChanged
-        int jumlahBaris = Integer.parseInt(cmbJumlahBaris.getSelectedItem().toString());
-        pagination = new PaginationController(jumlahBaris, billcceJpaController.getBillcceCount());
-        refreshTable();
-    }//GEN-LAST:event_cmbJumlahBarisItemStateChanged
-
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         pagination.nextPage();
         refreshTable();
@@ -372,10 +347,6 @@ public class ViewBill extends javax.swing.JInternalFrame {
         refreshTable1();
     }//GEN-LAST:event_btnPrev1ActionPerformed
 
-    private void cmbJumlahBaris1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbJumlahBaris1ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbJumlahBaris1ItemStateChanged
-
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
         pagination1.nextPage();
         refreshTable1();
@@ -386,12 +357,12 @@ public class ViewBill extends javax.swing.JInternalFrame {
         refreshTable1();
     }//GEN-LAST:event_btnLast1ActionPerformed
 
-    private void jTextField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseClicked
-        jTextField2.setText("");
-    }//GEN-LAST:event_jTextField2MouseClicked
+    private void txtVnoSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtVnoSearchMouseClicked
+        txtVnoSearch.setText("");
+    }//GEN-LAST:event_txtVnoSearchMouseClicked
 
     private void btnSearchvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchvActionPerformed
-        String vNo = jTextField2.getText() != null ? jTextField2.getText() : "";
+        String vNo = txtVnoSearch.getText() != null ? txtVnoSearch.getText() : "";
         if(!vNo.isEmpty()){
             billcccList.clear();
             List<Billccc> billcccListVal = billcccJpaController.findBillcccByVno(vNo);
@@ -400,7 +371,7 @@ public class ViewBill extends javax.swing.JInternalFrame {
                 jTable1.updateUI();
             }else{
                 jTable1.updateUI();
-                jTextField2.requestFocus();
+                txtVnoSearch.requestFocus();
             }
 
             btnFirst.setEnabled(false);
@@ -415,7 +386,7 @@ public class ViewBill extends javax.swing.JInternalFrame {
                 jTable2.updateUI();
             }else{
                 jTable2.updateUI();
-                jTextField2.requestFocus();
+                txtVnoSearch.requestFocus();
             }
 
             btnFirst1.setEnabled(false);
@@ -461,8 +432,6 @@ public class ViewBill extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnPrev;
     private javax.swing.JButton btnPrev1;
     private javax.swing.JButton btnSearchv;
-    private javax.swing.JComboBox cmbJumlahBaris;
-    private javax.swing.JComboBox cmbJumlahBaris1;
     private javax.persistence.EntityManager entityManager;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -472,7 +441,7 @@ public class ViewBill extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField txtVnoSearch;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
     

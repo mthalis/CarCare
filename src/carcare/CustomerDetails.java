@@ -431,6 +431,17 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(null, "Successfuly edit record !");
                 }
                 clear();
+        
+                //hide Last Date & Last Milage in add case
+                jLabel4.setEnabled(false);
+                jLabel9.setEnabled(false);       
+                txtLastDate.setEnabled(false);
+                txtLastMilage.setEnabled(false);
+                txtVNo.setEnabled(true);
+
+                btnSaveUpdate.setText("Save");
+                actionType = "save";
+                
                 refreshTable();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -440,6 +451,16 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         clear();
+        
+        //hide Last Date & Last Milage in add case
+        jLabel4.setEnabled(false);
+        jLabel9.setEnabled(false);       
+        txtLastDate.setEnabled(false);
+        txtLastMilage.setEnabled(false);
+        txtVNo.setEnabled(true);
+        
+        btnSaveUpdate.setText("Save");
+        actionType = "save";
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
