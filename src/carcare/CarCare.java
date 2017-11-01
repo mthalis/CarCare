@@ -180,27 +180,39 @@ public class CarCare extends javax.swing.JFrame {
     }//GEN-LAST:event_openMenuItemActionPerformed
 
     private void cutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cutMenuItemActionPerformed
-        AddBilling billing = new AddBilling();
-        jDesktopPane1.add(billing);
-        billing.setVisible(true);
+        if(bill_window == 0){
+            AddBilling billing = new AddBilling();
+            jDesktopPane1.add(billing);
+            billing.setVisible(true);
+            bill_window = 1;
+        }
     }//GEN-LAST:event_cutMenuItemActionPerformed
 
     private void pasteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pasteMenuItemActionPerformed
-        ViewBill viewBill = new ViewBill();
-        jDesktopPane1.add(viewBill);
-        viewBill.setVisible(true);
+        if(bill_window == 0){
+            ViewBill viewBill = new ViewBill();
+            jDesktopPane1.add(viewBill);
+            viewBill.setVisible(true);
+            bill_window = 1;
+        }
     }//GEN-LAST:event_pasteMenuItemActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        CheckSheet checkSheet = new CheckSheet();
-        jDesktopPane1.add(checkSheet);
-        checkSheet.setVisible(true);
+        if(check_window == 0){
+            CheckSheet checkSheet = new CheckSheet();
+            jDesktopPane1.add(checkSheet);
+            checkSheet.setVisible(true);
+            check_window = 1;
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        ViewCheckSheet checkSheet = new ViewCheckSheet();
-        jDesktopPane1.add(checkSheet);
-        checkSheet.setVisible(true);
+        if(check_window == 0){
+            ViewCheckSheet checkSheet = new ViewCheckSheet();
+            jDesktopPane1.add(checkSheet);
+            checkSheet.setVisible(true);
+            check_window = 1;
+        }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**

@@ -5,6 +5,7 @@
  */
 package carcare;
 
+import static carcare.CarCare.check_window;
 import static carcare.CarCare.jDesktopPane1;
 import carcare.controller.ChkshtJpaController;
 import carcare.controller.PaginationController;
@@ -67,6 +68,23 @@ public class ViewCheckSheet extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setTitle("View Check Sheet");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         btnFirst.setText("First");
         btnFirst.addActionListener(new java.awt.event.ActionListener() {
@@ -174,6 +192,11 @@ public class ViewCheckSheet extends javax.swing.JInternalFrame {
         }
 
         jButton1.setText("Close");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -285,6 +308,15 @@ public class ViewCheckSheet extends javax.swing.JInternalFrame {
         jDesktopPane1.add(checkSheet);
         checkSheet.setVisible(true);
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dispose();
+        check_window = 0;
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        check_window = 0;
+    }//GEN-LAST:event_formInternalFrameClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

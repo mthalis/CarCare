@@ -5,6 +5,7 @@
  */
 package carcare;
 
+import static carcare.CarCare.bill_window;
 import carcare.controller.BillcccJpaController;
 import carcare.controller.BillcceJpaController;
 import carcare.controller.CustdataJpaController;
@@ -183,6 +184,23 @@ public class AddBilling extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setTitle("Add Billing");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CAR CARE CENTER", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 0, 51))); // NOI18N
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -694,7 +712,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
         });
         jPanel5.add(btnPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 90, -1));
 
-        btnExit.setText("Exit");
+        btnExit.setText("Close");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
@@ -922,6 +940,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         dispose();
+        bill_window = 0;
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
@@ -1212,6 +1231,10 @@ public class AddBilling extends javax.swing.JInternalFrame {
             txtName.requestFocus();
         }
     }//GEN-LAST:event_txtVNoFocusLost
+
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        bill_window = 0;
+    }//GEN-LAST:event_formInternalFrameClosed
 
     public void keyTyped(KeyEvent e) {
       char c = e.getKeyChar();

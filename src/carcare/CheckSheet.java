@@ -5,6 +5,7 @@
  */
 package carcare;
 
+import static carcare.CarCare.check_window;
 import carcare.controller.ChkshtJpaController;
 import carcare.controller.CustdataJpaController;
 import carcare.model.Chksht;
@@ -266,6 +267,23 @@ public class CheckSheet extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setTitle("Check Sheet");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -882,6 +900,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         dispose();
+        check_window = 0;
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
@@ -953,6 +972,10 @@ public class CheckSheet extends javax.swing.JInternalFrame {
 
         jTextField8.setText("");
     }//GEN-LAST:event_btnClearActionPerformed
+
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        check_window = 0;
+    }//GEN-LAST:event_formInternalFrameClosed
 
     public void keyTyped(KeyEvent e) {
       char c = e.getKeyChar();

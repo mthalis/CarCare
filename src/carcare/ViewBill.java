@@ -5,6 +5,7 @@
  */
 package carcare;
 
+import static carcare.CarCare.bill_window;
 import static carcare.CarCare.jDesktopPane1;
 import carcare.controller.BillcccJpaController;
 import carcare.controller.BillcceJpaController;
@@ -102,6 +103,23 @@ public class ViewBill extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setTitle("View Bill");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setPreferredSize(new java.awt.Dimension(862, 430));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -427,6 +445,10 @@ public class ViewBill extends javax.swing.JInternalFrame {
         jDesktopPane1.add(billing);
         billing.setVisible(true);
     }//GEN-LAST:event_jTable2MouseClicked
+
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        bill_window = 0;
+    }//GEN-LAST:event_formInternalFrameClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
