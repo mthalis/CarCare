@@ -47,9 +47,15 @@ public class BillcccJpaController implements Serializable {
             billccc.setBillNo((double)billcccNo);
             em.persist(billccc);
             
-            Query query = em.createQuery("UPDATE Custdata c set c.ldate = :ladte , c.lmilage = :lmilage where c.vno = :vno ");
-            query.setParameter("ladte", new Timestamp(System.currentTimeMillis()));
-            query.setParameter("lmilage", billccc.getMillage());
+            Query query1 = em.createQuery("Select c.fmilage, c.jdate from Custdata c where c.vno = :vno ");
+            query1.setParameter("vno", billccc.getVno());
+            List<Object[]> outPut = query1.getResultList();
+            
+            Query query = em.createQuery("UPDATE Custdata c set c.ldate = :ldate , c.lmilage = :lmilage, c.fmilage = :fmilage, c.jdate = :jadte where c.vno = :vno ");
+            query.setParameter("jadte", new Timestamp(System.currentTimeMillis()));
+            query.setParameter("fmilage", billccc.getMillage());
+            query.setParameter("ldate", outPut.get(0)[1]);
+            query.setParameter("lmilage",outPut.get(0)[0] );
             query.setParameter("vno", billccc.getVno());
             query.executeUpdate();
             

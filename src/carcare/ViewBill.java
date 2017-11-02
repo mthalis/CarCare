@@ -5,11 +5,11 @@
  */
 package carcare;
 
-import static carcare.CarCare.bill_window;
 import static carcare.CarCare.jDesktopPane1;
+import static carcare.CarCare.bill_window;
+import static carcare.CarCare.view_bill_window;
 import carcare.controller.BillcccJpaController;
 import carcare.controller.BillcceJpaController;
-import carcare.controller.LKController;
 import carcare.controller.PaginationController;
 import carcare.model.Billccc;
 import carcare.model.Billcce;
@@ -432,18 +432,24 @@ public class ViewBill extends javax.swing.JInternalFrame {
         int selectedRowIndex = jTable1.getSelectedRow();
         Billccc billccc = billcccList.get(jTable1.convertRowIndexToModel(selectedRowIndex));
         
-        Billing billing = new Billing(billccc);
-        jDesktopPane1.add(billing);
-        billing.setVisible(true);
+        if(view_bill_window == 0){
+            Billing billing = new Billing(billccc);
+            jDesktopPane1.add(billing);
+            billing.setVisible(true);
+            view_bill_window= 1;
+        }
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         int selectedRowIndex = jTable2.getSelectedRow();
         Billcce billcce = billcceList.get(jTable2.convertRowIndexToModel(selectedRowIndex));
         
-        Billing billing = new Billing(billcce);
-        jDesktopPane1.add(billing);
-        billing.setVisible(true);
+        if(view_bill_window == 0){
+            Billing billing = new Billing(billcce);
+            jDesktopPane1.add(billing);
+            billing.setVisible(true);
+            view_bill_window= 1;
+        }
     }//GEN-LAST:event_jTable2MouseClicked
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed

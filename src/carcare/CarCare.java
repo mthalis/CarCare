@@ -25,8 +25,8 @@ public class CarCare extends javax.swing.JFrame {
     public static int cus_window = 0;
     public static int bill_window = 0;
     public static int check_window = 0;
-    public static int window = 0;
-    
+    public static int view_bill_window = 0;
+    public static int view_check_window = 0;
     
     public CarCare() {
         initComponents();

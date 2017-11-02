@@ -7,6 +7,7 @@ package carcare;
 
 import static carcare.CarCare.check_window;
 import static carcare.CarCare.jDesktopPane1;
+import static carcare.CarCare.view_check_window;
 import carcare.controller.ChkshtJpaController;
 import carcare.controller.PaginationController;
 import carcare.model.Chksht;
@@ -304,9 +305,12 @@ public class ViewCheckSheet extends javax.swing.JInternalFrame {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         int selectedRowIndex = jTable1.getSelectedRow();
         Chksht chksht= chkshtList.get(jTable1.convertRowIndexToModel(selectedRowIndex));
-        CheckSheet checkSheet = new CheckSheet(chksht);
-        jDesktopPane1.add(checkSheet);
-        checkSheet.setVisible(true);
+        if(view_check_window == 0){
+            CheckSheet checkSheet = new CheckSheet(chksht);
+            jDesktopPane1.add(checkSheet);
+            checkSheet.setVisible(true);
+            view_check_window = 1;
+        }
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

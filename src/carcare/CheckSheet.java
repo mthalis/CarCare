@@ -6,6 +6,7 @@
 package carcare;
 
 import static carcare.CarCare.check_window;
+import static carcare.CarCare.view_check_window;
 import carcare.controller.ChkshtJpaController;
 import carcare.controller.CustdataJpaController;
 import carcare.model.Chksht;
@@ -901,6 +902,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         dispose();
         check_window = 0;
+        view_check_window = 0;
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
@@ -974,7 +976,8 @@ public class CheckSheet extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
-        check_window = 0;
+        check_window = 0;// we have problem here
+        view_check_window = 0;
     }//GEN-LAST:event_formInternalFrameClosed
 
     public void keyTyped(KeyEvent e) {
