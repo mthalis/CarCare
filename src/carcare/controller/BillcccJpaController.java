@@ -10,6 +10,7 @@ import carcare.model.Billccc;
 import carcare.model.Logfile;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -157,15 +158,31 @@ public class BillcccJpaController implements Serializable {
         }
     }
     
-    public List<Billccc> findBillcccByVno(String Vno) {
+    public List<Billccc> findBillcccByVno(String vno) {
         EntityManager em = getEntityManager();
         try {
             Query query = em.createQuery("SELECT c FROM Billccc c WHERE c.vno = :vno order by c.billNo desc", Billccc.class);
-            query.setParameter("vno", Vno);
+            query.setParameter("vno", vno);
             return query.getResultList();
         } finally {
             em.close();
         }
+    }
+    
+    public Object[] getBillCCCAmountMilage(String vno, Date date){
+        System.out.println("sssssss " + vno +"ss"+date);
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT c.amount, c.millage FROM Billccc c WHERE c.vno = :vno");
+            query.setParameter("vno", vno);
+            //query.setParameter("date", date);
+            if(null !=query.getResultList() && !query.getResultList().isEmpty()){
+                return (Object[]) query.getResultList().get(0);
+            }
+        } finally {
+            em.close();
+        }
+        return null;
     }
     
 }

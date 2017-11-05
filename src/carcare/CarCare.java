@@ -198,16 +198,16 @@ public class CarCare extends javax.swing.JFrame {
     }//GEN-LAST:event_pasteMenuItemActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        if(check_window == 0){
+        if(view_check_window == 0 && check_window == 0){
             CheckSheet checkSheet = new CheckSheet();
             jDesktopPane1.add(checkSheet);
             checkSheet.setVisible(true);
-            check_window = 1;
+            view_check_window = 1;
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        if(check_window == 0){
+        if(view_check_window == 0 && check_window == 0){
             ViewCheckSheet checkSheet = new ViewCheckSheet();
             jDesktopPane1.add(checkSheet);
             checkSheet.setVisible(true);

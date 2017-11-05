@@ -7,6 +7,8 @@ package carcare;
 
 import static carcare.CarCare.check_window;
 import static carcare.CarCare.view_check_window;
+import carcare.controller.BillcccJpaController;
+import carcare.controller.BillcceJpaController;
 import carcare.controller.ChkshtJpaController;
 import carcare.controller.CustdataJpaController;
 import carcare.model.Chksht;
@@ -29,6 +31,8 @@ public class CheckSheet extends javax.swing.JInternalFrame {
 
     CustdataJpaController custdataJpaController = new CustdataJpaController(CarCare.EMF);
     ChkshtJpaController chkshtJpaController = new ChkshtJpaController(CarCare.EMF);
+    BillcccJpaController billcccJpaController = new BillcccJpaController(CarCare.EMF);
+    BillcceJpaController billcceJpaController = new BillcceJpaController(CarCare.EMF);
     boolean vNoEventFire = true;
     
     public CheckSheet() {
@@ -38,7 +42,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         
         Date date = new Date();
-        jDateChooser1.setDate(date);
+        txtDate1.setDate(date);
         
         DocumentFilter filter = new UppercaseDocumentFilter ();
         ((AbstractDocument) txtVNo.getDocument()).setDocumentFilter(filter);
@@ -61,7 +65,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         
         txtVNo.setEnabled(false);
         txtVNo.setText(checkSheet.getCustdata().getVno());
-        jDateChooser1.setDate(checkSheet.getDate());
+        txtDate1.setDate(checkSheet.getDate());
         jTextField4.setText(Double.toString(checkSheet.getMilage()));
         
         
@@ -253,7 +257,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        txtDate1 = new com.toedter.calendar.JDateChooser();
         jTextField8 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         btnClear = new javax.swing.JButton();
@@ -617,7 +621,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
 
         jLabel9.setText("Next Milage Km");
         jPanel9.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 110, 21));
-        jPanel9.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 112, 25));
+        jPanel9.add(txtDate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 112, 25));
 
         jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -699,8 +703,17 @@ public class CheckSheet extends javax.swing.JInternalFrame {
             String vNo = txtVNo.getText();
             List<Custdata> cusdate = null;
             if(vNo != null && !vNo.isEmpty()){
+                System.out.println("xxx"+txtDate1.getDate());
                 cusdate = custdataJpaController.findCustdataByVno(vNo);
-
+                Object[] outPut = billcccJpaController.getBillCCCAmountMilage(vNo, new Date());
+                if(null != outPut && outPut.length != 0){
+                    jTextField4.setText(outPut[1].toString());
+                    jTextField8.setText(outPut[0].toString());
+                    int milage = (int) Double.parseDouble(outPut[1].toString());
+                    int newMilage = milage + 6000;
+                    jTextField5.setText(Integer.toString(newMilage));
+                }
+                
                 if(cusdate != null && cusdate.size() > 0){
 
                     Custdata cus = cusdate.get(0);
@@ -710,6 +723,9 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                     txtMilage.setText(Double.toString(cus.getLmilage()));
                     txtDate.setDate(cus.getLdate());
                     //txtMilage.requestFocus();
+                    
+                    
+                    
                 }else{
                     JOptionPane.showMessageDialog(jPanel1, "Vehicle number did not find !");
                     txtVNo.setText("");
@@ -776,7 +792,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
             Chksht checkSheet = new Chksht();
             
             //checkSheet.setVno(txtVNo.getText());
-            checkSheet.setDate(jDateChooser1.getDate());
+            checkSheet.setDate(txtDate1.getDate());
             checkSheet.setMilage(Double.parseDouble(jTextField4.getText()));
             checkSheet.setNmilage(Double.parseDouble(jTextField5.getText()));
             
@@ -901,7 +917,6 @@ public class CheckSheet extends javax.swing.JInternalFrame {
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         dispose();
-        check_window = 0;
         view_check_window = 0;
     }//GEN-LAST:event_btnCloseActionPerformed
 
@@ -912,7 +927,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         txtMilage.setText("");
         txtPhone.setText("");
         txtDate.setDate(null);
-        jDateChooser1.setDate(new Date());
+        txtDate1.setDate(new Date());
         jTextField4.setText("");
         jTextField5.setText("");
             
@@ -976,7 +991,6 @@ public class CheckSheet extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
-        check_window = 0;// we have problem here
         view_check_window = 0;
     }//GEN-LAST:event_formInternalFrameClosed
 
@@ -997,7 +1011,6 @@ public class CheckSheet extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1104,6 +1117,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField txtAddr;
     private com.toedter.calendar.JDateChooser txtDate;
+    private com.toedter.calendar.JDateChooser txtDate1;
     private javax.swing.JTextField txtMilage;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPhone;

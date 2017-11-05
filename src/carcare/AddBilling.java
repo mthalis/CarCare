@@ -738,6 +738,8 @@ public class AddBilling extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Millage");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 100, 72, 25));
+
+        txtDate.setDateFormatString("yyyy MMM dd");
         jPanel1.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 120, 25));
 
         txtVNo.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -944,6 +946,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
+        System.out.println(txtDate.getDate()  + "eee");
         if(txtVNo.getText() == null || txtVNo.getText().equals("")){
             JOptionPane.showMessageDialog(jPanel1, "Please enter Vehicle no !");
             txtVNo.requestFocus();

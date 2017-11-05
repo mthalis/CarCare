@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="16c86867-cc8d-471c-b025-971dc6f1ee0c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     billccc.`BILL_NO` AS billccc_BILL_NO,
+     billccc.`DATE` AS billccc_DATE,
+     billccc.`VNO` AS billccc_VNO,
+     billccc.`MILLAGE` AS billccc_MILLAGE,
+     billccc.`NAME` AS billccc_NAME,
+     billccc.`ADDRESS` AS billccc_ADDRESS,
+     billccc.`PHONE` AS billccc_PHONE,
+     billccc.`ChasiNo` AS billccc_ChasiNo,
+     billccc.`CHK_ALIGN` AS billccc_CHK_ALIGN,
+     billccc.`AJST_TOE` AS billccc_AJST_TOE,
+     billccc.`CAMBER` AS billccc_CAMBER,
+     billccc.`CASTER` AS billccc_CASTER,
+     billccc.`B_HIGHT` AS billccc_B_HIGHT,
+     billccc.`RE_TOE` AS billccc_RE_TOE,
+     billccc.`RE_CAMBER` AS billccc_RE_CAMBER,
+     billccc.`ANY_OTHER` AS billccc_ANY_OTHER,
+     billccc.`W_BLNCING` AS billccc_W_BLNCING,
+     billccc.`WEIGHTS` AS billccc_WEIGHTS,
+     billccc.`SUS_TEST` AS billccc_SUS_TEST,
+     billccc.`H_L_TEST` AS billccc_H_L_TEST,
+     billccc.`R` AS billccc_R,
+     billccc.`FREE_ALIGN` AS billccc_FREE_ALIGN,
+     billccc.`FREE_TOE` AS billccc_FREE_TOE,
+     billccc.`FREE_CAMB` AS billccc_FREE_CAMB,
+     billccc.`FREE_CAST` AS billccc_FREE_CAST,
+     billccc.`FREE_BHGT` AS billccc_FREE_BHGT,
+     billccc.`FREE_R_TOE` AS billccc_FREE_R_TOE,
+     billccc.`FREE_R_CAM` AS billccc_FREE_R_CAM,
+     billccc.`FREE_ANYO` AS billccc_FREE_ANYO,
+     billccc.`FREE_WB` AS billccc_FREE_WB,
+     billccc.`FREE_WEIT` AS billccc_FREE_WEIT,
+     billccc.`FREE_ST` AS billccc_FREE_ST,
+     billccc.`FREE_HLT` AS billccc_FREE_HLT,
+     billccc.`Amount` AS billccc_Amount,
+     billccc.`DISCOUNT` AS billccc_DISCOUNT,
+     billccc.`ADDBY` AS billccc_ADDBY
+FROM
+     `billccc` billccc
+
+where billccc.`VNO` = 'BCE-9564']]>
+	</queryString>
+	<field name="billccc_BILL_NO" class="java.lang.Double"/>
+	<field name="billccc_DATE" class="java.sql.Timestamp"/>
+	<field name="billccc_VNO" class="java.lang.String"/>
+	<field name="billccc_MILLAGE" class="java.lang.Double"/>
+	<field name="billccc_NAME" class="java.lang.String"/>
+	<field name="billccc_ADDRESS" class="java.lang.String"/>
+	<field name="billccc_PHONE" class="java.lang.String"/>
+	<field name="billccc_ChasiNo" class="java.lang.String"/>
+	<field name="billccc_CHK_ALIGN" class="java.lang.Integer"/>
+	<field name="billccc_AJST_TOE" class="java.lang.Integer"/>
+	<field name="billccc_CAMBER" class="java.lang.Integer"/>
+	<field name="billccc_CASTER" class="java.lang.Integer"/>
+	<field name="billccc_B_HIGHT" class="java.lang.Integer"/>
+	<field name="billccc_RE_TOE" class="java.lang.Integer"/>
+	<field name="billccc_RE_CAMBER" class="java.lang.Integer"/>
+	<field name="billccc_ANY_OTHER" class="java.lang.Integer"/>
+	<field name="billccc_W_BLNCING" class="java.lang.Integer"/>
+	<field name="billccc_WEIGHTS" class="java.lang.Integer"/>
+	<field name="billccc_SUS_TEST" class="java.lang.Integer"/>
+	<field name="billccc_H_L_TEST" class="java.lang.Integer"/>
+	<field name="billccc_R" class="java.lang.Boolean"/>
+	<field name="billccc_FREE_ALIGN" class="java.lang.Boolean"/>
+	<field name="billccc_FREE_TOE" class="java.lang.Boolean"/>
+	<field name="billccc_FREE_CAMB" class="java.lang.Boolean"/>
+	<field name="billccc_FREE_CAST" class="java.lang.Boolean"/>
+	<field name="billccc_FREE_BHGT" class="java.lang.Boolean"/>
+	<field name="billccc_FREE_R_TOE" class="java.lang.Boolean"/>
+	<field name="billccc_FREE_R_CAM" class="java.lang.Boolean"/>
+	<field name="billccc_FREE_ANYO" class="java.lang.Boolean"/>
+	<field name="billccc_FREE_WB" class="java.lang.Boolean"/>
+	<field name="billccc_FREE_WEIT" class="java.lang.Boolean"/>
+	<field name="billccc_FREE_ST" class="java.lang.Boolean"/>
+	<field name="billccc_FREE_HLT" class="java.lang.Boolean"/>
+	<field name="billccc_Amount" class="java.lang.Integer"/>
+	<field name="billccc_DISCOUNT" class="java.lang.Integer"/>
+	<field name="billccc_ADDBY" class="java.lang.String"/>
+	<group name="billccc_BILL_NO">
+		<groupExpression><![CDATA[$F{billccc_BILL_NO}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="112" y="9" width="100" height="20" uuid="66ddae6d-158d-4e00-a0aa-74f2516b4c19"/>
+				<text><![CDATA[Invoice]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="160" splitType="Stretch">
+			<textField>
+				<reportElement x="142" y="30" width="100" height="20" uuid="586cf3e7-3606-46d6-af87-d6634046ca70"/>
+				<textFieldExpression><![CDATA[$F{billccc_VNO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="28" y="30" width="100" height="20" uuid="39fba261-d8dd-4e44-8bca-9a47945ec40f"/>
+				<text><![CDATA[Veh. No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="7" width="100" height="20" uuid="cdb64579-870b-46ea-891c-d58f40935c15"/>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="142" y="7" width="100" height="20" uuid="42fb06b5-ce3a-4494-9fec-7fa11e40f202"/>
+				<textFieldExpression><![CDATA[
+new SimpleDateFormat("dd/MM/yyyy").format($F{billccc_DATE})]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="437" y="10" width="100" height="20" uuid="cfa7742f-9411-4bfb-b1a0-dd7794f04e8c"/>
+				<textFieldExpression><![CDATA[$F{billccc_BILL_NO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="142" y="53" width="100" height="20" uuid="85abe481-c16a-4cc1-afd7-0f9267df037a"/>
+				<textFieldExpression><![CDATA[$F{billccc_MILLAGE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="28" y="53" width="100" height="20" uuid="bfea285d-d04a-4beb-9d14-5044b01499c5"/>
+				<text><![CDATA[Milage]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="142" y="83" width="100" height="20" uuid="7ea623b9-0526-4143-a778-da805032cef6"/>
+				<textFieldExpression><![CDATA[$F{billccc_NAME}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="28" y="83" width="100" height="20" uuid="10227c0c-4360-424e-a18f-2956055bf9be"/>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
