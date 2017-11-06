@@ -17,6 +17,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -701,18 +702,13 @@ public class CheckSheet extends javax.swing.JInternalFrame {
     private void txtVNoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtVNoFocusLost
         if(vNoEventFire){
             String vNo = txtVNo.getText();
-            List<Custdata> cusdate = null;
             if(vNo != null && !vNo.isEmpty()){
-                System.out.println("xxx"+txtDate1.getDate());
-                cusdate = custdataJpaController.findCustdataByVno(vNo);
-                Object[] outPut = billcccJpaController.getBillCCCAmountMilage(vNo, new Date());
-                if(null != outPut && outPut.length != 0){
-                    jTextField4.setText(outPut[1].toString());
-                    jTextField8.setText(outPut[0].toString());
-                    int milage = (int) Double.parseDouble(outPut[1].toString());
-                    int newMilage = milage + 6000;
-                    jTextField5.setText(Integer.toString(newMilage));
-                }
+                
+                SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
+                String formatDate = formater.format(txtDate1.getDate());
+                
+                List<Custdata> cusdate = custdataJpaController.findCustdataByVno(vNo);
+                Object[] outPut = billcccJpaController.getBillCCCAmountMilage(vNo, formatDate);
                 
                 if(cusdate != null && cusdate.size() > 0){
 
@@ -724,6 +720,13 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                     txtDate.setDate(cus.getLdate());
                     //txtMilage.requestFocus();
                     
+                    if(null != outPut && outPut.length != 0){
+                        jTextField4.setText(outPut[1].toString());
+                        jTextField8.setText(outPut[0].toString());
+                        int milage = (int) Double.parseDouble(outPut[1].toString());
+                        int newMilage = milage + 6000;
+                        jTextField5.setText(Integer.toString(newMilage));
+                    }
                     
                     
                 }else{

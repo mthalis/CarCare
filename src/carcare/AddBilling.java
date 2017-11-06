@@ -725,11 +725,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Date");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 10, 64, 25));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 40, 64, 25));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("V/ No");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 40, 72, 25));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 10, 72, 25));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Chasi No");
@@ -738,16 +738,14 @@ public class AddBilling extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Millage");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 100, 72, 25));
-
-        txtDate.setDateFormatString("yyyy MMM dd");
-        jPanel1.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 120, 25));
+        jPanel1.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 120, 25));
 
         txtVNo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtVNoFocusLost(evt);
             }
         });
-        jPanel1.add(txtVNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 120, 25));
+        jPanel1.add(txtVNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 120, 25));
         jPanel1.add(txtChashiNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 120, 25));
         jPanel1.add(txtMilage, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 120, 25));
 
@@ -946,7 +944,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
-        System.out.println(txtDate.getDate()  + "eee");
+        
         if(txtVNo.getText() == null || txtVNo.getText().equals("")){
             JOptionPane.showMessageDialog(jPanel1, "Please enter Vehicle no !");
             txtVNo.requestFocus();
