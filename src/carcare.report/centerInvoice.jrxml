@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="16c86867-cc8d-471c-b025-971dc6f1ee0c">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CarCare Center Invoice" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="16c86867-cc8d-471c-b025-971dc6f1ee0c">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="9"/>
+	<parameter name="vno" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
      billccc.`BILL_NO` AS billccc_BILL_NO,
@@ -43,8 +44,7 @@
      billccc.`ADDBY` AS billccc_ADDBY
 FROM
      `billccc` billccc
-
-where billccc.`VNO` = 'BCE-9564']]>
+where billccc.`VNO` = $P{vno}]]>
 	</queryString>
 	<field name="billccc_BILL_NO" class="java.lang.Double"/>
 	<field name="billccc_DATE" class="java.sql.Timestamp"/>
@@ -94,48 +94,53 @@ where billccc.`VNO` = 'BCE-9564']]>
 	<pageHeader>
 		<band height="35" splitType="Stretch">
 			<staticText>
-				<reportElement x="112" y="9" width="100" height="20" uuid="66ddae6d-158d-4e00-a0aa-74f2516b4c19"/>
+				<reportElement x="120" y="0" width="100" height="20" uuid="66ddae6d-158d-4e00-a0aa-74f2516b4c19"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Invoice]]></text>
 			</staticText>
+			<rectangle>
+				<reportElement x="341" y="0" width="100" height="20" uuid="7f364ffd-d619-4443-87a8-85e31ef9d4cb"/>
+			</rectangle>
+			<textField pattern="###0">
+				<reportElement x="378" y="0" width="100" height="20" uuid="cfa7742f-9411-4bfb-b1a0-dd7794f04e8c"/>
+				<textFieldExpression><![CDATA[$F{billccc_BILL_NO}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="160" splitType="Stretch">
 			<textField>
-				<reportElement x="142" y="30" width="100" height="20" uuid="586cf3e7-3606-46d6-af87-d6634046ca70"/>
+				<reportElement x="120" y="17" width="100" height="17" uuid="586cf3e7-3606-46d6-af87-d6634046ca70"/>
 				<textFieldExpression><![CDATA[$F{billccc_VNO}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="28" y="30" width="100" height="20" uuid="39fba261-d8dd-4e44-8bca-9a47945ec40f"/>
+				<reportElement x="70" y="17" width="50" height="17" uuid="39fba261-d8dd-4e44-8bca-9a47945ec40f"/>
 				<text><![CDATA[Veh. No]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="28" y="7" width="100" height="20" uuid="cdb64579-870b-46ea-891c-d58f40935c15"/>
+				<reportElement x="70" y="0" width="50" height="17" uuid="cdb64579-870b-46ea-891c-d58f40935c15"/>
 				<text><![CDATA[Date]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="142" y="7" width="100" height="20" uuid="42fb06b5-ce3a-4494-9fec-7fa11e40f202"/>
-				<textFieldExpression><![CDATA[
-new SimpleDateFormat("dd/MM/yyyy").format($F{billccc_DATE})]]></textFieldExpression>
-			</textField>
-			<textField pattern="###0">
-				<reportElement x="437" y="10" width="100" height="20" uuid="cfa7742f-9411-4bfb-b1a0-dd7794f04e8c"/>
-				<textFieldExpression><![CDATA[$F{billccc_BILL_NO}]]></textFieldExpression>
+				<reportElement x="120" y="0" width="100" height="17" uuid="42fb06b5-ce3a-4494-9fec-7fa11e40f202"/>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{billccc_DATE})]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="142" y="53" width="100" height="20" uuid="85abe481-c16a-4cc1-afd7-0f9267df037a"/>
+				<reportElement x="120" y="34" width="100" height="17" uuid="85abe481-c16a-4cc1-afd7-0f9267df037a"/>
 				<textFieldExpression><![CDATA[$F{billccc_MILLAGE}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="28" y="53" width="100" height="20" uuid="bfea285d-d04a-4beb-9d14-5044b01499c5"/>
+				<reportElement x="70" y="34" width="50" height="17" uuid="bfea285d-d04a-4beb-9d14-5044b01499c5"/>
 				<text><![CDATA[Milage]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="142" y="83" width="100" height="20" uuid="7ea623b9-0526-4143-a778-da805032cef6"/>
+				<reportElement x="120" y="51" width="100" height="17" uuid="7ea623b9-0526-4143-a778-da805032cef6"/>
 				<textFieldExpression><![CDATA[$F{billccc_NAME}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="28" y="83" width="100" height="20" uuid="10227c0c-4360-424e-a18f-2956055bf9be"/>
+				<reportElement x="70" y="51" width="50" height="17" uuid="10227c0c-4360-424e-a18f-2956055bf9be"/>
 				<text><![CDATA[Name]]></text>
 			</staticText>
 		</band>

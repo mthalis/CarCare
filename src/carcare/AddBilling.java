@@ -12,16 +12,27 @@ import carcare.controller.CustdataJpaController;
 import carcare.model.Billccc;
 import carcare.model.Billcce;
 import carcare.model.Custdata;
+import db.ConnectionManager;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.HeadlessException;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.DocumentFilter;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.swing.JRViewer;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -32,6 +43,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
     CustdataJpaController custdataJpaController = new CustdataJpaController(CarCare.EMF);
     BillcccJpaController billcccJpaController = new BillcccJpaController(CarCare.EMF);
     BillcceJpaController billcceJpaController = new BillcceJpaController(CarCare.EMF);
+    static final Logger logger = Logger.getLogger(AddBilling.class);
     
     public AddBilling() {
         initComponents();
@@ -990,7 +1002,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
             
             billccc.setAmount((txtCCCTotal.getText() != null && !txtCCCTotal.getText().isEmpty()) ? Integer.parseInt(txtCCCTotal.getText()) : 0);            
             if(billccc.getAmount() > 0 ){
-                billcccJpaController.create(billccc);
+               // billcccJpaController.create(billccc);
             }
             
             Billcce billcce = new Billcce();
@@ -1037,12 +1049,42 @@ public class AddBilling extends javax.swing.JInternalFrame {
             billcce.setAmount((txtCCETotal.getText() != null && !txtCCETotal.getText().isEmpty()) ? Integer.parseInt(txtCCETotal.getText()) : 0);                        
                         
             if(billcce.getAmount() > 0 ){
-                billcceJpaController.create(billcce);                
+                //billcceJpaController.create(billcce);                
             }
             
             if(billcce.getAmount() > 0 || billccc.getAmount() > 0 ){
-                JOptionPane.showMessageDialog(jPanel1, "Successfuly save record !");
+             
                 dispose();
+                
+                try{
+            String title = "Inventory Details Report";
+            String reportSource = "./src/carcare.report/centerInvoice.jasper";
+            Map<String, Object> params = new HashMap();
+            params.put("reportName", title);
+            params.put("vno", txtVNo.getText());
+            
+            JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
+                    ConnectionManager.getConnection());
+            
+            JRViewer jv = new JRViewer(jasperPrint);
+            JFrame jf = new JFrame();
+            jf.getContentPane().add(jv);
+            jf.setTitle(title);
+            
+            jf.validate();
+            jf.setVisible(true);
+            jf.setSize(new Dimension(900,700));
+            jf.setLocation(300,0);
+            jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            
+        }catch(Exception e){
+            logger.fatal("Error Occured while generating InventoryReport " + e);
+        }
+                
+                
+                
+                JOptionPane.showMessageDialog(jPanel1, "Successfuly save record !");
+                
             }else{
                 JOptionPane.showMessageDialog(jPanel1, "Bill amount Zero !");
             }
