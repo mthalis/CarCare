@@ -5,16 +5,25 @@
  */
 package carcare;
 
+import static carcare.AddBilling.logger;
 import carcare.controller.CustdataJpaController;
 import static carcare.CarCare.view_bill_window;
 import carcare.model.Billccc;
 import carcare.model.Billcce;
+import db.ConnectionManager;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.swing.JRViewer;
 
 /**
  *
@@ -683,6 +692,11 @@ public class Billing extends javax.swing.JInternalFrame {
         jPanel5.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 70, -1));
 
         btnPrint.setText("Re Print");
+        btnPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintActionPerformed(evt);
+            }
+        });
         jPanel5.add(btnPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 90, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -736,6 +750,39 @@ public class Billing extends javax.swing.JInternalFrame {
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
         view_bill_window = 0;
     }//GEN-LAST:event_formInternalFrameClosed
+
+    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
+        try{
+            dispose();
+            
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String formatDate = format.format( dateBill.getDate());
+            System.out.println("hoooo -> " + formatDate);
+            String title = "Inventory Details Report";
+            String reportSource = "./src/carcare.report/centerInvoice.jasper";
+            Map<String, Object> params = new HashMap();
+            params.put("reportName", title);
+            params.put("vno", txtVNo.getText());
+            params.put("date", formatDate);
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
+                    ConnectionManager.getConnection());
+
+            JRViewer jv = new JRViewer(jasperPrint);
+            JFrame jf = new JFrame();
+            jf.getContentPane().add(jv);
+            jf.setTitle(title);
+
+            jf.validate();
+            jf.setVisible(true);
+            jf.setSize(new Dimension(900,700));
+            jf.setLocation(300,0);
+            jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        }catch(Exception e){
+            logger.fatal("Error Occured while generating InventoryReport " + e);
+        }
+    }//GEN-LAST:event_btnPrintActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;

@@ -2,8 +2,30 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CarCare Center Invoice" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="16c86867-cc8d-471c-b025-971dc6f1ee0c">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="9"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="7d405209-6412-44ad-bd01-7282623c80d8"/>
 	<parameter name="vno" class="java.lang.String"/>
+	<parameter name="date" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
      billccc.`BILL_NO` AS billccc_BILL_NO,
@@ -44,7 +66,7 @@
      billccc.`ADDBY` AS billccc_ADDBY
 FROM
      `billccc` billccc
-where billccc.`VNO` = $P{vno}]]>
+where billccc.`VNO` = $P{vno} and billccc.`DATE` = $P{date}]]>
 	</queryString>
 	<field name="billccc_BILL_NO" class="java.lang.Double"/>
 	<field name="billccc_DATE" class="java.sql.Timestamp"/>
@@ -89,7 +111,15 @@ where billccc.`VNO` = $P{vno}]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="180" y="14" width="100" height="20" uuid="74266c3a-466c-4f21-aa6e-c198462f7982"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CENTER]]></text>
+			</staticText>
+		</band>
 	</title>
 	<pageHeader>
 		<band height="35" splitType="Stretch">
@@ -143,10 +173,137 @@ where billccc.`VNO` = $P{vno}]]>
 				<reportElement x="70" y="51" width="50" height="17" uuid="10227c0c-4360-424e-a18f-2956055bf9be"/>
 				<text><![CDATA[Name]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="70" y="105" width="100" height="20" uuid="e9a0a108-85c8-4336-be48-525a1683bcd8"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Description]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="105" width="81" height="20" uuid="3e16f990-2d7d-41a0-823c-657546e4acb2"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount Rs.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="140" width="126" height="20" uuid="5d876538-c88a-492d-8e30-4fc9d9ce67e2"/>
+				<text><![CDATA[Checking Align]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="220" y="140" width="81" height="20" uuid="ff800277-e4f0-42e5-8ca8-6856064da9ca"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[($F{billccc_CHK_ALIGN} != 0 ? $F{billccc_CHK_ALIGN}.toString() : "-" )]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="226" splitType="Stretch">
+			<staticText>
+				<reportElement x="70" y="60" width="126" height="20" uuid="7c722b4b-8f18-4289-91db-75c34ec4e755"/>
+				<text><![CDATA[Body Height]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="0" width="126" height="20" uuid="6278552f-4b25-47ea-9cd3-25b226a95339"/>
+				<text><![CDATA[Adjust Toe]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="20" width="126" height="20" uuid="92de70ba-3afc-445c-af15-4f04f7d316d7"/>
+				<text><![CDATA[Camber]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="40" width="126" height="20" uuid="0dab2291-d8f9-42d2-af9f-d5edf3631385"/>
+				<text><![CDATA[Caster]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="80" width="126" height="20" uuid="3aa67fb3-de9c-42d6-935e-47893c7f5289"/>
+				<text><![CDATA[Rear Toe]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="100" width="126" height="20" uuid="67aa9bc7-2875-493c-b036-63268624185e"/>
+				<text><![CDATA[Rear Camber]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="120" width="126" height="20" uuid="50d2979f-ffb2-4355-9e24-25561cccefab"/>
+				<text><![CDATA[Any Other]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="140" width="126" height="20" uuid="1c085740-cefc-4d17-94a5-1e30f3b6b7fd"/>
+				<text><![CDATA[Susp. Test]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="161" width="126" height="20" uuid="964624bf-4bbe-4075-914a-c16ed3624f81"/>
+				<text><![CDATA[Head Light Test]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="341" y="194" width="100" height="20" uuid="b5373055-0a08-4691-852e-0c99e6229def"/>
+				<textFieldExpression><![CDATA[(6000+$F{billccc_MILLAGE})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="0" width="81" height="20" uuid="5521ce1e-9b8b-4c11-9dd9-01e477018274"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[($F{billccc_AJST_TOE} != 0 ? $F{billccc_AJST_TOE}.toString() : "-" )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="20" width="81" height="20" uuid="e075d094-ef47-4d7e-bb3f-d6095ef5712b"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[($F{billccc_CAMBER} != 0 ? $F{billccc_CAMBER}.toString() : "-" )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="40" width="81" height="20" uuid="20d44c1d-53a8-4027-aba4-c2325fb4ab95"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[($F{billccc_CASTER} != 0 ? $F{billccc_CASTER}.toString() : "-" )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="60" width="81" height="20" uuid="2e2f9352-911b-4fac-8b7b-953aa6017d7e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[($F{billccc_B_HIGHT} != 0 ? $F{billccc_B_HIGHT}.toString() : "-" )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="80" width="81" height="20" uuid="8e628721-18b1-409a-8306-56e19789c1b8"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[($F{billccc_RE_TOE} != 0 ? $F{billccc_RE_TOE}.toString() : "-" )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="100" width="81" height="20" uuid="28840b68-cc3c-45a2-95cd-1797a81631bc"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[($F{billccc_RE_CAMBER} != 0 ? $F{billccc_RE_CAMBER}.toString() : "-" )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="120" width="81" height="20" uuid="1b41ddf2-3231-4405-8041-02f23473438b"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[($F{billccc_ANY_OTHER} != 0 ? $F{billccc_ANY_OTHER}.toString() : "-" )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="140" width="81" height="20" uuid="dc2fe1bb-a213-4601-bab4-b5cdd305252b"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[($F{billccc_SUS_TEST} != 0 ? $F{billccc_SUS_TEST}.toString() : "-" )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="160" width="81" height="20" uuid="40005fa5-e816-4166-becd-b2fa83dc2982"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[($F{billccc_H_L_TEST} != 0 ? $F{billccc_H_L_TEST}.toString() : "-" )]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="70" y="194" width="126" height="20" uuid="c654dc31-74c8-47e3-853f-eefde697bc88"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="220" y="194" width="81" height="20" uuid="2faee89c-c3f1-4bb5-8d19-17a3fadcba87"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{billccc_Amount}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="210" y="181" width="110" height="1" uuid="c09c8210-69ea-436a-bc62-69b8ae7b9b9c"/>
+			</line>
+			<line>
+				<reportElement x="210" y="214" width="110" height="1" uuid="bd85ee3a-8982-4dcd-8165-9d182ab9730c"/>
+			</line>
+		</band>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>

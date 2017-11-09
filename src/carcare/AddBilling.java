@@ -759,6 +759,12 @@ public class AddBilling extends javax.swing.JInternalFrame {
         });
         jPanel1.add(txtVNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 120, 25));
         jPanel1.add(txtChashiNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 120, 25));
+
+        txtMilage.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMilageKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtMilage, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 120, 25));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -1057,31 +1063,30 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 dispose();
                 
                 try{
-            String title = "Inventory Details Report";
-            String reportSource = "./src/carcare.report/centerInvoice.jasper";
-            Map<String, Object> params = new HashMap();
-            params.put("reportName", title);
-            params.put("vno", txtVNo.getText());
+                    String title = "Inventory Details Report";
+                    String reportSource = "./src/carcare.report/centerInvoice.jasper";
+                    Map<String, Object> params = new HashMap();
+                    params.put("reportName", title);
+                    params.put("vno", txtVNo.getText());
+                    params.put("date", txtDate.getDate());
+
+                    JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
+                            ConnectionManager.getConnection());
+
+                    JRViewer jv = new JRViewer(jasperPrint);
+                    JFrame jf = new JFrame();
+                    jf.getContentPane().add(jv);
+                    jf.setTitle(title);
+
+                    jf.validate();
+                    jf.setVisible(true);
+                    jf.setSize(new Dimension(900,700));
+                    jf.setLocation(300,0);
+                    jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             
-            JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
-                    ConnectionManager.getConnection());
-            
-            JRViewer jv = new JRViewer(jasperPrint);
-            JFrame jf = new JFrame();
-            jf.getContentPane().add(jv);
-            jf.setTitle(title);
-            
-            jf.validate();
-            jf.setVisible(true);
-            jf.setSize(new Dimension(900,700));
-            jf.setLocation(300,0);
-            jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            
-        }catch(Exception e){
-            logger.fatal("Error Occured while generating InventoryReport " + e);
-        }
-                
-                
+                }catch(Exception e){
+                    logger.fatal("Error Occured while generating InventoryReport " + e);
+                }
                 
                 JOptionPane.showMessageDialog(jPanel1, "Successfuly save record !");
                 
@@ -1278,6 +1283,10 @@ public class AddBilling extends javax.swing.JInternalFrame {
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
         bill_window = 0;
     }//GEN-LAST:event_formInternalFrameClosed
+
+    private void txtMilageKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMilageKeyTyped
+        keyTyped(evt);
+    }//GEN-LAST:event_txtMilageKeyTyped
 
     public void keyTyped(KeyEvent e) {
       char c = e.getKeyChar();
