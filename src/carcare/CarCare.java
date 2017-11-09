@@ -27,6 +27,7 @@ public class CarCare extends javax.swing.JFrame {
     public static int check_window = 0;
     public static int view_bill_window = 0;
     public static int view_check_window = 0;
+    public static int summaryRe_window = 0;
     
     public CarCare() {
         initComponents();
@@ -53,6 +54,7 @@ public class CarCare extends javax.swing.JFrame {
         pasteMenuItem = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         contentsMenuItem = new javax.swing.JMenuItem();
 
@@ -139,6 +141,14 @@ public class CarCare extends javax.swing.JFrame {
         });
         editMenu.add(jMenuItem2);
 
+        jMenuItem3.setText("Summary Report");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        editMenu.add(jMenuItem3);
+
         menuBar.add(editMenu);
 
         helpMenu.setMnemonic('h');
@@ -215,6 +225,15 @@ public class CarCare extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        if(summaryRe_window == 0){
+            SummaryReport summaryReport = new SummaryReport();
+            jDesktopPane1.add(summaryReport);
+            summaryReport.setVisible(true);
+            summaryRe_window = 1;
+        }
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -273,6 +292,7 @@ public class CarCare extends javax.swing.JFrame {
     public static javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;

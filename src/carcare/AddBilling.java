@@ -722,7 +722,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 btnPrintActionPerformed(evt);
             }
         });
-        jPanel5.add(btnPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 90, -1));
+        jPanel5.add(btnPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 75, 25));
 
         btnExit.setText("Close");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
@@ -730,7 +730,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 btnExitActionPerformed(evt);
             }
         });
-        jPanel5.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 70, -1));
+        jPanel5.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 75, 25));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
