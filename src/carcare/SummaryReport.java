@@ -5,10 +5,20 @@
  */
 package carcare;
 
+import static carcare.AddBilling.logger;
 import static carcare.CarCare.summaryRe_window;
+import com.sun.javafx.binding.StringFormatter;
+import db.ConnectionManager;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JFrame;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.swing.JRViewer;
 /**
  *
  * @author lenovo
@@ -87,6 +97,11 @@ public class SummaryReport extends javax.swing.JInternalFrame {
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 75, 25));
 
         jButton2.setText("Print");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 75, 25));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -111,6 +126,40 @@ public class SummaryReport extends javax.swing.JInternalFrame {
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
         summaryRe_window = 0;
     }//GEN-LAST:event_formInternalFrameClosed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try{
+            
+            String reportSource = "./src/carcare.report/SummaryReport.jasper";
+            Map<String, Object> params = new HashMap();
+            
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            String fromDate = format.format(txtDateFrom.getDate());
+            String toDate = format.format(txtDateTo.getDate());
+            
+            String title = "Day Summary - " + fromDate + " to " + toDate;
+            params.put("reportName", title);
+            params.put("fromDate", fromDate+ " 00:00:00");
+            params.put("toDate", toDate+ " 23:59:59");
+            
+            JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
+                    ConnectionManager.getConnection());
+
+            JRViewer jv = new JRViewer(jasperPrint);
+            JFrame jf = new JFrame();
+            jf.getContentPane().add(jv);
+            jf.setTitle(title);
+
+            jf.validate();
+            jf.setVisible(true);
+            jf.setSize(new Dimension(900,700));
+            jf.setLocation(300,0);
+            jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        }catch(Exception e){
+            logger.fatal("Error Occured while generating Summary Report " + e);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
