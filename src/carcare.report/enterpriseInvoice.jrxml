@@ -23,8 +23,130 @@
 			<pen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
-	<subDataset name="Table Dataset 1" uuid="237f0a6f-4c66-402e-99d8-822e84510f2c"/>
-	<queryString language="SQL">
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="237f0a6f-4c66-402e-99d8-822e84510f2c">
+		<queryString>
+			<![CDATA[SELECT
+     billcce.`BILL_NO` AS billcce_BILL_NO,
+     billcce.`VNO` AS billcce_VNO,
+     billcce.`DATE` AS billcce_DATE,
+     billcce.`MILLAGE` AS billcce_MILLAGE,
+     billcce.`NAME` AS billcce_NAME,
+     billcce.`ADDRESS` AS billcce_ADDRESS,
+     billcce.`PHONE` AS billcce_PHONE,
+     billcce.`ChasiNo` AS billcce_ChasiNo,
+     billcce.`FIX_CM_R_F` AS billcce_FIX_CM_R_F,
+     billcce.`FIX_CM_R_R` AS billcce_FIX_CM_R_R,
+     billcce.`WB_RA` AS billcce_WB_RA,
+     billcce.`W_RA` AS billcce_W_RA,
+     billcce.`TYRE_RA` AS billcce_TYRE_RA,
+     billcce.`OTHER1_RA` AS billcce_OTHER1_RA,
+     billcce.`OTHER2_RA` AS billcce_OTHER2_RA,
+     billcce.`OTHER3_RA` AS billcce_OTHER3_RA,
+     billcce.`FIX_C_Q_F` AS billcce_FIX_C_Q_F,
+     billcce.`FIX_C_Q_R` AS billcce_FIX_C_Q_R,
+     billcce.`WB_QT` AS billcce_WB_QT,
+     billcce.`W_QT` AS billcce_W_QT,
+     billcce.`TYRES_QT` AS billcce_TYRES_QT,
+     billcce.`OTHER1_QT` AS billcce_OTHER1_QT,
+     billcce.`OTHER2_QT` AS billcce_OTHER2_QT,
+     billcce.`OTHER3_QT` AS billcce_OTHER3_QT,
+     billcce.`DISCOUNT` AS billcce_DISCOUNT,
+     billcce.`OTHER1_Txt` AS billcce_OTHER1_Txt,
+     billcce.`OTHER2_Txt` AS billcce_OTHER2_Txt,
+     billcce.`OTHER3_Txt` AS billcce_OTHER3_Txt,
+     billcce.`Amount` AS billcce_Amount,
+     billcce.`Free1` AS billcce_Free1,
+     billcce.`Free2` AS billcce_Free2,
+     billcce.`Free3` AS billcce_Free3,
+     billcce.`Free4` AS billcce_Free4,
+     billcce.`ID` AS billcce_ID,
+     billcce.`ADDBY` AS billcce_ADDBY,
+     billcce.`PAYMETHOD` AS billcce_PAYMETHOD
+FROM
+     `billcce` billcce
+where 
+    billcce.`VNO` = 'BCE-9564']]>
+		</queryString>
+		<field name="billcce_BILL_NO" class="java.lang.Double"/>
+		<field name="billcce_VNO" class="java.lang.String"/>
+		<field name="billcce_DATE" class="java.sql.Timestamp"/>
+		<field name="billcce_MILLAGE" class="java.lang.Double"/>
+		<field name="billcce_NAME" class="java.lang.String"/>
+		<field name="billcce_ADDRESS" class="java.lang.String"/>
+		<field name="billcce_PHONE" class="java.lang.String"/>
+		<field name="billcce_ChasiNo" class="java.lang.String"/>
+		<field name="billcce_FIX_CM_R_F" class="java.lang.Integer"/>
+		<field name="billcce_FIX_CM_R_R" class="java.lang.Integer"/>
+		<field name="billcce_WB_RA" class="java.lang.Integer"/>
+		<field name="billcce_W_RA" class="java.lang.Integer"/>
+		<field name="billcce_TYRE_RA" class="java.lang.Integer"/>
+		<field name="billcce_OTHER1_RA" class="java.lang.Integer"/>
+		<field name="billcce_OTHER2_RA" class="java.lang.Integer"/>
+		<field name="billcce_OTHER3_RA" class="java.lang.Integer"/>
+		<field name="billcce_FIX_C_Q_F" class="java.lang.Integer"/>
+		<field name="billcce_FIX_C_Q_R" class="java.lang.Integer"/>
+		<field name="billcce_WB_QT" class="java.lang.Integer"/>
+		<field name="billcce_W_QT" class="java.lang.Integer"/>
+		<field name="billcce_TYRES_QT" class="java.lang.Integer"/>
+		<field name="billcce_OTHER1_QT" class="java.lang.Integer"/>
+		<field name="billcce_OTHER2_QT" class="java.lang.Integer"/>
+		<field name="billcce_OTHER3_QT" class="java.lang.Integer"/>
+		<field name="billcce_DISCOUNT" class="java.lang.Integer"/>
+		<field name="billcce_OTHER1_Txt" class="java.lang.String"/>
+		<field name="billcce_OTHER2_Txt" class="java.lang.String"/>
+		<field name="billcce_OTHER3_Txt" class="java.lang.String"/>
+		<field name="billcce_Amount" class="java.lang.Integer"/>
+		<field name="billcce_Free1" class="java.lang.Boolean"/>
+		<field name="billcce_Free2" class="java.lang.Boolean"/>
+		<field name="billcce_Free3" class="java.lang.Boolean"/>
+		<field name="billcce_Free4" class="java.lang.Boolean"/>
+		<field name="billcce_ID" class="java.lang.Integer"/>
+		<field name="billcce_ADDBY" class="java.lang.String"/>
+		<field name="billcce_PAYMETHOD" class="java.lang.Boolean"/>
+	</subDataset>
+	<subDataset name="Table Dataset 2" uuid="836c12e8-6e87-4b48-a5f7-6ca50971ee70"/>
+	<subDataset name="Table Dataset 3" uuid="3db3d6ad-30a7-4fbd-b9de-de4e6a6dcf1d"/>
+	<queryString>
 		<![CDATA[SELECT
      billcce.`BILL_NO` AS billcce_BILL_NO,
      billcce.`VNO` AS billcce_VNO,
@@ -63,7 +185,9 @@
      billcce.`ADDBY` AS billcce_ADDBY,
      billcce.`PAYMETHOD` AS billcce_PAYMETHOD
 FROM
-     `billcce` billcce]]>
+     `billcce` billcce
+where 
+    billcce.`VNO` = 'BCE-9564']]>
 	</queryString>
 	<field name="billcce_BILL_NO" class="java.lang.Double"/>
 	<field name="billcce_VNO" class="java.lang.String"/>
@@ -131,7 +255,7 @@ FROM
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="72" splitType="Stretch">
+		<band height="354" splitType="Stretch">
 			<textField>
 				<reportElement x="120" y="51" width="100" height="17" uuid="2d6cec39-3da4-4d01-a5ee-d8e342f04cb7"/>
 				<textFieldExpression><![CDATA[$F{billcce_NAME}]]></textFieldExpression>
@@ -164,47 +288,188 @@ FROM
 				<reportElement x="120" y="34" width="100" height="17" uuid="f69d663d-9621-4708-8539-0b9199ab33b1"/>
 				<textFieldExpression><![CDATA[$F{billcce_MILLAGE}]]></textFieldExpression>
 			</textField>
-		</band>
-	</columnHeader>
-	<detail>
-		<band height="164" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table" style="table" x="207" y="24" width="360" height="140" uuid="e6178df9-6868-47ca-80df-cca0314b068a"/>
+				<reportElement key="table 2" style="table 2" x="70" y="79" width="360" height="122" uuid="a594d273-bb16-4802-ba1b-7254511141b8"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Table Dataset 1" uuid="df8de7a5-091e-4280-9d1d-3b2008045406">
+					<datasetRun subDataset="Table Dataset 1" uuid="a7671b6f-4783-4832-958d-e932442c9362">
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
 					</datasetRun>
-					<jr:column width="90" uuid="7e29483e-2db8-4f96-af0d-998970379ac0">
-						<jr:tableHeader style="table_TH" height="30"/>
-						<jr:tableFooter style="table_TH" height="30"/>
-						<jr:columnHeader style="table_CH" height="30"/>
-						<jr:columnFooter style="table_CH" height="30"/>
-						<jr:detailCell style="table_TD" height="20"/>
+					<jr:column width="151" uuid="18881ef5-b07a-48c0-bf35-8ee2f70516da">
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="151" height="30" uuid="848ce680-1bd6-42b0-9e1c-293d616d1f4d"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Description]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 2_TD" height="145" rowSpan="1">
+							<staticText>
+								<reportElement x="10" y="0" width="120" height="20" uuid="7e976563-5106-4438-9c57-37b9febe0ebc"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle"/>
+								<text><![CDATA[Wheel Balancing]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="10" y="20" width="120" height="20" uuid="bd627d38-264e-4415-862e-73d2a5daf8d4"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle"/>
+								<text><![CDATA[Weights]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="10" y="40" width="120" height="20" uuid="43b82cc8-4d8e-4b82-b855-5ac05d707d02"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle"/>
+								<text><![CDATA[Fixed Camber Fr.]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="10" y="60" width="120" height="20" uuid="b8c36ca0-521f-4d77-9f93-6056b889c117"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle"/>
+								<text><![CDATA[Fixed Camber Re.]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="10" y="80" width="120" height="20" uuid="b43b9840-5f7c-4d94-8ea9-23bea6e13d74"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle"/>
+								<text><![CDATA[N2]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="10" y="100" width="120" height="20" uuid="23e70bfa-03b3-4e02-9495-ae72e9c007c6"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle"/>
+								<text><![CDATA[Tyre Change]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="10" y="120" width="120" height="20" uuid="dca9f811-9fe6-4b5d-a78f-2e80fbb58c3a"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle"/>
+								<text><![CDATA[]]></text>
+							</staticText>
+						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="9448b2ad-8c02-4f92-af1e-a41dcc721fa8">
-						<jr:tableHeader style="table_TH" height="30"/>
-						<jr:tableFooter style="table_TH" height="30"/>
-						<jr:columnHeader style="table_CH" height="30"/>
-						<jr:columnFooter style="table_CH" height="30"/>
-						<jr:detailCell style="table_TD" height="20"/>
+					<jr:column width="63" uuid="08ab1b99-f15b-48c3-8ff0-37741f2facdb">
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="62" height="30" uuid="2aa54c2d-54a6-400b-ae94-0ea42e31c760"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Qty]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 2_TD" height="145" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="63" height="20" uuid="985b16c1-69f3-435a-9a7b-f57f172485a2"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[$F{billcce_WB_QT}]]></textFieldExpression>
+							</textField>
+							<staticText>
+								<reportElement x="0" y="20" width="63" height="20" uuid="c027270b-776e-4fbd-aafe-b59323e65dea"/>
+								<textElement textAlignment="Right" markup="none"/>
+								<text><![CDATA[1]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="0" y="40" width="63" height="20" uuid="b8a9fc54-a802-4fbb-9bd6-3174060cdb1c"/>
+								<textElement textAlignment="Right" markup="none"/>
+								<text><![CDATA[1]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="0" y="60" width="63" height="20" uuid="1981739f-20ab-4a15-bfd2-d3dfb87d9b2c"/>
+								<textElement textAlignment="Right" markup="none"/>
+								<text><![CDATA[1]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="0" y="80" width="63" height="20" uuid="82e1ae6f-fdee-46ac-99e3-23157f9a9795"/>
+								<textElement textAlignment="Right" markup="none"/>
+								<text><![CDATA[4]]></text>
+							</staticText>
+							<textField>
+								<reportElement x="0" y="100" width="63" height="20" uuid="e5e53ad8-3421-4bd3-a9c2-1158b2a0e9bc"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[$F{billcce_OTHER2_QT}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="120" width="63" height="20" uuid="38920508-6424-48ac-9ce5-4cc00900a729"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[$F{billcce_OTHER3_QT}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="76d1451d-8554-43f0-bb45-bc1f1466a8f1">
-						<jr:tableHeader style="table_TH" height="30"/>
-						<jr:tableFooter style="table_TH" height="30"/>
-						<jr:columnHeader style="table_CH" height="30"/>
-						<jr:columnFooter style="table_CH" height="30"/>
-						<jr:detailCell style="table_TD" height="20"/>
+					<jr:column width="90" uuid="e0ae38cc-391c-4c53-b706-fe0c2a64f404">
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="cae71e4f-fe64-4027-95b9-6ac0783d4a66"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Rate]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 2_TD" height="145" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="32e41fce-210f-4be6-b3fc-b00663c45e2d"/>
+								<textFieldExpression><![CDATA[$F{billcce_WB_RA}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="20" width="90" height="20" uuid="8948c0b3-a103-4cec-b3cf-6c0218f1a089"/>
+								<textFieldExpression><![CDATA[$F{billcce_W_RA}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="40" width="90" height="20" uuid="d308e957-f492-43e1-bd35-78a67046459f"/>
+								<textFieldExpression><![CDATA[$F{billcce_FIX_CM_R_F}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="60" width="90" height="20" uuid="898c169e-664b-4b16-a9b8-7778c13058a0"/>
+								<textFieldExpression><![CDATA[$F{billcce_FIX_CM_R_R}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="80" width="90" height="20" uuid="cb16ad31-0c09-45be-a0c8-814bb3a91025"/>
+								<textFieldExpression><![CDATA[$F{billcce_OTHER1_RA}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="100" width="90" height="20" uuid="a1b80576-4fd2-483d-be1f-d99f326bf0ac"/>
+								<textFieldExpression><![CDATA[$F{billcce_OTHER2_RA}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="120" width="90" height="20" uuid="1941ebb7-2c6d-41eb-b258-186ab66b9b27"/>
+								<textFieldExpression><![CDATA[$F{billcce_OTHER3_RA}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="dbe30ed4-b836-4fe9-a0fa-8b85e218f7d2">
-						<jr:tableHeader style="table_TH" height="30"/>
-						<jr:tableFooter style="table_TH" height="30"/>
-						<jr:columnHeader style="table_CH" height="30"/>
-						<jr:columnFooter style="table_CH" height="30"/>
-						<jr:detailCell style="table_TD" height="20"/>
+					<jr:column width="90" uuid="338ac85e-55d9-4a29-b25d-8a07ccbea802">
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="97b8a556-278c-45e8-a8f5-11f67a24e97f"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Amount]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 2_TD" height="145" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="92c9ebe9-2527-4579-ba11-0b11dde27a63"/>
+								<textFieldExpression><![CDATA[]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="20" width="90" height="20" uuid="b32bfdc0-d4d3-408f-b985-11eb6330c976"/>
+								<textFieldExpression><![CDATA[]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="40" width="90" height="20" uuid="69877503-fb96-4036-afab-3991576bbade"/>
+								<textFieldExpression><![CDATA[]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="60" width="90" height="20" uuid="95ab523f-f5c3-472c-a207-1a2817df7764"/>
+								<textFieldExpression><![CDATA[]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="80" width="90" height="20" uuid="3ea23a8d-b8ea-43a5-8847-7dab515f41c3"/>
+								<textFieldExpression><![CDATA[]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="100" width="90" height="20" uuid="849addb2-7740-48c8-9882-de326f149ded"/>
+								<textFieldExpression><![CDATA[]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="120" width="90" height="20" uuid="2cca89c3-44c2-4aef-9f55-2d175ea31ef6"/>
+								<textFieldExpression><![CDATA[]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
 					</jr:column>
 				</jr:table>
 			</componentElement>
 		</band>
+	</columnHeader>
+	<detail>
+		<band height="55" splitType="Stretch"/>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>
