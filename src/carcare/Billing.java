@@ -32,6 +32,7 @@ import net.sf.jasperreports.swing.JRViewer;
 public class Billing extends javax.swing.JInternalFrame {
 
     CustdataJpaController custdataJpaController = new CustdataJpaController(CarCare.EMF);
+    boolean carCareCenter;
     
     public Billing() {
         initComponents();
@@ -90,7 +91,7 @@ public class Billing extends javax.swing.JInternalFrame {
         txtCCCSubTotal.setText(Integer.toString(billccc.getAmount()+ billccc.getDiscount()));
         txtDisCCCTotal.setText(billccc.getDiscount().toString());
         txtCCCTotal.setText(billccc.getAmount().toString());
-        
+        carCareCenter = true;
     }
 
     Billing(Billcce billcce) {
@@ -182,7 +183,7 @@ public class Billing extends javax.swing.JInternalFrame {
         int total2 = qty2* rate2;
         jTextField45.setText(Integer.toString(total2));
 
-        
+        carCareCenter = false;
     }
     
     void drawLines(Graphics g) {
@@ -754,19 +755,31 @@ public class Billing extends javax.swing.JInternalFrame {
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
         try{
             dispose();
-            
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String formatDate = format.format( dateBill.getDate());
-            System.out.println("hoooo -> " + formatDate);
-            String title = "Inventory Details Report";
-            String reportSource = "./src/carcare.report/centerInvoice.jasper";
+            String reportSource = "";
             Map<String, Object> params = new HashMap();
-            params.put("reportName", title);
-            params.put("vno", txtVNo.getText());
-            params.put("date", formatDate);
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            if(carCareCenter){                
+                String formatDate = format.format( dateBill.getDate());
+                String title = "CarCare Center Invoice";
+                reportSource = "./src/carcare.report/centerInvoice.jasper";
+                
+                params.put("reportName", title);
+                params.put("vno", txtVNo.getText());
+                params.put("date", formatDate);
 
+                
+            }else{
+                String formatDate = format.format( dateBill.getDate());
+                String title = "CarCare Enterprise Invoice";
+                reportSource = "./src/carcare.report/enterpriseInvoice.jasper";
+                
+                params.put("reportName", title);
+                params.put("vno", txtVNo.getText());
+                params.put("date", formatDate);
+            }
+            
             JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
-                    ConnectionManager.getConnection());
+                        ConnectionManager.getConnection());
 
             JRViewer jv = new JRViewer(jasperPrint);
             JFrame jf = new JFrame();

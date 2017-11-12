@@ -28,6 +28,7 @@ public class CarCare extends javax.swing.JFrame {
     public static int view_bill_window = 0;
     public static int view_check_window = 0;
     public static int summaryRe_window = 0;
+    public static int sequence_window = 0;
     
     public CarCare() {
         initComponents();
@@ -156,6 +157,11 @@ public class CarCare extends javax.swing.JFrame {
 
         contentsMenuItem.setMnemonic('c');
         contentsMenuItem.setText("Bill Settings");
+        contentsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contentsMenuItemActionPerformed(evt);
+            }
+        });
         helpMenu.add(contentsMenuItem);
 
         menuBar.add(helpMenu);
@@ -233,6 +239,15 @@ public class CarCare extends javax.swing.JFrame {
             summaryRe_window = 1;
         }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void contentsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contentsMenuItemActionPerformed
+        if(sequence_window == 0){
+            SequenceSetting sequenceSetting = new SequenceSetting();
+            jDesktopPane1.add(sequenceSetting);
+            sequenceSetting.setVisible(true);
+            sequence_window = 1;
+        }
+    }//GEN-LAST:event_contentsMenuItemActionPerformed
 
     /**
      * @param args the command line arguments

@@ -291,8 +291,8 @@ where
 			<componentElement>
 				<reportElement key="table 2" style="table 2" x="70" y="79" width="360" height="122" uuid="a594d273-bb16-4802-ba1b-7254511141b8"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Table Dataset 1" uuid="a7671b6f-4783-4832-958d-e932442c9362">
-						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
+					<datasetRun subDataset="Table Dataset 1" uuid="f5145db8-54ca-4005-8f9d-cecc82c5726f">
+						<parametersMapExpression><![CDATA[$F{billcce_VNO}]]></parametersMapExpression>
 					</datasetRun>
 					<jr:column width="151" uuid="18881ef5-b07a-48c0-bf35-8ee2f70516da">
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">

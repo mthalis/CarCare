@@ -1063,7 +1063,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 dispose();
                 
                 try{
-                    String title = "Inventory Details Report";
+                    String title = "CarCare Center Invoice";
                     String reportSource = "./src/carcare.report/centerInvoice.jasper";
                     Map<String, Object> params = new HashMap();
                     params.put("reportName", title);
