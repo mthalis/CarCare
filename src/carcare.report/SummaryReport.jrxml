@@ -138,11 +138,11 @@ SELECT e.Bill_no AS billNo ,e.date AS dateval, e.vno AS vno , (CASE WHEN e.payme
 				<reportElement x="0" y="5" width="555" height="2" uuid="dbd74e98-53e8-4334-b9fe-6a584b131689"/>
 			</line>
 			<line>
-				<reportElement x="0" y="40" width="555" height="2" uuid="915b0c0b-c816-4e55-8049-2b1c47003155"/>
+				<reportElement x="0" y="30" width="555" height="2" uuid="915b0c0b-c816-4e55-8049-2b1c47003155"/>
 			</line>
 			<textField>
 				<reportElement x="469" y="10" width="86" height="20" uuid="335dfbb3-aeb5-43d0-9d99-1c660176a3c8"/>
-				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
 			</textField>
 		</band>
 	</summary>
