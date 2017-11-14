@@ -90,7 +90,7 @@ SELECT e.Bill_no AS billNo ,e.date AS dateval, e.vno AS vno , (CASE WHEN e.payme
 				<text><![CDATA[Amount]]></text>
 			</staticText>
 			<line>
-				<reportElement x="2" y="20" width="555" height="2" uuid="548c3c57-2bd5-4093-89ba-0b2c01876213"/>
+				<reportElement x="0" y="20" width="555" height="2" uuid="548c3c57-2bd5-4093-89ba-0b2c01876213"/>
 			</line>
 		</band>
 	</columnHeader>
@@ -128,9 +128,15 @@ SELECT e.Bill_no AS billNo ,e.date AS dateval, e.vno AS vno , (CASE WHEN e.payme
 	<summary>
 		<band height="42" splitType="Stretch">
 			<staticText>
-				<reportElement x="323" y="20" width="100" height="20" uuid="7307c7e0-8f45-486b-b11e-1810f5f406f8"/>
+				<reportElement x="325" y="10" width="100" height="20" uuid="7307c7e0-8f45-486b-b11e-1810f5f406f8"/>
 				<text><![CDATA[Total]]></text>
 			</staticText>
+			<line>
+				<reportElement x="0" y="5" width="555" height="2" uuid="dbd74e98-53e8-4334-b9fe-6a584b131689"/>
+			</line>
+			<line>
+				<reportElement x="0" y="40" width="555" height="2" uuid="915b0c0b-c816-4e55-8049-2b1c47003155"/>
+			</line>
 		</band>
 	</summary>
 </jasperReport>
