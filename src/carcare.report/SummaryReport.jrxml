@@ -97,27 +97,27 @@ SELECT e.Bill_no AS billNo ,e.date AS dateval, e.vno AS vno , (CASE WHEN e.payme
 	<detail>
 		<band height="29" splitType="Stretch">
 			<textField pattern="###0">
-				<reportElement x="2" y="5" width="61" height="20" uuid="dc9837de-21a7-4f77-9d59-0795060a810f"/>
+				<reportElement x="2" y="5" width="59" height="20" uuid="dc9837de-21a7-4f77-9d59-0795060a810f"/>
 				<textFieldExpression><![CDATA[$F{billNo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="79" y="5" width="61" height="20" uuid="5257b575-5930-4852-a01a-329cbd1c4d80"/>
+				<reportElement x="77" y="5" width="63" height="20" uuid="5257b575-5930-4852-a01a-329cbd1c4d80"/>
 				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{dateval})]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="158" y="5" width="60" height="20" uuid="1946085a-eaa4-4313-b071-369416afe366"/>
+				<reportElement x="156" y="5" width="60" height="20" uuid="1946085a-eaa4-4313-b071-369416afe366"/>
 				<textFieldExpression><![CDATA[$F{vno}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="225" y="5" width="100" height="20" uuid="a0fe0069-7cf5-4453-a5fb-1748ccf6bbc6"/>
+				<reportElement x="223" y="5" width="100" height="20" uuid="a0fe0069-7cf5-4453-a5fb-1748ccf6bbc6"/>
 				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="358" y="5" width="82" height="20" uuid="4330108b-3346-46b8-8b7c-dc3fc65bfc69"/>
+				<reportElement x="356" y="5" width="82" height="20" uuid="4330108b-3346-46b8-8b7c-dc3fc65bfc69"/>
 				<textFieldExpression><![CDATA[$F{paymethod}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="457" y="5" width="100" height="20" uuid="5cbfb335-afd8-45c3-a35b-161122871640"/>
+				<reportElement x="469" y="5" width="86" height="20" uuid="5cbfb335-afd8-45c3-a35b-161122871640"/>
 				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -128,7 +128,7 @@ SELECT e.Bill_no AS billNo ,e.date AS dateval, e.vno AS vno , (CASE WHEN e.payme
 	<summary>
 		<band height="42" splitType="Stretch">
 			<staticText>
-				<reportElement x="325" y="10" width="100" height="20" uuid="7307c7e0-8f45-486b-b11e-1810f5f406f8"/>
+				<reportElement x="356" y="10" width="82" height="20" uuid="7307c7e0-8f45-486b-b11e-1810f5f406f8"/>
 				<text><![CDATA[Total]]></text>
 			</staticText>
 			<line>
