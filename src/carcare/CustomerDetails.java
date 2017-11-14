@@ -537,8 +537,7 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtVNoFocusLost
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
-        CarCare.cus_window = 0;  
-        dispose();
+        CarCare.cus_window = 0;
     }//GEN-LAST:event_formInternalFrameClosed
 
 

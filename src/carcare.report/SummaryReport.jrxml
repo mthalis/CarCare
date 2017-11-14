@@ -132,6 +132,9 @@ SELECT e.Bill_no AS billNo ,e.date AS dateval, e.vno AS vno , (CASE WHEN e.payme
 		<band height="42" splitType="Stretch">
 			<staticText>
 				<reportElement x="356" y="10" width="82" height="20" uuid="7307c7e0-8f45-486b-b11e-1810f5f406f8"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Total]]></text>
 			</staticText>
 			<line>
