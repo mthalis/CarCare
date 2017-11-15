@@ -76,6 +76,8 @@
 		<parameter name="parameter10" class="java.lang.Integer"/>
 		<parameter name="parameter11" class="java.lang.String"/>
 	</subDataset>
+	<parameter name="vno" class="java.lang.String"/>
+	<parameter name="date" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
      billcce.`BILL_NO` AS billcce_BILL_NO,
@@ -117,7 +119,7 @@
 FROM
      `billcce` billcce
 where 
-    billcce.`VNO` = 'BCE-9564']]>
+     billcce.`VNO` = $P{vno} and billcce.`DATE` = $P{date}]]>
 	</queryString>
 	<field name="billcce_BILL_NO" class="java.lang.Double"/>
 	<field name="billcce_VNO" class="java.lang.String"/>
@@ -221,7 +223,7 @@ where
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="168" splitType="Stretch">
+		<band height="250" splitType="Stretch">
 			<componentElement>
 				<reportElement key="table 2" style="table 2" x="70" y="0" width="360" height="122" uuid="a594d273-bb16-4802-ba1b-7254511141b8"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
@@ -264,7 +266,7 @@ where
 					<jr:column width="151" uuid="18881ef5-b07a-48c0-bf35-8ee2f70516da">
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="151" height="30" uuid="848ce680-1bd6-42b0-9e1c-293d616d1f4d"/>
+								<reportElement mode="Opaque" x="0" y="0" width="151" height="30" uuid="848ce680-1bd6-42b0-9e1c-293d616d1f4d"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Description]]></text>
 							</staticText>
@@ -276,7 +278,7 @@ where
 								<text><![CDATA[Wheel Balancing]]></text>
 							</staticText>
 							<staticText>
-								<reportElement x="17" y="20" width="134" height="20" uuid="bd627d38-264e-4415-862e-73d2a5daf8d4"/>
+								<reportElement mode="Transparent" x="17" y="20" width="134" height="20" uuid="bd627d38-264e-4415-862e-73d2a5daf8d4"/>
 								<textElement textAlignment="Left" verticalAlignment="Middle"/>
 								<text><![CDATA[Weights]]></text>
 							</staticText>
@@ -310,7 +312,7 @@ where
 					<jr:column width="63" uuid="08ab1b99-f15b-48c3-8ff0-37741f2facdb">
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="62" height="30" uuid="2aa54c2d-54a6-400b-ae94-0ea42e31c760"/>
+								<reportElement mode="Opaque" x="0" y="0" width="62" height="30" uuid="2aa54c2d-54a6-400b-ae94-0ea42e31c760"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Qty]]></text>
 							</staticText>
@@ -322,7 +324,7 @@ where
 								<textFieldExpression><![CDATA[$P{parameter1}]]></textFieldExpression>
 							</textField>
 							<staticText>
-								<reportElement x="0" y="20" width="63" height="20" uuid="c027270b-776e-4fbd-aafe-b59323e65dea"/>
+								<reportElement mode="Transparent" x="0" y="20" width="63" height="20" uuid="c027270b-776e-4fbd-aafe-b59323e65dea"/>
 								<textElement textAlignment="Center" markup="none"/>
 								<text><![CDATA[1]]></text>
 							</staticText>
@@ -356,7 +358,7 @@ where
 					<jr:column width="90" uuid="e0ae38cc-391c-4c53-b706-fe0c2a64f404">
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="cae71e4f-fe64-4027-95b9-6ac0783d4a66"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" uuid="cae71e4f-fe64-4027-95b9-6ac0783d4a66"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Rate]]></text>
 							</staticText>
@@ -402,7 +404,7 @@ where
 					<jr:column width="90" uuid="338ac85e-55d9-4a29-b25d-8a07ccbea802">
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="97b8a556-278c-45e8-a8f5-11f67a24e97f"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" uuid="97b8a556-278c-45e8-a8f5-11f67a24e97f"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Amount]]></text>
 							</staticText>
@@ -447,6 +449,38 @@ where
 					</jr:column>
 				</jr:table>
 			</componentElement>
+			<staticText>
+				<reportElement x="280" y="178" width="77" height="20" uuid="c849427e-5ab0-4270-b315-6bfe2a5677ac"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Sub Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="218" width="77" height="20" uuid="3222ca58-9ae2-4c35-ab4d-68476e5048f5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="198" width="77" height="20" uuid="0da16a5d-68fa-44ec-b7d2-a8889241eb9f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Discount]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="378" y="178" width="65" height="20" uuid="e339a180-736c-4e51-a4d4-0525fec2bafe"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{billcce_Amount} + $F{billcce_DISCOUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="378" y="218" width="65" height="20" uuid="f83b6789-f679-41e3-a840-024d5b7907a2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{billcce_Amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="378" y="198" width="65" height="20" uuid="6d1a5cbb-0598-4b61-ab21-0ba8c89721e0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{billcce_DISCOUNT}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
