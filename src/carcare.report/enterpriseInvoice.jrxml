@@ -74,6 +74,7 @@
 		<parameter name="parameter8" class="java.lang.Integer"/>
 		<parameter name="parameter9" class="java.lang.Integer"/>
 		<parameter name="parameter10" class="java.lang.Integer"/>
+		<parameter name="parameter11" class="java.lang.String"/>
 	</subDataset>
 	<queryString>
 		<![CDATA[SELECT
@@ -224,7 +225,7 @@ where
 			<componentElement>
 				<reportElement key="table 2" style="table 2" x="70" y="0" width="360" height="122" uuid="a594d273-bb16-4802-ba1b-7254511141b8"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Table Dataset 1" uuid="d39ec8a7-f1d9-461a-a55f-c6e59992a045">
+					<datasetRun subDataset="Table Dataset 1" uuid="84ec67ae-5436-4683-a1ff-fcb0d43f5fec">
 						<datasetParameter name="parameter1">
 							<datasetParameterExpression><![CDATA[$F{billcce_WB_QT}]]></datasetParameterExpression>
 						</datasetParameter>
@@ -255,6 +256,9 @@ where
 						<datasetParameter name="parameter10">
 							<datasetParameterExpression><![CDATA[$F{billcce_OTHER3_RA}]]></datasetParameterExpression>
 						</datasetParameter>
+						<datasetParameter name="parameter11">
+							<datasetParameterExpression><![CDATA[$F{billcce_OTHER3_Txt}]]></datasetParameterExpression>
+						</datasetParameter>
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
 					</datasetRun>
 					<jr:column width="151" uuid="18881ef5-b07a-48c0-bf35-8ee2f70516da">
@@ -267,40 +271,40 @@ where
 						</jr:columnHeader>
 						<jr:detailCell style="table 2_TD" height="145" rowSpan="1">
 							<staticText>
-								<reportElement x="10" y="0" width="120" height="20" uuid="7e976563-5106-4438-9c57-37b9febe0ebc"/>
+								<reportElement x="17" y="0" width="134" height="20" uuid="7e976563-5106-4438-9c57-37b9febe0ebc"/>
 								<textElement textAlignment="Left" verticalAlignment="Middle"/>
 								<text><![CDATA[Wheel Balancing]]></text>
 							</staticText>
 							<staticText>
-								<reportElement x="10" y="20" width="120" height="20" uuid="bd627d38-264e-4415-862e-73d2a5daf8d4"/>
+								<reportElement x="17" y="20" width="134" height="20" uuid="bd627d38-264e-4415-862e-73d2a5daf8d4"/>
 								<textElement textAlignment="Left" verticalAlignment="Middle"/>
 								<text><![CDATA[Weights]]></text>
 							</staticText>
 							<staticText>
-								<reportElement x="10" y="40" width="120" height="20" uuid="43b82cc8-4d8e-4b82-b855-5ac05d707d02"/>
+								<reportElement x="17" y="40" width="134" height="20" uuid="43b82cc8-4d8e-4b82-b855-5ac05d707d02"/>
 								<textElement textAlignment="Left" verticalAlignment="Middle"/>
 								<text><![CDATA[Fixed Camber Fr.]]></text>
 							</staticText>
 							<staticText>
-								<reportElement x="10" y="60" width="120" height="20" uuid="b8c36ca0-521f-4d77-9f93-6056b889c117"/>
+								<reportElement x="17" y="60" width="134" height="20" uuid="b8c36ca0-521f-4d77-9f93-6056b889c117"/>
 								<textElement textAlignment="Left" verticalAlignment="Middle"/>
 								<text><![CDATA[Fixed Camber Re.]]></text>
 							</staticText>
 							<staticText>
-								<reportElement x="10" y="80" width="120" height="20" uuid="b43b9840-5f7c-4d94-8ea9-23bea6e13d74"/>
+								<reportElement x="17" y="80" width="134" height="20" uuid="b43b9840-5f7c-4d94-8ea9-23bea6e13d74"/>
 								<textElement textAlignment="Left" verticalAlignment="Middle"/>
 								<text><![CDATA[N2]]></text>
 							</staticText>
 							<staticText>
-								<reportElement x="10" y="100" width="120" height="20" uuid="23e70bfa-03b3-4e02-9495-ae72e9c007c6"/>
+								<reportElement x="17" y="100" width="134" height="20" uuid="23e70bfa-03b3-4e02-9495-ae72e9c007c6"/>
 								<textElement textAlignment="Left" verticalAlignment="Middle"/>
 								<text><![CDATA[Tyre Change]]></text>
 							</staticText>
-							<staticText>
-								<reportElement x="10" y="120" width="120" height="20" uuid="dca9f811-9fe6-4b5d-a78f-2e80fbb58c3a"/>
-								<textElement textAlignment="Left" verticalAlignment="Middle"/>
-								<text><![CDATA[]]></text>
-							</staticText>
+							<textField>
+								<reportElement x="17" y="120" width="134" height="20" uuid="b96408cb-12d2-42a5-bf20-6f7335986455"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle" markup="none"/>
+								<textFieldExpression><![CDATA[$P{parameter11}]]></textFieldExpression>
+							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="63" uuid="08ab1b99-f15b-48c3-8ff0-37741f2facdb">
@@ -405,32 +409,39 @@ where
 						</jr:columnHeader>
 						<jr:detailCell style="table 2_TD" height="145" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="92c9ebe9-2527-4579-ba11-0b11dde27a63"/>
-								<textFieldExpression><![CDATA[]]></textFieldExpression>
+								<reportElement x="0" y="0" width="68" height="20" uuid="92c9ebe9-2527-4579-ba11-0b11dde27a63"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[$P{parameter1}*$P{parameter4}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement x="0" y="20" width="90" height="20" uuid="b32bfdc0-d4d3-408f-b985-11eb6330c976"/>
-								<textFieldExpression><![CDATA[]]></textFieldExpression>
+								<reportElement x="0" y="20" width="68" height="20" uuid="b32bfdc0-d4d3-408f-b985-11eb6330c976"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[$P{parameter5}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement x="0" y="40" width="90" height="20" uuid="69877503-fb96-4036-afab-3991576bbade"/>
-								<textFieldExpression><![CDATA[]]></textFieldExpression>
+								<reportElement x="0" y="40" width="68" height="20" uuid="69877503-fb96-4036-afab-3991576bbade"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[$P{parameter6}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement x="0" y="60" width="90" height="20" uuid="95ab523f-f5c3-472c-a207-1a2817df7764"/>
-								<textFieldExpression><![CDATA[]]></textFieldExpression>
+								<reportElement x="0" y="60" width="68" height="20" uuid="95ab523f-f5c3-472c-a207-1a2817df7764"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[$P{parameter7}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement x="0" y="80" width="90" height="20" uuid="3ea23a8d-b8ea-43a5-8847-7dab515f41c3"/>
-								<textFieldExpression><![CDATA[]]></textFieldExpression>
+								<reportElement x="0" y="80" width="68" height="20" uuid="3ea23a8d-b8ea-43a5-8847-7dab515f41c3"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[4*$P{parameter8}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement x="0" y="100" width="90" height="20" uuid="849addb2-7740-48c8-9882-de326f149ded"/>
-								<textFieldExpression><![CDATA[]]></textFieldExpression>
+								<reportElement x="0" y="100" width="68" height="20" uuid="849addb2-7740-48c8-9882-de326f149ded"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[$P{parameter2}*$P{parameter9}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement x="0" y="120" width="90" height="20" uuid="2cca89c3-44c2-4aef-9f55-2d175ea31ef6"/>
-								<textFieldExpression><![CDATA[]]></textFieldExpression>
+								<reportElement x="0" y="120" width="68" height="20" uuid="2cca89c3-44c2-4aef-9f55-2d175ea31ef6"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[$P{parameter3}*$P{parameter10}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
