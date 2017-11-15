@@ -64,88 +64,17 @@
 		</box>
 	</style>
 	<subDataset name="Table Dataset 1" uuid="237f0a6f-4c66-402e-99d8-822e84510f2c">
-		<queryString>
-			<![CDATA[SELECT
-     billcce.`BILL_NO` AS billcce_BILL_NO,
-     billcce.`VNO` AS billcce_VNO,
-     billcce.`DATE` AS billcce_DATE,
-     billcce.`MILLAGE` AS billcce_MILLAGE,
-     billcce.`NAME` AS billcce_NAME,
-     billcce.`ADDRESS` AS billcce_ADDRESS,
-     billcce.`PHONE` AS billcce_PHONE,
-     billcce.`ChasiNo` AS billcce_ChasiNo,
-     billcce.`FIX_CM_R_F` AS billcce_FIX_CM_R_F,
-     billcce.`FIX_CM_R_R` AS billcce_FIX_CM_R_R,
-     billcce.`WB_RA` AS billcce_WB_RA,
-     billcce.`W_RA` AS billcce_W_RA,
-     billcce.`TYRE_RA` AS billcce_TYRE_RA,
-     billcce.`OTHER1_RA` AS billcce_OTHER1_RA,
-     billcce.`OTHER2_RA` AS billcce_OTHER2_RA,
-     billcce.`OTHER3_RA` AS billcce_OTHER3_RA,
-     billcce.`FIX_C_Q_F` AS billcce_FIX_C_Q_F,
-     billcce.`FIX_C_Q_R` AS billcce_FIX_C_Q_R,
-     billcce.`WB_QT` AS billcce_WB_QT,
-     billcce.`W_QT` AS billcce_W_QT,
-     billcce.`TYRES_QT` AS billcce_TYRES_QT,
-     billcce.`OTHER1_QT` AS billcce_OTHER1_QT,
-     billcce.`OTHER2_QT` AS billcce_OTHER2_QT,
-     billcce.`OTHER3_QT` AS billcce_OTHER3_QT,
-     billcce.`DISCOUNT` AS billcce_DISCOUNT,
-     billcce.`OTHER1_Txt` AS billcce_OTHER1_Txt,
-     billcce.`OTHER2_Txt` AS billcce_OTHER2_Txt,
-     billcce.`OTHER3_Txt` AS billcce_OTHER3_Txt,
-     billcce.`Amount` AS billcce_Amount,
-     billcce.`Free1` AS billcce_Free1,
-     billcce.`Free2` AS billcce_Free2,
-     billcce.`Free3` AS billcce_Free3,
-     billcce.`Free4` AS billcce_Free4,
-     billcce.`ID` AS billcce_ID,
-     billcce.`ADDBY` AS billcce_ADDBY,
-     billcce.`PAYMETHOD` AS billcce_PAYMETHOD
-FROM
-     `billcce` billcce
-where 
-    billcce.`VNO` = 'BCE-9564']]>
-		</queryString>
-		<field name="billcce_BILL_NO" class="java.lang.Double"/>
-		<field name="billcce_VNO" class="java.lang.String"/>
-		<field name="billcce_DATE" class="java.sql.Timestamp"/>
-		<field name="billcce_MILLAGE" class="java.lang.Double"/>
-		<field name="billcce_NAME" class="java.lang.String"/>
-		<field name="billcce_ADDRESS" class="java.lang.String"/>
-		<field name="billcce_PHONE" class="java.lang.String"/>
-		<field name="billcce_ChasiNo" class="java.lang.String"/>
-		<field name="billcce_FIX_CM_R_F" class="java.lang.Integer"/>
-		<field name="billcce_FIX_CM_R_R" class="java.lang.Integer"/>
-		<field name="billcce_WB_RA" class="java.lang.Integer"/>
-		<field name="billcce_W_RA" class="java.lang.Integer"/>
-		<field name="billcce_TYRE_RA" class="java.lang.Integer"/>
-		<field name="billcce_OTHER1_RA" class="java.lang.Integer"/>
-		<field name="billcce_OTHER2_RA" class="java.lang.Integer"/>
-		<field name="billcce_OTHER3_RA" class="java.lang.Integer"/>
-		<field name="billcce_FIX_C_Q_F" class="java.lang.Integer"/>
-		<field name="billcce_FIX_C_Q_R" class="java.lang.Integer"/>
-		<field name="billcce_WB_QT" class="java.lang.Integer"/>
-		<field name="billcce_W_QT" class="java.lang.Integer"/>
-		<field name="billcce_TYRES_QT" class="java.lang.Integer"/>
-		<field name="billcce_OTHER1_QT" class="java.lang.Integer"/>
-		<field name="billcce_OTHER2_QT" class="java.lang.Integer"/>
-		<field name="billcce_OTHER3_QT" class="java.lang.Integer"/>
-		<field name="billcce_DISCOUNT" class="java.lang.Integer"/>
-		<field name="billcce_OTHER1_Txt" class="java.lang.String"/>
-		<field name="billcce_OTHER2_Txt" class="java.lang.String"/>
-		<field name="billcce_OTHER3_Txt" class="java.lang.String"/>
-		<field name="billcce_Amount" class="java.lang.Integer"/>
-		<field name="billcce_Free1" class="java.lang.Boolean"/>
-		<field name="billcce_Free2" class="java.lang.Boolean"/>
-		<field name="billcce_Free3" class="java.lang.Boolean"/>
-		<field name="billcce_Free4" class="java.lang.Boolean"/>
-		<field name="billcce_ID" class="java.lang.Integer"/>
-		<field name="billcce_ADDBY" class="java.lang.String"/>
-		<field name="billcce_PAYMETHOD" class="java.lang.Boolean"/>
+		<parameter name="parameter1" class="java.lang.Integer"/>
+		<parameter name="parameter2" class="java.lang.Integer"/>
+		<parameter name="parameter3" class="java.lang.Integer"/>
+		<parameter name="parameter4" class="java.lang.Integer"/>
+		<parameter name="parameter5" class="java.lang.Integer"/>
+		<parameter name="parameter6" class="java.lang.Integer"/>
+		<parameter name="parameter7" class="java.lang.Integer"/>
+		<parameter name="parameter8" class="java.lang.Integer"/>
+		<parameter name="parameter9" class="java.lang.Integer"/>
+		<parameter name="parameter10" class="java.lang.Integer"/>
 	</subDataset>
-	<subDataset name="Table Dataset 2" uuid="836c12e8-6e87-4b48-a5f7-6ca50971ee70"/>
-	<subDataset name="Table Dataset 3" uuid="3db3d6ad-30a7-4fbd-b9de-de4e6a6dcf1d"/>
 	<queryString>
 		<![CDATA[SELECT
      billcce.`BILL_NO` AS billcce_BILL_NO,
@@ -255,7 +184,7 @@ where
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="354" splitType="Stretch">
+		<band height="116" splitType="Stretch">
 			<textField>
 				<reportElement x="120" y="51" width="100" height="17" uuid="2d6cec39-3da4-4d01-a5ee-d8e342f04cb7"/>
 				<textFieldExpression><![CDATA[$F{billcce_NAME}]]></textFieldExpression>
@@ -288,11 +217,45 @@ where
 				<reportElement x="120" y="34" width="100" height="17" uuid="f69d663d-9621-4708-8539-0b9199ab33b1"/>
 				<textFieldExpression><![CDATA[$F{billcce_MILLAGE}]]></textFieldExpression>
 			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="168" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table 2" style="table 2" x="70" y="79" width="360" height="122" uuid="a594d273-bb16-4802-ba1b-7254511141b8"/>
+				<reportElement key="table 2" style="table 2" x="70" y="0" width="360" height="122" uuid="a594d273-bb16-4802-ba1b-7254511141b8"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Table Dataset 1" uuid="f5145db8-54ca-4005-8f9d-cecc82c5726f">
-						<parametersMapExpression><![CDATA[$F{billcce_VNO}]]></parametersMapExpression>
+					<datasetRun subDataset="Table Dataset 1" uuid="d39ec8a7-f1d9-461a-a55f-c6e59992a045">
+						<datasetParameter name="parameter1">
+							<datasetParameterExpression><![CDATA[$F{billcce_WB_QT}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter2">
+							<datasetParameterExpression><![CDATA[$F{billcce_OTHER2_QT}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter3">
+							<datasetParameterExpression><![CDATA[$F{billcce_OTHER3_QT}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter4">
+							<datasetParameterExpression><![CDATA[$F{billcce_WB_RA}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter5">
+							<datasetParameterExpression><![CDATA[$F{billcce_W_RA}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter6">
+							<datasetParameterExpression><![CDATA[$F{billcce_FIX_CM_R_F}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter7">
+							<datasetParameterExpression><![CDATA[$F{billcce_FIX_CM_R_R}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter8">
+							<datasetParameterExpression><![CDATA[$F{billcce_OTHER1_RA}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter9">
+							<datasetParameterExpression><![CDATA[$F{billcce_OTHER2_RA}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter10">
+							<datasetParameterExpression><![CDATA[$F{billcce_OTHER3_RA}]]></datasetParameterExpression>
+						</datasetParameter>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
 					</datasetRun>
 					<jr:column width="151" uuid="18881ef5-b07a-48c0-bf35-8ee2f70516da">
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
@@ -352,7 +315,7 @@ where
 							<textField>
 								<reportElement x="0" y="0" width="63" height="20" uuid="985b16c1-69f3-435a-9a7b-f57f172485a2"/>
 								<textElement textAlignment="Right"/>
-								<textFieldExpression><![CDATA[$F{billcce_WB_QT}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$P{parameter1}]]></textFieldExpression>
 							</textField>
 							<staticText>
 								<reportElement x="0" y="20" width="63" height="20" uuid="c027270b-776e-4fbd-aafe-b59323e65dea"/>
@@ -377,12 +340,12 @@ where
 							<textField>
 								<reportElement x="0" y="100" width="63" height="20" uuid="e5e53ad8-3421-4bd3-a9c2-1158b2a0e9bc"/>
 								<textElement textAlignment="Right"/>
-								<textFieldExpression><![CDATA[$F{billcce_OTHER2_QT}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$P{parameter2}]]></textFieldExpression>
 							</textField>
 							<textField>
 								<reportElement x="0" y="120" width="63" height="20" uuid="38920508-6424-48ac-9ce5-4cc00900a729"/>
 								<textElement textAlignment="Right"/>
-								<textFieldExpression><![CDATA[$F{billcce_OTHER3_QT}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$P{parameter3}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -397,31 +360,31 @@ where
 						<jr:detailCell style="table 2_TD" height="145" rowSpan="1">
 							<textField>
 								<reportElement x="0" y="0" width="90" height="20" uuid="32e41fce-210f-4be6-b3fc-b00663c45e2d"/>
-								<textFieldExpression><![CDATA[$F{billcce_WB_RA}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$P{parameter4}]]></textFieldExpression>
 							</textField>
 							<textField>
 								<reportElement x="0" y="20" width="90" height="20" uuid="8948c0b3-a103-4cec-b3cf-6c0218f1a089"/>
-								<textFieldExpression><![CDATA[$F{billcce_W_RA}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$P{parameter5}]]></textFieldExpression>
 							</textField>
 							<textField>
 								<reportElement x="0" y="40" width="90" height="20" uuid="d308e957-f492-43e1-bd35-78a67046459f"/>
-								<textFieldExpression><![CDATA[$F{billcce_FIX_CM_R_F}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$P{parameter6}]]></textFieldExpression>
 							</textField>
 							<textField>
 								<reportElement x="0" y="60" width="90" height="20" uuid="898c169e-664b-4b16-a9b8-7778c13058a0"/>
-								<textFieldExpression><![CDATA[$F{billcce_FIX_CM_R_R}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$P{parameter7}]]></textFieldExpression>
 							</textField>
 							<textField>
 								<reportElement x="0" y="80" width="90" height="20" uuid="cb16ad31-0c09-45be-a0c8-814bb3a91025"/>
-								<textFieldExpression><![CDATA[$F{billcce_OTHER1_RA}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$P{parameter8}]]></textFieldExpression>
 							</textField>
 							<textField>
 								<reportElement x="0" y="100" width="90" height="20" uuid="a1b80576-4fd2-483d-be1f-d99f326bf0ac"/>
-								<textFieldExpression><![CDATA[$F{billcce_OTHER2_RA}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$P{parameter9}]]></textFieldExpression>
 							</textField>
 							<textField>
 								<reportElement x="0" y="120" width="90" height="20" uuid="1941ebb7-2c6d-41eb-b258-186ab66b9b27"/>
-								<textFieldExpression><![CDATA[$F{billcce_OTHER3_RA}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$P{parameter10}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -467,12 +430,9 @@ where
 				</jr:table>
 			</componentElement>
 		</band>
-	</columnHeader>
-	<detail>
-		<band height="55" splitType="Stretch"/>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="82" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch"/>
