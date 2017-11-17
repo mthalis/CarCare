@@ -3,6 +3,14 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+        <style name="ColoredField"> 
+            <conditionalStyle>
+                 <conditionExpression>
+                    <![CDATA[$F{billccc_FREE_ALIGN}]]>
+                </conditionExpression>
+                 <style isStrikeThrough="true"/>
+            </conditionalStyle>
+        </style>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -285,10 +293,8 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` = $P{date}]]>
 				<text><![CDATA[Checking Align]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="180" y="20" width="81" height="15" uuid="ff800277-e4f0-42e5-8ca8-6856064da9ca"/>
-				<textElement textAlignment="Center">
-					<font isStrikeThrough="false"/>
-				</textElement>
+				<reportElement style="ColoredField" x="180" y="20" width="81" height="15" uuid="ff800277-e4f0-42e5-8ca8-6856064da9ca"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[($F{billccc_CHK_ALIGN} != 0 ? $F{billccc_CHK_ALIGN}.toString() : "-" )]]></textFieldExpression>
 			</textField>
 			<staticText>
