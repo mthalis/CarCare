@@ -170,7 +170,6 @@ public class BillcccJpaController implements Serializable {
     }
     
     public Object[] getBillCCCAmountMilage(String vno, String date){
-        System.out.println("sssssss " + vno +"ss"+date);
         EntityManager em = getEntityManager();
         try {
             Query query = em.createQuery("SELECT c.amount, c.millage FROM Billccc c WHERE c.vno = :vno and c.date like CONCAT(:date,'%')");

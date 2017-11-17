@@ -20,6 +20,7 @@ import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -1008,7 +1009,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
             
             billccc.setAmount((txtCCCTotal.getText() != null && !txtCCCTotal.getText().isEmpty()) ? Integer.parseInt(txtCCCTotal.getText()) : 0);            
             if(billccc.getAmount() > 0 ){
-               // billcccJpaController.create(billccc);
+                billcccJpaController.create(billccc);
             }
             
             Billcce billcce = new Billcce();
@@ -1061,31 +1062,61 @@ public class AddBilling extends javax.swing.JInternalFrame {
             if(billcce.getAmount() > 0 || billccc.getAmount() > 0 ){
              
                 dispose();
-                
-                try{
-                    String title = "CarCare Center Invoice";
-                    String reportSource = "./src/carcare.report/centerInvoice.jasper";
-                    Map<String, Object> params = new HashMap();
-                    params.put("reportName", title);
-                    params.put("vno", txtVNo.getText());
-                    params.put("date", txtDate.getDate());
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                if(billcce.getAmount() > 0 && billccc.getAmount() > 0 ){
+                    
+                }else if(billccc.getAmount() > 0){
+                    try{
+                        String title = "CarCare Center Invoice";
+                        String reportSource = "./src/carcare.report/centerInvoice.jasper";
+                        Map<String, Object> params = new HashMap();
+                        params.put("reportName", title);
+                        params.put("vno", billccc.getVno());
+                        params.put("date", format.format(billccc.getDate()));
 
-                    JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
-                            ConnectionManager.getConnection());
+                        JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
+                                ConnectionManager.getConnection());
 
-                    JRViewer jv = new JRViewer(jasperPrint);
-                    JFrame jf = new JFrame();
-                    jf.getContentPane().add(jv);
-                    jf.setTitle(title);
+                        JRViewer jv = new JRViewer(jasperPrint);
+                        JFrame jf = new JFrame();
+                        jf.getContentPane().add(jv);
+                        jf.setTitle(title);
 
-                    jf.validate();
-                    jf.setVisible(true);
-                    jf.setSize(new Dimension(900,700));
-                    jf.setLocation(300,0);
-                    jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            
-                }catch(Exception e){
-                    logger.fatal("Error Occured while generating InventoryReport " + e);
+                        jf.validate();
+                        jf.setVisible(true);
+                        jf.setSize(new Dimension(900,700));
+                        jf.setLocation(300,0);
+                        jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+                    }catch(Exception e){
+                        logger.fatal("Error Occured while generating InventoryReport " + e);
+                    }
+                }else if(billcce.getAmount() > 0){
+                    try{
+                        String title = "CarCare Enterprise Invoice";
+                        String reportSource = "./src/carcare.report/enterpriseInvoice.jasper";
+                        Map<String, Object> params = new HashMap();
+                        params.put("reportName", title);
+                        params.put("vno", billcce.getVno());
+                        params.put("date", format.format(billcce.getDate()));
+
+                        JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
+                                ConnectionManager.getConnection());
+
+                        JRViewer jv = new JRViewer(jasperPrint);
+                        JFrame jf = new JFrame();
+                        jf.getContentPane().add(jv);
+                        jf.setTitle(title);
+
+                        jf.validate();
+                        jf.setVisible(true);
+                        jf.setSize(new Dimension(900,700));
+                        jf.setLocation(300,0);
+                        jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+                    }catch(Exception e){
+                        logger.fatal("Error Occured while generating InventoryRepor Enterpriset Center " + e);
+                    }
                 }
                 
                 JOptionPane.showMessageDialog(jPanel1, "Successfuly save record !");

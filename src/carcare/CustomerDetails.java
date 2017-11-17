@@ -5,7 +5,6 @@
  */
 package carcare;
 
-import static carcare.CarCare.cus_window;
 import carcare.controller.CustdataJpaController;
 import carcare.controller.LKController;
 import carcare.controller.PaginationController;
