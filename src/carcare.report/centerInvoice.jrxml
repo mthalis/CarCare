@@ -3,86 +3,66 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-        <style name="ColoredField"> 
-            <conditionalStyle>
-                 <conditionExpression>
-                    <![CDATA[$F{billccc_FREE_ALIGN}]]>
-                </conditionExpression>
-                 <style isStrikeThrough="true"/>
-            </conditionalStyle>
-        </style>
-        <style name="FREE_TOE"> 
-            <conditionalStyle>
-                 <conditionExpression>
-                    <![CDATA[$F{billccc_FREE_TOE}]]>
-                </conditionExpression>
-                 <style isStrikeThrough="true"/>
-            </conditionalStyle>
-        </style>
-        <style name="FREE_CAMB"> 
-            <conditionalStyle>
-                 <conditionExpression>
-                    <![CDATA[$F{billccc_FREE_CAMB}]]>
-                </conditionExpression>
-                 <style isStrikeThrough="true"/>
-            </conditionalStyle>
-        </style>
-        <style name="FREE_CAST"> 
-            <conditionalStyle>
-                 <conditionExpression>
-                    <![CDATA[$F{billccc_FREE_CAST}]]>
-                </conditionExpression>
-                 <style isStrikeThrough="true"/>
-            </conditionalStyle>
-        </style>
-        <style name="FREE_BHGT"> 
-            <conditionalStyle>
-                 <conditionExpression>
-                    <![CDATA[$F{billccc_FREE_BHGT}]]>
-                </conditionExpression>
-                 <style isStrikeThrough="true"/>
-            </conditionalStyle>
-        </style>
-        <style name="FREE_R_TOE"> 
-            <conditionalStyle>
-                 <conditionExpression>
-                    <![CDATA[$F{billccc_FREE_R_TOE}]]>
-                </conditionExpression>
-                 <style isStrikeThrough="true"/>
-            </conditionalStyle>
-        </style>
-        <style name="FREE_R_CAM"> 
-            <conditionalStyle>
-                 <conditionExpression>
-                    <![CDATA[$F{billccc_FREE_R_CAM}]]>
-                </conditionExpression>
-                 <style isStrikeThrough="true"/>
-            </conditionalStyle>
-        </style>
-        <style name="FREE_ANYO"> 
-            <conditionalStyle>
-                 <conditionExpression>
-                    <![CDATA[$F{billccc_FREE_ANYO}]]>
-                </conditionExpression>
-                 <style isStrikeThrough="true"/>
-            </conditionalStyle>
-        </style>
-        <style name="FREE_ST"> 
-            <conditionalStyle>
-                 <conditionExpression>
-                    <![CDATA[$F{billccc_FREE_ST}]]>
-                </conditionExpression>
-                 <style isStrikeThrough="true"/>
-            </conditionalStyle>
-        </style>
-        <style name="FREE_HLT"> 
-            <conditionalStyle>
-                 <conditionExpression>
-                    <![CDATA[$F{billccc_FREE_HLT}]]>
-                </conditionExpression>
-                 <style isStrikeThrough="true"/>
-            </conditionalStyle>
-        </style>
+	<style name="FREE_ALIGN_STY">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{billccc_FREE_ALIGN}]]></conditionExpression>
+			<style isStrikeThrough="true"/>
+		</conditionalStyle>
+	</style>
+	<style name="FREE_TOE_STY">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{billccc_FREE_TOE}]]></conditionExpression>
+			<style isStrikeThrough="true"/>
+		</conditionalStyle>
+	</style>
+	<style name="FREE_CAMB_STY">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{billccc_FREE_CAMB}]]></conditionExpression>
+			<style isStrikeThrough="true"/>
+		</conditionalStyle>
+	</style>
+	<style name="FREE_CAST_STY">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{billccc_FREE_CAST}]]></conditionExpression>
+			<style isStrikeThrough="true"/>
+		</conditionalStyle>
+	</style>
+	<style name="FREE_BHGT_STY">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{billccc_FREE_BHGT}]]></conditionExpression>
+			<style isStrikeThrough="true"/>
+		</conditionalStyle>
+	</style>
+	<style name="FREE_R_TOE_STY">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{billccc_FREE_R_TOE}]]></conditionExpression>
+			<style isStrikeThrough="true"/>
+		</conditionalStyle>
+	</style>
+	<style name="FREE_R_CAM_STY">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{billccc_FREE_R_CAM}]]></conditionExpression>
+			<style isStrikeThrough="true"/>
+		</conditionalStyle>
+	</style>
+	<style name="FREE_ANYO_STY">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{billccc_FREE_ANYO}]]></conditionExpression>
+			<style isStrikeThrough="true"/>
+		</conditionalStyle>
+	</style>
+	<style name="FREE_ST_STY">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{billccc_FREE_ST}]]></conditionExpression>
+			<style isStrikeThrough="true"/>
+		</conditionalStyle>
+	</style>
+	<style name="FREE_HLT_STY">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{billccc_FREE_HLT}]]></conditionExpression>
+			<style isStrikeThrough="true"/>
+		</conditionalStyle>
+	</style>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -298,47 +278,47 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` = $P{date}]]>
 				<textFieldExpression><![CDATA[(6000+$F{billccc_MILLAGE})]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="180" y="35" width="81" height="15" uuid="5521ce1e-9b8b-4c11-9dd9-01e477018274"/>
+				<reportElement style="FREE_TOE_STY" x="180" y="35" width="81" height="15" uuid="5521ce1e-9b8b-4c11-9dd9-01e477018274"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[($F{billccc_AJST_TOE} != 0 ? $F{billccc_AJST_TOE}.toString() : "-" )]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="180" y="50" width="81" height="15" uuid="e075d094-ef47-4d7e-bb3f-d6095ef5712b"/>
+				<reportElement style="FREE_CAMB_STY" x="180" y="50" width="81" height="15" uuid="e075d094-ef47-4d7e-bb3f-d6095ef5712b"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[($F{billccc_CAMBER} != 0 ? $F{billccc_CAMBER}.toString() : "-" )]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="180" y="65" width="81" height="15" uuid="20d44c1d-53a8-4027-aba4-c2325fb4ab95"/>
+				<reportElement style="FREE_CAST_STY" x="180" y="65" width="81" height="15" uuid="20d44c1d-53a8-4027-aba4-c2325fb4ab95"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[($F{billccc_CASTER} != 0 ? $F{billccc_CASTER}.toString() : "-" )]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="180" y="80" width="81" height="15" uuid="2e2f9352-911b-4fac-8b7b-953aa6017d7e"/>
+				<reportElement style="FREE_BHGT_STY" x="180" y="80" width="81" height="15" uuid="2e2f9352-911b-4fac-8b7b-953aa6017d7e"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[($F{billccc_B_HIGHT} != 0 ? $F{billccc_B_HIGHT}.toString() : "-" )]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="180" y="95" width="81" height="15" uuid="8e628721-18b1-409a-8306-56e19789c1b8"/>
+				<reportElement style="FREE_R_TOE_STY" x="180" y="95" width="81" height="15" uuid="8e628721-18b1-409a-8306-56e19789c1b8"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[($F{billccc_RE_TOE} != 0 ? $F{billccc_RE_TOE}.toString() : "-" )]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="180" y="110" width="81" height="15" uuid="28840b68-cc3c-45a2-95cd-1797a81631bc"/>
+				<reportElement style="FREE_R_CAM_STY" x="180" y="110" width="81" height="15" uuid="28840b68-cc3c-45a2-95cd-1797a81631bc"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[($F{billccc_RE_CAMBER} != 0 ? $F{billccc_RE_CAMBER}.toString() : "-" )]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="180" y="125" width="81" height="15" uuid="1b41ddf2-3231-4405-8041-02f23473438b"/>
+				<reportElement style="FREE_ANYO_STY" x="180" y="125" width="81" height="15" uuid="1b41ddf2-3231-4405-8041-02f23473438b"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[($F{billccc_ANY_OTHER} != 0 ? $F{billccc_ANY_OTHER}.toString() : "-" )]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="180" y="140" width="81" height="15" uuid="dc2fe1bb-a213-4601-bab4-b5cdd305252b"/>
+				<reportElement style="FREE_ST_STY" x="180" y="140" width="81" height="15" uuid="dc2fe1bb-a213-4601-bab4-b5cdd305252b"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[($F{billccc_SUS_TEST} != 0 ? $F{billccc_SUS_TEST}.toString() : "-" )]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="180" y="155" width="81" height="15" uuid="40005fa5-e816-4166-becd-b2fa83dc2982"/>
+				<reportElement style="FREE_HLT_STY" x="180" y="155" width="81" height="15" uuid="40005fa5-e816-4166-becd-b2fa83dc2982"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[($F{billccc_H_L_TEST} != 0 ? $F{billccc_H_L_TEST}.toString() : "-" )]]></textFieldExpression>
 			</textField>
@@ -365,7 +345,7 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` = $P{date}]]>
 				<text><![CDATA[Checking Align]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="ColoredField" x="180" y="20" width="81" height="15" uuid="ff800277-e4f0-42e5-8ca8-6856064da9ca"/>
+				<reportElement style="FREE_ALIGN_STY" x="180" y="20" width="81" height="15" uuid="ff800277-e4f0-42e5-8ca8-6856064da9ca"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[($F{billccc_CHK_ALIGN} != 0 ? $F{billccc_CHK_ALIGN}.toString() : "-" )]]></textFieldExpression>
 			</textField>
