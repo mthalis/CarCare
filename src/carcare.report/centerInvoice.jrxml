@@ -11,6 +11,78 @@
                  <style isStrikeThrough="true"/>
             </conditionalStyle>
         </style>
+        <style name="FREE_TOE"> 
+            <conditionalStyle>
+                 <conditionExpression>
+                    <![CDATA[$F{billccc_FREE_TOE}]]>
+                </conditionExpression>
+                 <style isStrikeThrough="true"/>
+            </conditionalStyle>
+        </style>
+        <style name="FREE_CAMB"> 
+            <conditionalStyle>
+                 <conditionExpression>
+                    <![CDATA[$F{billccc_FREE_CAMB}]]>
+                </conditionExpression>
+                 <style isStrikeThrough="true"/>
+            </conditionalStyle>
+        </style>
+        <style name="FREE_CAST"> 
+            <conditionalStyle>
+                 <conditionExpression>
+                    <![CDATA[$F{billccc_FREE_CAST}]]>
+                </conditionExpression>
+                 <style isStrikeThrough="true"/>
+            </conditionalStyle>
+        </style>
+        <style name="FREE_BHGT"> 
+            <conditionalStyle>
+                 <conditionExpression>
+                    <![CDATA[$F{billccc_FREE_BHGT}]]>
+                </conditionExpression>
+                 <style isStrikeThrough="true"/>
+            </conditionalStyle>
+        </style>
+        <style name="FREE_R_TOE"> 
+            <conditionalStyle>
+                 <conditionExpression>
+                    <![CDATA[$F{billccc_FREE_R_TOE}]]>
+                </conditionExpression>
+                 <style isStrikeThrough="true"/>
+            </conditionalStyle>
+        </style>
+        <style name="FREE_R_CAM"> 
+            <conditionalStyle>
+                 <conditionExpression>
+                    <![CDATA[$F{billccc_FREE_R_CAM}]]>
+                </conditionExpression>
+                 <style isStrikeThrough="true"/>
+            </conditionalStyle>
+        </style>
+        <style name="FREE_ANYO"> 
+            <conditionalStyle>
+                 <conditionExpression>
+                    <![CDATA[$F{billccc_FREE_ANYO}]]>
+                </conditionExpression>
+                 <style isStrikeThrough="true"/>
+            </conditionalStyle>
+        </style>
+        <style name="FREE_ST"> 
+            <conditionalStyle>
+                 <conditionExpression>
+                    <![CDATA[$F{billccc_FREE_ST}]]>
+                </conditionExpression>
+                 <style isStrikeThrough="true"/>
+            </conditionalStyle>
+        </style>
+        <style name="FREE_HLT"> 
+            <conditionalStyle>
+                 <conditionExpression>
+                    <![CDATA[$F{billccc_FREE_HLT}]]>
+                </conditionExpression>
+                 <style isStrikeThrough="true"/>
+            </conditionalStyle>
+        </style>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
