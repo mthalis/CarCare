@@ -323,22 +323,22 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` = $P{date}]]>
 				<textFieldExpression><![CDATA[($F{billccc_H_L_TEST} != 0 ? $F{billccc_H_L_TEST}.toString() : "-" )]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="41" y="170" width="126" height="20" uuid="c654dc31-74c8-47e3-853f-eefde697bc88"/>
+				<reportElement x="91" y="200" width="76" height="20" uuid="c654dc31-74c8-47e3-853f-eefde697bc88"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Total]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="180" y="169" width="81" height="15" uuid="2faee89c-c3f1-4bb5-8d19-17a3fadcba87"/>
+				<reportElement x="180" y="199" width="81" height="15" uuid="2faee89c-c3f1-4bb5-8d19-17a3fadcba87"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{billccc_Amount}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="180" y="168" width="80" height="1" uuid="c09c8210-69ea-436a-bc62-69b8ae7b9b9c"/>
+				<reportElement x="180" y="170" width="80" height="1" uuid="c09c8210-69ea-436a-bc62-69b8ae7b9b9c"/>
 			</line>
 			<line>
-				<reportElement x="180" y="184" width="80" height="1" uuid="bd85ee3a-8982-4dcd-8165-9d182ab9730c"/>
+				<reportElement x="180" y="214" width="80" height="1" uuid="bd85ee3a-8982-4dcd-8165-9d182ab9730c"/>
 			</line>
 			<staticText>
 				<reportElement x="41" y="20" width="126" height="15" uuid="5d876538-c88a-492d-8e30-4fc9d9ce67e2"/>
@@ -363,6 +363,26 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` = $P{date}]]>
 				</textElement>
 				<text><![CDATA[Amount Rs.]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="91" y="185" width="76" height="15" uuid="9b65ccd0-9de4-4460-9fda-13f97756b018"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Discount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="91" y="170" width="76" height="15" uuid="75833b9b-3e6f-43df-bc47-4fc0396bd761"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Sub Total]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="180" y="170" width="80" height="15" uuid="3849ccc5-1d35-4aa0-8dd5-758c58c41cc0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{billccc_Amount} + $F{billccc_DISCOUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="185" width="80" height="15" uuid="86080eeb-882c-4ca5-b631-05710ff0f8e5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{billccc_DISCOUNT}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
