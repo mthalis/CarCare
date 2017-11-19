@@ -13,6 +13,7 @@ import javax.persistence.Persistence;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import org.apache.log4j.xml.DOMConfigurator;
 import style.Styling;
 
 /**
@@ -29,6 +30,7 @@ public class CarCare extends javax.swing.JFrame {
     public static int view_check_window = 0;
     public static int summaryRe_window = 0;
     public static int sequence_window = 0;
+    private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(CarCare.class);
     
     public CarCare() {
         initComponents();
@@ -254,6 +256,7 @@ public class CarCare extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         try {
+            DOMConfigurator.configure(CarCare.class.getResource("/META-INF/log4j.xml"));
             /* Set the Nimbus look and feel */
             //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
             /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

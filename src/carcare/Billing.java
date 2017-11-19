@@ -5,7 +5,6 @@
  */
 package carcare;
 
-import static carcare.AddBilling.logger;
 import carcare.controller.CustdataJpaController;
 import static carcare.CarCare.view_bill_window;
 import carcare.model.Billccc;
@@ -24,6 +23,7 @@ import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.swing.JRViewer;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -33,6 +33,7 @@ public class Billing extends javax.swing.JInternalFrame {
 
     CustdataJpaController custdataJpaController = new CustdataJpaController(CarCare.EMF);
     boolean carCareCenter;
+    private static final Logger logger = Logger.getLogger(Billing.class);
     
     public Billing() {
         initComponents();

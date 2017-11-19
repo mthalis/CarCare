@@ -44,7 +44,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
     CustdataJpaController custdataJpaController = new CustdataJpaController(CarCare.EMF);
     BillcccJpaController billcccJpaController = new BillcccJpaController(CarCare.EMF);
     BillcceJpaController billcceJpaController = new BillcceJpaController(CarCare.EMF);
-    static final Logger logger = Logger.getLogger(AddBilling.class);
+    private static final Logger logger = Logger.getLogger(AddBilling.class);
     
     public AddBilling() {
         initComponents();

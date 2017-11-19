@@ -5,7 +5,6 @@
  */
 package carcare;
 
-import static carcare.AddBilling.logger;
 import static carcare.CarCare.summaryRe_window;
 import com.sun.javafx.binding.StringFormatter;
 import db.ConnectionManager;
@@ -19,15 +18,15 @@ import javax.swing.JFrame;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.swing.JRViewer;
+import org.apache.log4j.Logger;
 /**
  *
  * @author lenovo
  */
 public class SummaryReport extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form SummaryReport
-     */
+    private static final Logger logger = Logger.getLogger(SummaryReport.class);
+    
     public SummaryReport() {
         initComponents();
         
@@ -130,7 +129,7 @@ public class SummaryReport extends javax.swing.JInternalFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try{
             
-            String reportSource = "./src/carcare.report/SummaryReport.jasper";
+            String reportSource = "C:\\CarCare\\report\\SummaryReport.jasper";
             Map<String, Object> params = new HashMap();
             
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
