@@ -21,6 +21,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -30,9 +31,11 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.DocumentFilter;
+import net.sf.jasperreports.engine.JRPrintPage;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.swing.JRViewer;
+import net.sf.jasperreports.view.JasperViewer;
 import org.apache.log4j.Logger;
 
 /**
@@ -963,7 +966,8 @@ public class AddBilling extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
-        
+        boolean saveBillccc = false;
+        boolean saveBillcce= false;
         if(txtVNo.getText() == null || txtVNo.getText().equals("")){
             JOptionPane.showMessageDialog(jPanel1, "Please enter Vehicle no !");
             txtVNo.requestFocus();
@@ -1009,7 +1013,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
             
             billccc.setAmount((txtCCCTotal.getText() != null && !txtCCCTotal.getText().isEmpty()) ? Integer.parseInt(txtCCCTotal.getText()) : 0);            
             if(billccc.getAmount() > 0 ){
-                billcccJpaController.create(billccc);
+                saveBillccc = billcccJpaController.create(billccc);
             }
             
             Billcce billcce = new Billcce();
@@ -1056,19 +1060,61 @@ public class AddBilling extends javax.swing.JInternalFrame {
             billcce.setAmount((txtCCETotal.getText() != null && !txtCCETotal.getText().isEmpty()) ? Integer.parseInt(txtCCETotal.getText()) : 0);                        
                         
             if(billcce.getAmount() > 0 ){
-                //billcceJpaController.create(billcce);                
+                saveBillcce = billcceJpaController.create(billcce);                
             }
-            
+            System.out.println("dddddddddddd " + saveBillccc + saveBillcce);
             if(billcce.getAmount() > 0 || billccc.getAmount() > 0 ){
              
                 dispose();
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 if(billcce.getAmount() > 0 && billccc.getAmount() > 0 ){
+                    try{
+                        
+                       String title = "CarCare Center Invoice";
+                        String reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
+                        Map<String, Object> params = new HashMap();
+                        params.put("reportName", title);
+                        params.put("vno", billccc.getVno());
+                        params.put("date", format.format(billccc.getDate()));
+
+                        JasperPrint jasperPrintCenter = JasperFillManager.fillReport(reportSource, params,
+                                ConnectionManager.getConnection());                        
+                        
+                        String title1 = "CarCare Enterprise Invoice";
+                        String reportSource1 = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
+                        Map<String, Object> params1 = new HashMap();
+                        params1.put("reportName", title1);
+                        params1.put("vno", billcce.getVno());
+                        params1.put("date", format.format(billcce.getDate()));
+
+                        JasperPrint jasperPrintEnterPrice = JasperFillManager.fillReport(reportSource1, params1,
+                                ConnectionManager.getConnection());
+                                                
+                        List pages = jasperPrintEnterPrice.getPages();
+                        for (int j = 0; j < pages.size(); j++) {
+                            JRPrintPage object = (JRPrintPage)pages.get(j);
+                            jasperPrintCenter.addPage(object);
+                        }
+                        
+                        JRViewer jv = new JRViewer(jasperPrintCenter);
+                        JFrame jf = new JFrame();
+                        jf.getContentPane().add(jv);
+                        jf.setTitle(title);
+
+                        jf.validate();
+                        jf.setVisible(true);
+                        jf.setSize(new Dimension(900,700));
+                        jf.setLocation(300,0);
+                        jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);                        
+                       
+                    }catch(Exception e){
+                        logger.fatal("Error Occured while generating InventoryRepor Enterpriset Center " + e);
+                    }
                     
                 }else if(billccc.getAmount() > 0){
                     try{
                         String title = "CarCare Center Invoice";
-                        String reportSource = "./src/carcare.report/centerInvoice.jasper";
+                        String reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
                         Map<String, Object> params = new HashMap();
                         params.put("reportName", title);
                         params.put("vno", billccc.getVno());
@@ -1076,7 +1122,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
 
                         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
                                 ConnectionManager.getConnection());
-
+                        
                         JRViewer jv = new JRViewer(jasperPrint);
                         JFrame jf = new JFrame();
                         jf.getContentPane().add(jv);
@@ -1094,7 +1140,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 }else if(billcce.getAmount() > 0){
                     try{
                         String title = "CarCare Enterprise Invoice";
-                        String reportSource = "./src/carcare.report/enterpriseInvoice.jasper";
+                        String reportSource = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
                         Map<String, Object> params = new HashMap();
                         params.put("reportName", title);
                         params.put("vno", billcce.getVno());

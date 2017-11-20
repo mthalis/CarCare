@@ -17,6 +17,7 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -24,6 +25,8 @@ import javax.persistence.criteria.Root;
  */
 public class BillcceJpaController implements Serializable {
 
+    private static final Logger logger = Logger.getLogger(BillcceJpaController.class);
+    
     public BillcceJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
@@ -33,7 +36,7 @@ public class BillcceJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Billcce billcce) {
+    public boolean create(Billcce billcce) {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -58,11 +61,15 @@ public class BillcceJpaController implements Serializable {
             query.setParameter("lmilage",outPut.get(0)[0] );
             query.setParameter("vno", billcce.getVno());
             query.executeUpdate();
+        }catch(Exception e){
+            logger.warn("Error occured while create Billcce -> " + e);
+            return false;
         } finally {
             if (em != null) {
                 em.close();
             }
         }
+        return true;
     }
 
     public void edit(Billcce billcce) throws NonexistentEntityException, Exception {

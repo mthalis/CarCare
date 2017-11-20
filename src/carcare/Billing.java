@@ -762,7 +762,7 @@ public class Billing extends javax.swing.JInternalFrame {
             if(carCareCenter){                
                 String formatDate = format.format( dateBill.getDate());
                 String title = "CarCare Center Invoice";
-                reportSource = "./src/carcare.report/centerInvoice.jasper";
+                reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
                 
                 params.put("reportName", title);
                 params.put("vno", txtVNo.getText());
@@ -772,7 +772,7 @@ public class Billing extends javax.swing.JInternalFrame {
             }else{
                 String formatDate = format.format( dateBill.getDate());
                 String title = "CarCare Enterprise Invoice";
-                reportSource = "./src/carcare.report/enterpriseInvoice.jasper";
+                reportSource = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
                 
                 params.put("reportName", title);
                 params.put("vno", txtVNo.getText());
