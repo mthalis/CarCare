@@ -10,7 +10,6 @@ import carcare.model.Billccc;
 import carcare.model.Logfile;
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

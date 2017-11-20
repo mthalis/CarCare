@@ -5,7 +5,7 @@
  */
 package carcare.controller;
 
-import carcare.exceptions.NonexistentEntityException;
+import carcare.controller.exceptions.NonexistentEntityException;
 import carcare.model.Chksht;
 import java.io.Serializable;
 import java.util.Date;

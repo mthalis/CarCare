@@ -16,17 +16,13 @@ import db.ConnectionManager;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.HeadlessException;
-import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.text.AbstractDocument;
@@ -35,7 +31,6 @@ import net.sf.jasperreports.engine.JRPrintPage;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.swing.JRViewer;
-import net.sf.jasperreports.view.JasperViewer;
 import org.apache.log4j.Logger;
 
 /**
@@ -1014,6 +1009,10 @@ public class AddBilling extends javax.swing.JInternalFrame {
             billccc.setAmount((txtCCCTotal.getText() != null && !txtCCCTotal.getText().isEmpty()) ? Integer.parseInt(txtCCCTotal.getText()) : 0);            
             if(billccc.getAmount() > 0 ){
                 saveBillccc = billcccJpaController.create(billccc);
+                if(!saveBillccc){
+                    JOptionPane.showMessageDialog(jPanel1, "Error occured while save record !");
+                    return;
+                }
             }
             
             Billcce billcce = new Billcce();
@@ -1060,9 +1059,13 @@ public class AddBilling extends javax.swing.JInternalFrame {
             billcce.setAmount((txtCCETotal.getText() != null && !txtCCETotal.getText().isEmpty()) ? Integer.parseInt(txtCCETotal.getText()) : 0);                        
                         
             if(billcce.getAmount() > 0 ){
-                saveBillcce = billcceJpaController.create(billcce);                
+                saveBillcce = billcceJpaController.create(billcce);
+                if(!saveBillcce){
+                    JOptionPane.showMessageDialog(jPanel1, "Error occured while save record !");
+                    return;
+                }                
             }
-            System.out.println("dddddddddddd " + saveBillccc + saveBillcce);
+            
             if(billcce.getAmount() > 0 || billccc.getAmount() > 0 ){
              
                 dispose();

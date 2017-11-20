@@ -5,7 +5,6 @@
  */
 package carcare;
 
-import static carcare.CarCare.check_window;
 import static carcare.CarCare.view_check_window;
 import carcare.controller.BillcccJpaController;
 import carcare.controller.BillcceJpaController;

@@ -6,7 +6,6 @@
 package carcare;
 
 import static carcare.CarCare.summaryRe_window;
-import com.sun.javafx.binding.StringFormatter;
 import db.ConnectionManager;
 import java.awt.Dimension;
 import java.awt.Toolkit;
