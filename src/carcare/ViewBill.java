@@ -394,12 +394,29 @@ public class ViewBill extends javax.swing.JInternalFrame {
         String vNo = txtVnoSearch.getText() != null ? txtVnoSearch.getText() : "";
         if(!vNo.isEmpty()){
             billcccList.clear();
-            List<Billccc> billcccListVal = billcccJpaController.findBillcccByVno(vNo);
+            List<Billccc> billcccListVal = billcccJpaController.findBillcccByVno(vNo, pagination1.getPageSize(), pagination1.getCurrentItem());
             if(billcccListVal !=null && billcccListVal.size() > 0){
-                billcccList.addAll(billcccListVal);
+                //pagination1 = new PaginationController(17, billcccJpaController.getBillcccCount(vNo));
+                pagination1 = new PaginationController(17, 23);
+                refreshSearchByVnoTable1(vNo);
+            }else{          
                 jTable1.updateUI();
+                txtVnoSearch.requestFocus();
+                
+            btnFirst1.setEnabled(false);
+            btnPrev1.setEnabled(false);
+            btnNext1.setEnabled(false);
+            btnLast1.setEnabled(false);
+            }
+            
+            
+
+            billcceList.clear();
+            List<Billcce> billcceListVal = billcceJpaController.findBillcceByVno(vNo);
+            if(billcceListVal !=null && billcceListVal.size() > 0){                
+                refreshSearchByVnoTable(billcceListVal);
             }else{
-                jTable1.updateUI();
+                jTable2.updateUI();
                 txtVnoSearch.requestFocus();
             }
 
@@ -407,22 +424,10 @@ public class ViewBill extends javax.swing.JInternalFrame {
             btnPrev.setEnabled(false);
             btnNext.setEnabled(false);
             btnLast.setEnabled(false);
-
-            billcceList.clear();
-            List<Billcce> billcceListVal = billcceJpaController.findBillcceByVno(vNo);
-            if(billcceListVal !=null && billcceListVal.size() > 0){
-                billcceList.addAll(billcceListVal);
-                jTable2.updateUI();
-            }else{
-                jTable2.updateUI();
-                txtVnoSearch.requestFocus();
-            }
-
-            btnFirst1.setEnabled(false);
-            btnPrev1.setEnabled(false);
-            btnNext1.setEnabled(false);
-            btnLast1.setEnabled(false);
+            
         }else{
+            pagination = new PaginationController(17, billcceJpaController.getBillcceCount());
+            pagination1 = new PaginationController(17, billcccJpaController.getBillcccCount());
             refreshTable();
             refreshTable1();
         }
@@ -505,4 +510,26 @@ public class ViewBill extends javax.swing.JInternalFrame {
         btnNext1.setEnabled(pagination1.isHasNextPage());
         btnLast1.setEnabled(pagination1.isHasNextPage());
     }
+    
+    private void refreshSearchByVnoTable(List<Billcce> billcceListVal) {
+        billcceList.clear();
+        billcceList.addAll(billcceListVal);
+        jTable2.updateUI();
+        
+        btnFirst.setEnabled(pagination.isHasPrevPage());
+        btnPrev.setEnabled(pagination.isHasPrevPage());
+        btnNext.setEnabled(pagination.isHasNextPage());
+        btnLast.setEnabled(pagination.isHasNextPage());
+    }
+    
+    private void refreshSearchByVnoTable1(String vNo) {
+        billcccList.clear();
+        billcccList.addAll(billcccJpaController.findBillcccByVno(vNo, pagination1.getPageSize(), pagination1.getCurrentItem()));
+        jTable1.updateUI();
+        
+        btnFirst1.setEnabled(pagination1.isHasPrevPage());
+        btnPrev1.setEnabled(pagination1.isHasPrevPage());
+        btnNext1.setEnabled(pagination1.isHasNextPage());
+        btnLast1.setEnabled(pagination1.isHasNextPage());
+    }    
 }

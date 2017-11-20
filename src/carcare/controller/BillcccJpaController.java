@@ -164,11 +164,13 @@ public class BillcccJpaController implements Serializable {
         }
     }
     
-    public List<Billccc> findBillcccByVno(String vno) {
+    public List<Billccc> findBillcccByVno(String vno, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             Query query = em.createQuery("SELECT c FROM Billccc c WHERE c.vno = :vno order by c.billNo desc", Billccc.class);
             query.setParameter("vno", vno);
+            query.setMaxResults(maxResults);
+            query.setFirstResult(firstResult);
             return query.getResultList();
         } finally {
             em.close();
@@ -190,4 +192,14 @@ public class BillcccJpaController implements Serializable {
         return null;
     }
     
+    public int getBillcccCount(String vno) {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT count(c) FROM Billccc c WHERE c.vno = :vno order by c.billNo desc", Billccc.class);
+            query.setParameter("vno", vno);
+            return ((Long) query.getSingleResult()).intValue();
+        } finally {
+            em.close();
+        }
+    }
 }
