@@ -31,6 +31,9 @@ public class ViewBill extends javax.swing.JInternalFrame {
     PaginationController pagination1;
     BillcceJpaController billcceJpaController = new BillcceJpaController(CarCare.EMF);
     BillcccJpaController billcccJpaController = new BillcccJpaController(CarCare.EMF);
+    boolean viewAllbccc = true;
+    String searchVno = "";
+    boolean viewAllbcce = true;
     
     public ViewBill() {
         initComponents();
@@ -41,6 +44,7 @@ public class ViewBill extends javax.swing.JInternalFrame {
         pagination = new PaginationController(17, billcceJpaController.getBillcceCount());
         pagination1 = new PaginationController(17, billcccJpaController.getBillcccCount());
         refreshTable();
+        refreshTable1();
         
         DocumentFilter filter = new UppercaseDocumentFilter ();
         ((AbstractDocument) txtVnoSearch.getDocument()).setDocumentFilter(filter);
@@ -347,43 +351,76 @@ public class ViewBill extends javax.swing.JInternalFrame {
 
     private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
         pagination.firstPage();
-        refreshTable();
+        if(viewAllbcce){
+            refreshTable();
+        }else{
+            refreshSearchByVnoTable(searchVno);
+        }
     }//GEN-LAST:event_btnFirstActionPerformed
 
     private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
         // TODO add your handling code here:
         pagination.prevPage();
-        refreshTable();
+        if(viewAllbcce){
+            refreshTable();
+        }else{
+            refreshSearchByVnoTable(searchVno);
+        }
     }//GEN-LAST:event_btnPrevActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         pagination.nextPage();
-        refreshTable();
+        if(viewAllbcce){
+            refreshTable();
+        }else{
+            refreshSearchByVnoTable(searchVno);
+        }
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
         pagination.lastPage();
-        refreshTable();
+        if(viewAllbcce){
+            refreshTable();
+        }else{
+            refreshSearchByVnoTable(searchVno);
+        }
     }//GEN-LAST:event_btnLastActionPerformed
 
     private void btnFirst1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirst1ActionPerformed
         pagination1.firstPage();
-        refreshTable1();
+        if(viewAllbccc){
+            refreshTable1();
+        }else{
+            refreshSearchByVnoTable1(searchVno);
+        }
+        
     }//GEN-LAST:event_btnFirst1ActionPerformed
 
     private void btnPrev1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrev1ActionPerformed
         pagination1.prevPage();
-        refreshTable1();
+        if(viewAllbccc){
+            refreshTable1();
+        }else{
+            refreshSearchByVnoTable1(searchVno);
+        }
     }//GEN-LAST:event_btnPrev1ActionPerformed
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
         pagination1.nextPage();
-        refreshTable1();
+        if(viewAllbccc){
+            refreshTable1();
+        }else{
+            refreshSearchByVnoTable1(searchVno);
+        }
     }//GEN-LAST:event_btnNext1ActionPerformed
 
     private void btnLast1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLast1ActionPerformed
         pagination1.lastPage();
-        refreshTable1();
+        if(viewAllbccc){
+            refreshTable1();
+        }else{
+            refreshSearchByVnoTable1(searchVno);
+        }
     }//GEN-LAST:event_btnLast1ActionPerformed
 
     private void txtVnoSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtVnoSearchMouseClicked
@@ -393,39 +430,20 @@ public class ViewBill extends javax.swing.JInternalFrame {
     private void btnSearchvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchvActionPerformed
         String vNo = txtVnoSearch.getText() != null ? txtVnoSearch.getText() : "";
         if(!vNo.isEmpty()){
-            billcccList.clear();
-            List<Billccc> billcccListVal = billcccJpaController.findBillcccByVno(vNo, pagination1.getPageSize(), pagination1.getCurrentItem());
-            if(billcccListVal !=null && billcccListVal.size() > 0){
-                //pagination1 = new PaginationController(17, billcccJpaController.getBillcccCount(vNo));
-                pagination1 = new PaginationController(17, 23);
-                refreshSearchByVnoTable1(vNo);
-            }else{          
-                jTable1.updateUI();
-                txtVnoSearch.requestFocus();
-                
-            btnFirst1.setEnabled(false);
-            btnPrev1.setEnabled(false);
-            btnNext1.setEnabled(false);
-            btnLast1.setEnabled(false);
-            }
             
+            searchVno = vNo;
             
-
-            billcceList.clear();
-            List<Billcce> billcceListVal = billcceJpaController.findBillcceByVno(vNo);
-            if(billcceListVal !=null && billcceListVal.size() > 0){                
-                refreshSearchByVnoTable(billcceListVal);
-            }else{
-                jTable2.updateUI();
-                txtVnoSearch.requestFocus();
-            }
-
-            btnFirst.setEnabled(false);
-            btnPrev.setEnabled(false);
-            btnNext.setEnabled(false);
-            btnLast.setEnabled(false);
+            pagination1 = new PaginationController(17, billcccJpaController.getBillcccCount(vNo));
+            viewAllbccc = false;            
+            refreshSearchByVnoTable1(vNo);
+            
+            pagination = new PaginationController(17, billcceJpaController.getBillcceCount(vNo));
+            viewAllbcce = false;
+            refreshSearchByVnoTable(vNo);
             
         }else{
+            viewAllbccc = true;
+            viewAllbcce = true;
             pagination = new PaginationController(17, billcceJpaController.getBillcceCount());
             pagination1 = new PaginationController(17, billcccJpaController.getBillcccCount());
             refreshTable();
@@ -511,9 +529,9 @@ public class ViewBill extends javax.swing.JInternalFrame {
         btnLast1.setEnabled(pagination1.isHasNextPage());
     }
     
-    private void refreshSearchByVnoTable(List<Billcce> billcceListVal) {
+    private void refreshSearchByVnoTable(String vNo) {
         billcceList.clear();
-        billcceList.addAll(billcceListVal);
+        billcceList.addAll(billcceJpaController.findBillcceByVno(vNo, pagination.getPageSize(), pagination.getCurrentItem()));
         jTable2.updateUI();
         
         btnFirst.setEnabled(pagination.isHasPrevPage());

@@ -63,6 +63,30 @@
 			<pen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
+	<style name="fee1">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$P{parameter12}]]></conditionExpression>
+			<style isStrikeThrough="true"/>
+		</conditionalStyle>
+	</style>
+	<style name="fee2">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$P{parameter13}]]></conditionExpression>
+			<style isStrikeThrough="true"/>
+		</conditionalStyle>
+	</style>
+	<style name="fee3">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$P{parameter14}]]></conditionExpression>
+			<style isStrikeThrough="true"/>
+		</conditionalStyle>
+	</style>
+	<style name="fee4">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$P{parameter15}]]></conditionExpression>
+			<style isStrikeThrough="true"/>
+		</conditionalStyle>
+	</style>
 	<subDataset name="Table Dataset 1" uuid="237f0a6f-4c66-402e-99d8-822e84510f2c">
 		<parameter name="parameter1" class="java.lang.Integer"/>
 		<parameter name="parameter2" class="java.lang.Integer"/>
@@ -75,6 +99,10 @@
 		<parameter name="parameter9" class="java.lang.Integer"/>
 		<parameter name="parameter10" class="java.lang.Integer"/>
 		<parameter name="parameter11" class="java.lang.String"/>
+		<parameter name="parameter12" class="java.lang.Boolean"/>
+		<parameter name="parameter13" class="java.lang.Boolean"/>
+		<parameter name="parameter14" class="java.lang.Boolean"/>
+		<parameter name="parameter15" class="java.lang.Boolean"/>
 	</subDataset>
 	<parameter name="vno" class="java.lang.String"/>
 	<parameter name="date" class="java.lang.String"/>
@@ -261,6 +289,18 @@ where
 						<datasetParameter name="parameter11">
 							<datasetParameterExpression><![CDATA[$F{billcce_OTHER3_Txt}]]></datasetParameterExpression>
 						</datasetParameter>
+                                                <datasetParameter name="parameter12">
+							<datasetParameterExpression><![CDATA[$F{billcce_Free1}]]></datasetParameterExpression>
+						</datasetParameter>
+                                                <datasetParameter name="parameter13">
+							<datasetParameterExpression><![CDATA[$F{billcce_Free2}]]></datasetParameterExpression>
+						</datasetParameter>
+                                                <datasetParameter name="parameter14">
+							<datasetParameterExpression><![CDATA[$F{billcce_Free3}]]></datasetParameterExpression>
+						</datasetParameter>
+                                                <datasetParameter name="parameter15">
+							<datasetParameterExpression><![CDATA[$F{billcce_Free4}]]></datasetParameterExpression>
+						</datasetParameter>
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
 					</datasetRun>
 					<jr:column width="125" uuid="18881ef5-b07a-48c0-bf35-8ee2f70516da">
@@ -411,22 +451,22 @@ where
 						</jr:columnHeader>
 						<jr:detailCell style="table 2_TD" height="108" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="52" height="15" uuid="92c9ebe9-2527-4579-ba11-0b11dde27a63"/>
+								<reportElement style="fee1" x="0" y="0" width="52" height="15" uuid="92c9ebe9-2527-4579-ba11-0b11dde27a63"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter1}*$P{parameter4}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement x="0" y="15" width="52" height="15" uuid="b32bfdc0-d4d3-408f-b985-11eb6330c976"/>
+								<reportElement style="fee2" x="0" y="15" width="52" height="15" uuid="b32bfdc0-d4d3-408f-b985-11eb6330c976"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter5}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement x="0" y="30" width="52" height="15" uuid="69877503-fb96-4036-afab-3991576bbade"/>
+								<reportElement style="fee3" x="0" y="30" width="52" height="15" uuid="69877503-fb96-4036-afab-3991576bbade"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter6}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement x="0" y="45" width="52" height="15" uuid="95ab523f-f5c3-472c-a207-1a2817df7764"/>
+								<reportElement style="fee4" x="0" y="45" width="52" height="15" uuid="95ab523f-f5c3-472c-a207-1a2817df7764"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter7}]]></textFieldExpression>
 							</textField>

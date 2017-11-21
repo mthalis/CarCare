@@ -142,32 +142,13 @@ public class Billing extends javax.swing.JInternalFrame {
         jCheckBox13.setSelected(billcce.getFree3());
         jCheckBox14.setSelected(billcce.getFree4());
         
-        if(billcce.getFree1()){
-            jTextField34.setText("0");
-        }else{
-            int qty = Integer.parseInt(jTextField20.getText());
-            int rate = Integer.parseInt(jTextField27.getText());
-            int total = qty * rate;
-            jTextField34.setText(Integer.toString(total));
-        }
-        
-        if(billcce.getFree2()){
-            jTextField40.setText("0");
-        }else{
-           jTextField40.setText(billcce.getWRa().toString());
-        }
-        
-        if(billcce.getFree3()){
-            jTextField39.setText("0");
-        }else{
-            jTextField39.setText(billcce.getFixCmRF().toString());
-        }
-        
-        if(billcce.getFree4()){
-            jTextField38.setText("0");
-        }else{
-            jTextField38.setText(billcce.getFixCmRR().toString());
-        }
+        int qty0 = Integer.parseInt(jTextField20.getText());
+        int rate0 = Integer.parseInt(jTextField27.getText());
+        int total0 = qty0 * rate0;
+        jTextField34.setText(Integer.toString(total0));
+        jTextField40.setText(billcce.getWRa().toString());
+        jTextField39.setText(billcce.getFixCmRF().toString());
+        jTextField38.setText(billcce.getFixCmRR().toString());
         
         int qty = Integer.parseInt(jTextField24.getText());
         int rate = Integer.parseInt(jTextField30.getText());

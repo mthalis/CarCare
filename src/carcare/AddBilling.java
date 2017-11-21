@@ -963,9 +963,16 @@ public class AddBilling extends javax.swing.JInternalFrame {
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
         boolean saveBillccc = false;
         boolean saveBillcce= false;
+        boolean saveCusdata = false;
         if(txtVNo.getText() == null || txtVNo.getText().equals("")){
             JOptionPane.showMessageDialog(jPanel1, "Please enter Vehicle no !");
             txtVNo.requestFocus();
+        } else if(txtName.getText() == null || txtName.getText().equals("")){
+            JOptionPane.showMessageDialog(jPanel1, "Please enter Name !");
+            txtName.requestFocus();
+        }else if(txtMilage.getText() == null || txtMilage.getText().equals("")){
+            JOptionPane.showMessageDialog(jPanel1, "Please enter Millage !");
+            txtMilage.requestFocus();
         } else if(txtAddby.getText() == null || txtAddby.getText().equals("")){
             JOptionPane.showMessageDialog(jPanel1, "Please enter Add by !");
             txtAddby.requestFocus();
@@ -1008,6 +1015,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
             
             billccc.setAmount((txtCCCTotal.getText() != null && !txtCCCTotal.getText().isEmpty()) ? Integer.parseInt(txtCCCTotal.getText()) : 0);            
             if(billccc.getAmount() > 0 ){
+                saveCusdata = true;
                 saveBillccc = billcccJpaController.create(billccc);
                 if(!saveBillccc){
                     JOptionPane.showMessageDialog(jPanel1, "Error occured while save record !");
@@ -1027,15 +1035,10 @@ public class AddBilling extends javax.swing.JInternalFrame {
             billcce.setPaymethod(jRadioButton1.isSelected());
             billcce.setAddby(txtAddby.getText());
             
-            int chkAlign = !jCheckBox11.isSelected()? (Integer.parseInt(!jTextField27.getText().isEmpty() ? jTextField27.getText() : "0")) : 0 ;
-            int adstToe = !jCheckBox12.isSelected()? (Integer.parseInt(!jTextField33.getText().isEmpty() ? jTextField33.getText() : "0")) : 0 ;
-            int camber = !jCheckBox13.isSelected()? (Integer.parseInt(!jTextField32.getText().isEmpty() ? jTextField32.getText() : "0")) : 0 ;
-            int caster = !jCheckBox14.isSelected()? (Integer.parseInt(!jTextField31.getText().isEmpty() ? jTextField31.getText() : "0")) : 0 ;
-        
-            billcce.setWbRa(chkAlign);
-            billcce.setWRa(adstToe);
-            billcce.setFixCmRF(camber);
-            billcce.setFixCmRR(caster);
+            billcce.setWbRa(Integer.parseInt(!jTextField27.getText().isEmpty() ? jTextField27.getText() : "0"));
+            billcce.setWRa(Integer.parseInt(!jTextField33.getText().isEmpty() ? jTextField33.getText() : "0"));
+            billcce.setFixCmRF(Integer.parseInt(!jTextField32.getText().isEmpty() ? jTextField32.getText() : "0"));
+            billcce.setFixCmRR(Integer.parseInt(!jTextField31.getText().isEmpty() ? jTextField31.getText() : "0"));
             billcce.setOther1Ra((jTextField30.getText() != null && !jTextField30.getText().isEmpty()) ? Integer.parseInt(jTextField30.getText()) : 0);
             billcce.setOther2Ra((jTextField29.getText() != null && !jTextField29.getText().isEmpty()) ? Integer.parseInt(jTextField29.getText()) : 0);
             billcce.setOther3Ra((jTextField28.getText() != null && !jTextField28.getText().isEmpty()) ? Integer.parseInt(jTextField28.getText()) : 0);
@@ -1059,7 +1062,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
             billcce.setAmount((txtCCETotal.getText() != null && !txtCCETotal.getText().isEmpty()) ? Integer.parseInt(txtCCETotal.getText()) : 0);                        
                         
             if(billcce.getAmount() > 0 ){
-                saveBillcce = billcceJpaController.create(billcce);
+                saveBillcce = billcceJpaController.create(billcce, saveCusdata);
                 if(!saveBillcce){
                     JOptionPane.showMessageDialog(jPanel1, "Error occured while save record !");
                     return;
@@ -1073,7 +1076,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 if(billcce.getAmount() > 0 && billccc.getAmount() > 0 ){
                     try{
                         
-                       String title = "CarCare Center Invoice";
+                        String title = "CarCare Center Invoice";
                         String reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
                         Map<String, Object> params = new HashMap();
                         params.put("reportName", title);

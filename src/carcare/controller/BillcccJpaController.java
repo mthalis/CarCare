@@ -5,8 +5,10 @@
  */
 package carcare.controller;
 
+import carcare.CarCare;
 import carcare.controller.exceptions.NonexistentEntityException;
 import carcare.model.Billccc;
+import carcare.model.Custdata;
 import carcare.model.Logfile;
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -54,13 +56,32 @@ public class BillcccJpaController implements Serializable {
             query1.setParameter("vno", billccc.getVno());
             List<Object[]> outPut = query1.getResultList();
             
-            Query query = em.createQuery("UPDATE Custdata c set c.ldate = :ldate , c.lmilage = :lmilage, c.fmilage = :fmilage, c.jdate = :jadte where c.vno = :vno ");
-            query.setParameter("jadte", new Timestamp(System.currentTimeMillis()));
-            query.setParameter("fmilage", billccc.getMillage());
-            query.setParameter("ldate", outPut.get(0)[1]);
-            query.setParameter("lmilage",outPut.get(0)[0] );
-            query.setParameter("vno", billccc.getVno());
-            query.executeUpdate();
+            if(outPut.size() > 0){           
+                if( billccc.getMillage() > Double.parseDouble(outPut.get(0)[0].toString())){
+                    Query query = em.createQuery("UPDATE Custdata c set c.ldate = :ldate , c.lmilage = :lmilage, c.fmilage = :fmilage, c.jdate = :jadte where c.vno = :vno ");
+                    query.setParameter("jadte", new Timestamp(System.currentTimeMillis()));
+                    query.setParameter("fmilage", billccc.getMillage());
+                    query.setParameter("ldate", outPut.get(0)[1]);
+                    query.setParameter("lmilage",outPut.get(0)[0] );
+                    query.setParameter("vno", billccc.getVno());
+                    query.executeUpdate();
+                }
+            }else{
+                Custdata custdata= new Custdata(); 
+                custdata.setVno(billccc.getVno().trim());
+                custdata.setName(billccc.getName());
+                custdata.setAddress(billccc.getAddress());                        
+                custdata.setFmilage(billccc.getMillage());            
+                custdata.setCredit(0.0);
+                custdata.setDeDate(new Timestamp(System.currentTimeMillis()));
+                custdata.setJdate(billccc.getDate());
+                custdata.setLdate(billccc.getDate());
+                custdata.setLmilage(billccc.getMillage());
+                custdata.setPhone(billccc.getPhone());
+
+                CustdataJpaController custdataJpaController = new CustdataJpaController(CarCare.EMF);
+                custdataJpaController.create(custdata);
+            }
             
             em.getTransaction().commit();
         }catch(Exception e){

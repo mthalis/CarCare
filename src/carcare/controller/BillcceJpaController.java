@@ -5,8 +5,10 @@
  */
 package carcare.controller;
 
+import carcare.CarCare;
 import carcare.controller.exceptions.NonexistentEntityException;
 import carcare.model.Billcce;
+import carcare.model.Custdata;
 import carcare.model.Logfile;
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -36,7 +38,7 @@ public class BillcceJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public boolean create(Billcce billcce) {
+    public boolean create(Billcce billcce, boolean saveCusdata) {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -54,13 +56,34 @@ public class BillcceJpaController implements Serializable {
             query1.setParameter("vno", billcce.getVno());
             List<Object[]> outPut = query1.getResultList();
             
-            Query query = em.createQuery("UPDATE Custdata c set c.ldate = :ldate , c.lmilage = :lmilage, c.fmilage = :fmilage, c.jdate = :jadte where c.vno = :vno ");
-            query.setParameter("jadte", new Timestamp(System.currentTimeMillis()));
-            query.setParameter("fmilage", billcce.getMillage());
-            query.setParameter("ldate", outPut.get(0)[1]);
-            query.setParameter("lmilage",outPut.get(0)[0] );
-            query.setParameter("vno", billcce.getVno());
-            query.executeUpdate();
+            if(!saveCusdata){
+                if(outPut.size() > 0){            
+                    if( billcce.getMillage() > Double.parseDouble(outPut.get(0)[0].toString())){            
+                        Query query = em.createQuery("UPDATE Custdata c set c.ldate = :ldate , c.lmilage = :lmilage, c.fmilage = :fmilage, c.jdate = :jadte where c.vno = :vno ");
+                        query.setParameter("jadte", new Timestamp(System.currentTimeMillis()));
+                        query.setParameter("fmilage", billcce.getMillage());
+                        query.setParameter("ldate", outPut.get(0)[1]);
+                        query.setParameter("lmilage",outPut.get(0)[0] );
+                        query.setParameter("vno", billcce.getVno());
+                        query.executeUpdate();
+                    }
+                }else{
+                    Custdata custdata= new Custdata(); 
+                    custdata.setVno(billcce.getVno().trim());
+                    custdata.setName(billcce.getName());
+                    custdata.setAddress(billcce.getAddress());                        
+                    custdata.setFmilage(billcce.getMillage());            
+                    custdata.setCredit(0.0);
+                    custdata.setDeDate(new Timestamp(System.currentTimeMillis()));
+                    custdata.setJdate(billcce.getDate());
+                    custdata.setLdate(billcce.getDate());
+                    custdata.setLmilage(billcce.getMillage());
+                    custdata.setPhone(billcce.getPhone());
+
+                    CustdataJpaController custdataJpaController = new CustdataJpaController(CarCare.EMF);
+                    custdataJpaController.create(custdata);
+                }
+            }
         }catch(Exception e){
             logger.warn("Error occured while create Billcce -> " + e);
             return false;
@@ -162,12 +185,25 @@ public class BillcceJpaController implements Serializable {
         }
     }
     
-    public List<Billcce> findBillcceByVno(String Vno) {
+    public List<Billcce> findBillcceByVno(String vno, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             Query query = em.createQuery("SELECT c FROM Billcce c WHERE c.vno = :vno order by c.billNo desc", Billcce.class);
-            query.setParameter("vno", Vno);
+            query.setParameter("vno", vno);
+            query.setMaxResults(maxResults);
+            query.setFirstResult(firstResult);
             return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+    
+    public int getBillcceCount(String vno) {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT count(e) FROM Billcce e WHERE e.vno = :vno order by e.billNo desc", Billcce.class);
+            query.setParameter("vno", vno);
+            return ((Long) query.getSingleResult()).intValue();
         } finally {
             em.close();
         }
