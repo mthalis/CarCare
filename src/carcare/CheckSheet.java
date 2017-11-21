@@ -559,14 +559,6 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                 txtVNoFocusLost(evt);
             }
         });
-        txtVNo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtVNoMouseClicked(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                txtVNoMouseReleased(evt);
-            }
-        });
         jPanel1.add(txtVNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 120, 25));
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -578,11 +570,6 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 70, 25));
 
         txtName.setEnabled(false);
-        txtName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameActionPerformed(evt);
-            }
-        });
         jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 280, 25));
 
         jLabel36.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -708,6 +695,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                 
                 List<Custdata> cusdate = custdataJpaController.findCustdataByVno(vNo);
                 Object[] outPut = billcccJpaController.getBillCCCAmountMilage(vNo, formatDate);
+                Object[] outPut1 = billcceJpaController.getBillCCEAmountMilage(vNo, formatDate);
                 
                 if(cusdate != null && cusdate.size() > 0){
 
@@ -717,16 +705,28 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                     txtPhone.setText(cus.getPhone());
                     txtMilage.setText(Double.toString(cus.getLmilage()));
                     txtDate.setDate(cus.getLdate());
-                    //txtMilage.requestFocus();
                     
+                    boolean hasBillccc = false;
                     if(null != outPut && outPut.length != 0){
                         jTextField4.setText(outPut[1].toString());
                         jTextField8.setText(outPut[0].toString());
                         int milage = (int) Double.parseDouble(outPut[1].toString());
                         int newMilage = milage + 6000;
                         jTextField5.setText(Integer.toString(newMilage));
+                        hasBillccc = true;
                     }
                     
+                    if(null != outPut1 && outPut1.length != 0){
+                        if(!hasBillccc){
+                            jTextField4.setText(outPut1[1].toString());                        
+                            int milage = (int) Double.parseDouble(outPut1[1].toString());
+                            int newMilage = milage + 6000;
+                            jTextField5.setText(Integer.toString(newMilage));
+                        }
+                        
+                        int billcccAmt = !jTextField8.getText().isEmpty() ? Integer.parseInt(jTextField8.getText()) : 0;
+                        jTextField8.setText( Integer.toString(billcccAmt + Integer.parseInt(outPut1[0].toString())));
+                    }
                     
                 }else{
                     JOptionPane.showMessageDialog(jPanel1, "Vehicle number did not find !");
@@ -741,38 +741,6 @@ public class CheckSheet extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_txtVNoFocusLost
-
-    private void txtVNoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtVNoMouseClicked
-
-    }//GEN-LAST:event_txtVNoMouseClicked
-
-    private void txtVNoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtVNoMouseReleased
-        /*String vNo = txtVNo.getText() != null ? txtVNo.getText() : "";
-        List<Custdata> cusdate = custdataJpaController.findCustdataByVno(vNo);
-
-        if(cusdate != null && cusdate.size() > 0){
-            
-            Custdata cus = cusdate.get(0);
-            txtName.setText(cus.getName());
-            txtAddr.setText(cus.getAddress());
-            txtPhone.setText(cus.getPhone());
-            txtMilage.setText(Double.toString(cus.getLmilage()));
-            //txtDate.setText(cus.getLdate());
-            //txtPhone.setText(cus.getPhone());
-            //txtMilage.requestFocus();
-        }else{
-            JOptionPane.showMessageDialog(jPanel1, "Vehicle number did not find !");
-
-            txtName.setText("");
-            txtAddr.setText("");
-            txtPhone.setText("");
-            txtName.requestFocus();
-        }*/
-    }//GEN-LAST:event_txtVNoMouseReleased
-
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if(txtVNo.getText() == null || txtVNo.getText().equals("")){

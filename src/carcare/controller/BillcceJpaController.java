@@ -208,4 +208,21 @@ public class BillcceJpaController implements Serializable {
             em.close();
         }
     }
+    
+    public Object[] getBillCCEAmountMilage(String vno, String date){
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT e.amount, e.millage FROM Billcce e WHERE e.vno = :vno and e.date like CONCAT(:date,'%') order by e.date desc");
+            query.setParameter("vno", vno);
+            query.setParameter("date", date);
+            if(null !=query.getResultList() && !query.getResultList().isEmpty()){
+                return (Object[]) query.getResultList().get(0);
+            }
+        }catch(Exception e){
+            logger.warn("Error occured in getBillCCEAmountMilage " + e);
+        }finally {
+            em.close();
+        }
+        return null;
+    }
 }

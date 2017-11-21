@@ -201,13 +201,15 @@ public class BillcccJpaController implements Serializable {
     public Object[] getBillCCCAmountMilage(String vno, String date){
         EntityManager em = getEntityManager();
         try {
-            Query query = em.createQuery("SELECT c.amount, c.millage FROM Billccc c WHERE c.vno = :vno and c.date like CONCAT(:date,'%')");
+            Query query = em.createQuery("SELECT c.amount, c.millage FROM Billccc c WHERE c.vno = :vno and c.date like CONCAT(:date,'%') order by c.date desc");
             query.setParameter("vno", vno);
             query.setParameter("date", date);
             if(null !=query.getResultList() && !query.getResultList().isEmpty()){
                 return (Object[]) query.getResultList().get(0);
             }
-        } finally {
+        }catch(Exception e){
+            logger.warn("Error occured in getBillCCCAmountMilage " + e);
+        }finally {
             em.close();
         }
         return null;
