@@ -7,6 +7,8 @@ package carcare;
 
 import carcare.controller.CustdataJpaController;
 import static carcare.CarCare.view_bill_window;
+import carcare.controller.BillcccJpaController;
+import carcare.controller.BillcceJpaController;
 import carcare.model.Billccc;
 import carcare.model.Billcce;
 import db.ConnectionManager;
@@ -32,6 +34,8 @@ import org.apache.log4j.Logger;
 public class Billing extends javax.swing.JInternalFrame {
 
     CustdataJpaController custdataJpaController = new CustdataJpaController(CarCare.EMF);
+    BillcceJpaController billcceJpaController = new BillcceJpaController(CarCare.EMF);
+    BillcccJpaController billcccJpaController = new BillcccJpaController(CarCare.EMF);
     boolean carCareCenter;
     private static final Logger logger = Logger.getLogger(Billing.class);
     
@@ -216,8 +220,9 @@ public class Billing extends javax.swing.JInternalFrame {
         txtAddby = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -359,16 +364,22 @@ public class Billing extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Payment Method");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 120, 25));
+
+        txtName.setEnabled(false);
         jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 330, 25));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("Address");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 45, 70, 25));
+
+        txtAddr.setEnabled(false);
         jPanel1.add(txtAddr, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 330, 25));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Phone");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 70, 25));
+
+        txtPhone.setEnabled(false);
         jPanel1.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 105, 25));
 
         jLabel31.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -397,24 +408,27 @@ public class Billing extends javax.swing.JInternalFrame {
         jLabel32.setText("Add By");
         jPanel1.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 70, 25));
 
-        jButton1.setText("Update");
+        jButton1.setText("Login");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 160, 90, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 140, 90, -1));
 
-        jTextField1.setText("Enter password ");
-        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField1MouseClicked(evt);
+        jLabel33.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel33.setText("Update Customer Details");
+        jPanel1.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, 170, 20));
+
+        jButton2.setText("Update");
+        jButton2.setEnabled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 130, -1));
-
-        jLabel33.setText("Update Customer Details");
-        jPanel1.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 170, 20));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 90, -1));
+        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 130, -1));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CAR CARE CENTER", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 0, 51))); // NOI18N
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -723,12 +737,25 @@ public class Billing extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JOptionPane.showMessageDialog(null, "You are not authorize to update Customer Details !");
-    }//GEN-LAST:event_jButton1ActionPerformed
+        char[] passWd = jPasswordField1.getPassword();
+            String pwd = "";
 
-    private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
-        jTextField1.setText("");
-    }//GEN-LAST:event_jTextField1MouseClicked
+            for(char pw : passWd){
+                pwd = pwd + pw;
+            }
+        if(pwd.equals("123")){
+            txtName.setEnabled(true);
+            txtAddr.setEnabled(true);
+            txtPhone.setEnabled(true);
+            jButton2.setEnabled(true);
+        }else{
+            txtName.setEnabled(false);
+            txtAddr.setEnabled(false);
+            txtPhone.setEnabled(false);
+            jButton2.setEnabled(false);
+            JOptionPane.showMessageDialog(null, "You are not authorize to update Customer Details !");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
         view_bill_window = 0;
@@ -779,6 +806,32 @@ public class Billing extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnPrintActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String name = txtName.getText() != null ? txtName.getText() : "";
+        String address = txtAddr.getText() != null ? txtAddr.getText() : "";
+        String phone = txtPhone.getText() != null ? txtPhone.getText() : "";
+        String billno = txtBillNo.getText();
+        boolean center = Integer.parseInt((txtCCCTotal.getText() != null && !txtCCCTotal.getText().isEmpty()) ? txtCCCTotal.getText() : "0") > 0;
+        boolean enterPrice = Integer.parseInt((jTextField46.getText() != null && !jTextField46.getText().isEmpty()) ? jTextField46.getText() : "0") > 0;
+        if(center){
+            int outPut = billcccJpaController.updateCusDetailsBillccc(billno, name, address, phone);
+            if(outPut == 1){
+                JOptionPane.showMessageDialog(jPanel1, "You are successfully update customer details !");
+            }else{
+                JOptionPane.showMessageDialog(jPanel1, "Error occured while save record !");
+            }
+        }
+        if(enterPrice){
+            int outPut = billcceJpaController.updateCusDetailsBillcce(billno, name, address, phone);
+            if(outPut == 1){
+                JOptionPane.showMessageDialog(jPanel1, "You are successfully update customer details !");
+            }else{
+                JOptionPane.showMessageDialog(jPanel1, "Error occured while save record !");
+            }
+        }
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnPrint;
@@ -794,6 +847,7 @@ public class Billing extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBox chkFreeToe;
     private com.toedter.calendar.JDateChooser dateBill;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox11;
     private javax.swing.JCheckBox jCheckBox12;
     private javax.swing.JCheckBox jCheckBox13;
@@ -835,9 +889,9 @@ public class Billing extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;

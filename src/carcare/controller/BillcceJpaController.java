@@ -225,4 +225,24 @@ public class BillcceJpaController implements Serializable {
         }
         return null;
     }
+    
+    public int updateCusDetailsBillcce(String billNo, String name, String address, String phone) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            Query query = em.createQuery("Update Billcce e set e.name = :name, e.address = :address, e.phone = :phone WHERE e.billNo = :billNo ");
+            query.setParameter("billNo", Double.parseDouble(billNo));
+            query.setParameter("name", name);
+            query.setParameter("address", address);
+            query.setParameter("phone", phone);
+            int outPut = query.executeUpdate();
+            em.getTransaction().commit();
+            return outPut;
+        }catch(Exception e){
+            logger.warn("Error occured while updating updateCusDetailsBillcce " + e);
+        } finally {
+            em.close();
+        }
+        return 0;
+    }
 }
