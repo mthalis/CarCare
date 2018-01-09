@@ -217,7 +217,7 @@ where
 	<columnHeader>
 		<band height="83" splitType="Stretch">
 			<textField>
-				<reportElement x="120" y="34" width="100" height="17" uuid="2d6cec39-3da4-4d01-a5ee-d8e342f04cb7"/>
+				<reportElement x="120" y="34" width="150" height="17" uuid="2d6cec39-3da4-4d01-a5ee-d8e342f04cb7"/>
 				<textFieldExpression><![CDATA[$F{billcce_NAME}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -289,16 +289,16 @@ where
 						<datasetParameter name="parameter11">
 							<datasetParameterExpression><![CDATA[$F{billcce_OTHER3_Txt}]]></datasetParameterExpression>
 						</datasetParameter>
-                                                <datasetParameter name="parameter12">
+						<datasetParameter name="parameter12">
 							<datasetParameterExpression><![CDATA[$F{billcce_Free1}]]></datasetParameterExpression>
 						</datasetParameter>
-                                                <datasetParameter name="parameter13">
+						<datasetParameter name="parameter13">
 							<datasetParameterExpression><![CDATA[$F{billcce_Free2}]]></datasetParameterExpression>
 						</datasetParameter>
-                                                <datasetParameter name="parameter14">
+						<datasetParameter name="parameter14">
 							<datasetParameterExpression><![CDATA[$F{billcce_Free3}]]></datasetParameterExpression>
 						</datasetParameter>
-                                                <datasetParameter name="parameter15">
+						<datasetParameter name="parameter15">
 							<datasetParameterExpression><![CDATA[$F{billcce_Free4}]]></datasetParameterExpression>
 						</datasetParameter>
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
