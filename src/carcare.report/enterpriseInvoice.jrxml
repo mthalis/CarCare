@@ -246,7 +246,7 @@ where
 			</staticText>
 			<textField pattern="###0">
 				<reportElement x="120" y="51" width="100" height="17" uuid="f69d663d-9621-4708-8539-0b9199ab33b1"/>
-				<textFieldExpression><![CDATA[$F{billcce_MILLAGE}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{billcce_MILLAGE}.intValue() + " Km"]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnHeader>
