@@ -7,11 +7,11 @@
 	<parameter name="fromDate" class="java.lang.String"/>
 	<parameter name="toDate" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[SELECT p.billNo, p.dateval, p.vno, p.paymethod, p.name, p.amount FROM (
-SELECT c.Bill_no AS billNo ,c.date AS dateval, c.vno AS vno , (CASE WHEN c.paymethod = 1 THEN 'CASH' ELSE 'CREDIT' END) AS paymethod, c.name AS NAME , c.amount AS amount FROM billccc c WHERE  (c.DATE BETWEEN $P{fromDate} AND $P{toDate} )
+		<![CDATA[SELECT p.billNo, p.dateval, p.vno, p.paymethod, p.amount FROM (
+SELECT c.Bill_no AS billNo ,c.date AS dateval, c.vno AS vno , (CASE WHEN c.paymethod = 1 THEN 'CASH' ELSE 'CREDIT' END) AS paymethod, c.amount AS amount FROM billccc c WHERE  (c.DATE BETWEEN $P{fromDate} AND $P{toDate} )
 UNION
-SELECT e.Bill_no AS billNo ,e.date AS dateval, e.vno AS vno , (CASE WHEN e.paymethod = 1 THEN 'CASH' ELSE 'CREDIT' END) AS paymethod, e.name AS NAME , e.amount AS amount FROM billcce e WHERE  (e.DATE BETWEEN $P{fromDate} AND $P{toDate} )
-)p ORDER BY p.dateval]]>
+SELECT e.Bill_no AS billNo ,e.date AS dateval, e.vno AS vno , (CASE WHEN e.paymethod = 1 THEN 'CASH' ELSE 'CREDIT' END) AS paymethod, e.amount AS amount FROM billcce e WHERE  (e.DATE BETWEEN $P{fromDate} AND $P{toDate} )
+)p]]>
 	</queryString>
 	<field name="billNo" class="java.lang.Double"/>
 	<field name="dateval" class="java.sql.Timestamp"/>
@@ -19,9 +19,6 @@ SELECT e.Bill_no AS billNo ,e.date AS dateval, e.vno AS vno , (CASE WHEN e.payme
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="paymethod" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="name" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="amount" class="java.lang.Integer">
@@ -72,13 +69,6 @@ SELECT e.Bill_no AS billNo ,e.date AS dateval, e.vno AS vno , (CASE WHEN e.payme
 				<text><![CDATA[V/No]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="223" y="0" width="100" height="20" uuid="aae6e9db-c05f-482f-94aa-6b896b313671"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Name]]></text>
-			</staticText>
-			<staticText>
 				<reportElement x="356" y="0" width="82" height="20" uuid="7fff932c-3bb8-4d69-9a87-f00475bb494a"/>
 				<textElement>
 					<font size="12" isBold="true"/>
@@ -110,10 +100,6 @@ SELECT e.Bill_no AS billNo ,e.date AS dateval, e.vno AS vno , (CASE WHEN e.payme
 			<textField isBlankWhenNull="true">
 				<reportElement x="156" y="5" width="60" height="20" uuid="1946085a-eaa4-4313-b071-369416afe366"/>
 				<textFieldExpression><![CDATA[$F{vno}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="223" y="5" width="100" height="20" uuid="a0fe0069-7cf5-4453-a5fb-1748ccf6bbc6"/>
-				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="356" y="5" width="82" height="20" uuid="4330108b-3346-46b8-8b7c-dc3fc65bfc69"/>

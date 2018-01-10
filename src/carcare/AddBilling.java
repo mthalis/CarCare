@@ -964,6 +964,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
         boolean saveBillccc = false;
         boolean saveBillcce= false;
         boolean saveCusdata = false;
+        boolean reprint  = false;
         if(txtVNo.getText() == null || txtVNo.getText().equals("")){
             JOptionPane.showMessageDialog(jPanel1, "Please enter Vehicle no !");
             txtVNo.requestFocus();
@@ -1012,7 +1013,8 @@ public class AddBilling extends javax.swing.JInternalFrame {
             billccc.setFreeAnyo(chkFreeAnyO.isSelected());
             billccc.setFreeSt(chkFreeST.isSelected());
             billccc.setFreeHlt(chkFreeHLT.isSelected());
-            
+            reprint = chkFreeAnyO.isSelected();
+            billccc.setRePrint(reprint);
             billccc.setAmount((txtCCCTotal.getText() != null && !txtCCCTotal.getText().isEmpty()) ? Integer.parseInt(txtCCCTotal.getText()) : 0);            
             if(billccc.getAmount() > 0 ){
                 saveCusdata = true;
@@ -1060,7 +1062,8 @@ public class AddBilling extends javax.swing.JInternalFrame {
             
             billcce.setDiscount((txtDisCCETotal.getText() != null && !txtDisCCETotal.getText().isEmpty()) ? Integer.parseInt(txtDisCCETotal.getText()) : 0);
             billcce.setAmount((txtCCETotal.getText() != null && !txtCCETotal.getText().isEmpty()) ? Integer.parseInt(txtCCETotal.getText()) : 0);                        
-                        
+            billcce.setRePrint(reprint);
+            
             if(billcce.getAmount() > 0 ){
                 saveBillcce = billcceJpaController.create(billcce, saveCusdata);
                 if(!saveBillcce){
