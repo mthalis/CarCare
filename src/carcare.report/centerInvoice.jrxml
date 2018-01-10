@@ -173,7 +173,7 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` = $P{date}]]>
 	<title>
 		<band height="50" splitType="Stretch">
 			<staticText>
-				<reportElement x="220" y="14" width="100" height="20" uuid="74266c3a-466c-4f21-aa6e-c198462f7982"/>
+				<reportElement x="220" y="20" width="100" height="20" uuid="74266c3a-466c-4f21-aa6e-c198462f7982"/>
 				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>
@@ -184,17 +184,18 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` = $P{date}]]>
 	<pageHeader>
 		<band height="28" splitType="Stretch">
 			<staticText>
-				<reportElement x="91" y="2" width="100" height="20" uuid="66ddae6d-158d-4e00-a0aa-74f2516b4c19"/>
+				<reportElement x="140" y="2" width="100" height="20" uuid="66ddae6d-158d-4e00-a0aa-74f2516b4c19"/>
 				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Invoice]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement x="335" y="2" width="100" height="20" uuid="7f364ffd-d619-4443-87a8-85e31ef9d4cb"/>
+				<reportElement x="335" y="7" width="100" height="20" uuid="7f364ffd-d619-4443-87a8-85e31ef9d4cb"/>
 			</rectangle>
 			<textField pattern="###0">
-				<reportElement x="372" y="2" width="100" height="20" uuid="cfa7742f-9411-4bfb-b1a0-dd7794f04e8c"/>
+				<reportElement x="372" y="7" width="100" height="20" uuid="cfa7742f-9411-4bfb-b1a0-dd7794f04e8c"/>
+				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{billccc_BILL_NO}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -274,8 +275,8 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` = $P{date}]]>
 				<text><![CDATA[Head Light Test]]></text>
 			</staticText>
 			<textField pattern="###0">
-				<reportElement x="335" y="195" width="100" height="20" uuid="b5373055-0a08-4691-852e-0c99e6229def"/>
-				<textFieldExpression><![CDATA[(6000+$F{billccc_MILLAGE})]]></textFieldExpression>
+				<reportElement x="325" y="205" width="100" height="20" uuid="b5373055-0a08-4691-852e-0c99e6229def"/>
+				<textFieldExpression><![CDATA[(6000+$F{billccc_MILLAGE}.intValue()) + " Km"]]></textFieldExpression>
 			</textField>
 			<textField pattern="##0.00" isBlankWhenNull="true">
 				<reportElement style="FREE_TOE_STY" x="180" y="35" width="81" height="15" uuid="5521ce1e-9b8b-4c11-9dd9-01e477018274"/>
