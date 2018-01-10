@@ -358,10 +358,10 @@ where
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 2_TD" height="108" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="46" height="15" uuid="985b16c1-69f3-435a-9a7b-f57f172485a2"/>
 								<textElement textAlignment="Center"/>
-								<textFieldExpression><![CDATA[$P{parameter1}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[($P{parameter1} != 0 ? $P{parameter1} : null )]]></textFieldExpression>
 							</textField>
 							<staticText>
 								<reportElement mode="Transparent" x="0" y="15" width="46" height="15" uuid="c027270b-776e-4fbd-aafe-b59323e65dea"/>
@@ -383,12 +383,12 @@ where
 								<textElement textAlignment="Center" markup="none"/>
 								<text><![CDATA[4]]></text>
 							</staticText>
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="75" width="46" height="15" uuid="e5e53ad8-3421-4bd3-a9c2-1158b2a0e9bc"/>
 								<textElement textAlignment="Center"/>
-								<textFieldExpression><![CDATA[$P{parameter2}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[($P{parameter2} != 0 ? $P{parameter2} : null )]]></textFieldExpression>
 							</textField>
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="90" width="46" height="15" uuid="38920508-6424-48ac-9ce5-4cc00900a729"/>
 								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[$P{parameter3}]]></textFieldExpression>
@@ -404,37 +404,37 @@ where
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 2_TD" height="108" rowSpan="1">
-							<textField>
+							<textField pattern="##0.00" isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="60" height="15" uuid="32e41fce-210f-4be6-b3fc-b00663c45e2d"/>
 								<textElement textAlignment="Right"/>
-								<textFieldExpression><![CDATA[$P{parameter4}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[($P{parameter4} != 0 ? $P{parameter4} : null )]]></textFieldExpression>
 							</textField>
-							<textField>
+							<textField pattern="##0.00" isBlankWhenNull="true">
 								<reportElement x="0" y="15" width="60" height="15" uuid="8948c0b3-a103-4cec-b3cf-6c0218f1a089"/>
 								<textElement textAlignment="Right"/>
-								<textFieldExpression><![CDATA[$P{parameter5}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[($P{parameter5} != 0 ? $P{parameter5} : null )]]></textFieldExpression>
 							</textField>
-							<textField>
+							<textField pattern="##0.00" isBlankWhenNull="true">
 								<reportElement x="0" y="30" width="60" height="15" uuid="d308e957-f492-43e1-bd35-78a67046459f"/>
 								<textElement textAlignment="Right"/>
-								<textFieldExpression><![CDATA[$P{parameter6}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[($P{parameter6} != 0 ? $P{parameter6} : null )]]></textFieldExpression>
 							</textField>
-							<textField>
+							<textField pattern="##0.00" isBlankWhenNull="true">
 								<reportElement x="0" y="45" width="60" height="15" uuid="898c169e-664b-4b16-a9b8-7778c13058a0"/>
 								<textElement textAlignment="Right"/>
-								<textFieldExpression><![CDATA[$P{parameter7}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[($P{parameter7} != 0 ? $P{parameter7} : null )]]></textFieldExpression>
 							</textField>
-							<textField>
+							<textField pattern="##0.00" isBlankWhenNull="true">
 								<reportElement x="0" y="60" width="60" height="15" uuid="cb16ad31-0c09-45be-a0c8-814bb3a91025"/>
 								<textElement textAlignment="Right"/>
-								<textFieldExpression><![CDATA[$P{parameter8}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[($P{parameter8} != 0 ? $P{parameter8} : null )]]></textFieldExpression>
 							</textField>
-							<textField>
+							<textField pattern="##0.00" isBlankWhenNull="true">
 								<reportElement x="0" y="75" width="60" height="15" uuid="a1b80576-4fd2-483d-be1f-d99f326bf0ac"/>
 								<textElement textAlignment="Right"/>
-								<textFieldExpression><![CDATA[$P{parameter9}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[($P{parameter9} != 0 ? $P{parameter9} : null )]]></textFieldExpression>
 							</textField>
-							<textField>
+							<textField pattern="##0.00" isBlankWhenNull="true">
 								<reportElement x="0" y="90" width="60" height="15" uuid="1941ebb7-2c6d-41eb-b258-186ab66b9b27"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter10}]]></textFieldExpression>
@@ -450,37 +450,38 @@ where
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 2_TD" height="108" rowSpan="1">
-							<textField>
+							<textField pattern="##0.00" isBlankWhenNull="true">
 								<reportElement style="fee1" x="0" y="0" width="52" height="15" uuid="92c9ebe9-2527-4579-ba11-0b11dde27a63"/>
 								<textElement textAlignment="Right"/>
-								<textFieldExpression><![CDATA[$P{parameter1}*$P{parameter4}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[($P{parameter1} != 0 ? $P{parameter1}*$P{parameter4} : null )
+]]></textFieldExpression>
 							</textField>
-							<textField>
+							<textField pattern="##0.00" isBlankWhenNull="true">
 								<reportElement style="fee2" x="0" y="15" width="52" height="15" uuid="b32bfdc0-d4d3-408f-b985-11eb6330c976"/>
 								<textElement textAlignment="Right"/>
-								<textFieldExpression><![CDATA[$P{parameter5}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[($P{parameter5} != 0 ? $P{parameter5} : null )]]></textFieldExpression>
 							</textField>
-							<textField>
+							<textField pattern="##0.00" isBlankWhenNull="true">
 								<reportElement style="fee3" x="0" y="30" width="52" height="15" uuid="69877503-fb96-4036-afab-3991576bbade"/>
 								<textElement textAlignment="Right"/>
-								<textFieldExpression><![CDATA[$P{parameter6}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[($P{parameter6} != 0 ? $P{parameter6} : null )]]></textFieldExpression>
 							</textField>
-							<textField>
+							<textField pattern="##0.00" isBlankWhenNull="true">
 								<reportElement style="fee4" x="0" y="45" width="52" height="15" uuid="95ab523f-f5c3-472c-a207-1a2817df7764"/>
 								<textElement textAlignment="Right"/>
-								<textFieldExpression><![CDATA[$P{parameter7}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[($P{parameter7} != 0 ? $P{parameter7} : null )]]></textFieldExpression>
 							</textField>
-							<textField>
+							<textField pattern="##0.00" isBlankWhenNull="true">
 								<reportElement x="0" y="60" width="52" height="15" uuid="3ea23a8d-b8ea-43a5-8847-7dab515f41c3"/>
 								<textElement textAlignment="Right"/>
-								<textFieldExpression><![CDATA[4*$P{parameter8}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[($P{parameter8} != 0 ? 4*$P{parameter8} : null )]]></textFieldExpression>
 							</textField>
-							<textField>
+							<textField pattern="##0.00" isBlankWhenNull="true">
 								<reportElement x="0" y="75" width="52" height="15" uuid="849addb2-7740-48c8-9882-de326f149ded"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter2}*$P{parameter9}]]></textFieldExpression>
 							</textField>
-							<textField>
+							<textField pattern="##0.00" isBlankWhenNull="false">
 								<reportElement x="0" y="90" width="52" height="15" uuid="2cca89c3-44c2-4aef-9f55-2d175ea31ef6"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter3}*$P{parameter10}]]></textFieldExpression>
@@ -506,17 +507,17 @@ where
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<text><![CDATA[Discount]]></text>
 			</staticText>
-			<textField>
+			<textField pattern="##0.00" isBlankWhenNull="true">
 				<reportElement x="318" y="132" width="50" height="15" uuid="e339a180-736c-4e51-a4d4-0525fec2bafe"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{billcce_Amount} + $F{billcce_DISCOUNT}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="##0.00" isBlankWhenNull="true">
 				<reportElement x="318" y="162" width="50" height="20" uuid="f83b6789-f679-41e3-a840-024d5b7907a2"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{billcce_Amount}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="##0.00" isBlankWhenNull="true">
 				<reportElement x="318" y="147" width="50" height="15" uuid="6d1a5cbb-0598-4b61-ab21-0ba8c89721e0"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{billcce_DISCOUNT}]]></textFieldExpression>
