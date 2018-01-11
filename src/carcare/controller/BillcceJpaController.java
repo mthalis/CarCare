@@ -188,7 +188,7 @@ public class BillcceJpaController implements Serializable {
     public List<Billcce> findBillcceByVno(String vno, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
-            Query query = em.createQuery("SELECT c FROM Billcce c WHERE c.vno = :vno order by c.billNo desc", Billcce.class);
+            Query query = em.createQuery("SELECT c FROM Billcce c WHERE c.vno = :vno and c.rePrint = 0 order by c.billNo desc", Billcce.class);
             query.setParameter("vno", vno);
             query.setMaxResults(maxResults);
             query.setFirstResult(firstResult);
