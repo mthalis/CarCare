@@ -23,6 +23,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.text.AbstractDocument;
@@ -1070,6 +1071,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(jPanel1, "Error occured while save record !");
                     return;
                 }                
+            }
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                java.util.logging.Logger.getLogger(AddBilling.class.getName()).log(Level.SEVERE, null, ex);
             }
             
             if(billcce.getAmount() > 0 || billccc.getAmount() > 0 ){

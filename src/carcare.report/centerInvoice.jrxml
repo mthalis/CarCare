@@ -279,48 +279,48 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` = $P{date}]]>
 				<textFieldExpression><![CDATA[(6000+$F{billccc_MILLAGE}.intValue()) + " Km"]]></textFieldExpression>
 			</textField>
 			<textField pattern="##0.00" isBlankWhenNull="true">
-				<reportElement style="FREE_TOE_STY" x="180" y="35" width="81" height="15" uuid="5521ce1e-9b8b-4c11-9dd9-01e477018274"/>
-				<textElement textAlignment="Center"/>
+				<reportElement style="FREE_TOE_STY" x="180" y="35" width="61" height="15" uuid="5521ce1e-9b8b-4c11-9dd9-01e477018274"/>
+				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[($F{billccc_AJST_TOE} != 0 ? $F{billccc_AJST_TOE} : null )]]></textFieldExpression>
 			</textField>
 			<textField pattern="##0.00" isBlankWhenNull="true">
-				<reportElement style="FREE_CAMB_STY" x="180" y="50" width="81" height="15" uuid="e075d094-ef47-4d7e-bb3f-d6095ef5712b"/>
-				<textElement textAlignment="Center"/>
+				<reportElement style="FREE_CAMB_STY" x="180" y="50" width="61" height="15" uuid="e075d094-ef47-4d7e-bb3f-d6095ef5712b"/>
+				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[($F{billccc_CAMBER} != 0 ? $F{billccc_CAMBER} : null )]]></textFieldExpression>
 			</textField>
 			<textField pattern="##0.00" isBlankWhenNull="true">
-				<reportElement style="FREE_CAST_STY" x="180" y="65" width="81" height="15" uuid="20d44c1d-53a8-4027-aba4-c2325fb4ab95"/>
-				<textElement textAlignment="Center"/>
+				<reportElement style="FREE_CAST_STY" x="180" y="65" width="61" height="15" uuid="20d44c1d-53a8-4027-aba4-c2325fb4ab95"/>
+				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[($F{billccc_CASTER} != 0 ? $F{billccc_CASTER} : null )]]></textFieldExpression>
 			</textField>
 			<textField pattern="##0.00" isBlankWhenNull="true">
-				<reportElement style="FREE_BHGT_STY" x="180" y="80" width="81" height="15" uuid="2e2f9352-911b-4fac-8b7b-953aa6017d7e"/>
-				<textElement textAlignment="Center"/>
+				<reportElement style="FREE_BHGT_STY" x="180" y="80" width="61" height="15" uuid="2e2f9352-911b-4fac-8b7b-953aa6017d7e"/>
+				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[($F{billccc_B_HIGHT} != 0 ? $F{billccc_B_HIGHT} : null )]]></textFieldExpression>
 			</textField>
 			<textField pattern="##0.00" isBlankWhenNull="true">
-				<reportElement style="FREE_R_TOE_STY" x="180" y="95" width="81" height="15" uuid="8e628721-18b1-409a-8306-56e19789c1b8"/>
-				<textElement textAlignment="Center"/>
+				<reportElement style="FREE_R_TOE_STY" x="180" y="95" width="61" height="15" uuid="8e628721-18b1-409a-8306-56e19789c1b8"/>
+				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[($F{billccc_RE_TOE} != 0 ? $F{billccc_RE_TOE} : null )]]></textFieldExpression>
 			</textField>
 			<textField pattern="##0.00" isBlankWhenNull="true">
-				<reportElement style="FREE_R_CAM_STY" x="180" y="110" width="81" height="15" uuid="28840b68-cc3c-45a2-95cd-1797a81631bc"/>
-				<textElement textAlignment="Center"/>
+				<reportElement style="FREE_R_CAM_STY" x="180" y="110" width="61" height="15" uuid="28840b68-cc3c-45a2-95cd-1797a81631bc"/>
+				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[($F{billccc_RE_CAMBER} != 0 ? $F{billccc_RE_CAMBER} : null )]]></textFieldExpression>
 			</textField>
 			<textField pattern="##0.00" isBlankWhenNull="true">
-				<reportElement style="FREE_ANYO_STY" x="180" y="125" width="81" height="15" uuid="1b41ddf2-3231-4405-8041-02f23473438b"/>
-				<textElement textAlignment="Center"/>
+				<reportElement style="FREE_ANYO_STY" x="180" y="125" width="61" height="15" uuid="1b41ddf2-3231-4405-8041-02f23473438b"/>
+				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[($F{billccc_ANY_OTHER} != 0 ? $F{billccc_ANY_OTHER} : null )]]></textFieldExpression>
 			</textField>
 			<textField pattern="##0.00" isBlankWhenNull="true">
-				<reportElement style="FREE_ST_STY" x="180" y="140" width="81" height="15" uuid="dc2fe1bb-a213-4601-bab4-b5cdd305252b"/>
-				<textElement textAlignment="Center"/>
+				<reportElement style="FREE_ST_STY" x="180" y="140" width="61" height="15" uuid="dc2fe1bb-a213-4601-bab4-b5cdd305252b"/>
+				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[($F{billccc_SUS_TEST} != 0 ? $F{billccc_SUS_TEST} : null )]]></textFieldExpression>
 			</textField>
 			<textField pattern="##0.00" isBlankWhenNull="true">
-				<reportElement style="FREE_HLT_STY" x="180" y="155" width="81" height="15" uuid="40005fa5-e816-4166-becd-b2fa83dc2982"/>
-				<textElement textAlignment="Center"/>
+				<reportElement style="FREE_HLT_STY" x="180" y="155" width="61" height="15" uuid="40005fa5-e816-4166-becd-b2fa83dc2982"/>
+				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[($F{billccc_H_L_TEST} != 0 ? $F{billccc_H_L_TEST} : null )]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -331,8 +331,8 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` = $P{date}]]>
 				<text><![CDATA[Total]]></text>
 			</staticText>
 			<textField pattern="##0.00">
-				<reportElement x="180" y="199" width="81" height="15" uuid="2faee89c-c3f1-4bb5-8d19-17a3fadcba87"/>
-				<textElement textAlignment="Center"/>
+				<reportElement x="180" y="199" width="61" height="15" uuid="2faee89c-c3f1-4bb5-8d19-17a3fadcba87"/>
+				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$F{billccc_Amount}]]></textFieldExpression>
 			</textField>
 			<line>
@@ -346,8 +346,8 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` = $P{date}]]>
 				<text><![CDATA[Checking Align]]></text>
 			</staticText>
 			<textField pattern="##0.00" isBlankWhenNull="true">
-				<reportElement style="FREE_ALIGN_STY" x="180" y="20" width="81" height="15" uuid="ff800277-e4f0-42e5-8ca8-6856064da9ca"/>
-				<textElement textAlignment="Center"/>
+				<reportElement style="FREE_ALIGN_STY" x="180" y="20" width="61" height="15" uuid="ff800277-e4f0-42e5-8ca8-6856064da9ca"/>
+				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[($F{billccc_CHK_ALIGN} != 0 ? $F{billccc_CHK_ALIGN} : null )]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -375,13 +375,13 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` = $P{date}]]>
 				<text><![CDATA[Sub Total]]></text>
 			</staticText>
 			<textField pattern="##0.00">
-				<reportElement x="180" y="170" width="80" height="15" uuid="3849ccc5-1d35-4aa0-8dd5-758c58c41cc0"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement x="180" y="170" width="60" height="15" uuid="3849ccc5-1d35-4aa0-8dd5-758c58c41cc0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{billccc_Amount} + $F{billccc_DISCOUNT}]]></textFieldExpression>
 			</textField>
 			<textField pattern="##0.00" isBlankWhenNull="true">
-				<reportElement x="180" y="185" width="80" height="15" uuid="86080eeb-882c-4ca5-b631-05710ff0f8e5"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement x="180" y="185" width="60" height="15" uuid="86080eeb-882c-4ca5-b631-05710ff0f8e5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[($F{billccc_DISCOUNT} != 0 ? $F{billccc_DISCOUNT} : null )]]></textFieldExpression>
 			</textField>
 			<line>

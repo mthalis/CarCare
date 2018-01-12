@@ -9,8 +9,6 @@
 	<queryString>
 		<![CDATA[SELECT p.billNo, p.dateval, p.vno, p.paymethod, p.amount FROM (
 SELECT c.Bill_no AS billNo ,c.date AS dateval, c.vno AS vno , (CASE WHEN c.paymethod = 1 THEN 'CASH' ELSE 'CREDIT' END) AS paymethod, c.amount AS amount FROM billccc c WHERE  (c.DATE BETWEEN $P{fromDate} AND $P{toDate} ) and c.RE_PRINT = 0
-UNION
-SELECT e.Bill_no AS billNo ,e.date AS dateval, e.vno AS vno , (CASE WHEN e.paymethod = 1 THEN 'CASH' ELSE 'CREDIT' END) AS paymethod, e.amount AS amount FROM billcce e WHERE  (e.DATE BETWEEN $P{fromDate} AND $P{toDate} )  and e.RE_PRINT = 0
 )p]]>
 	</queryString>
 	<field name="billNo" class="java.lang.Double"/>

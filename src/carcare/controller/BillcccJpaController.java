@@ -151,7 +151,9 @@ public class BillcccJpaController implements Serializable {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Billccc.class));
+            Root root = cq.from(Billccc.class);
+            cq.select(root);
+            cq.where(em.getCriteriaBuilder().equal(root.get("rePrint"), false));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
