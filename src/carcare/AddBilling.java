@@ -1072,16 +1072,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
                     return;
                 }                
             }
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-                java.util.logging.Logger.getLogger(AddBilling.class.getName()).log(Level.SEVERE, null, ex);
-            }
             
             if(billcce.getAmount() > 0 || billccc.getAmount() > 0 ){
              
                 dispose();
-                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
                 if(billcce.getAmount() > 0 && billccc.getAmount() > 0 ){
                     try{
                         

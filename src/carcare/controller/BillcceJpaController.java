@@ -214,7 +214,7 @@ public class BillcceJpaController implements Serializable {
     public Object[] getBillCCEAmountMilage(String vno, String date){
         EntityManager em = getEntityManager();
         try {
-            Query query = em.createQuery("SELECT e.amount, e.millage FROM Billcce e WHERE e.vno = :vno and e.date like CONCAT(:date,'%') order by e.date desc");
+            Query query = em.createQuery("SELECT e.amount, e.millage FROM Billcce e WHERE e.vno = :vno and e.rePrint = false and e.date like CONCAT(:date,'%') order by e.date desc");
             query.setParameter("vno", vno);
             query.setParameter("date", date);
             if(null !=query.getResultList() && !query.getResultList().isEmpty()){

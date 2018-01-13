@@ -147,7 +147,7 @@
 FROM
      `billcce` billcce
 where 
-     billcce.`VNO` = $P{vno} and billcce.`DATE` = $P{date}]]>
+     billcce.`VNO` = $P{vno} and billcce.`DATE` like '$P!{date}%']]>
 	</queryString>
 	<field name="billcce_BILL_NO" class="java.lang.Double"/>
 	<field name="billcce_VNO" class="java.lang.String"/>
@@ -453,8 +453,7 @@ where
 							<textField pattern="##0.00" isBlankWhenNull="true">
 								<reportElement style="fee1" x="0" y="0" width="52" height="15" uuid="92c9ebe9-2527-4579-ba11-0b11dde27a63"/>
 								<textElement textAlignment="Right"/>
-								<textFieldExpression><![CDATA[($P{parameter1} != 0 ? $P{parameter1}*$P{parameter4} : null )
-]]></textFieldExpression>
+								<textFieldExpression><![CDATA[($P{parameter1} != 0 ? $P{parameter1}*$P{parameter4} : null )]]></textFieldExpression>
 							</textField>
 							<textField pattern="##0.00" isBlankWhenNull="true">
 								<reportElement style="fee2" x="0" y="15" width="52" height="15" uuid="b32bfdc0-d4d3-408f-b985-11eb6330c976"/>

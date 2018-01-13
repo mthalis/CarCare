@@ -126,7 +126,7 @@
      billccc.`ADDBY` AS billccc_ADDBY
 FROM
      `billccc` billccc
-where billccc.`VNO` = $P{vno} and billccc.`DATE` = $P{date}]]>
+where billccc.`VNO` = $P{vno} and billccc.`DATE` like '$P!{date}%']]>
 	</queryString>
 	<field name="billccc_BILL_NO" class="java.lang.Double"/>
 	<field name="billccc_DATE" class="java.sql.Timestamp"/>
