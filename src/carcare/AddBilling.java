@@ -218,45 +218,45 @@ public class AddBilling extends javax.swing.JInternalFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setText("Checking Align");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 25, 120, -1));
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 20, 120, -1));
 
         jLabel9.setText("Adjust Toe");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 45, 80, -1));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 40, 80, -1));
 
         jLabel10.setText("Camber");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 65, 80, -1));
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 60, 80, -1));
 
         jLabel11.setText("Caster");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 85, 80, -1));
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 80, 80, -1));
 
         jLabel12.setText("Body Height");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 105, 80, -1));
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 100, 80, -1));
 
         jLabel13.setText("Rear Toe");
-        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 125, 80, -1));
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 120, 80, -1));
 
         jLabel14.setText("Rear Camber");
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 145, 120, -1));
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 140, 120, -1));
 
         jLabel15.setText("Any Other");
-        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 165, 80, 20));
+        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 160, 80, 20));
 
         jLabel16.setText("Susp. Test");
-        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 185, 80, 20));
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 180, 80, 20));
 
         jLabel17.setText("Head Light Test");
-        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 205, 120, 20));
+        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 200, 120, 20));
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 0, 51));
         jLabel18.setText("TOTAL");
-        jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 273, 80, -1));
+        jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 270, 80, -1));
 
         jLabel19.setText("Discount");
-        jPanel3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 253, 80, -1));
+        jPanel3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 250, 80, -1));
 
         jLabel20.setText("Sub Total");
-        jPanel3.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 233, 90, -1));
+        jPanel3.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 230, 90, -1));
 
         txtChkAlign.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
