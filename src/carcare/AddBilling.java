@@ -1063,8 +1063,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
             
             billcce.setDiscount((txtDisCCETotal.getText() != null && !txtDisCCETotal.getText().isEmpty()) ? Integer.parseInt(txtDisCCETotal.getText()) : 0);
             billcce.setAmount((txtCCETotal.getText() != null && !txtCCETotal.getText().isEmpty()) ? Integer.parseInt(txtCCETotal.getText()) : 0);                        
-            billcce.setRePrint(reprint);
-            
+                        
             if(billcce.getAmount() > 0 ){
                 saveBillcce = billcceJpaController.create(billcce, saveCusdata);
                 if(!saveBillcce){

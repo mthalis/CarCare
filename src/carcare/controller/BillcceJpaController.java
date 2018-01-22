@@ -153,7 +153,6 @@ public class BillcceJpaController implements Serializable {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
             Root root = cq.from(Billcce.class);
             cq.select(root);
-            cq.where(em.getCriteriaBuilder().equal(root.get("rePrint"), false));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -190,7 +189,7 @@ public class BillcceJpaController implements Serializable {
     public List<Billcce> findBillcceByVno(String vno, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
-            Query query = em.createQuery("SELECT c FROM Billcce c WHERE c.vno = :vno and c.rePrint = 0 order by c.billNo desc", Billcce.class);
+            Query query = em.createQuery("SELECT c FROM Billcce c WHERE c.vno = :vno order by c.billNo desc", Billcce.class);
             query.setParameter("vno", vno);
             query.setMaxResults(maxResults);
             query.setFirstResult(firstResult);
@@ -214,7 +213,7 @@ public class BillcceJpaController implements Serializable {
     public Object[] getBillCCEAmountMilage(String vno, String date){
         EntityManager em = getEntityManager();
         try {
-            Query query = em.createQuery("SELECT e.amount, e.millage FROM Billcce e WHERE e.vno = :vno and e.rePrint = false and e.date like CONCAT(:date,'%') order by e.date desc");
+            Query query = em.createQuery("SELECT e.amount, e.millage FROM Billcce e WHERE e.vno = :vno and e.date like CONCAT(:date,'%') order by e.date desc");
             query.setParameter("vno", vno);
             query.setParameter("date", date);
             if(null !=query.getResultList() && !query.getResultList().isEmpty()){

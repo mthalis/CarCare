@@ -151,8 +151,6 @@ public class Billcce implements Serializable {
     private String addby;
     @Column(name = "PAYMETHOD")
     private Boolean paymethod;
-    @Column(name = "RE_PRINT")
-    private Boolean rePrint;
 
     public Billcce() {
     }
@@ -524,16 +522,6 @@ public class Billcce implements Serializable {
         Boolean oldPaymethod = this.paymethod;
         this.paymethod = paymethod;
         changeSupport.firePropertyChange("paymethod", oldPaymethod, paymethod);
-    }
-
-    public Boolean getRePrint() {
-        return rePrint;
-    }
-
-    public void setRePrint(Boolean rePrint) {
-        Boolean oldRePrint = this.rePrint;
-        this.rePrint = rePrint;
-        changeSupport.firePropertyChange("rePrint", oldRePrint, rePrint);
     }
 
     @Override
