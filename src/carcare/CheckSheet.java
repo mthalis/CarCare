@@ -761,6 +761,9 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         }else{
             Chksht checkSheet = new Chksht();
             
+            List<Custdata> cusdate = custdataJpaController.findCustdataByVno(txtVNo.getText());
+            checkSheet.setCustdata(cusdate.get(0));
+            
             //checkSheet.setVno(txtVNo.getText());
             checkSheet.setDate(txtDate1.getDate());
             checkSheet.setMilage(Double.parseDouble(jTextField4.getText()));
