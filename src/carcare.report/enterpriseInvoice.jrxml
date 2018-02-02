@@ -195,7 +195,7 @@ where
 				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[ENTERPRISE]]></text>
+				<text><![CDATA[ENTERPRISES]]></text>
 			</staticText>
 		</band>
 	</title>

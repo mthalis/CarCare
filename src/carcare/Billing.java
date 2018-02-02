@@ -97,12 +97,16 @@ public class Billing extends javax.swing.JInternalFrame {
         txtDisCCCTotal.setText(billccc.getDiscount().toString());
         txtCCCTotal.setText(billccc.getAmount().toString());
         carCareCenter = true;
+        
+        jRadioButton3.setSelected(true);
+        buttonGroup1.add(jRadioButton3);
+        buttonGroup1.add(jRadioButton4);
     }
 
     Billing(Billcce billcce) {
         initComponents();
         
-        this.setTitle("CarCare Enterprise Bill");
+        this.setTitle("CarCare Enterprises Bill");
         
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();        
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
@@ -170,6 +174,10 @@ public class Billing extends javax.swing.JInternalFrame {
         jTextField45.setText(Integer.toString(total2));
 
         carCareCenter = false;
+        
+        jRadioButton3.setSelected(true);
+        buttonGroup1.add(jRadioButton3);
+        buttonGroup1.add(jRadioButton4);
     }
     
     void drawLines(Graphics g) {
@@ -197,6 +205,7 @@ public class Billing extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -223,6 +232,9 @@ public class Billing extends javax.swing.JInternalFrame {
         jLabel33 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jPasswordField1 = new javax.swing.JPasswordField();
+        jLabel34 = new javax.swing.JLabel();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        jRadioButton4 = new javax.swing.JRadioButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -429,6 +441,18 @@ public class Billing extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 90, -1));
         jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 130, -1));
+
+        jLabel34.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel34.setText("Re Print");
+        jPanel1.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 80, 25));
+
+        jRadioButton3.setText("Copy");
+        jRadioButton3.setEnabled(false);
+        jPanel1.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, -1, -1));
+
+        jRadioButton4.setText("Original");
+        jRadioButton4.setEnabled(false);
+        jPanel1.add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, -1, -1));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CAR CARE CENTER", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 0, 51))); // NOI18N
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -706,7 +730,7 @@ public class Billing extends javax.swing.JInternalFrame {
                         .addContainerGap()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE))
+                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -748,11 +772,16 @@ public class Billing extends javax.swing.JInternalFrame {
             txtAddr.setEnabled(true);
             txtPhone.setEnabled(true);
             jButton2.setEnabled(true);
+            
+            jRadioButton3.setEnabled(true);
+            jRadioButton4.setEnabled(true);
         }else{
             txtName.setEnabled(false);
             txtAddr.setEnabled(false);
             txtPhone.setEnabled(false);
             jButton2.setEnabled(false);
+            jRadioButton3.setEnabled(false);
+            jRadioButton4.setEnabled(false);
             JOptionPane.showMessageDialog(null, "You are not authorize to update Customer Details !");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -835,6 +864,7 @@ public class Billing extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnPrint;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox chkFreeAlign;
     private javax.swing.JCheckBox chkFreeAnyO;
     private javax.swing.JCheckBox chkFreeBHgt;
@@ -879,6 +909,7 @@ public class Billing extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -892,6 +923,8 @@ public class Billing extends javax.swing.JInternalFrame {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;
