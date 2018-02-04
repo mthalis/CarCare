@@ -24,7 +24,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.swing.JRViewer;
+import net.sf.jasperreports.view.JasperViewer;
 import org.apache.log4j.Logger;
 
 /**
@@ -796,30 +798,38 @@ public class Billing extends javax.swing.JInternalFrame {
             String reportSource = "";
             Map<String, Object> params = new HashMap();
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String rePrintType = "";
+            if(jRadioButton3.isSelected()){
+                rePrintType = "Copy";
+            }
             if(carCareCenter){                
                 String formatDate = format.format( dateBill.getDate());
-                String title = "CarCare Center Invoice";
+                String reportTitle = "CarCare Center Invoice";
                 reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
                 
-                params.put("reportName", title);
+                params.put("reportName", reportTitle);
                 params.put("vno", txtVNo.getText());
                 params.put("date", formatDate);
-
+                params.put("rePrintType", rePrintType);
                 
             }else{
                 String formatDate = format.format( dateBill.getDate());
-                String title = "CarCare Enterprise Invoice";
+                String reportTitle = "CarCare Enterprise Invoice";
                 reportSource = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
                 
-                params.put("reportName", title);
+                params.put("reportName", reportTitle);
                 params.put("vno", txtVNo.getText());
                 params.put("date", formatDate);
+                params.put("rePrintType", rePrintType);
             }
             
             JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
                         ConnectionManager.getConnection());
-
-            JRViewer jv = new JRViewer(jasperPrint);
+            JasperPrintManager.printReport(jasperPrint,true);
+            
+            //JasperViewer viewer = new JasperViewer(jasperPrint, true);
+//viewer.setVisible(true);
+            /*JRViewer jv = new JRViewer(jasperPrint);
             JFrame jf = new JFrame();
             jf.getContentPane().add(jv);
             jf.setTitle(title);
@@ -828,7 +838,7 @@ public class Billing extends javax.swing.JInternalFrame {
             jf.setVisible(true);
             jf.setSize(new Dimension(900,700));
             jf.setLocation(300,0);
-            jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);*/
 
         }catch(Exception e){
             logger.fatal("Error Occured while generating InventoryReport " + e);
