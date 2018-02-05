@@ -59,6 +59,8 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         actionType = "save";
         
         txtCusId.setVisible(false);
+        
+        txtVNo.requestFocus();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -281,24 +283,65 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
                 txtVNoFocusLost(evt);
             }
         });
+        txtVNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtVNoActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtVNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 120, 25));
+
+        txtAddr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAddrActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtAddr, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 344, 25));
+
+        txtCity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCityActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 344, 25));
+
+        txtPhone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPhoneActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 344, 25));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Name");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 70, 30));
+
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 344, 25));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("Last Milage");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, 80, 30));
+
+        txtLastMilage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLastMilageActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtLastMilage, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 270, 120, 25));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Milage");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 80, 30));
+
+        txtMilage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMilageActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtMilage, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 120, 25));
 
         txtDate.setDateFormatString("dd-MMM-yyyy");
@@ -538,6 +581,38 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
         CarCare.cus_window = 0;
     }//GEN-LAST:event_formInternalFrameClosed
+
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        txtAddr.requestFocusInWindow(); 
+    }//GEN-LAST:event_txtNameActionPerformed
+
+    private void txtAddrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddrActionPerformed
+        txtCity.requestFocusInWindow();
+    }//GEN-LAST:event_txtAddrActionPerformed
+
+    private void txtCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCityActionPerformed
+        txtPhone.requestFocusInWindow(); 
+    }//GEN-LAST:event_txtCityActionPerformed
+
+    private void txtPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneActionPerformed
+        txtMilage.requestFocusInWindow(); 
+    }//GEN-LAST:event_txtPhoneActionPerformed
+
+    private void txtMilageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMilageActionPerformed
+        if(txtLastMilage.isEnabled()){
+            txtLastMilage.requestFocusInWindow(); 
+        }else{
+            btnSaveUpdate.requestFocusInWindow();
+        }
+    }//GEN-LAST:event_txtMilageActionPerformed
+
+    private void txtLastMilageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLastMilageActionPerformed
+        btnSaveUpdate.requestFocusInWindow(); 
+    }//GEN-LAST:event_txtLastMilageActionPerformed
+
+    private void txtVNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVNoActionPerformed
+        txtDate.requestFocusInWindow(); 
+    }//GEN-LAST:event_txtVNoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
