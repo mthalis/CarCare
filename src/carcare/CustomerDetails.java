@@ -60,7 +60,6 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         
         txtCusId.setVisible(false);
         
-        txtVNo.requestFocus();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -345,6 +344,11 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         jPanel1.add(txtMilage, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 120, 25));
 
         txtDate.setDateFormatString("dd-MMM-yyyy");
+        txtDate.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                txtDatePropertyChange(evt);
+            }
+        });
         jPanel1.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 30, 120, 25));
 
         btnSaveUpdate.setText("Save");
@@ -371,6 +375,12 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         });
         jPanel1.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, 75, 25));
         jPanel1.add(txtCusId, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 30, -1));
+
+        txtLastDate.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                txtLastDatePropertyChange(evt);
+            }
+        });
         jPanel1.add(txtLastDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 120, 25));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -547,7 +557,7 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
         txtPhone.setText(cusdate.getPhone());
         txtLastDate.setDate(cusdate.getLdate());
         btnSaveUpdate.setText("Update");
-        
+        txtName.requestFocusInWindow();
         actionType = "edit";
 
     }//GEN-LAST:event_jTable1MouseClicked
@@ -599,8 +609,8 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtPhoneActionPerformed
 
     private void txtMilageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMilageActionPerformed
-        if(txtLastMilage.isEnabled()){
-            txtLastMilage.requestFocusInWindow(); 
+        if(txtLastDate.isEnabled()){
+            txtLastDate.requestFocusInWindow(); 
         }else{
             btnSaveUpdate.requestFocusInWindow();
         }
@@ -613,6 +623,18 @@ public class CustomerDetails extends javax.swing.JInternalFrame {
     private void txtVNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVNoActionPerformed
         txtDate.requestFocusInWindow(); 
     }//GEN-LAST:event_txtVNoActionPerformed
+
+    private void txtDatePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtDatePropertyChange
+       txtName.requestFocusInWindow(); 
+    }//GEN-LAST:event_txtDatePropertyChange
+
+    private void txtLastDatePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtLastDatePropertyChange
+        if(txtLastMilage.isEnabled()){
+            txtLastMilage.requestFocusInWindow(); 
+        }else{
+            btnSaveUpdate.requestFocusInWindow();
+        }
+    }//GEN-LAST:event_txtLastDatePropertyChange
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
