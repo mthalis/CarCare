@@ -76,8 +76,8 @@ SELECT e.Bill_no AS billNo ,e.date AS dateval, e.vno AS vno , (CASE WHEN e.payme
 				<text><![CDATA[Cash/ Credit]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="296" y="0" width="84" height="20" uuid="f54008b1-edb9-47e3-8a0f-8f103323c118"/>
-				<textElement>
+				<reportElement x="296" y="0" width="70" height="20" uuid="f54008b1-edb9-47e3-8a0f-8f103323c118"/>
+				<textElement textAlignment="Right">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Amount]]></text>
@@ -103,10 +103,12 @@ SELECT e.Bill_no AS billNo ,e.date AS dateval, e.vno AS vno , (CASE WHEN e.payme
 			</textField>
 			<textField>
 				<reportElement x="205" y="5" width="82" height="20" uuid="4330108b-3346-46b8-8b7c-dc3fc65bfc69"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{paymethod}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="296" y="5" width="84" height="20" uuid="5cbfb335-afd8-45c3-a35b-161122871640"/>
+			<textField pattern="##0.00" isBlankWhenNull="true">
+				<reportElement x="296" y="5" width="70" height="20" uuid="5cbfb335-afd8-45c3-a35b-161122871640"/>
+				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -118,7 +120,7 @@ SELECT e.Bill_no AS billNo ,e.date AS dateval, e.vno AS vno , (CASE WHEN e.payme
 		<band height="42" splitType="Stretch">
 			<staticText>
 				<reportElement x="205" y="10" width="82" height="20" uuid="7307c7e0-8f45-486b-b11e-1810f5f406f8"/>
-				<textElement>
+				<textElement textAlignment="Right">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Total]]></text>
@@ -129,8 +131,9 @@ SELECT e.Bill_no AS billNo ,e.date AS dateval, e.vno AS vno , (CASE WHEN e.payme
 			<line>
 				<reportElement x="0" y="30" width="380" height="2" uuid="915b0c0b-c816-4e55-8049-2b1c47003155"/>
 			</line>
-			<textField>
-				<reportElement x="310" y="10" width="70" height="20" uuid="335dfbb3-aeb5-43d0-9d99-1c660176a3c8"/>
+			<textField pattern="##0.00">
+				<reportElement x="296" y="10" width="70" height="20" uuid="335dfbb3-aeb5-43d0-9d99-1c660176a3c8"/>
+				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
 			</textField>
 		</band>
