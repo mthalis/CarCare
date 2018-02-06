@@ -522,7 +522,7 @@ where
 				<textFieldExpression><![CDATA[$F{billcce_DISCOUNT}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="330" y="196" width="100" height="20" uuid="44c61525-aa60-4fb8-8158-00babb1832f9"/>
+				<reportElement x="295" y="225" width="100" height="20" uuid="44c61525-aa60-4fb8-8158-00babb1832f9"/>
 				<textFieldExpression><![CDATA["Next Align " + (6000+$F{billcce_MILLAGE}.intValue()) + " Km"]]></textFieldExpression>
 			</textField>
 		</band>
