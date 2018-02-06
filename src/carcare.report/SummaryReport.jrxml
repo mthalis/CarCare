@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Summary Report" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="114c759d-f637-4186-b85b-9ee2ffe6afd1">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Summary Report" pageWidth="420" pageHeight="595" columnWidth="380" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="114c759d-f637-4186-b85b-9ee2ffe6afd1">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -55,35 +55,35 @@ SELECT e.Bill_no AS billNo ,e.date AS dateval, e.vno AS vno , (CASE WHEN e.payme
 				<text><![CDATA[Invoice No]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="77" y="0" width="63" height="20" uuid="8e0d5058-1b9d-4e62-83fd-cb2593f62a42"/>
+				<reportElement x="70" y="0" width="63" height="20" uuid="8e0d5058-1b9d-4e62-83fd-cb2593f62a42"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Date]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="156" y="0" width="60" height="20" uuid="f91bc1bf-48c7-44e1-b50a-46504353fe3f"/>
+				<reportElement x="140" y="0" width="60" height="20" uuid="f91bc1bf-48c7-44e1-b50a-46504353fe3f"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[V/No]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="356" y="0" width="82" height="20" uuid="7fff932c-3bb8-4d69-9a87-f00475bb494a"/>
+				<reportElement x="205" y="0" width="82" height="20" uuid="7fff932c-3bb8-4d69-9a87-f00475bb494a"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Cash/ Credit]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="455" y="0" width="100" height="20" uuid="f54008b1-edb9-47e3-8a0f-8f103323c118"/>
+				<reportElement x="296" y="0" width="84" height="20" uuid="f54008b1-edb9-47e3-8a0f-8f103323c118"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Amount]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="20" width="555" height="2" uuid="548c3c57-2bd5-4093-89ba-0b2c01876213"/>
+				<reportElement x="0" y="20" width="380" height="2" uuid="548c3c57-2bd5-4093-89ba-0b2c01876213"/>
 			</line>
 		</band>
 	</columnHeader>
@@ -94,19 +94,19 @@ SELECT e.Bill_no AS billNo ,e.date AS dateval, e.vno AS vno , (CASE WHEN e.payme
 				<textFieldExpression><![CDATA[$F{billNo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="77" y="5" width="63" height="20" uuid="5257b575-5930-4852-a01a-329cbd1c4d80"/>
+				<reportElement x="70" y="5" width="63" height="20" uuid="5257b575-5930-4852-a01a-329cbd1c4d80"/>
 				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{dateval})]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="156" y="5" width="60" height="20" uuid="1946085a-eaa4-4313-b071-369416afe366"/>
+				<reportElement x="140" y="5" width="60" height="20" uuid="1946085a-eaa4-4313-b071-369416afe366"/>
 				<textFieldExpression><![CDATA[$F{vno}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="356" y="5" width="82" height="20" uuid="4330108b-3346-46b8-8b7c-dc3fc65bfc69"/>
+				<reportElement x="205" y="5" width="82" height="20" uuid="4330108b-3346-46b8-8b7c-dc3fc65bfc69"/>
 				<textFieldExpression><![CDATA[$F{paymethod}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="469" y="5" width="86" height="20" uuid="5cbfb335-afd8-45c3-a35b-161122871640"/>
+				<reportElement x="296" y="5" width="84" height="20" uuid="5cbfb335-afd8-45c3-a35b-161122871640"/>
 				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -117,20 +117,20 @@ SELECT e.Bill_no AS billNo ,e.date AS dateval, e.vno AS vno , (CASE WHEN e.payme
 	<summary>
 		<band height="42" splitType="Stretch">
 			<staticText>
-				<reportElement x="356" y="10" width="82" height="20" uuid="7307c7e0-8f45-486b-b11e-1810f5f406f8"/>
+				<reportElement x="205" y="10" width="82" height="20" uuid="7307c7e0-8f45-486b-b11e-1810f5f406f8"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Total]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="5" width="555" height="2" uuid="dbd74e98-53e8-4334-b9fe-6a584b131689"/>
+				<reportElement x="0" y="5" width="380" height="2" uuid="dbd74e98-53e8-4334-b9fe-6a584b131689"/>
 			</line>
 			<line>
-				<reportElement x="0" y="30" width="555" height="2" uuid="915b0c0b-c816-4e55-8049-2b1c47003155"/>
+				<reportElement x="0" y="30" width="380" height="2" uuid="915b0c0b-c816-4e55-8049-2b1c47003155"/>
 			</line>
 			<textField>
-				<reportElement x="469" y="10" width="86" height="20" uuid="335dfbb3-aeb5-43d0-9d99-1c660176a3c8"/>
+				<reportElement x="310" y="10" width="70" height="20" uuid="335dfbb3-aeb5-43d0-9d99-1c660176a3c8"/>
 				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
 			</textField>
 		</band>
