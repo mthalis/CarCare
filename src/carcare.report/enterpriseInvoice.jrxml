@@ -191,7 +191,7 @@ where
 	<title>
 		<band height="55" splitType="Stretch">
 			<staticText>
-				<reportElement x="180" y="14" width="100" height="20" uuid="4ba3d0af-4094-4db5-b471-9461ef59bb51"/>
+				<reportElement x="210" y="20" width="100" height="20" uuid="4ba3d0af-4094-4db5-b471-9461ef59bb51"/>
 				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>
@@ -202,14 +202,14 @@ where
 	<pageHeader>
 		<band height="35" splitType="Stretch">
 			<staticText>
-				<reportElement x="120" y="2" width="100" height="20" uuid="45a14a0f-9e1f-4f10-91a2-350e9a6d294c"/>
+				<reportElement x="150" y="6" width="100" height="20" uuid="45a14a0f-9e1f-4f10-91a2-350e9a6d294c"/>
 				<textElement>
-					<font size="14" isBold="true"/>
+					<font size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Invoice]]></text>
 			</staticText>
 			<textField pattern="###0">
-				<reportElement x="378" y="2" width="100" height="20" uuid="21c7be43-e9e8-4314-9c6a-35b622f45ad0"/>
+				<reportElement x="345" y="7" width="100" height="20" uuid="21c7be43-e9e8-4314-9c6a-35b622f45ad0"/>
 				<textFieldExpression><![CDATA[$F{billcce_BILL_NO}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -217,35 +217,35 @@ where
 	<columnHeader>
 		<band height="83" splitType="Stretch">
 			<textField>
-				<reportElement x="120" y="34" width="150" height="17" uuid="2d6cec39-3da4-4d01-a5ee-d8e342f04cb7"/>
+				<reportElement x="71" y="34" width="150" height="17" uuid="2d6cec39-3da4-4d01-a5ee-d8e342f04cb7"/>
 				<textFieldExpression><![CDATA[$F{billcce_NAME}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="70" y="0" width="50" height="17" uuid="eebf7cda-c80f-49d0-807d-d5fbccad4095"/>
+				<reportElement x="21" y="0" width="50" height="17" uuid="eebf7cda-c80f-49d0-807d-d5fbccad4095"/>
 				<text><![CDATA[Date]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="120" y="0" width="100" height="17" uuid="52a75ffc-8971-491a-850a-6daa2092ea41"/>
+				<reportElement x="71" y="0" width="100" height="17" uuid="52a75ffc-8971-491a-850a-6daa2092ea41"/>
 				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{billcce_DATE})]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="70" y="34" width="50" height="17" uuid="bdd77c6e-f103-4c06-9225-8b5ee581dd18"/>
+				<reportElement x="21" y="34" width="50" height="17" uuid="bdd77c6e-f103-4c06-9225-8b5ee581dd18"/>
 				<text><![CDATA[Name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="70" y="17" width="50" height="17" uuid="55c7b7df-1f3d-45cd-9d78-32f3af997a31"/>
+				<reportElement x="21" y="17" width="50" height="17" uuid="55c7b7df-1f3d-45cd-9d78-32f3af997a31"/>
 				<text><![CDATA[Veh. No]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="120" y="17" width="100" height="17" uuid="25c6463f-6f85-4ea1-afb3-c04309a39372"/>
+				<reportElement x="71" y="17" width="100" height="17" uuid="25c6463f-6f85-4ea1-afb3-c04309a39372"/>
 				<textFieldExpression><![CDATA[$F{billcce_VNO}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="70" y="51" width="50" height="17" uuid="3368b61b-37f6-4ed1-b0d5-59905203eb92"/>
+				<reportElement x="21" y="51" width="50" height="17" uuid="3368b61b-37f6-4ed1-b0d5-59905203eb92"/>
 				<text><![CDATA[Milage]]></text>
 			</staticText>
 			<textField pattern="###0">
-				<reportElement x="120" y="51" width="100" height="17" uuid="f69d663d-9621-4708-8539-0b9199ab33b1"/>
+				<reportElement x="71" y="51" width="100" height="17" uuid="f69d663d-9621-4708-8539-0b9199ab33b1"/>
 				<textFieldExpression><![CDATA[$F{billcce_MILLAGE}.intValue() + " Km"]]></textFieldExpression>
 			</textField>
 		</band>
@@ -253,7 +253,7 @@ where
 	<detail>
 		<band height="250" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table 2" style="table 2" x="70" y="0" width="360" height="122" uuid="a594d273-bb16-4802-ba1b-7254511141b8"/>
+				<reportElement key="table 2" style="table 2" x="21" y="0" width="360" height="122" uuid="a594d273-bb16-4802-ba1b-7254511141b8"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="Table Dataset 1" uuid="84ec67ae-5436-4683-a1ff-fcb0d43f5fec">
 						<datasetParameter name="parameter1">

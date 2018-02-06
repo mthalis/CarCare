@@ -263,6 +263,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 txtChkAlignFocusLost(evt);
             }
         });
+        txtChkAlign.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtChkAlignActionPerformed(evt);
+            }
+        });
         txtChkAlign.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtChkAlignKeyTyped(evt);
@@ -273,6 +278,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
         txtAdstToe.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtAdstToeFocusLost(evt);
+            }
+        });
+        txtAdstToe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAdstToeActionPerformed(evt);
             }
         });
         txtAdstToe.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -287,6 +297,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 txtCamberFocusLost(evt);
             }
         });
+        txtCamber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCamberActionPerformed(evt);
+            }
+        });
         txtCamber.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCamberKeyTyped(evt);
@@ -297,6 +312,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
         txtCaster.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtCasterFocusLost(evt);
+            }
+        });
+        txtCaster.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCasterActionPerformed(evt);
             }
         });
         txtCaster.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -311,6 +331,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 txtBHightFocusLost(evt);
             }
         });
+        txtBHight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBHightActionPerformed(evt);
+            }
+        });
         txtBHight.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtBHightKeyTyped(evt);
@@ -321,6 +346,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
         txtReToe.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtReToeFocusLost(evt);
+            }
+        });
+        txtReToe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtReToeActionPerformed(evt);
             }
         });
         txtReToe.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -335,6 +365,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 txtReCamberFocusLost(evt);
             }
         });
+        txtReCamber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtReCamberActionPerformed(evt);
+            }
+        });
         txtReCamber.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtReCamberKeyTyped(evt);
@@ -345,6 +380,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
         txtAnyOther.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtAnyOtherFocusLost(evt);
+            }
+        });
+        txtAnyOther.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAnyOtherActionPerformed(evt);
             }
         });
         txtAnyOther.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -359,6 +399,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 txtSusTestFocusLost(evt);
             }
         });
+        txtSusTest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSusTestActionPerformed(evt);
+            }
+        });
         txtSusTest.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtSusTestKeyTyped(evt);
@@ -369,6 +414,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
         txtHLTest.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtHLTestFocusLost(evt);
+            }
+        });
+        txtHLTest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHLTestActionPerformed(evt);
             }
         });
         txtHLTest.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -384,6 +434,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
         txtDisCCCTotal.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtDisCCCTotalFocusLost(evt);
+            }
+        });
+        txtDisCCCTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDisCCCTotalActionPerformed(evt);
             }
         });
         txtDisCCCTotal.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -487,6 +542,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 jTextField20FocusLost(evt);
             }
         });
+        jTextField20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField20ActionPerformed(evt);
+            }
+        });
         jTextField20.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField20KeyTyped(evt);
@@ -497,6 +557,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
         txtOther2Qt.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtOther2QtFocusLost(evt);
+            }
+        });
+        txtOther2Qt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtOther2QtActionPerformed(evt);
             }
         });
         txtOther2Qt.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -511,6 +576,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 txtOther3QtFocusLost(evt);
             }
         });
+        txtOther3Qt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtOther3QtActionPerformed(evt);
+            }
+        });
         txtOther3Qt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtOther3QtKeyTyped(evt);
@@ -521,6 +591,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
         jTextField27.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextField27FocusLost(evt);
+            }
+        });
+        jTextField27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField27ActionPerformed(evt);
             }
         });
         jTextField27.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -535,6 +610,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 jTextField28FocusLost(evt);
             }
         });
+        jTextField28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField28ActionPerformed(evt);
+            }
+        });
         jTextField28.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField28KeyTyped(evt);
@@ -545,6 +625,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
         jTextField29.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextField29FocusLost(evt);
+            }
+        });
+        jTextField29.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField29ActionPerformed(evt);
             }
         });
         jTextField29.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -559,6 +644,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 jTextField30FocusLost(evt);
             }
         });
+        jTextField30.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField30ActionPerformed(evt);
+            }
+        });
         jTextField30.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField30KeyTyped(evt);
@@ -569,6 +659,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
         jTextField31.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextField31FocusLost(evt);
+            }
+        });
+        jTextField31.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField31ActionPerformed(evt);
             }
         });
         jTextField31.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -583,6 +678,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 jTextField32FocusLost(evt);
             }
         });
+        jTextField32.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField32ActionPerformed(evt);
+            }
+        });
         jTextField32.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField32KeyTyped(evt);
@@ -593,6 +693,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
         jTextField33.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextField33FocusLost(evt);
+            }
+        });
+        jTextField33.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField33ActionPerformed(evt);
             }
         });
         jTextField33.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -607,12 +712,23 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 txtDisCCETotalFocusLost(evt);
             }
         });
+        txtDisCCETotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDisCCETotalActionPerformed(evt);
+            }
+        });
         txtDisCCETotal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtDisCCETotalKeyTyped(evt);
             }
         });
         jPanel5.add(txtDisCCETotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 70, -1));
+
+        txtOther3Txt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtOther3TxtActionPerformed(evt);
+            }
+        });
         jPanel5.add(txtOther3Txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 180, 110, -1));
 
         jCheckBox11.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -757,9 +873,19 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 txtVNoFocusLost(evt);
             }
         });
+        txtVNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtVNoActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtVNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 120, 25));
         jPanel1.add(txtChashiNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 120, 25));
 
+        txtMilage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMilageActionPerformed(evt);
+            }
+        });
         txtMilage.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtMilageKeyTyped(evt);
@@ -791,6 +917,12 @@ public class AddBilling extends javax.swing.JInternalFrame {
 
         jRadioButton2.setText("Credit");
         jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, -1, -1));
+
+        txtAddby.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAddbyActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtAddby, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 105, 25));
 
         jLabel32.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -1373,6 +1505,110 @@ public class AddBilling extends javax.swing.JInternalFrame {
     private void txtMilageKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMilageKeyTyped
         keyTyped(evt);
     }//GEN-LAST:event_txtMilageKeyTyped
+
+    private void txtVNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVNoActionPerformed
+        txtMilage.requestFocusInWindow(); 
+    }//GEN-LAST:event_txtVNoActionPerformed
+
+    private void txtMilageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMilageActionPerformed
+        txtAddby.requestFocusInWindow();
+    }//GEN-LAST:event_txtMilageActionPerformed
+
+    private void txtAddbyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddbyActionPerformed
+        txtChkAlign.requestFocusInWindow();
+    }//GEN-LAST:event_txtAddbyActionPerformed
+
+    private void txtChkAlignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtChkAlignActionPerformed
+        txtAdstToe.requestFocusInWindow();
+    }//GEN-LAST:event_txtChkAlignActionPerformed
+
+    private void txtAdstToeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAdstToeActionPerformed
+        txtCamber.requestFocusInWindow();
+    }//GEN-LAST:event_txtAdstToeActionPerformed
+
+    private void txtCamberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCamberActionPerformed
+        txtCaster.requestFocusInWindow();
+    }//GEN-LAST:event_txtCamberActionPerformed
+
+    private void txtCasterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCasterActionPerformed
+        txtBHight.requestFocusInWindow();
+    }//GEN-LAST:event_txtCasterActionPerformed
+
+    private void txtBHightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBHightActionPerformed
+        txtReToe.requestFocusInWindow();
+    }//GEN-LAST:event_txtBHightActionPerformed
+
+    private void txtReToeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReToeActionPerformed
+        txtReCamber.requestFocusInWindow();
+    }//GEN-LAST:event_txtReToeActionPerformed
+
+    private void txtReCamberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReCamberActionPerformed
+        txtAnyOther.requestFocusInWindow();
+    }//GEN-LAST:event_txtReCamberActionPerformed
+
+    private void txtAnyOtherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnyOtherActionPerformed
+        txtSusTest.requestFocusInWindow();
+    }//GEN-LAST:event_txtAnyOtherActionPerformed
+
+    private void txtSusTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSusTestActionPerformed
+        txtHLTest.requestFocusInWindow();
+    }//GEN-LAST:event_txtSusTestActionPerformed
+
+    private void txtHLTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHLTestActionPerformed
+        txtDisCCCTotal.requestFocusInWindow();
+    }//GEN-LAST:event_txtHLTestActionPerformed
+
+    private void jTextField20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField20ActionPerformed
+        jTextField27.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField20ActionPerformed
+
+    private void jTextField27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField27ActionPerformed
+        jTextField33.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField27ActionPerformed
+
+    private void jTextField33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField33ActionPerformed
+        jTextField32.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField33ActionPerformed
+
+    private void jTextField32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField32ActionPerformed
+        jTextField31.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField32ActionPerformed
+
+    private void jTextField31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField31ActionPerformed
+        jTextField30.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField31ActionPerformed
+
+    private void jTextField30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField30ActionPerformed
+        txtOther2Qt.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField30ActionPerformed
+
+    private void txtOther2QtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOther2QtActionPerformed
+        jTextField29.requestFocusInWindow();
+    }//GEN-LAST:event_txtOther2QtActionPerformed
+
+    private void jTextField29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField29ActionPerformed
+        txtOther3Txt.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField29ActionPerformed
+
+    private void txtOther3TxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOther3TxtActionPerformed
+        txtOther3Qt.requestFocusInWindow();
+    }//GEN-LAST:event_txtOther3TxtActionPerformed
+
+    private void txtOther3QtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOther3QtActionPerformed
+        jTextField28.requestFocusInWindow();
+    }//GEN-LAST:event_txtOther3QtActionPerformed
+
+    private void jTextField28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField28ActionPerformed
+        txtDisCCETotal.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField28ActionPerformed
+
+    private void txtDisCCETotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDisCCETotalActionPerformed
+        btnPrint.requestFocusInWindow();
+    }//GEN-LAST:event_txtDisCCETotalActionPerformed
+
+    private void txtDisCCCTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDisCCCTotalActionPerformed
+        jTextField20.requestFocusInWindow();
+    }//GEN-LAST:event_txtDisCCCTotalActionPerformed
 
     public void keyTyped(KeyEvent e) {
       char c = e.getKeyChar();
