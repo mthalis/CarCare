@@ -90,7 +90,7 @@ SELECT e.Bill_no AS billNo ,e.date AS dateval, e.vno AS vno , (CASE WHEN e.payme
 	<detail>
 		<band height="29" splitType="Stretch">
 			<textField pattern="###0">
-				<reportElement x="2" y="5" width="59" height="20" uuid="dc9837de-21a7-4f77-9d59-0795060a810f"/>
+				<reportElement x="2" y="5" width="61" height="20" uuid="dc9837de-21a7-4f77-9d59-0795060a810f"/>
 				<textFieldExpression><![CDATA[$F{billNo}]]></textFieldExpression>
 			</textField>
 			<textField>
