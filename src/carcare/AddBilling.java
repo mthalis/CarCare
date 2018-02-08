@@ -1217,6 +1217,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
                         params.put("reportName", title);
                         params.put("vno", billccc.getVno());
                         params.put("date", format.format(billccc.getDate()));
+                        params.put("rePrintType", "");
 
                         JasperPrint jasperPrintCenter = JasperFillManager.fillReport(reportSource, params,
                                 ConnectionManager.getConnection());                        
@@ -1260,6 +1261,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
                         params.put("reportName", title);
                         params.put("vno", billccc.getVno());
                         params.put("date", format.format(billccc.getDate()));
+                        params.put("rePrintType", "");
 
                         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
                                 ConnectionManager.getConnection());
