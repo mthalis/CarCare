@@ -1211,13 +1211,14 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 if(billcce.getAmount() > 0 && billccc.getAmount() > 0 ){
                     try{
                         
-                        String title = "CarCare Center Invoice";
+                        String title2 = "CarCare Center Invoice";
                         String reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
                         Map<String, Object> params = new HashMap();
-                        params.put("reportName", title);
+                        params.put("reportName", title2);
                         params.put("vno", billccc.getVno());
                         params.put("date", format.format(billccc.getDate()));
                         params.put("rePrintType", "");
+                        params.put("IS_IGNORE_PAGINATION", true);
 
                         JasperPrint jasperPrintCenter = JasperFillManager.fillReport(reportSource, params,
                                 ConnectionManager.getConnection());                        
@@ -1228,6 +1229,8 @@ public class AddBilling extends javax.swing.JInternalFrame {
                         params1.put("reportName", title1);
                         params1.put("vno", billcce.getVno());
                         params1.put("date", format.format(billcce.getDate()));
+                        params.put("rePrintType", "");
+                        params.put("IS_IGNORE_PAGINATION", true);
 
                         JasperPrint jasperPrintEnterPrice = JasperFillManager.fillReport(reportSource1, params1,
                                 ConnectionManager.getConnection());
@@ -1288,6 +1291,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
                         params.put("reportName", title);
                         params.put("vno", billcce.getVno());
                         params.put("date", format.format(billcce.getDate()));
+                        params.put("rePrintType", "");
 
                         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
                                 ConnectionManager.getConnection());

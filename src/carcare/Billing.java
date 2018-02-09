@@ -17,8 +17,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -812,6 +814,54 @@ public class Billing extends javax.swing.JInternalFrame {
                 params.put("date", formatDate);
                 params.put("rePrintType", rePrintType);
                 
+                List<String> descList = new ArrayList<>();
+                List<String> valList = new ArrayList<>();
+                if(!txtChkAlign.getText().equals("0")){
+                    descList.add("Checking Align");
+                    valList.add(txtChkAlign.getText());
+                }                
+                if(!txtAdstToe.getText().equals("0")){
+                    descList.add("Adjust Toe");
+                    valList.add(txtAdstToe.getText());
+                }
+                if(!txtCamber.getText().equals("0")){
+                    descList.add("Camber");
+                    valList.add(txtCamber.getText());
+                }
+                if(!txtCaster.getText().equals("0")){
+                    descList.add("Caster");
+                    valList.add(txtCaster.getText());
+                }
+                if(!txtBHight.getText().equals("0")){
+                    descList.add("Body Height");
+                    valList.add(txtBHight.getText());
+                }
+                if(!txtReToe.getText().equals("0")){
+                    descList.add("Rear Toe");
+                    valList.add(txtReToe.getText());
+                }
+                if(!txtReCamber.getText().equals("0")){
+                    descList.add("Rear Camber");
+                    valList.add(txtReCamber.getText());
+                }
+                if(!txtAnyOther.getText().equals("0")){
+                    descList.add("Any Other");
+                    valList.add(txtAnyOther.getText());
+                }
+                if(!txtSusTest.getText().equals("0")){
+                    descList.add("Susp. Test");
+                    valList.add(txtSusTest.getText());
+                }
+                if(!txtHLTest.getText().equals("0")){
+                    descList.add("Head Light Test");
+                    valList.add(txtHLTest.getText());
+                }
+                
+                for (int x = 0; x<descList.size() ;x++) {
+                    params.put("description"+(x+1), descList.get(x));
+                    params.put("val"+(x+1), valList.get(x));
+                }
+                
             }else{
                 String formatDate = format.format( dateBill.getDate());
                 String reportTitle = "CarCare Enterprise Invoice";
@@ -825,11 +875,7 @@ public class Billing extends javax.swing.JInternalFrame {
             
             JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
                         ConnectionManager.getConnection());
-            JasperPrintManager.printReport(jasperPrint,true);
-            
-            //JasperViewer viewer = new JasperViewer(jasperPrint, true);
-//viewer.setVisible(true);
-            /*JRViewer jv = new JRViewer(jasperPrint);
+            JRViewer jv = new JRViewer(jasperPrint);
             JFrame jf = new JFrame();
             jf.getContentPane().add(jv);
             jf.setTitle(title);
@@ -838,7 +884,7 @@ public class Billing extends javax.swing.JInternalFrame {
             jf.setVisible(true);
             jf.setSize(new Dimension(900,700));
             jf.setLocation(300,0);
-            jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);*/
+            jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         }catch(Exception e){
             logger.fatal("Error Occured while generating InventoryReport " + e);
