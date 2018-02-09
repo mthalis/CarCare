@@ -134,7 +134,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
 
         jTextField8.setText(Integer.toString(checkSheet.getBAmount()));            
             
-        jButton3.setText("Edit");
+        btnSave.setText("Edit");
            /*
                 checkSheet.setDeDate(new Timestamp(System.currentTimeMillis()));
             */
@@ -262,7 +262,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         btnClear = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
         txtMilage = new javax.swing.JTextField();
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
@@ -300,7 +300,19 @@ public class CheckSheet extends javax.swing.JInternalFrame {
 
         jLabel8.setText("Job by");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 12, 60, -1));
+
+        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField11ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 80, -1));
+
+        jTextField12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField12ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 80, -1));
 
         jLabel51.setText("Head Lights");
@@ -319,11 +331,47 @@ public class CheckSheet extends javax.swing.JInternalFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tyre Condition", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 0, 51))); // NOI18N
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField7ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 55, -1));
+
+        jTextField13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField13ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 55, -1));
+
+        jTextField14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField14ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 55, -1));
+
+        jTextField15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField15ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 70, 55, -1));
+
+        jTextField16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField16ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 50, 55, -1));
+
+        jTextField17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField17ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 90, 55, -1));
 
         jLabel11.setText("Fr L");
@@ -342,11 +390,47 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Out");
         jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 53, -1));
+
+        jTextField34.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField34ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jTextField34, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 55, -1));
+
+        jTextField35.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField35ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jTextField35, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 55, -1));
+
+        jTextField36.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField36ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jTextField36, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 55, -1));
+
+        jTextField37.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField37ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jTextField37, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 55, -1));
+
+        jTextField38.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField38ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jTextField38, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 55, -1));
+
+        jTextField39.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField39ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jTextField39, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 110, 55, -1));
 
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -360,11 +444,47 @@ public class CheckSheet extends javax.swing.JInternalFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Front", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 0, 51))); // NOI18N
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTextField23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField23ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jTextField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 55, -1));
+
+        jTextField24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField24ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jTextField24, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 55, -1));
+
+        jTextField25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField25ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jTextField25, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 55, -1));
+
+        jTextField26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField26ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jTextField26, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 50, 55, -1));
+
+        jTextField27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField27ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jTextField27, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 30, 55, -1));
+
+        jTextField28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField28ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jTextField28, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 70, 55, -1));
 
         jLabel22.setText("Toe");
@@ -392,10 +512,40 @@ public class CheckSheet extends javax.swing.JInternalFrame {
 
         jLabel29.setText("L");
         jPanel4.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 20, -1));
+
+        jTextField29.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField29ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jTextField29, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 55, -1));
+
+        jTextField30.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField30ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jTextField30, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 55, -1));
+
+        jTextField31.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField31ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jTextField31, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 70, 55, -1));
+
+        jTextField32.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField32ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jTextField32, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 50, 55, -1));
+
+        jTextField33.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField33ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jTextField33, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 30, 55, -1));
 
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -410,10 +560,40 @@ public class CheckSheet extends javax.swing.JInternalFrame {
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Rear", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 0, 51))); // NOI18N
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 55, -1));
+
+        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField10ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 55, -1));
+
+        jTextField18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField18ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jTextField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 50, 55, -1));
+
+        jTextField19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField19ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 30, 55, -1));
+
+        jTextField20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField20ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 70, 55, -1));
 
         jLabel4.setText("Toe");
@@ -435,9 +615,33 @@ public class CheckSheet extends javax.swing.JInternalFrame {
 
         jLabel20.setText("L");
         jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 20, -1));
+
+        jTextField21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField21ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 55, -1));
+
+        jTextField22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField22ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 55, -1));
+
+        jTextField40.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField40ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jTextField40, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 50, 55, -1));
+
+        jTextField41.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField41ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jTextField41, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 30, 55, -1));
 
         jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -457,6 +661,11 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Balancing Weight", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 0, 51))); // NOI18N
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
         jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField6KeyTyped(evt);
@@ -464,6 +673,11 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         });
         jPanel7.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 55, -1));
 
+        jTextField51.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField51ActionPerformed(evt);
+            }
+        });
         jTextField51.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField51KeyTyped(evt);
@@ -471,6 +685,11 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         });
         jPanel7.add(jTextField51, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 55, -1));
 
+        jTextField52.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField52ActionPerformed(evt);
+            }
+        });
         jTextField52.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField52KeyTyped(evt);
@@ -478,6 +697,11 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         });
         jPanel7.add(jTextField52, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 60, 55, -1));
 
+        jTextField53.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField53ActionPerformed(evt);
+            }
+        });
         jTextField53.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField53KeyTyped(evt);
@@ -501,6 +725,11 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         jLabel47.setText("L");
         jPanel7.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 20, -1));
 
+        jTextField54.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField54ActionPerformed(evt);
+            }
+        });
         jTextField54.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField54KeyTyped(evt);
@@ -508,6 +737,11 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         });
         jPanel7.add(jTextField54, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 55, -1));
 
+        jTextField55.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField55ActionPerformed(evt);
+            }
+        });
         jTextField55.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField55KeyTyped(evt);
@@ -515,6 +749,11 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         });
         jPanel7.add(jTextField55, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 55, -1));
 
+        jTextField56.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField56ActionPerformed(evt);
+            }
+        });
         jTextField56.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField56KeyTyped(evt);
@@ -522,6 +761,11 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         });
         jPanel7.add(jTextField56, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 60, 55, -1));
 
+        jTextField57.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField57ActionPerformed(evt);
+            }
+        });
         jTextField57.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField57KeyTyped(evt);
@@ -548,6 +792,11 @@ public class CheckSheet extends javax.swing.JInternalFrame {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
+        jTextArea1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jTextArea1PropertyChange(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTextArea1);
 
         jPanel8.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 620, 50));
@@ -636,13 +885,13 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         });
         jPanel9.add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 90, -1));
 
-        jButton3.setText("Save");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnSaveActionPerformed(evt);
             }
         });
-        jPanel9.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 90, -1));
+        jPanel9.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 90, -1));
 
         jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, 133, 360));
 
@@ -742,7 +991,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtVNoFocusLost
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         if(txtVNo.getText() == null || txtVNo.getText().equals("")){
             JOptionPane.showMessageDialog(jPanel1, "Please enter Vehicle no !");
             txtVNo.requestFocus();
@@ -832,7 +1081,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
             
             dispose();
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnSaveActionPerformed
 
     private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyTyped
         keyTyped(evt);
@@ -967,6 +1216,178 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         view_check_window = 0;
     }//GEN-LAST:event_formInternalFrameClosed
 
+    private void jTextField23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField23ActionPerformed
+        jTextField27.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField23ActionPerformed
+
+    private void jTextField27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField27ActionPerformed
+        jTextField33.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField27ActionPerformed
+
+    private void jTextField33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField33ActionPerformed
+        jTextField24.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField33ActionPerformed
+
+    private void jTextField24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField24ActionPerformed
+        jTextField26.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField24ActionPerformed
+
+    private void jTextField26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField26ActionPerformed
+        jTextField29.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField26ActionPerformed
+
+    private void jTextField29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField29ActionPerformed
+        jTextField32.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField29ActionPerformed
+
+    private void jTextField32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField32ActionPerformed
+        jTextField25.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField32ActionPerformed
+
+    private void jTextField25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField25ActionPerformed
+        jTextField28.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField25ActionPerformed
+
+    private void jTextField28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField28ActionPerformed
+        jTextField30.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField28ActionPerformed
+
+    private void jTextField30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField30ActionPerformed
+        jTextField31.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField30ActionPerformed
+
+    private void jTextField31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField31ActionPerformed
+        jTextField3.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField31ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        jTextField19.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jTextField19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField19ActionPerformed
+        jTextField22.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField19ActionPerformed
+
+    private void jTextField22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField22ActionPerformed
+        jTextField41.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField22ActionPerformed
+
+    private void jTextField41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField41ActionPerformed
+        jTextField10.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField41ActionPerformed
+
+    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+        jTextField18.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField10ActionPerformed
+
+    private void jTextField21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField21ActionPerformed
+        jTextField40.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField21ActionPerformed
+
+    private void jTextField40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField40ActionPerformed
+        jTextField20.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField40ActionPerformed
+
+    private void jTextField20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField20ActionPerformed
+        jTextField7.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField20ActionPerformed
+
+    private void jTextField18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField18ActionPerformed
+        jTextField21.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField18ActionPerformed
+
+    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+        jTextField16.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField7ActionPerformed
+
+    private void jTextField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField16ActionPerformed
+        jTextField36.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField16ActionPerformed
+
+    private void jTextField36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField36ActionPerformed
+        jTextField13.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField36ActionPerformed
+
+    private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField13ActionPerformed
+        jTextField15.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField13ActionPerformed
+
+    private void jTextField15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField15ActionPerformed
+        jTextField37.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField15ActionPerformed
+
+    private void jTextField37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField37ActionPerformed
+        jTextField14.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField37ActionPerformed
+
+    private void jTextField14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField14ActionPerformed
+        jTextField17.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField14ActionPerformed
+
+    private void jTextField17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField17ActionPerformed
+        jTextField38.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField17ActionPerformed
+
+    private void jTextField38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField38ActionPerformed
+        jTextField35.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField38ActionPerformed
+
+    private void jTextField35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField35ActionPerformed
+        jTextField39.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField35ActionPerformed
+
+    private void jTextField39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField39ActionPerformed
+        jTextField34.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField39ActionPerformed
+
+    private void jTextField34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField34ActionPerformed
+        jTextField6.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField34ActionPerformed
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        jTextField53.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private void jTextField53ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField53ActionPerformed
+        jTextField55.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField53ActionPerformed
+
+    private void jTextField55ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField55ActionPerformed
+        jTextField57.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField55ActionPerformed
+
+    private void jTextField57ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField57ActionPerformed
+        jTextField51.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField57ActionPerformed
+
+    private void jTextField51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField51ActionPerformed
+        jTextField52.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField51ActionPerformed
+
+    private void jTextField52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField52ActionPerformed
+        jTextField54.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField52ActionPerformed
+
+    private void jTextField54ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField54ActionPerformed
+        jTextField56.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField54ActionPerformed
+
+    private void jTextField56ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField56ActionPerformed
+        jTextField12.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField56ActionPerformed
+
+    private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
+        jTextField11.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField12ActionPerformed
+
+    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
+        btnSave.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField11ActionPerformed
+
+    private void jTextArea1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTextArea1PropertyChange
+        btnSave.requestFocusInWindow();
+    }//GEN-LAST:event_jTextArea1PropertyChange
+
     public void keyTyped(KeyEvent e) {
       char c = e.getKeyChar();
       if (!((c >= '0') && (c <= '9') ||
@@ -980,7 +1401,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnClose;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnSave;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
