@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CarCare Center Invoice" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="16c86867-cc8d-471c-b025-971dc6f1ee0c">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="144"/>
 	<style name="FREE_ALIGN_STY">
 		<conditionalStyle>
 			<conditionExpression><![CDATA[$F{billccc_FREE_ALIGN}]]></conditionExpression>
@@ -526,9 +526,9 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` like '$P!{date}%']]>
 					<jr:column width="120" uuid="ee13d06a-5b36-4a8f-866f-ee97f8099b96">
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="119" height="30" uuid="b070c3b3-b457-4b43-b50d-bf108ba1d9d0"/>
+								<reportElement mode="Opaque" x="0" y="0" width="119" height="30" uuid="b070c3b3-b457-4b43-b50d-bf108ba1d9d0"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font isBold="true"/>
+									<font size="12" isBold="true"/>
 								</textElement>
 								<text><![CDATA[Description]]></text>
 							</staticText>
@@ -579,53 +579,63 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` like '$P!{date}%']]>
 					<jr:column width="76" uuid="1d87076a-7b36-4cab-a164-6d1f12ddd313">
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="76" height="30" uuid="01400162-19cc-4ba6-801a-11f7c0a69e50"/>
+								<reportElement mode="Opaque" x="0" y="0" width="76" height="30" uuid="01400162-19cc-4ba6-801a-11f7c0a69e50"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font isBold="true"/>
+									<font size="12" isBold="true"/>
 								</textElement>
 								<text><![CDATA[Amount Rs.]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="194" rowSpan="1">
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement x="10" y="0" width="66" height="19" uuid="53aab9dc-d951-4aba-bd83-718962cd1434"/>
-								<textFieldExpression><![CDATA[Integer.parseInt($P{parameter11})]]></textFieldExpression>
+								<reportElement x="0" y="0" width="66" height="19" uuid="53aab9dc-d951-4aba-bd83-718962cd1434"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[$P{parameter11} != null ? Integer.parseInt($P{parameter11}): null]]></textFieldExpression>
 							</textField>
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement x="10" y="19" width="66" height="19" uuid="988616b9-aa69-4e12-b49c-d33721d81c2e"/>
-								<textFieldExpression><![CDATA[$P{parameter12}]]></textFieldExpression>
+								<reportElement x="0" y="19" width="66" height="19" uuid="988616b9-aa69-4e12-b49c-d33721d81c2e"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[$P{parameter12} != null ? Integer.parseInt($P{parameter12}): null]]></textFieldExpression>
 							</textField>
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement x="10" y="38" width="66" height="19" uuid="635657e4-5546-41d9-b384-1fa0546bd7f3"/>
-								<textFieldExpression><![CDATA[$P{parameter13}]]></textFieldExpression>
+								<reportElement x="0" y="38" width="66" height="19" uuid="635657e4-5546-41d9-b384-1fa0546bd7f3"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[$P{parameter13} != null ? Integer.parseInt($P{parameter13}): null]]></textFieldExpression>
 							</textField>
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement x="10" y="57" width="66" height="19" uuid="e34cf16f-ac8a-40b0-b4b1-ed5e776c3c5f"/>
-								<textFieldExpression><![CDATA[$P{parameter14}]]></textFieldExpression>
+								<reportElement x="0" y="57" width="66" height="19" uuid="e34cf16f-ac8a-40b0-b4b1-ed5e776c3c5f"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[$P{parameter14} != null ? Integer.parseInt($P{parameter14}): null]]></textFieldExpression>
 							</textField>
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement x="10" y="76" width="66" height="19" uuid="8a0448bb-95db-4adf-a6cc-5613682f98d8"/>
-								<textFieldExpression><![CDATA[$P{parameter15}]]></textFieldExpression>
+								<reportElement x="0" y="76" width="66" height="19" uuid="8a0448bb-95db-4adf-a6cc-5613682f98d8"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[$P{parameter15} != null ? Integer.parseInt($P{parameter15}): null]]></textFieldExpression>
 							</textField>
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement x="10" y="95" width="66" height="19" uuid="78f6e38e-cf2e-4c86-8671-a86bd916ce98"/>
-								<textFieldExpression><![CDATA[$P{parameter16}]]></textFieldExpression>
+								<reportElement x="0" y="95" width="66" height="19" uuid="78f6e38e-cf2e-4c86-8671-a86bd916ce98"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[$P{parameter16} != null ? Integer.parseInt($P{parameter16}): null]]></textFieldExpression>
 							</textField>
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement x="10" y="114" width="66" height="19" uuid="7a3576b9-312a-4604-bd2d-f52f32dbf638"/>
-								<textFieldExpression><![CDATA[$P{parameter17}]]></textFieldExpression>
+								<reportElement x="0" y="114" width="66" height="19" uuid="7a3576b9-312a-4604-bd2d-f52f32dbf638"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[$P{parameter17} != null ? Integer.parseInt($P{parameter17}): null]]></textFieldExpression>
 							</textField>
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement x="10" y="133" width="66" height="19" uuid="3d300184-eddb-42e1-b8e8-d184abd04718"/>
-								<textFieldExpression><![CDATA[$P{parameter18}]]></textFieldExpression>
+								<reportElement x="0" y="133" width="66" height="19" uuid="3d300184-eddb-42e1-b8e8-d184abd04718"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[$P{parameter18} != null ? Integer.parseInt($P{parameter18}): null]]></textFieldExpression>
 							</textField>
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement x="10" y="152" width="66" height="19" uuid="2b9eb0ba-4e6a-4692-b108-d083e74b21fe"/>
-								<textFieldExpression><![CDATA[$P{parameter19}]]></textFieldExpression>
+								<reportElement x="0" y="152" width="66" height="19" uuid="2b9eb0ba-4e6a-4692-b108-d083e74b21fe"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[$P{parameter19} != null ? Integer.parseInt($P{parameter19}): null]]></textFieldExpression>
 							</textField>
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement x="10" y="171" width="66" height="19" uuid="736882e0-90c2-4ee2-98a3-f2664e0800b9"/>
-								<textFieldExpression><![CDATA[$P{parameter20}]]></textFieldExpression>
+								<reportElement x="0" y="171" width="66" height="19" uuid="736882e0-90c2-4ee2-98a3-f2664e0800b9"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[$P{parameter20} != null ? Integer.parseInt($P{parameter20}): null]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
