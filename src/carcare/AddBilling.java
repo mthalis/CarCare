@@ -19,6 +19,7 @@ import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -1258,13 +1259,66 @@ public class AddBilling extends javax.swing.JInternalFrame {
                     
                 }else if(billccc.getAmount() > 0){
                     try{
-                        String title = "CarCare Center Invoice";
-                        String reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
+                        String reportTitle = "CarCare Center Invoice";
+                        //String reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
+                        String reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
                         Map<String, Object> params = new HashMap();
-                        params.put("reportName", title);
+                        params.put("reportName", reportTitle);
                         params.put("vno", billccc.getVno());
                         params.put("date", format.format(billccc.getDate()));
                         params.put("rePrintType", "");
+                        params.put("subTotal", txtSubCCCTotal.getText());
+                        params.put("discount", txtDisCCCTotal.getText());
+                        params.put("total", txtCCCTotal.getText());
+                        params.put("anyOtherChg", "Y");
+
+                        List<String> descList = new ArrayList<>();
+                        List<String> valList = new ArrayList<>();
+                        if(!txtChkAlign.getText().equals("") && !txtChkAlign.getText().equals("0") ){
+                            descList.add("Checking Align");
+                            valList.add(txtChkAlign.getText());
+                        }                
+                        if(!txtAdstToe.getText().equals("") && !txtAdstToe.getText().equals("0")){
+                            descList.add("Adjust Toe");
+                            valList.add(txtAdstToe.getText());
+                        }
+                        if(!txtCamber.getText().equals("") && !txtCamber.getText().equals("0")){
+                            descList.add("Camber");
+                            valList.add(txtCamber.getText());
+                        }
+                        if(!txtCaster.getText().equals("") && !txtCaster.getText().equals("0")){
+                            descList.add("Caster");
+                            valList.add(txtCaster.getText());
+                        }
+                        if(!txtBHight.getText().equals("") && !txtBHight.getText().equals("0") ){
+                            descList.add("Body Height");
+                            valList.add(txtBHight.getText());
+                        }
+                        if(!txtReToe.getText().equals("") && !txtReToe.getText().equals("0")){
+                            descList.add("Rear Toe");
+                            valList.add(txtReToe.getText());
+                        }
+                        if(!txtReCamber.getText().equals("") && !txtReCamber.getText().equals("0")){
+                            descList.add("Rear Camber");
+                            valList.add(txtReCamber.getText());
+                        }
+                        if(!txtAnyOther.getText().equals("") && !txtAnyOther.getText().equals("0") ){
+                            descList.add("Any Other");
+                            valList.add(txtAnyOther.getText());
+                        }
+                        if(!txtSusTest.getText().equals("") && !txtSusTest.getText().equals("0")){
+                            descList.add("Susp. Test");
+                            valList.add(txtSusTest.getText());
+                        }
+                        if(!txtHLTest.getText().equals("") && !txtHLTest.getText().equals("0") ){
+                            descList.add("Head Light Test");
+                            valList.add(txtHLTest.getText());
+                        }
+
+                        for (int x = 0; x<descList.size() ;x++) {
+                            params.put("description"+(x+1), descList.get(x));
+                            params.put("val"+(x+1), valList.get(x));
+                        }
 
                         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
                                 ConnectionManager.getConnection());

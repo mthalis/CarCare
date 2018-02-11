@@ -807,12 +807,17 @@ public class Billing extends javax.swing.JInternalFrame {
             if(carCareCenter){                
                 String formatDate = format.format( dateBill.getDate());
                 String reportTitle = "CarCare Center Invoice";
-                reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
+                //reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
+                reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
                 
                 params.put("reportName", reportTitle);
                 params.put("vno", txtVNo.getText());
                 params.put("date", formatDate);
                 params.put("rePrintType", rePrintType);
+                params.put("subTotal", txtCCCSubTotal.getText());
+                params.put("discount", txtDisCCCTotal.getText());
+                params.put("total", txtCCCTotal.getText());
+                params.put("anyOtherChg", "N");
                 
                 List<String> descList = new ArrayList<>();
                 List<String> valList = new ArrayList<>();
@@ -865,7 +870,8 @@ public class Billing extends javax.swing.JInternalFrame {
             }else{
                 String formatDate = format.format( dateBill.getDate());
                 String reportTitle = "CarCare Enterprise Invoice";
-                reportSource = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
+                //reportSource = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
+                reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
                 
                 params.put("reportName", reportTitle);
                 params.put("vno", txtVNo.getText());
