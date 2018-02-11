@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="420" pageHeight="595" columnWidth="380" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3e919b32-5197-4282-9668-7a22db27f318">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="8"/>
+	<property name="ireport.y" value="7"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -106,6 +106,7 @@
 	</subDataset>
 	<parameter name="vno" class="java.lang.String"/>
 	<parameter name="date" class="java.lang.String"/>
+	<parameter name="rePrintType" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
      billcce.`BILL_NO` AS billcce_BILL_NO,
@@ -523,6 +524,13 @@ where
 			<line>
 				<reportElement x="263" y="290" width="70" height="1" uuid="cfd5470b-32fe-4122-88b8-8995e8af2429"/>
 			</line>
+			<textField>
+				<reportElement x="331" y="68" width="49" height="20" uuid="3d73ed0f-f3b3-4e53-87ff-d240df6d6334"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{rePrintType}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
