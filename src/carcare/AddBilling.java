@@ -1213,64 +1213,17 @@ public class AddBilling extends javax.swing.JInternalFrame {
                     try{
                         
                         String title2 = "CarCare Center Invoice";
-                        String reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
+                        //String reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
+                        String reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
                         Map<String, Object> params = new HashMap();
                         params.put("reportName", title2);
                         params.put("vno", billccc.getVno());
                         params.put("date", format.format(billccc.getDate()));
                         params.put("rePrintType", "");
-                        params.put("IS_IGNORE_PAGINATION", true);
-
-                        JasperPrint jasperPrintCenter = JasperFillManager.fillReport(reportSource, params,
-                                ConnectionManager.getConnection());                        
-                        
-                        String title1 = "CarCare Enterprise Invoice";
-                        String reportSource1 = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
-                        Map<String, Object> params1 = new HashMap();
-                        params1.put("reportName", title1);
-                        params1.put("vno", billcce.getVno());
-                        params1.put("date", format.format(billcce.getDate()));
-                        params.put("rePrintType", "");
-                        params.put("IS_IGNORE_PAGINATION", true);
-
-                        JasperPrint jasperPrintEnterPrice = JasperFillManager.fillReport(reportSource1, params1,
-                                ConnectionManager.getConnection());
-                                                
-                        List pages = jasperPrintEnterPrice.getPages();
-                        for (int j = 0; j < pages.size(); j++) {
-                            JRPrintPage object = (JRPrintPage)pages.get(j);
-                            jasperPrintCenter.addPage(object);
-                        }
-                        
-                        JRViewer jv = new JRViewer(jasperPrintCenter);
-                        JFrame jf = new JFrame();
-                        jf.getContentPane().add(jv);
-                        jf.setTitle(title);
-
-                        jf.validate();
-                        jf.setVisible(true);
-                        jf.setSize(new Dimension(900,700));
-                        jf.setLocation(300,0);
-                        jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);                        
-                       
-                    }catch(Exception e){
-                        logger.fatal("Error Occured while generating InventoryRepor Enterpriset Center " + e);
-                    }
-                    
-                }else if(billccc.getAmount() > 0){
-                    try{
-                        String reportTitle = "CarCare Center Invoice";
-                        //String reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
-                        String reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
-                        Map<String, Object> params = new HashMap();
-                        params.put("reportName", reportTitle);
-                        params.put("vno", billccc.getVno());
-                        params.put("date", format.format(billccc.getDate()));
-                        params.put("rePrintType", "");
                         params.put("subTotal", txtSubCCCTotal.getText());
-                        params.put("discount", txtDisCCCTotal.getText());
+                        params.put("discount", !txtDisCCCTotal.getText().equals("") ? txtDisCCCTotal.getText() : "0");
                         params.put("total", txtCCCTotal.getText());
-                        params.put("anyOtherChg", "Y");
+                        params.put("anyOtherChg", reprint ? "Y" : "N");
 
                         List<String> descList = new ArrayList<>();
                         List<String> valList = new ArrayList<>();
@@ -1319,7 +1272,106 @@ public class AddBilling extends javax.swing.JInternalFrame {
                             params.put("description"+(x+1), descList.get(x));
                             params.put("val"+(x+1), valList.get(x));
                         }
+                        
+                        JasperPrint jasperPrintCenter = JasperFillManager.fillReport(reportSource, params,
+                                ConnectionManager.getConnection());                        
+                        
+                        String title1 = "CarCare Enterprise Invoice";
+                        //String reportSource1 = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
+                        String reportSource1 = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\enterpriseInvoice.jasper";
+                        Map<String, Object> params1 = new HashMap();
+                        params1.put("reportName", title1);
+                        params1.put("vno", billcce.getVno());
+                        params1.put("date", format.format(billcce.getDate()));
+                        params1.put("rePrintType", "");
 
+                        JasperPrint jasperPrintEnterPrice = JasperFillManager.fillReport(reportSource1, params1,
+                                ConnectionManager.getConnection());
+                                                
+                        List pages = jasperPrintEnterPrice.getPages();
+                        for (int j = 0; j < pages.size(); j++) {
+                            JRPrintPage object = (JRPrintPage)pages.get(j);
+                            jasperPrintCenter.addPage(object);
+                        }
+                        
+                        JRViewer jv = new JRViewer(jasperPrintCenter);
+                        JFrame jf = new JFrame();
+                        jf.getContentPane().add(jv);
+                        jf.setTitle(title);
+
+                        jf.validate();
+                        jf.setVisible(true);
+                        jf.setSize(new Dimension(900,700));
+                        jf.setLocation(300,0);
+                        jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);                        
+                       
+                    }catch(Exception e){
+                        logger.fatal("Error Occured while generating InventoryRepor Enterpriset Center " + e);
+                    }
+                    
+                }else if(billccc.getAmount() > 0){
+                    try{
+                        String reportTitle = "CarCare Center Invoice";
+                        //String reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
+                        String reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
+                        Map<String, Object> params = new HashMap();
+                        params.put("reportName", reportTitle);
+                        params.put("vno", billccc.getVno());
+                        params.put("date", format.format(billccc.getDate()));
+                        params.put("rePrintType", "");
+                        params.put("subTotal", txtSubCCCTotal.getText());
+                        params.put("discount", !txtDisCCCTotal.getText().equals("") ? txtDisCCCTotal.getText() : "0");
+                        params.put("total", txtCCCTotal.getText());
+                        params.put("anyOtherChg", reprint ? "Y" : "N");
+
+                        List<String> descList = new ArrayList<>();
+                        List<String> valList = new ArrayList<>();
+                        if(!txtChkAlign.getText().equals("") && !txtChkAlign.getText().equals("0") ){
+                            descList.add("Checking Align");
+                            valList.add(txtChkAlign.getText());
+                        }                
+                        if(!txtAdstToe.getText().equals("") && !txtAdstToe.getText().equals("0")){
+                            descList.add("Adjust Toe");
+                            valList.add(txtAdstToe.getText());
+                        }
+                        if(!txtCamber.getText().equals("") && !txtCamber.getText().equals("0")){
+                            descList.add("Camber");
+                            valList.add(txtCamber.getText());
+                        }
+                        if(!txtCaster.getText().equals("") && !txtCaster.getText().equals("0")){
+                            descList.add("Caster");
+                            valList.add(txtCaster.getText());
+                        }
+                        if(!txtBHight.getText().equals("") && !txtBHight.getText().equals("0") ){
+                            descList.add("Body Height");
+                            valList.add(txtBHight.getText());
+                        }
+                        if(!txtReToe.getText().equals("") && !txtReToe.getText().equals("0")){
+                            descList.add("Rear Toe");
+                            valList.add(txtReToe.getText());
+                        }
+                        if(!txtReCamber.getText().equals("") && !txtReCamber.getText().equals("0")){
+                            descList.add("Rear Camber");
+                            valList.add(txtReCamber.getText());
+                        }
+                        if(!txtAnyOther.getText().equals("") && !txtAnyOther.getText().equals("0") ){
+                            descList.add("Any Other");
+                            valList.add(txtAnyOther.getText());
+                        }
+                        if(!txtSusTest.getText().equals("") && !txtSusTest.getText().equals("0")){
+                            descList.add("Susp. Test");
+                            valList.add(txtSusTest.getText());
+                        }
+                        if(!txtHLTest.getText().equals("") && !txtHLTest.getText().equals("0") ){
+                            descList.add("Head Light Test");
+                            valList.add(txtHLTest.getText());
+                        }
+
+                        for (int x = 0; x<descList.size() ;x++) {
+                            params.put("description"+(x+1), descList.get(x));
+                            params.put("val"+(x+1), valList.get(x));
+                        }
+                        
                         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
                                 ConnectionManager.getConnection());
                         
@@ -1340,7 +1392,8 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 }else if(billcce.getAmount() > 0){
                     try{
                         String title = "CarCare Enterprise Invoice";
-                        String reportSource = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
+                        //String reportSource = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
+                        String reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
                         Map<String, Object> params = new HashMap();
                         params.put("reportName", title);
                         params.put("vno", billcce.getVno());

@@ -263,6 +263,8 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         btnClear = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
         txtMilage = new javax.swing.JTextField();
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
@@ -808,6 +810,11 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                 txtVNoFocusLost(evt);
             }
         });
+        txtVNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtVNoActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtVNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 120, 25));
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -833,6 +840,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         jLabel2.setText("Date");
         jPanel9.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 76, 21));
 
+        jTextField4.setEnabled(false);
         jTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextField4FocusLost(evt);
@@ -848,6 +856,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         jLabel5.setText("Milage Km");
         jPanel9.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 76, 21));
 
+        jTextField5.setEnabled(false);
         jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField5KeyTyped(evt);
@@ -859,6 +868,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         jPanel9.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 110, 21));
         jPanel9.add(txtDate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 112, 25));
 
+        jTextField8.setEnabled(false);
         jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField8KeyTyped(evt);
@@ -875,7 +885,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                 btnClearActionPerformed(evt);
             }
         });
-        jPanel9.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 90, -1));
+        jPanel9.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 90, -1));
 
         btnClose.setText("Close");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
@@ -883,7 +893,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                 btnCloseActionPerformed(evt);
             }
         });
-        jPanel9.add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 90, -1));
+        jPanel9.add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 90, -1));
 
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -891,7 +901,16 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                 btnSaveActionPerformed(evt);
             }
         });
-        jPanel9.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 90, -1));
+        jPanel9.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 90, -1));
+
+        jButton1.setText("Login");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel9.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 90, -1));
+        jPanel9.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 110, 25));
 
         jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, 133, 360));
 
@@ -1388,6 +1407,29 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         btnSave.requestFocusInWindow();
     }//GEN-LAST:event_jTextArea1PropertyChange
 
+    private void txtVNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVNoActionPerformed
+        jTextField23.requestFocusInWindow();
+    }//GEN-LAST:event_txtVNoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        char[] passWd = jPasswordField1.getPassword();
+            String pwd = "";
+
+            for(char pw : passWd){
+                pwd = pwd + pw;
+            }
+        if(pwd.equals("123")){
+            jTextField4.setEnabled(true);
+            jTextField5.setEnabled(true);
+            jTextField8.setEnabled(true);
+        }else{
+            jTextField4.setEnabled(false);
+            jTextField5.setEnabled(false);
+            jTextField8.setEnabled(false);
+            JOptionPane.showMessageDialog(null, "You are not authorize to update Milage & Payment Details !");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public void keyTyped(KeyEvent e) {
       char c = e.getKeyChar();
       if (!((c >= '0') && (c <= '9') ||
@@ -1402,6 +1444,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnSave;
+    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
@@ -1462,6 +1505,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField10;
