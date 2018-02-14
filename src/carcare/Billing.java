@@ -877,11 +877,59 @@ public class Billing extends javax.swing.JInternalFrame {
                 params.put("vno", txtVNo.getText());
                 params.put("date", formatDate);
                 params.put("rePrintType", rePrintType);
+                params.put("subTotal", jTextField44.getText());
+                params.put("discount", jTextField35.getText());
+                params.put("total", jTextField46.getText());
+                
+                List<String> descList = new ArrayList<>();
+                List<String> valList = new ArrayList<>();
+                List<String> qtyList = new ArrayList<>();
+                if(!jTextField27.getText().equals("0")){
+                    descList.add("Wheel Balancing");
+                    valList.add(jTextField27.getText());
+                    qtyList.add(jTextField20.getText());
+                }                
+                if(!jTextField33.getText().equals("0")){
+                    descList.add("Weights");
+                    valList.add(jTextField33.getText());
+                }
+                if(!jTextField32.getText().equals("0")){
+                    descList.add("Fixed Camber Fr.");
+                    valList.add(jTextField32.getText());
+                }
+                if(!jTextField31.getText().equals("0")){
+                    descList.add("Fixed Camber Re.");
+                    valList.add(jTextField31.getText());
+                }
+                if(!jTextField30.getText().equals("0")){
+                    descList.add("N2");
+                    valList.add(jTextField30.getText());
+                }
+                if(!jTextField29.getText().equals("0")){
+                    descList.add("Tyre Change");
+                    valList.add(jTextField29.getText());
+                    qtyList.add(jTextField25.getText());
+                }                
+                if(!jTextField28.getText().equals("0")){
+                    descList.add(jTextField37.getText());
+                    valList.add(jTextField28.getText());
+                    qtyList.add(jTextField26.getText());
+                }
+                
+                for (int x = 0; x<descList.size() ;x++) {
+                    params.put("description"+(x+1), descList.get(x));
+                    params.put("val"+(x+1), valList.get(x));
+                }                
+                for (int x = 0; x<qtyList.size() ;x++) {
+                    params.put("qty"+(x+1), qtyList.get(x));
+                }                
             }
             
             JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
                         ConnectionManager.getConnection());
-            JRViewer jv = new JRViewer(jasperPrint);
+            JasperViewer.viewReport(jasperPrint, false);
+            //JasperPrintManager.printReport(jasperPrint,true);
+            /*JRViewer jv = new JRViewer(jasperPrint);
             JFrame jf = new JFrame();
             jf.getContentPane().add(jv);
             jf.setTitle(title);
@@ -890,7 +938,7 @@ public class Billing extends javax.swing.JInternalFrame {
             jf.setVisible(true);
             jf.setSize(new Dimension(900,700));
             jf.setLocation(300,0);
-            jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);*/
 
         }catch(Exception e){
             logger.fatal("Error Occured while generating InventoryReport " + e);

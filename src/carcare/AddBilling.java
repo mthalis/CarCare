@@ -1284,7 +1284,53 @@ public class AddBilling extends javax.swing.JInternalFrame {
                         params1.put("vno", billcce.getVno());
                         params1.put("date", format.format(billcce.getDate()));
                         params1.put("rePrintType", "");
+                        params1.put("subTotal", txtSubCCETotal.getText());
+                        params1.put("discount", !txtDisCCETotal.getText().equals("") ? txtDisCCETotal.getText() : "0");
+                        params1.put("total", txtCCETotal.getText());
 
+                        List<String> descList1 = new ArrayList<>();
+                        List<String> valList1 = new ArrayList<>();
+                        List<String> qtyList1 = new ArrayList<>();
+                        if(!jTextField27.getText().equals("") && !jTextField27.getText().equals("0")){
+                            descList1.add("Wheel Balancing");
+                            valList1.add(jTextField27.getText());
+                            qtyList1.add(jTextField20.getText());
+                        }                
+                        if(!jTextField33.getText().equals("") && !jTextField33.getText().equals("0")){
+                            descList1.add("Weights");
+                            valList1.add(jTextField33.getText());
+                        }
+                        if(!jTextField32.getText().equals("") && !jTextField32.getText().equals("0")){
+                            descList1.add("Fixed Camber Fr.");
+                            valList1.add(jTextField32.getText());
+                        }
+                        if(!jTextField31.getText().equals("") && !jTextField31.getText().equals("0")){
+                            descList1.add("Fixed Camber Re.");
+                            valList1.add(jTextField31.getText());
+                        }
+                        if(!jTextField30.getText().equals("") && !jTextField30.getText().equals("0")){
+                            descList1.add("N2");
+                            valList1.add(jTextField30.getText());
+                        }
+                        if(!jTextField29.getText().equals("") && !jTextField29.getText().equals("0")){
+                            descList1.add("Tyre Change");
+                            valList1.add(jTextField29.getText());
+                            qtyList1.add(txtOther2Qt.getText());
+                        }                
+                        if(!jTextField28.getText().equals("") && !jTextField28.getText().equals("0")){
+                            descList1.add(txtOther3Txt.getText());
+                            valList1.add(jTextField28.getText());
+                            qtyList1.add(txtOther3Qt.getText());
+                        }
+
+                        for (int x = 0; x<descList1.size() ;x++) {
+                            params1.put("description"+(x+1), descList1.get(x));
+                            params1.put("val"+(x+1), valList1.get(x));
+                        }                
+                        for (int x = 0; x<qtyList1.size() ;x++) {
+                            params1.put("qty"+(x+1), qtyList1.get(x));
+                        }
+                        
                         JasperPrint jasperPrintEnterPrice = JasperFillManager.fillReport(reportSource1, params1,
                                 ConnectionManager.getConnection());
                                                 
@@ -1399,6 +1445,52 @@ public class AddBilling extends javax.swing.JInternalFrame {
                         params.put("vno", billcce.getVno());
                         params.put("date", format.format(billcce.getDate()));
                         params.put("rePrintType", "");
+                        params.put("subTotal", txtSubCCETotal.getText());
+                        params.put("discount", !txtDisCCETotal.getText().equals("") ? txtDisCCETotal.getText() : "0");
+                        params.put("total", txtCCETotal.getText());
+
+                        List<String> descList1 = new ArrayList<>();
+                        List<String> valList1 = new ArrayList<>();
+                        List<String> qtyList1 = new ArrayList<>();
+                        if(!jTextField27.getText().equals("") && !jTextField27.getText().equals("0")){
+                            descList1.add("Wheel Balancing");
+                            valList1.add(jTextField27.getText());
+                            qtyList1.add(jTextField20.getText());
+                        }                
+                        if(!jTextField33.getText().equals("") && !jTextField33.getText().equals("0")){
+                            descList1.add("Weights");
+                            valList1.add(jTextField33.getText());
+                        }
+                        if(!jTextField32.getText().equals("") && !jTextField32.getText().equals("0")){
+                            descList1.add("Fixed Camber Fr.");
+                            valList1.add(jTextField32.getText());
+                        }
+                        if(!jTextField31.getText().equals("") && !jTextField31.getText().equals("0")){
+                            descList1.add("Fixed Camber Re.");
+                            valList1.add(jTextField31.getText());
+                        }
+                        if(!jTextField30.getText().equals("") && !jTextField30.getText().equals("0")){
+                            descList1.add("N2");
+                            valList1.add(jTextField30.getText());
+                        }
+                        if(!jTextField29.getText().equals("") && !jTextField29.getText().equals("0")){
+                            descList1.add("Tyre Change");
+                            valList1.add(jTextField29.getText());
+                            qtyList1.add(txtOther2Qt.getText());
+                        }                
+                        if(!jTextField28.getText().equals("") && !jTextField28.getText().equals("0")){
+                            descList1.add(txtOther3Txt.getText());
+                            valList1.add(jTextField28.getText());
+                            qtyList1.add(txtOther3Qt.getText());
+                        }
+                        
+                        for (int x = 0; x<descList1.size() ;x++) {
+                            params.put("description"+(x+1), descList1.get(x));
+                            params.put("val"+(x+1), valList1.get(x));
+                        }                
+                        for (int x = 0; x<qtyList1.size() ;x++) {
+                            params.put("qty"+(x+1), qtyList1.get(x));
+                        }
 
                         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
                                 ConnectionManager.getConnection());
