@@ -29,6 +29,7 @@ public class CarCare extends javax.swing.JFrame {
     public static int view_check_window = 0;
     public static int summaryRe_window = 0;
     public static int sequence_window = 0;
+    public static int user_window = 0;
     private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(CarCare.class);
     
     public CarCare() {
@@ -59,6 +60,7 @@ public class CarCare extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         contentsMenuItem = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CAR CARE");
@@ -165,6 +167,14 @@ public class CarCare extends javax.swing.JFrame {
         });
         helpMenu.add(contentsMenuItem);
 
+        jMenuItem4.setText("User");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        helpMenu.add(jMenuItem4);
+
         menuBar.add(helpMenu);
 
         setJMenuBar(menuBar);
@@ -250,6 +260,15 @@ public class CarCare extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_contentsMenuItemActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        if(user_window == 0){
+            User user = new User();
+            jDesktopPane1.add(user);
+            user.setVisible(true);
+            user_window = 1;
+        }
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -310,6 +329,7 @@ public class CarCare extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;
