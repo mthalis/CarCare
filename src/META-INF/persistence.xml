@@ -7,11 +7,12 @@
     <class>carcare.model.Billccc</class>
     <class>carcare.model.Billcce</class>
     <class>carcare.model.Chksht</class>
+    <class>carcare.model.User</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/carcare?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.password" value="rahasak"/>
+      <property name="javax.persistence.jdbc.password" value="123456"/>
     </properties>
   </persistence-unit>
 </persistence>

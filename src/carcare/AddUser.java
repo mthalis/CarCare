@@ -6,19 +6,24 @@
 package carcare;
 
 import static carcare.CarCare.user_window;
+import carcare.controller.UserJpaController;
+import carcare.model.User;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.log4j.Logger;
 
 /**
  *
  * @author Dinesh
  */
-public class User extends javax.swing.JInternalFrame {
+public class AddUser extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form User
-     */
-    public User() {
+    final Logger logger = Logger.getLogger(AddUser.class);
+    UserJpaController userJpaController = new UserJpaController(CarCare.EMF);
+    
+    public AddUser() {
         initComponents();
         
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();        
@@ -128,11 +133,34 @@ public class User extends javax.swing.JInternalFrame {
         jPanel8.add(btnExit3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 75, 25));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtConPassWd2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtConPassWd2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtConPassWd2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 170, 30));
+
+        txtPassWd2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPassWd2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtPassWd2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 170, 30));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrator", "Regular User" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 170, 30));
+
+        txtUserName2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUserName2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtUserName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 30));
 
         jRadioButton4.setText("No");
@@ -205,7 +233,7 @@ public class User extends javax.swing.JInternalFrame {
         jPanel14.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 120, 30));
         jPanel14.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, -1, -1));
 
-        btnChgAdd1.setText("Add");
+        btnChgAdd1.setText("Reset");
         btnChgAdd1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChgAdd1ActionPerformed(evt);
@@ -231,59 +259,58 @@ public class User extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdd3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd3ActionPerformed
-        /*try{
-            UserQuery userQuery = new UserQuery();
-            String userName = txtUserName.getText();
-            char[] passWd = txtPassWd.getPassword();
+        try{            
+            String userName = txtUserName2.getText();
+            char[] passWd = txtPassWd2.getPassword();
             String pwd = "";
 
             for(char pw : passWd){
                 pwd = pwd + pw;
             }
 
-            char[] passWdCon = txtConPassWd.getPassword();
+            char[] passWdCon = txtConPassWd2.getPassword();
             String pwdCon = "";
 
             for(char pwCon : passWdCon){
                 pwdCon = pwdCon + pwCon;
             }
 
-            if (userName.isEmpty() || !Pattern.matches(RegularExpression.RE_NAME, userName)) {
-                showPopupMessage(ErrorMessage.EM_USER_NAME);
-                txtUserName.requestFocus();
+            if (userName.isEmpty()) {
+                JOptionPane.showMessageDialog(jPanel1, "Please Enter Correct User Name !");
+                txtUserName2.requestFocus();
             }else{
-                if (userQuery.userAvailable(userName)) {
-                    showPopupMessage(ErrorMessage.EM_USER_NAME_IN_DB);
-                    txtUserName.requestFocus();
+                if (userJpaController.userAvailable(userName)) {
+                    JOptionPane.showMessageDialog(jPanel1, "Enter User Name Already in System !");
+                    txtUserName2.requestFocus();
                 }else{
                     if (pwd.isEmpty()){
-                        showPopupMessage(ErrorMessage.EM_PW);
-                        txtPassWd.requestFocus();
+                        JOptionPane.showMessageDialog(jPanel1, "Please Enter Password !");
+                        txtPassWd2.requestFocus();
                     }else{
                         if (pwdCon.isEmpty()){
-                            showPopupMessage(ErrorMessage.EM_CPW);
-                            txtConPassWd.requestFocus();
+                            JOptionPane.showMessageDialog(jPanel1, "Please Enter Confirm Password !");
+                            txtConPassWd2.requestFocus();
                         }else{
                             if(!pwd.equalsIgnoreCase(pwdCon)){
-                                showPopupMessage(ErrorMessage.EM_PW_CPW_NOT_MATCH);
-                                txtConPassWd.requestFocus();
+                                JOptionPane.showMessageDialog(jPanel1, "Enter Password and Confirm Password not match !");
+                                txtConPassWd2.requestFocus();
                             }else{
                                 String pw = DigestUtils.sha256Hex(pwd);
 
                                 User user = new User();
                                 user.setUsername(userName);
-                                user.setPasswd(pw);
-                                user.setStatus("Y");
-
-                                int userId = userQuery.createUser(user);
-                                String msg;
-                                if(userId > 0){
-                                    msg = "You are successfully Add User !";
+                                user.setPassword(pw);
+                                if(jRadioButton3.isSelected()){
+                                    user.setActive((short)1);
                                 }else{
-                                    msg = "Error Occured, Please try again !";
+                                    user.setActive((short)0);
                                 }
-                                showPopupMessage(msg);
-                                MainUi.window = 0;
+                                
+                                user.setRole("admin");
+                                
+                                userJpaController.create(user);
+                                JOptionPane.showMessageDialog(jPanel1, "You are successfully Add User !");
+                                user_window = 0;
                                 dispose();
                             }
                         }
@@ -292,7 +319,7 @@ public class User extends javax.swing.JInternalFrame {
             }
         }catch(Exception e){
             logger.fatal("Error occured while saving User -> " + e);
-        }*/
+        }
     }//GEN-LAST:event_btnAdd3ActionPerformed
 
     private void btnExit3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExit3ActionPerformed
@@ -301,8 +328,7 @@ public class User extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExit3ActionPerformed
 
     private void btnChgAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChgAddActionPerformed
-        /*try{
-            UserQuery userQuery = new UserQuery();
+        try{
             String userName = txtChgUserName.getText();
             char[] passWdOld = txtChgOldPwd.getPassword();
 
@@ -326,43 +352,43 @@ public class User extends javax.swing.JInternalFrame {
                 pwdCon = pwdCon + pwCon;
             }
 
-            if (userName.isEmpty() || !Pattern.matches(RegularExpression.RE_NAME, userName)) {
-                showPopupMessage(ErrorMessage.EM_USER_NAME);
+            if (userName.isEmpty()) {
+                JOptionPane.showMessageDialog(jPanel1, "Please Enter Correct User Name !");
                 txtChgUserName.requestFocus();
             }else{
-                if (!userQuery.userAvailable(userName)) {
-                    showPopupMessage(ErrorMessage.EM_USER_NAME_NOT_IN_DB);
+                if (!userJpaController.userAvailable(userName)) {
+                    JOptionPane.showMessageDialog(jPanel1, "Enter User Name does not in System !");
                     txtChgUserName.requestFocus();
                 }else{
                     if(pwdOld.isEmpty()){
-                        showPopupMessage(ErrorMessage.EM_OLD_PW);
+                        JOptionPane.showMessageDialog(jPanel1, "Please Enter Old Password !");
                         txtChgOldPwd.requestFocus();
                     }else{
                         String pwOld = DigestUtils.sha256Hex(pwdOld);
-                        boolean authenticate  = userQuery.authenticateUser(userName, pwOld);
+                        boolean authenticate  = userJpaController.authenticateUser(userName, pwOld);
                         if(!authenticate){
-                            showPopupMessage(ErrorMessage.EM_OLD_PW_STATUS);
+                            JOptionPane.showMessageDialog(jPanel1, "Your old password was incorrect !");
                             txtChgOldPwd.requestFocus();
                         }else{
                             if (pwd.isEmpty()){
-                                showPopupMessage(ErrorMessage.EM_NEW_PW);
+                                showPopupMessage("Please Enter New Password !");
                                 txtChgPassWd.requestFocus();
                             }else{
                                 if (pwdCon.isEmpty()){
-                                    showPopupMessage(ErrorMessage.EM_CPW);
+                                    showPopupMessage("Please Enter Confirm Password !");
                                     txtChgConPassWd.requestFocus();
                                 }else{
                                     if(!pwd.equalsIgnoreCase(pwdCon)){
-                                        showPopupMessage(ErrorMessage.EM_PW_CPW_NOT_MATCH);
+                                        showPopupMessage("Enter Password and Confirm Password not match !");
                                         txtChgConPassWd.requestFocus();
                                     }else{
                                         String pw = DigestUtils.sha256Hex(pwd);
 
                                         User user = new User();
                                         user.setUsername(userName);
-                                        user.setPasswd(pw);
+                                        user.setPassword(pw);
 
-                                        int userId = userQuery.updateUser(user);
+                                        int userId = userJpaController.updateUser(user);
                                         String msg;
                                         if(userId > 0){
                                             msg = "You are successfully change user Password !";
@@ -370,7 +396,7 @@ public class User extends javax.swing.JInternalFrame {
                                             msg = "Error Occured, Please try again !";
                                         }
                                         showPopupMessage(msg);
-                                        MainUi.window = 0;
+                                        user_window = 0;
                                         dispose();
                                     }
                                 }
@@ -381,7 +407,7 @@ public class User extends javax.swing.JInternalFrame {
             }
         }catch(Exception e){
             logger.fatal("Error occured while saving User -> " + e);
-        }*/
+        }
     }//GEN-LAST:event_btnChgAddActionPerformed
 
     private void btnChgExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChgExitActionPerformed
@@ -390,7 +416,21 @@ public class User extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnChgExitActionPerformed
 
     private void btnChgAdd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChgAdd1ActionPerformed
-        // TODO add your handling code here:
+        String userName = txtUserName3.getText();        
+        if (userName.isEmpty()) {
+                JOptionPane.showMessageDialog(jPanel1, "Please Enter Correct User Name !");
+                txtUserName2.requestFocus();
+        }else{
+            if (!userJpaController.userAvailable(userName)) {
+                JOptionPane.showMessageDialog(jPanel1, "Enter User Name does not in System !");
+                txtUserName2.requestFocus();
+            }else if(!jCheckBox1.isSelected()){                
+                jCheckBox1.requestFocus();                
+            }else{
+                userJpaController.resetPwd(userName);
+                JOptionPane.showMessageDialog(jPanel1, "Successfully reset password !");
+            }
+        }
     }//GEN-LAST:event_btnChgAdd1ActionPerformed
 
     private void btnChgExit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChgExit1ActionPerformed
@@ -398,24 +438,33 @@ public class User extends javax.swing.JInternalFrame {
         user_window = 0;
     }//GEN-LAST:event_btnChgExit1ActionPerformed
 
+    private void txtUserName2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserName2ActionPerformed
+        jComboBox2.requestFocusInWindow();
+    }//GEN-LAST:event_txtUserName2ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        txtPassWd2.requestFocusInWindow();
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void txtPassWd2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassWd2ActionPerformed
+        txtConPassWd2.requestFocusInWindow();
+    }//GEN-LAST:event_txtPassWd2ActionPerformed
+
+    private void txtConPassWd2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConPassWd2ActionPerformed
+        btnAdd3.requestFocusInWindow();
+    }//GEN-LAST:event_txtConPassWd2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd1;
-    private javax.swing.JButton btnAdd2;
     private javax.swing.JButton btnAdd3;
     private javax.swing.JButton btnChgAdd;
     private javax.swing.JButton btnChgAdd1;
     private javax.swing.JButton btnChgExit;
     private javax.swing.JButton btnChgExit1;
-    private javax.swing.JButton btnExit1;
-    private javax.swing.JButton btnExit2;
     private javax.swing.JButton btnExit3;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -427,41 +476,28 @@ public class User extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JPasswordField txtChgConPassWd;
     private javax.swing.JPasswordField txtChgOldPwd;
     private javax.swing.JPasswordField txtChgPassWd;
     private javax.swing.JTextField txtChgUserName;
-    private javax.swing.JPasswordField txtConPassWd;
-    private javax.swing.JPasswordField txtConPassWd1;
     private javax.swing.JPasswordField txtConPassWd2;
-    private javax.swing.JPasswordField txtPassWd;
-    private javax.swing.JPasswordField txtPassWd1;
     private javax.swing.JPasswordField txtPassWd2;
-    private javax.swing.JTextField txtUserName;
-    private javax.swing.JTextField txtUserName1;
     private javax.swing.JTextField txtUserName2;
     private javax.swing.JTextField txtUserName3;
     // End of variables declaration//GEN-END:variables
+
+    private void showPopupMessage(String msg){
+        JOptionPane.showMessageDialog(null, msg);
+    }
 }

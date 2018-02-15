@@ -262,7 +262,7 @@ public class CarCare extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         if(user_window == 0){
-            User user = new User();
+            AddUser user = new AddUser();
             jDesktopPane1.add(user);
             user.setVisible(true);
             user_window = 1;
