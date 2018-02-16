@@ -198,12 +198,13 @@ public class UserJpaController implements Serializable {
         EntityManager em = getEntityManager();
         int outPut = 0;
         try{
+            em.getTransaction().begin();
             Query query = em.createQuery("Update User set username= :username, "
                     + "password= :passwd");
             query.setParameter("username", user.getUsername());
-            query.setParameter("passwd", user.getPassword());
-            
+            query.setParameter("passwd", user.getPassword());            
             outPut = query.executeUpdate();
+            em.getTransaction().commit();
         }catch(Exception e){
             logger.fatal("Error Occured while Updating User -> " + e);
         }

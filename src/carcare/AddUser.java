@@ -203,7 +203,7 @@ public class AddUser extends javax.swing.JInternalFrame {
 
         jPanel11.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 21, 160, 170));
 
-        btnChgAdd.setText("Add");
+        btnChgAdd.setText("Update");
         btnChgAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChgAddActionPerformed(evt);
