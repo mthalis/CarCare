@@ -5,6 +5,8 @@
  */
 package carcare.model;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -15,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -32,6 +35,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "User.findByRole", query = "SELECT u FROM User u WHERE u.role = :role")
     , @NamedQuery(name = "User.findByActive", query = "SELECT u FROM User u WHERE u.active = :active")})
 public class User implements Serializable {
+
+    @Transient
+    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -60,7 +66,9 @@ public class User implements Serializable {
     }
 
     public void setId(Integer id) {
+        Integer oldId = this.id;
         this.id = id;
+        changeSupport.firePropertyChange("id", oldId, id);
     }
 
     public String getUsername() {
@@ -68,7 +76,9 @@ public class User implements Serializable {
     }
 
     public void setUsername(String username) {
+        String oldUsername = this.username;
         this.username = username;
+        changeSupport.firePropertyChange("username", oldUsername, username);
     }
 
     public String getPassword() {
@@ -76,7 +86,9 @@ public class User implements Serializable {
     }
 
     public void setPassword(String password) {
+        String oldPassword = this.password;
         this.password = password;
+        changeSupport.firePropertyChange("password", oldPassword, password);
     }
 
     public String getRole() {
@@ -84,7 +96,9 @@ public class User implements Serializable {
     }
 
     public void setRole(String role) {
+        String oldRole = this.role;
         this.role = role;
+        changeSupport.firePropertyChange("role", oldRole, role);
     }
 
     public Short getActive() {
@@ -92,7 +106,9 @@ public class User implements Serializable {
     }
 
     public void setActive(Short active) {
+        Short oldActive = this.active;
         this.active = active;
+        changeSupport.firePropertyChange("active", oldActive, active);
     }
 
     @Override
@@ -118,6 +134,14 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "carcare.model.User[ id=" + id + " ]";
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.removePropertyChangeListener(listener);
     }
     
 }

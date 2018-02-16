@@ -807,8 +807,8 @@ public class Billing extends javax.swing.JInternalFrame {
             if(carCareCenter){                
                 String formatDate = format.format( dateBill.getDate());
                 String reportTitle = "CarCare Center Invoice";
-                //reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
-                reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
+                reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
+                //reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
                 
                 params.put("reportName", reportTitle);
                 params.put("vno", txtVNo.getText());
@@ -870,8 +870,8 @@ public class Billing extends javax.swing.JInternalFrame {
             }else{
                 String formatDate = format.format( dateBill.getDate());
                 String reportTitle = "CarCare Enterprise Invoice";
-                //reportSource = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
-                reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
+                reportSource = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
+                //reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
                 
                 params.put("reportName", reportTitle);
                 params.put("vno", txtVNo.getText());
@@ -927,9 +927,9 @@ public class Billing extends javax.swing.JInternalFrame {
             
             JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
                         ConnectionManager.getConnection());
-            JasperViewer.viewReport(jasperPrint, false);
+            //JasperViewer.viewReport(jasperPrint, false);
             //JasperPrintManager.printReport(jasperPrint,true);
-            /*JRViewer jv = new JRViewer(jasperPrint);
+            JRViewer jv = new JRViewer(jasperPrint);
             JFrame jf = new JFrame();
             jf.getContentPane().add(jv);
             jf.setTitle(title);
@@ -938,7 +938,7 @@ public class Billing extends javax.swing.JInternalFrame {
             jf.setVisible(true);
             jf.setSize(new Dimension(900,700));
             jf.setLocation(300,0);
-            jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);*/
+            jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         }catch(Exception e){
             logger.fatal("Error Occured while generating InventoryReport " + e);

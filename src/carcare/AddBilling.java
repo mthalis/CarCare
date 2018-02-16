@@ -1213,8 +1213,8 @@ public class AddBilling extends javax.swing.JInternalFrame {
                     try{
                         
                         String title2 = "CarCare Center Invoice";
-                        //String reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
-                        String reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
+                        String reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
+                        //String reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
                         Map<String, Object> params = new HashMap();
                         params.put("reportName", title2);
                         params.put("vno", billccc.getVno());
@@ -1277,8 +1277,8 @@ public class AddBilling extends javax.swing.JInternalFrame {
                                 ConnectionManager.getConnection());                        
                         
                         String title1 = "CarCare Enterprise Invoice";
-                        //String reportSource1 = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
-                        String reportSource1 = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\enterpriseInvoice.jasper";
+                        String reportSource1 = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
+                        //String reportSource1 = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\enterpriseInvoice.jasper";
                         Map<String, Object> params1 = new HashMap();
                         params1.put("reportName", title1);
                         params1.put("vno", billcce.getVno());
@@ -1358,8 +1358,8 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 }else if(billccc.getAmount() > 0){
                     try{
                         String reportTitle = "CarCare Center Invoice";
-                        //String reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
-                        String reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
+                        String reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
+                        //String reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
                         Map<String, Object> params = new HashMap();
                         params.put("reportName", reportTitle);
                         params.put("vno", billccc.getVno());
@@ -1438,8 +1438,8 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 }else if(billcce.getAmount() > 0){
                     try{
                         String title = "CarCare Enterprise Invoice";
-                        //String reportSource = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
-                        String reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
+                        String reportSource = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
+                        //String reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
                         Map<String, Object> params = new HashMap();
                         params.put("reportName", title);
                         params.put("vno", billcce.getVno());

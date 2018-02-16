@@ -42,8 +42,12 @@ public class AddUser extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("carcare?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
+        userQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT u FROM User u");
+        userList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : userQuery.getResultList();
         jPanel10 = new javax.swing.JPanel();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jPanel8 = new javax.swing.JPanel();
@@ -82,6 +86,8 @@ public class AddUser extends javax.swing.JInternalFrame {
         jCheckBox1 = new javax.swing.JCheckBox();
         btnChgAdd1 = new javax.swing.JButton();
         btnChgExit1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
 
         setClosable(true);
         setTitle("User");
@@ -251,9 +257,35 @@ public class AddUser extends javax.swing.JInternalFrame {
 
         jTabbedPane3.addTab("Reset Password", jPanel14);
 
-        jPanel10.add(jTabbedPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, 370, 310));
+        jPanel10.add(jTabbedPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 370, 310));
 
-        getContentPane().add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 340));
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, userList, jTable2);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${username}"));
+        columnBinding.setColumnName("User Name");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${role}"));
+        columnBinding.setColumnName("Role");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${active}"));
+        columnBinding.setColumnName("Active");
+        columnBinding.setColumnClass(Short.class);
+        columnBinding.setEditable(false);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();
+        jScrollPane2.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setResizable(false);
+            jTable2.getColumnModel().getColumn(1).setResizable(false);
+            jTable2.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        jPanel10.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 360, 310));
+
+        getContentPane().add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 340));
+
+        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -306,7 +338,7 @@ public class AddUser extends javax.swing.JInternalFrame {
                                     user.setActive((short)0);
                                 }
                                 
-                                user.setRole("admin");
+                                user.setRole(jComboBox2.getSelectedItem().toString());
                                 
                                 userJpaController.create(user);
                                 JOptionPane.showMessageDialog(jPanel1, "You are successfully Add User !");
@@ -463,6 +495,7 @@ public class AddUser extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnChgExit1;
     private javax.swing.JButton btnExit3;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.persistence.EntityManager entityManager;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel13;
@@ -486,7 +519,9 @@ public class AddUser extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
+    private javax.swing.JTable jTable2;
     private javax.swing.JPasswordField txtChgConPassWd;
     private javax.swing.JPasswordField txtChgOldPwd;
     private javax.swing.JPasswordField txtChgPassWd;
@@ -495,6 +530,9 @@ public class AddUser extends javax.swing.JInternalFrame {
     private javax.swing.JPasswordField txtPassWd2;
     private javax.swing.JTextField txtUserName2;
     private javax.swing.JTextField txtUserName3;
+    private java.util.List<carcare.model.User> userList;
+    private javax.persistence.Query userQuery;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
     private void showPopupMessage(String msg){

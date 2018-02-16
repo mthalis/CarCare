@@ -481,7 +481,7 @@ where
 							<textField pattern="##0.00" isBlankWhenNull="true">
 								<reportElement x="0" y="75" width="52" height="15" uuid="849addb2-7740-48c8-9882-de326f149ded"/>
 								<textElement textAlignment="Right"/>
-								<textFieldExpression><![CDATA[($P{parameter2} != null ? Integer.parseInt($P{parameter2})*Integer.parseInt($P{parameter9}) : null )]]></textFieldExpression>
+								<textFieldExpression><![CDATA[($P{parameter2} != null && $P{parameter9} != null ? Integer.parseInt($P{parameter2})*Integer.parseInt($P{parameter9}) : null )]]></textFieldExpression>
 							</textField>
 							<textField pattern="##0.00" isBlankWhenNull="true">
 								<reportElement x="0" y="90" width="52" height="15" uuid="2cca89c3-44c2-4aef-9f55-2d175ea31ef6"/>
