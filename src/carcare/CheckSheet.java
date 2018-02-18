@@ -310,9 +310,15 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         });
         jPanel2.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 80, -1));
 
+        jTextField12.setText("  /  ");
         jTextField12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField12ActionPerformed(evt);
+            }
+        });
+        jTextField12.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField12KeyTyped(evt);
             }
         });
         jPanel2.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 80, -1));
@@ -1429,6 +1435,18 @@ public class CheckSheet extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "You are not authorize to update Milage & Payment Details !");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField12KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField12KeyTyped
+        
+        String a = jTextField12.getText().trim();
+        if(a.length() ==2){
+            jTextField12.setText(jTextField12.getText().trim().concat("/"));
+        }else if(a.length() ==5){
+            jTextField12.setText(jTextField12.getText().trim().concat("/"));
+        }else if(a.length() ==8){
+            jTextField12.setText(jTextField12.getText().trim().concat("/"));
+        }
+    }//GEN-LAST:event_jTextField12KeyTyped
 
     public void keyTyped(KeyEvent e) {
       char c = e.getKeyChar();
