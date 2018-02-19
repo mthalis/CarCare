@@ -135,6 +135,12 @@
 		<parameter name="parameter28" class="java.lang.Boolean"/>
 		<parameter name="parameter29" class="java.lang.Boolean"/>
 		<parameter name="parameter30" class="java.lang.Boolean"/>
+                <parameter name="parameter31" class="java.lang.String"/>
+		<parameter name="parameter32" class="java.lang.String"/>
+		<parameter name="parameter33" class="java.lang.String"/>
+                <parameter name="parameter34" class="java.lang.String"/>
+		<parameter name="parameter35" class="java.lang.String"/>
+		<parameter name="parameter36" class="java.lang.String"/>
 	</subDataset>
 	<parameter name="vno" class="java.lang.String"/>
 	<parameter name="date" class="java.lang.String"/>
@@ -149,6 +155,9 @@
 	<parameter name="description8" class="java.lang.String"/>
 	<parameter name="description9" class="java.lang.String"/>
 	<parameter name="description10" class="java.lang.String"/>
+        <parameter name="description11" class="java.lang.String"/>
+	<parameter name="description12" class="java.lang.String"/>
+	<parameter name="description13" class="java.lang.String"/>
 	<parameter name="val1" class="java.lang.String"/>
 	<parameter name="val2" class="java.lang.String"/>
 	<parameter name="val3" class="java.lang.String"/>
@@ -159,9 +168,9 @@
 	<parameter name="val8" class="java.lang.String"/>
 	<parameter name="val9" class="java.lang.String"/>
 	<parameter name="val10" class="java.lang.String"/>
-	<parameter name="total" class="java.lang.String"/>
-	<parameter name="discount" class="java.lang.String"/>
-	<parameter name="subTotal" class="java.lang.String"/>
+	<parameter name="val11" class="java.lang.String"/>
+	<parameter name="val12" class="java.lang.String"/>
+	<parameter name="val13" class="java.lang.String"/>
 	<parameter name="anyOtherChg" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
@@ -358,6 +367,24 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` like '$P!{date}%']]>
 						<datasetParameter name="parameter30">
 							<datasetParameterExpression><![CDATA[$F{billccc_FREE_HLT}]]></datasetParameterExpression>
 						</datasetParameter>
+                                                <datasetParameter name="parameter31">
+							<datasetParameterExpression><![CDATA[$P{description11}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter32">
+							<datasetParameterExpression><![CDATA[$P{description12}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter33">
+							<datasetParameterExpression><![CDATA[$P{description13}]]></datasetParameterExpression>
+						</datasetParameter>
+                                                <datasetParameter name="parameter34">
+							<datasetParameterExpression><![CDATA[$P{val11}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter35">
+							<datasetParameterExpression><![CDATA[$P{val12}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter36">
+							<datasetParameterExpression><![CDATA[$P{val13}]]></datasetParameterExpression>
+						</datasetParameter>
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
 					</datasetRun>
 					<jr:column width="120" uuid="ee13d06a-5b36-4a8f-866f-ee97f8099b96">
@@ -370,46 +397,60 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` like '$P!{date}%']]>
 								<text><![CDATA[Description]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table 1_TD" height="194" rowSpan="1">
+						<jr:detailCell style="table 1_TD" height="263" rowSpan="1">
 							<textField isBlankWhenNull="true">
-								<reportElement x="10" y="0" width="109" height="19" uuid="2339e867-f4b8-4cc9-94d8-f5e7c146d77d"/>
+								<reportElement x="0" y="0" width="109" height="19" uuid="2339e867-f4b8-4cc9-94d8-f5e7c146d77d"/>
 								<textFieldExpression><![CDATA[$P{parameter1}]]></textFieldExpression>
 							</textField>
 							<textField isBlankWhenNull="true">
-								<reportElement x="10" y="19" width="109" height="19" uuid="2540fbfe-bf3d-4b48-96d0-5762dc40f7ed"/>
+								<reportElement x="0" y="19" width="109" height="19" uuid="2540fbfe-bf3d-4b48-96d0-5762dc40f7ed"/>
 								<textFieldExpression><![CDATA[$P{parameter2}]]></textFieldExpression>
 							</textField>
 							<textField isBlankWhenNull="true">
-								<reportElement x="10" y="38" width="109" height="19" uuid="46610ca2-07a8-43f3-b9e6-c74199294364"/>
+								<reportElement x="0" y="38" width="109" height="19" uuid="46610ca2-07a8-43f3-b9e6-c74199294364"/>
 								<textFieldExpression><![CDATA[$P{parameter3}]]></textFieldExpression>
 							</textField>
 							<textField isBlankWhenNull="true">
-								<reportElement x="10" y="57" width="109" height="19" uuid="6ef92bca-26c9-4348-9f2f-395a28250190"/>
+								<reportElement x="0" y="57" width="109" height="19" uuid="6ef92bca-26c9-4348-9f2f-395a28250190"/>
 								<textFieldExpression><![CDATA[$P{parameter4}]]></textFieldExpression>
 							</textField>
 							<textField isBlankWhenNull="true">
-								<reportElement x="10" y="76" width="109" height="19" uuid="80e3fbcb-7bfc-4ba9-be02-d9bbf1d670b4"/>
+								<reportElement x="0" y="76" width="109" height="19" uuid="80e3fbcb-7bfc-4ba9-be02-d9bbf1d670b4"/>
 								<textFieldExpression><![CDATA[$P{parameter5}]]></textFieldExpression>
 							</textField>
 							<textField isBlankWhenNull="true">
-								<reportElement x="10" y="95" width="109" height="19" uuid="2652374c-9c5d-4cb7-ba4c-b5427b7517d8"/>
+								<reportElement x="0" y="95" width="109" height="19" uuid="2652374c-9c5d-4cb7-ba4c-b5427b7517d8"/>
 								<textFieldExpression><![CDATA[$P{parameter6}]]></textFieldExpression>
 							</textField>
 							<textField isBlankWhenNull="true">
-								<reportElement x="10" y="114" width="109" height="19" uuid="ec4354d9-7194-4d3a-b95f-954a09c987fd"/>
+								<reportElement x="0" y="114" width="109" height="19" uuid="ec4354d9-7194-4d3a-b95f-954a09c987fd"/>
 								<textFieldExpression><![CDATA[$P{parameter7}]]></textFieldExpression>
 							</textField>
 							<textField isBlankWhenNull="true">
-								<reportElement x="10" y="133" width="109" height="19" uuid="7c6814fe-1eec-43c3-8928-4fdc1fa2dfe3"/>
+								<reportElement x="0" y="133" width="109" height="19" uuid="7c6814fe-1eec-43c3-8928-4fdc1fa2dfe3"/>
 								<textFieldExpression><![CDATA[$P{parameter8}]]></textFieldExpression>
 							</textField>
 							<textField isBlankWhenNull="true">
-								<reportElement x="10" y="152" width="109" height="19" uuid="d43a0af3-796e-442d-b369-72f132a162fb"/>
+								<reportElement x="0" y="152" width="109" height="19" uuid="d43a0af3-796e-442d-b369-72f132a162fb"/>
 								<textFieldExpression><![CDATA[$P{parameter9}]]></textFieldExpression>
 							</textField>
 							<textField isBlankWhenNull="true">
-								<reportElement x="10" y="171" width="109" height="19" uuid="f9cc1898-e367-403e-8c92-6d0cae296806"/>
+								<reportElement x="0" y="171" width="109" height="19" uuid="f9cc1898-e367-403e-8c92-6d0cae296806"/>
 								<textFieldExpression><![CDATA[$P{parameter10}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="190" width="109" height="19" uuid="474132d7-433a-4018-96d3-48460f747de5"/>
+								<textElement markup="none"/>
+								<textFieldExpression><![CDATA[$P{parameter31}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="209" width="109" height="19" uuid="49729f20-cbcc-4422-95d3-e7237c62cb84"/>
+								<textElement markup="none"/>
+								<textFieldExpression><![CDATA[$P{parameter32}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="228" width="109" height="19" uuid="192fc6b3-5728-4fa9-b53e-1f42e2242f08"/>
+								<textFieldExpression><![CDATA[$P{parameter33}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -423,7 +464,7 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` like '$P!{date}%']]>
 								<text><![CDATA[Amount Rs.]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table 1_TD" height="194" rowSpan="1">
+						<jr:detailCell style="table 1_TD" height="263" rowSpan="1">
 							<textField pattern="##0.00" isBlankWhenNull="true">
 								<reportElement style="FREE_ALIGN_STY" x="0" y="0" width="66" height="19" uuid="53aab9dc-d951-4aba-bd83-718962cd1434"/>
 								<textElement textAlignment="Right"/>
@@ -473,6 +514,18 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` like '$P!{date}%']]>
 								<reportElement style="FREE_HLT_STY" x="0" y="171" width="66" height="19" uuid="736882e0-90c2-4ee2-98a3-f2664e0800b9"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter20} != null ? Integer.parseInt($P{parameter20}): null]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="190" width="66" height="19" uuid="52ccc0b3-9f6c-41c7-8f05-a98caeb48f8d"/>
+								<textFieldExpression><![CDATA[$P{parameter34} != null ? Integer.parseInt($P{parameter34}): null]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="209" width="66" height="19" uuid="e047ed74-cc8e-4e41-b914-3e3ab64a5e37"/>
+								<textFieldExpression><![CDATA[$P{parameter35} != null ? Integer.parseInt($P{parameter35}): null]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="228" width="66" height="19" uuid="1b1b169b-a507-4a53-aea0-60c165e3350b"/>
+								<textFieldExpression><![CDATA[$P{parameter36} != null ? Integer.parseInt($P{parameter36}): null]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
