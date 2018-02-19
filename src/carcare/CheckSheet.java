@@ -310,7 +310,6 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         });
         jPanel2.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 80, -1));
 
-        jTextField12.setText("  /  ");
         jTextField12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField12ActionPerformed(evt);
@@ -1439,12 +1438,11 @@ public class CheckSheet extends javax.swing.JInternalFrame {
     private void jTextField12KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField12KeyTyped
         
         String a = jTextField12.getText().trim();
-        if(a.length() ==2){
-            jTextField12.setText(jTextField12.getText().trim().concat("/"));
-        }else if(a.length() ==5){
-            jTextField12.setText(jTextField12.getText().trim().concat("/"));
-        }else if(a.length() ==8){
-            jTextField12.setText(jTextField12.getText().trim().concat("/"));
+        char c = evt.getKeyChar();
+        if(!((c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))){
+            if(a.length() ==2 || a.length() ==5 ||a.length() ==8 || a.length() ==11 || a.length() ==14){
+                jTextField12.setText(jTextField12.getText().trim().concat("/"));
+            }
         }
     }//GEN-LAST:event_jTextField12KeyTyped
 
