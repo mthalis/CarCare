@@ -9,6 +9,7 @@ import static carcare.CarCare.bill_window;
 import carcare.controller.BillcccJpaController;
 import carcare.controller.BillcceJpaController;
 import carcare.controller.CustdataJpaController;
+import carcare.controller.UserJpaController;
 import carcare.model.Billccc;
 import carcare.model.Billcce;
 import carcare.model.Custdata;
@@ -25,6 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
+import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.text.AbstractDocument;
@@ -33,6 +35,7 @@ import net.sf.jasperreports.engine.JRPrintPage;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.swing.JRViewer;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 
 /**
@@ -44,6 +47,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
     CustdataJpaController custdataJpaController = new CustdataJpaController(CarCare.EMF);
     BillcccJpaController billcccJpaController = new BillcccJpaController(CarCare.EMF);
     BillcceJpaController billcceJpaController = new BillcceJpaController(CarCare.EMF);
+    UserJpaController billcceJpaControllerz = new UserJpaController(CarCare.EMF);
     private static final Logger logger = Logger.getLogger(AddBilling.class);
     
     public AddBilling() {
@@ -194,6 +198,8 @@ public class AddBilling extends javax.swing.JInternalFrame {
         jRadioButton2 = new javax.swing.JRadioButton();
         txtAddby = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        txtPassWd = new javax.swing.JPasswordField();
 
         setClosable(true);
         setTitle("Add Billing");
@@ -927,8 +933,19 @@ public class AddBilling extends javax.swing.JInternalFrame {
         jPanel1.add(txtAddby, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 105, 25));
 
         jLabel32.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel32.setText("Add By");
-        jPanel1.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 70, 30));
+        jLabel32.setText("Password");
+        jPanel1.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, 70, 25));
+
+        jLabel33.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel33.setText("Add By");
+        jPanel1.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 70, 25));
+
+        txtPassWd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPassWdActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtPassWd, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 100, 140, 25));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1108,10 +1125,33 @@ public class AddBilling extends javax.swing.JInternalFrame {
         }else if(txtMilage.getText() == null || txtMilage.getText().equals("")){
             JOptionPane.showMessageDialog(jPanel1, "Please enter Millage !");
             txtMilage.requestFocus();
-        } else if(txtAddby.getText() == null || txtAddby.getText().equals("")){
-            JOptionPane.showMessageDialog(jPanel1, "Please enter Add by !");
-            txtAddby.requestFocus();
         } else {
+            
+            String userName = txtAddby.getText();
+            char[] passWd = txtPassWd.getPassword();
+            String pwd = "";
+
+            for(char pw : passWd){
+                pwd = pwd + pw;
+            }
+            
+            boolean authenticate= false;
+            if (userName.isEmpty()) {
+                JOptionPane.showMessageDialog(jPanel1, "Please enter Add by !");
+                txtAddby.requestFocus();
+            }else{
+                if (pwd.isEmpty()){
+                    JOptionPane.showMessageDialog(jPanel1, "Please Enter Password !");
+                    txtPassWd.requestFocus();
+                }else{
+                    String pw = DigestUtils.sha256Hex(pwd);
+                    
+                    UserJpaController userQuery = new UserJpaController();
+                    authenticate  = userQuery.authenticateUser(userName, pw);
+                }
+            }
+            
+            if(authenticate){
             
             Billccc billccc = new Billccc();
             
@@ -1213,8 +1253,8 @@ public class AddBilling extends javax.swing.JInternalFrame {
                     try{
                         
                         String title2 = "CarCare Center Invoice";
-                        String reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
-                        //String reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
+                        //String reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
+                        String reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
                         Map<String, Object> params = new HashMap();
                         params.put("reportName", title2);
                         params.put("vno", billccc.getVno());
@@ -1277,8 +1317,8 @@ public class AddBilling extends javax.swing.JInternalFrame {
                                 ConnectionManager.getConnection());                        
                         
                         String title1 = "CarCare Enterprise Invoice";
-                        String reportSource1 = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
-                        //String reportSource1 = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\enterpriseInvoice.jasper";
+                        //String reportSource1 = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
+                        String reportSource1 = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\enterpriseInvoice.jasper";
                         Map<String, Object> params1 = new HashMap();
                         params1.put("reportName", title1);
                         params1.put("vno", billcce.getVno());
@@ -1358,8 +1398,8 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 }else if(billccc.getAmount() > 0){
                     try{
                         String reportTitle = "CarCare Center Invoice";
-                        String reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
-                        //String reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
+                        //String reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
+                        String reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
                         Map<String, Object> params = new HashMap();
                         params.put("reportName", reportTitle);
                         params.put("vno", billccc.getVno());
@@ -1438,8 +1478,8 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 }else if(billcce.getAmount() > 0){
                     try{
                         String title = "CarCare Enterprise Invoice";
-                        String reportSource = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
-                        //String reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
+                        //String reportSource = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
+                        String reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
                         Map<String, Object> params = new HashMap();
                         params.put("reportName", title);
                         params.put("vno", billcce.getVno());
@@ -1516,7 +1556,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
             }else{
                 JOptionPane.showMessageDialog(jPanel1, "Bill amount Zero !");
             }
-            
+            }    
         }
     }//GEN-LAST:event_btnPrintActionPerformed
 
@@ -1720,7 +1760,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtMilageActionPerformed
 
     private void txtAddbyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddbyActionPerformed
-        txtChkAlign.requestFocusInWindow();
+        txtPassWd.requestFocusInWindow();
     }//GEN-LAST:event_txtAddbyActionPerformed
 
     private void txtChkAlignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtChkAlignActionPerformed
@@ -1815,6 +1855,10 @@ public class AddBilling extends javax.swing.JInternalFrame {
         jTextField20.requestFocusInWindow();
     }//GEN-LAST:event_txtDisCCCTotalActionPerformed
 
+    private void txtPassWdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassWdActionPerformed
+        txtChkAlign.requestFocusInWindow();
+    }//GEN-LAST:event_txtPassWdActionPerformed
+
     public void keyTyped(KeyEvent e) {
       char c = e.getKeyChar();
       if (!((c >= '0') && (c <= '9') ||
@@ -1906,6 +1950,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1958,6 +2003,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtOther2Txt;
     private javax.swing.JTextField txtOther3Qt;
     private javax.swing.JTextField txtOther3Txt;
+    private javax.swing.JPasswordField txtPassWd;
     private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtReCamber;
     private javax.swing.JTextField txtReToe;
