@@ -47,7 +47,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
     CustdataJpaController custdataJpaController = new CustdataJpaController(CarCare.EMF);
     BillcccJpaController billcccJpaController = new BillcccJpaController(CarCare.EMF);
     BillcceJpaController billcceJpaController = new BillcceJpaController(CarCare.EMF);
-    UserJpaController billcceJpaControllerz = new UserJpaController(CarCare.EMF);
+    UserJpaController userJpaController = new UserJpaController(CarCare.EMF);
     private static final Logger logger = Logger.getLogger(AddBilling.class);
     
     public AddBilling() {
@@ -1144,10 +1144,8 @@ public class AddBilling extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(jPanel1, "Please Enter Password !");
                     txtPassWd.requestFocus();
                 }else{
-                    String pw = DigestUtils.sha256Hex(pwd);
-                    
-                    UserJpaController userQuery = new UserJpaController();
-                    authenticate  = userQuery.authenticateUser(userName, pw);
+                    String pw = DigestUtils.sha256Hex(pwd);                    
+                    authenticate  = userJpaController.authenticateUser(userName, pw);
                 }
             }
             
@@ -1556,6 +1554,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
             }else{
                 JOptionPane.showMessageDialog(jPanel1, "Bill amount Zero !");
             }
+            }else{
+                txtAddby.setText("");
+                txtPassWd.setText("");
+                txtAddby.requestFocusInWindow();
+                JOptionPane.showMessageDialog(jPanel1, "Bill amount Zerommmmmmmmmmmmmmmmmm !");
             }    
         }
     }//GEN-LAST:event_btnPrintActionPerformed
@@ -1856,7 +1859,36 @@ public class AddBilling extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtDisCCCTotalActionPerformed
 
     private void txtPassWdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassWdActionPerformed
-        txtChkAlign.requestFocusInWindow();
+        String userName = txtAddby.getText();
+        char[] passWd = txtPassWd.getPassword();
+        String pwd = "";
+
+        for(char pw : passWd){
+            pwd = pwd + pw;
+        }
+
+        boolean authenticate= false;
+        if (userName.isEmpty()) {
+            JOptionPane.showMessageDialog(jPanel1, "Please enter Add by !");
+            txtAddby.requestFocus();
+        }else{
+            if (pwd.isEmpty()){
+                JOptionPane.showMessageDialog(jPanel1, "Please Enter Password !");
+                txtPassWd.requestFocus();
+            }else{
+                String pw = DigestUtils.sha256Hex(pwd);                    
+                authenticate  = userJpaController.authenticateUser(userName, pw);
+            }
+        }
+
+        if(authenticate){
+            txtChkAlign.requestFocusInWindow();
+        }else{
+            txtAddby.setText("");
+            txtPassWd.setText("");
+            txtAddby.requestFocusInWindow();
+            JOptionPane.showMessageDialog(jPanel1, "Bill amount Zerommmmmmmmmmmmmmmmmm !");
+        }
     }//GEN-LAST:event_txtPassWdActionPerformed
 
     public void keyTyped(KeyEvent e) {

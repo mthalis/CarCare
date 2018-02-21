@@ -11,6 +11,8 @@ import carcare.model.User;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.DocumentFilter;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 
@@ -22,6 +24,7 @@ public class AddUser extends javax.swing.JInternalFrame {
 
     final Logger logger = Logger.getLogger(AddUser.class);
     UserJpaController userJpaController = new UserJpaController(CarCare.EMF);
+    String actionType = null;
     
     public AddUser() {
         initComponents();
@@ -29,9 +32,16 @@ public class AddUser extends javax.swing.JInternalFrame {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();        
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         
+        DocumentFilter filter = new UppercaseDocumentFilter ();
+        ((AbstractDocument) txtUserName2.getDocument()).setDocumentFilter(filter);
+        ((AbstractDocument) txtChgUserName.getDocument()).setDocumentFilter(filter);
+        ((AbstractDocument) txtUserName3.getDocument()).setDocumentFilter(filter);
+        
         jRadioButton3.setSelected(true);
         buttonGroup1.add(jRadioButton3);
         buttonGroup1.add(jRadioButton4);
+        
+        jTextField1.setVisible(false);
     }
 
     /**
@@ -66,6 +76,8 @@ public class AddUser extends javax.swing.JInternalFrame {
         txtUserName2 = new javax.swing.JTextField();
         jRadioButton4 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
+        btnAdd4 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
@@ -122,13 +134,13 @@ public class AddUser extends javax.swing.JInternalFrame {
 
         jPanel8.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 142, 190));
 
-        btnAdd3.setText("Add");
+        btnAdd3.setText("Save");
         btnAdd3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdd3ActionPerformed(evt);
             }
         });
-        jPanel8.add(btnAdd3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 75, 25));
+        jPanel8.add(btnAdd3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 75, 25));
 
         btnExit3.setText("Close");
         btnExit3.addActionListener(new java.awt.event.ActionListener() {
@@ -136,10 +148,11 @@ public class AddUser extends javax.swing.JInternalFrame {
                 btnExit3ActionPerformed(evt);
             }
         });
-        jPanel8.add(btnExit3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 75, 25));
+        jPanel8.add(btnExit3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 75, 25));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtConPassWd2.setEnabled(false);
         txtConPassWd2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtConPassWd2ActionPerformed(evt);
@@ -147,6 +160,7 @@ public class AddUser extends javax.swing.JInternalFrame {
         });
         jPanel1.add(txtConPassWd2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 170, 30));
 
+        txtPassWd2.setEnabled(false);
         txtPassWd2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPassWd2ActionPerformed(evt);
@@ -170,12 +184,23 @@ public class AddUser extends javax.swing.JInternalFrame {
         jPanel1.add(txtUserName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 30));
 
         jRadioButton4.setText("No");
+        jRadioButton4.setEnabled(false);
         jPanel1.add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, -1, -1));
 
         jRadioButton3.setText("Yes");
+        jRadioButton3.setEnabled(false);
         jPanel1.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
         jPanel8.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 11, 200, 205));
+
+        btnAdd4.setText("Add");
+        btnAdd4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdd4ActionPerformed(evt);
+            }
+        });
+        jPanel8.add(btnAdd4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 75, 25));
+        jPanel8.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 20, -1));
 
         jTabbedPane3.addTab("Add User", jPanel8);
 
@@ -274,6 +299,11 @@ public class AddUser extends javax.swing.JInternalFrame {
         columnBinding.setEditable(false);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
         if (jTable2.getColumnModel().getColumnCount() > 0) {
             jTable2.getColumnModel().getColumn(0).setResizable(false);
@@ -340,8 +370,15 @@ public class AddUser extends javax.swing.JInternalFrame {
                                 
                                 user.setRole(jComboBox2.getSelectedItem().toString());
                                 
-                                userJpaController.create(user);
-                                JOptionPane.showMessageDialog(jPanel1, "You are successfully Add User !");
+                                if(null != actionType && actionType.equals("save")){
+                                    userJpaController.create(user);
+                                    JOptionPane.showMessageDialog(jPanel1, "You are successfully Add User !");
+                                }else if(null != actionType && actionType.equals("edit")){
+                                    user.setId(Integer.parseInt(jTextField1.getText()));
+                                    userJpaController.updateUser(user);
+                                    JOptionPane.showMessageDialog(jPanel1, "You are successfully update User !");
+                                }
+                                
                                 user_window = 0;
                                 dispose();
                             }
@@ -486,9 +523,55 @@ public class AddUser extends javax.swing.JInternalFrame {
         btnAdd3.requestFocusInWindow();
     }//GEN-LAST:event_txtConPassWd2ActionPerformed
 
+    private void btnAdd4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd4ActionPerformed
+        txtUserName2.setText("");
+        txtChgUserName.setText("");
+        txtUserName3.setText("");
+        txtUserName2.setEnabled(true);
+        jRadioButton3.setEnabled(true);
+        jRadioButton4.setEnabled(true);
+        jRadioButton3.setSelected(true);
+        txtPassWd2.setEnabled(true);
+        txtConPassWd2.setEnabled(true);
+        
+        btnAdd3.setText("Save");
+        actionType = "save";
+    }//GEN-LAST:event_btnAdd4ActionPerformed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        txtUserName2.setText("");
+        jRadioButton3.setEnabled(true);
+        jRadioButton4.setEnabled(true);
+        
+        txtPassWd2.setEnabled(false);
+        txtConPassWd2.setEnabled(false);
+        
+        int selectedRowIndex = jTable2.getSelectedRow();
+        User cusdate = userList.get(jTable2.convertRowIndexToModel(selectedRowIndex));
+        txtUserName2.setText(cusdate.getUsername());
+        txtChgUserName.setText(cusdate.getUsername());
+        txtUserName3.setText(cusdate.getUsername());
+        jTextField1.setText(cusdate.getId().toString());
+        txtUserName2.setEnabled(false);
+        if(cusdate.getActive()==1){
+            jRadioButton3.setSelected(true);
+        }else{
+            jRadioButton4.setSelected(true);
+        }
+        jComboBox2.setSelectedItem(cusdate.getRole());
+        
+        btnAdd3.setText("Update");
+        txtUserName2.requestFocusInWindow();
+        //jComboBox2.set
+        
+        actionType = "edit";
+        
+    }//GEN-LAST:event_jTable2MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd3;
+    private javax.swing.JButton btnAdd4;
     private javax.swing.JButton btnChgAdd;
     private javax.swing.JButton btnChgAdd1;
     private javax.swing.JButton btnChgExit;
@@ -522,6 +605,7 @@ public class AddUser extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JPasswordField txtChgConPassWd;
     private javax.swing.JPasswordField txtChgOldPwd;
     private javax.swing.JPasswordField txtChgPassWd;
