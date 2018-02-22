@@ -227,6 +227,8 @@ public class AddUser extends javax.swing.JInternalFrame {
         jPanel11.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 21, 137, 160));
 
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtChgUserName.setEnabled(false);
         jPanel13.add(txtChgUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 149, 30));
         jPanel13.add(txtChgOldPwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 149, 30));
         jPanel13.add(txtChgPassWd, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 149, 30));
@@ -257,6 +259,8 @@ public class AddUser extends javax.swing.JInternalFrame {
         jLabel22.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel22.setText("User Name");
         jPanel14.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, 30));
+
+        txtUserName3.setEnabled(false);
         jPanel14.add(txtUserName3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 149, 30));
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -341,19 +345,19 @@ public class AddUser extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(jPanel1, "Please Enter Correct User Name !");
                 txtUserName2.requestFocus();
             }else{
-                if (userJpaController.userAvailable(userName)) {
+                if ("save".equals(actionType) && userJpaController.userAvailable(userName)) {
                     JOptionPane.showMessageDialog(jPanel1, "Enter User Name Already in System !");
                     txtUserName2.requestFocus();
                 }else{
-                    if (pwd.isEmpty()){
+                    if ("save".equals(actionType) &&  pwd.isEmpty()){
                         JOptionPane.showMessageDialog(jPanel1, "Please Enter Password !");
                         txtPassWd2.requestFocus();
                     }else{
-                        if (pwdCon.isEmpty()){
+                        if ("save".equals(actionType) && pwdCon.isEmpty()){
                             JOptionPane.showMessageDialog(jPanel1, "Please Enter Confirm Password !");
                             txtConPassWd2.requestFocus();
                         }else{
-                            if(!pwd.equalsIgnoreCase(pwdCon)){
+                            if("save".equals(actionType) && !pwd.equalsIgnoreCase(pwdCon)){
                                 JOptionPane.showMessageDialog(jPanel1, "Enter Password and Confirm Password not match !");
                                 txtConPassWd2.requestFocus();
                             }else{
@@ -457,7 +461,7 @@ public class AddUser extends javax.swing.JInternalFrame {
                                         user.setUsername(userName);
                                         user.setPassword(pw);
 
-                                        int userId = userJpaController.updateUser(user);
+                                        int userId = userJpaController.updateUserPWD(user);
                                         String msg;
                                         if(userId > 0){
                                             msg = "You are successfully change user Password !";
@@ -528,8 +532,8 @@ public class AddUser extends javax.swing.JInternalFrame {
         txtChgUserName.setText("");
         txtUserName3.setText("");
         txtUserName2.setEnabled(true);
-        jRadioButton3.setEnabled(true);
-        jRadioButton4.setEnabled(true);
+        //jRadioButton3.setEnabled(true);
+        //jRadioButton4.setEnabled(true);
         jRadioButton3.setSelected(true);
         txtPassWd2.setEnabled(true);
         txtConPassWd2.setEnabled(true);

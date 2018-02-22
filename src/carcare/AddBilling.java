@@ -1558,7 +1558,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 txtAddby.setText("");
                 txtPassWd.setText("");
                 txtAddby.requestFocusInWindow();
-                JOptionPane.showMessageDialog(jPanel1, "Bill amount Zerommmmmmmmmmmmmmmmmm !");
+                JOptionPane.showMessageDialog(jPanel1, "AddBy and Passwordd Combination Incorrect !");
             }    
         }
     }//GEN-LAST:event_btnPrintActionPerformed
@@ -1887,7 +1887,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
             txtAddby.setText("");
             txtPassWd.setText("");
             txtAddby.requestFocusInWindow();
-            JOptionPane.showMessageDialog(jPanel1, "Bill amount Zerommmmmmmmmmmmmmmmmm !");
+            JOptionPane.showMessageDialog(jPanel1, "AddBy and Passwordd Combination Incorrect !");
         }
     }//GEN-LAST:event_txtPassWdActionPerformed
 

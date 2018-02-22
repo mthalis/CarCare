@@ -303,6 +303,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         jLabel8.setText("Job by");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 12, 60, -1));
 
+        jTextField11.setEnabled(false);
         jTextField11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField11ActionPerformed(evt);
@@ -1401,7 +1402,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField56ActionPerformed
 
     private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
-        jTextField11.requestFocusInWindow();
+        btnSave.requestFocusInWindow();
     }//GEN-LAST:event_jTextField12ActionPerformed
 
     private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
