@@ -807,7 +807,7 @@ public class Billing extends javax.swing.JInternalFrame {
             if(carCareCenter){                
                 String formatDate = format.format( dateBill.getDate());
                 String reportTitle = "CarCare Center Invoice";
-                reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
+                //reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
                 //reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
                 
                 params.put("reportName", reportTitle);
@@ -867,6 +867,23 @@ public class Billing extends javax.swing.JInternalFrame {
                     params.put("val"+(x+1), valList.get(x));
                 }
                 
+                if(null != txtDisCCCTotal.getText() && Integer.parseInt(txtDisCCCTotal.getText()) > 0){                        
+                    params.put("description11", "Sub Total");
+                    params.put("description12", "Discount");
+                    params.put("description13", "TOTAL");
+
+                    params.put("val11", txtCCCSubTotal.getText());
+                    params.put("val12", txtDisCCCTotal.getText());
+                    params.put("val13", txtCCCTotal.getText());
+                    
+                    reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
+                }else{                    
+                    params.put("description13", "TOTAL");
+
+                    params.put("val13", txtCCCTotal.getText());
+                    
+                    reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoiceNoDiscount.jasper";
+                }
             }else{
                 String formatDate = format.format( dateBill.getDate());
                 String reportTitle = "CarCare Enterprise Invoice";
