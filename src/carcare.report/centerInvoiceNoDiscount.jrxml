@@ -393,23 +393,9 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` like '$P!{date}%']]>
 								<text><![CDATA[Description]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="table 1_CH" height="58" rowSpan="1">
+						<jr:columnFooter style="table 1_CH" height="20" rowSpan="1">
 							<textField>
-								<reportElement mode="Opaque" x="15" y="0" width="104" height="19" uuid="2fb8e8ea-3a72-406a-9db5-a48e3c60ea22"/>
-								<textElement markup="none">
-									<font size="10"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$P{parameter31}]]></textFieldExpression>
-							</textField>
-							<textField>
-								<reportElement mode="Opaque" x="15" y="19" width="104" height="19" uuid="f0431eca-7927-4a22-9554-af81b5c08eb4"/>
-								<textElement markup="none">
-									<font size="10"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$P{parameter32}]]></textFieldExpression>
-							</textField>
-							<textField>
-								<reportElement mode="Opaque" x="15" y="38" width="104" height="19" uuid="00d9dab4-fe1a-4da3-9e55-46918a07c61b"/>
+								<reportElement mode="Opaque" x="15" y="0" width="94" height="19" uuid="00d9dab4-fe1a-4da3-9e55-46918a07c61b"/>
 								<textElement markup="none">
 									<font size="12" isBold="true"/>
 								</textElement>
@@ -469,26 +455,10 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` like '$P!{date}%']]>
 								<text><![CDATA[Amount Rs.]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="table 1_CH" height="58" rowSpan="1">
+						<jr:columnFooter style="table 1_CH" height="20" rowSpan="1">
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement mode="Opaque" x="0" y="0" width="64" height="19" uuid="eb657e01-3fc0-461f-94fa-a5773ef7388e"/>
-								<textElement textAlignment="Right" markup="none">
-									<font size="10"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$P{parameter34} != null ? Integer.parseInt($P{parameter34}): null]]></textFieldExpression>
-							</textField>
-							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement mode="Opaque" x="0" y="19" width="64" height="19" uuid="41a9a706-e5d4-48ed-93d8-c8684a85e423"/>
-								<textElement textAlignment="Right">
-									<font size="10"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$P{parameter35} != null ? Integer.parseInt($P{parameter35}): null]]></textFieldExpression>
-							</textField>
-							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement mode="Opaque" x="0" y="38" width="64" height="19" uuid="fcfa88ce-de6d-4443-8dfa-e17b4ba74438"/>
-								<textElement textAlignment="Right">
-									<font size="10"/>
-								</textElement>
+								<reportElement mode="Opaque" x="0" y="0" width="64" height="19" uuid="fcfa88ce-de6d-4443-8dfa-e17b4ba74438"/>
+								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter36} != null ? Integer.parseInt($P{parameter36}): null]]></textFieldExpression>
 							</textField>
 						</jr:columnFooter>
@@ -603,12 +573,9 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` like '$P!{date}%']]>
 				<text><![CDATA[Invoice]]></text>
 			</staticText>
 			<line>
-				<reportElement x="140" y="388" width="75" height="1" uuid="1aa81d4d-cc06-4c59-a173-7c23dcb7ddeb">
+				<reportElement x="140" y="350" width="75" height="1" uuid="1aa81d4d-cc06-4c59-a173-7c23dcb7ddeb">
 					<printWhenExpression><![CDATA[$P{anyOtherChg}.equals("N")]]></printWhenExpression>
 				</reportElement>
-			</line>
-			<line>
-				<reportElement x="20" y="367" width="195" height="1" uuid="332ae0f6-eb95-4d24-83ae-521f2ac56be7"/>
 			</line>
 		</band>
 	</detail>
