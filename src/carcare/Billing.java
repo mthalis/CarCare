@@ -814,9 +814,6 @@ public class Billing extends javax.swing.JInternalFrame {
                 params.put("vno", txtVNo.getText());
                 params.put("date", formatDate);
                 params.put("rePrintType", rePrintType);
-                params.put("subTotal", txtCCCSubTotal.getText());
-                params.put("discount", txtDisCCCTotal.getText());
-                params.put("total", txtCCCTotal.getText());
                 params.put("anyOtherChg", "N");
                 
                 List<String> descList = new ArrayList<>();

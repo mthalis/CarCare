@@ -1252,15 +1252,12 @@ public class AddBilling extends javax.swing.JInternalFrame {
                         
                         String title2 = "CarCare Center Invoice";
                         //String reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
-                        String reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
+                        String reportSource = "";//C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
                         Map<String, Object> params = new HashMap();
                         params.put("reportName", title2);
                         params.put("vno", billccc.getVno());
                         params.put("date", format.format(billccc.getDate()));
                         params.put("rePrintType", "");
-                        params.put("subTotal", txtSubCCCTotal.getText());
-                        params.put("discount", !txtDisCCCTotal.getText().equals("") ? txtDisCCCTotal.getText() : "0");
-                        params.put("total", txtCCCTotal.getText());
                         params.put("anyOtherChg", reprint ? "Y" : "N");
 
                         List<String> descList = new ArrayList<>();
@@ -1310,6 +1307,25 @@ public class AddBilling extends javax.swing.JInternalFrame {
                             params.put("description"+(x+1), descList.get(x));
                             params.put("val"+(x+1), valList.get(x));
                         }
+                        
+                        String dicountVal = !txtDisCCCTotal.getText().equals("") ? txtDisCCCTotal.getText() : "0";
+                        if(!dicountVal.equals("0")){                        
+                            params.put("description11", "Sub Total");
+                            params.put("description12", "Discount");
+                            params.put("description13", "TOTAL");
+
+                            params.put("val11", txtSubCCCTotal.getText());
+                            params.put("val12", txtDisCCCTotal.getText());
+                            params.put("val13", txtCCCTotal.getText());
+
+                            reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
+                        }else{
+                            params.put("description13", "TOTAL");
+
+                            params.put("val13", txtCCCTotal.getText());
+
+                            reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoiceNoDiscount.jasper";
+                        }                        
                         
                         JasperPrint jasperPrintCenter = JasperFillManager.fillReport(reportSource, params,
                                 ConnectionManager.getConnection());                        
@@ -1397,15 +1413,12 @@ public class AddBilling extends javax.swing.JInternalFrame {
                     try{
                         String reportTitle = "CarCare Center Invoice";
                         //String reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
-                        String reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
+                        String reportSource = "";//C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
                         Map<String, Object> params = new HashMap();
                         params.put("reportName", reportTitle);
                         params.put("vno", billccc.getVno());
                         params.put("date", format.format(billccc.getDate()));
                         params.put("rePrintType", "");
-                        params.put("subTotal", txtSubCCCTotal.getText());
-                        params.put("discount", !txtDisCCCTotal.getText().equals("") ? txtDisCCCTotal.getText() : "0");
-                        params.put("total", txtCCCTotal.getText());
                         params.put("anyOtherChg", reprint ? "Y" : "N");
 
                         List<String> descList = new ArrayList<>();
@@ -1454,6 +1467,24 @@ public class AddBilling extends javax.swing.JInternalFrame {
                         for (int x = 0; x<descList.size() ;x++) {
                             params.put("description"+(x+1), descList.get(x));
                             params.put("val"+(x+1), valList.get(x));
+                        }
+                        String dicountVal = !txtDisCCCTotal.getText().equals("") ? txtDisCCCTotal.getText() : "0";
+                        if(!dicountVal.equals("0")){                        
+                            params.put("description11", "Sub Total");
+                            params.put("description12", "Discount");
+                            params.put("description13", "TOTAL");
+
+                            params.put("val11", txtSubCCCTotal.getText());
+                            params.put("val12", txtDisCCCTotal.getText());
+                            params.put("val13", txtCCCTotal.getText());
+
+                            reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
+                        }else{
+                            params.put("description13", "TOTAL");
+
+                            params.put("val13", txtCCCTotal.getText());
+
+                            reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoiceNoDiscount.jasper";
                         }
                         
                         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
