@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="420" pageHeight="565" columnWidth="380" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="3e919b32-5197-4282-9668-7a22db27f318">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="6"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="fee1">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$P{parameter12}]]></conditionExpression>
+			<style isStrikeThrough="true"/>
+		</conditionalStyle>
+	</style>
+	<style name="fee2">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$P{parameter13}]]></conditionExpression>
+			<style isStrikeThrough="true"/>
+		</conditionalStyle>
+	</style>
+	<style name="fee3">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$P{parameter14}]]></conditionExpression>
+			<style isStrikeThrough="true"/>
+		</conditionalStyle>
+	</style>
+	<style name="fee4">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$P{parameter15}]]></conditionExpression>
+			<style isStrikeThrough="true"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="237f0a6f-4c66-402e-99d8-822e84510f2c">
+		<parameter name="parameter1" class="java.lang.String"/>
+		<parameter name="parameter2" class="java.lang.String"/>
+		<parameter name="parameter3" class="java.lang.String"/>
+		<parameter name="parameter4" class="java.lang.String"/>
+		<parameter name="parameter5" class="java.lang.String"/>
+		<parameter name="parameter6" class="java.lang.String"/>
+		<parameter name="parameter7" class="java.lang.String"/>
+		<parameter name="parameter8" class="java.lang.String"/>
+		<parameter name="parameter9" class="java.lang.String"/>
+		<parameter name="parameter10" class="java.lang.String"/>
+		<parameter name="parameter11" class="java.lang.String"/>
+		<parameter name="parameter12" class="java.lang.Boolean"/>
+		<parameter name="parameter13" class="java.lang.Boolean"/>
+		<parameter name="parameter14" class="java.lang.Boolean"/>
+		<parameter name="parameter15" class="java.lang.Boolean"/>
+		<parameter name="parameter16" class="java.lang.String"/>
+		<parameter name="parameter17" class="java.lang.String"/>
+		<parameter name="parameter18" class="java.lang.String"/>
+		<parameter name="parameter19" class="java.lang.String"/>
+		<parameter name="parameter20" class="java.lang.String"/>
+		<parameter name="parameter21" class="java.lang.String"/>
+		<parameter name="parameter22" class="java.lang.String"/>
+		<parameter name="parameter23" class="java.lang.String"/>
+		<parameter name="parameter24" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="vno" class="java.lang.String"/>
+	<parameter name="date" class="java.lang.String"/>
+	<parameter name="rePrintType" class="java.lang.String"/>
+	<parameter name="description1" class="java.lang.String"/>
+	<parameter name="description2" class="java.lang.String"/>
+	<parameter name="description3" class="java.lang.String"/>
+	<parameter name="description4" class="java.lang.String"/>
+	<parameter name="description5" class="java.lang.String"/>
+	<parameter name="description6" class="java.lang.String"/>
+	<parameter name="description7" class="java.lang.String"/>
+	<parameter name="val1" class="java.lang.String"/>
+	<parameter name="val2" class="java.lang.String"/>
+	<parameter name="val3" class="java.lang.String"/>
+	<parameter name="val4" class="java.lang.String"/>
+	<parameter name="val5" class="java.lang.String"/>
+	<parameter name="val6" class="java.lang.String"/>
+	<parameter name="val7" class="java.lang.String"/>
+	<parameter name="qty1" class="java.lang.String"/>
+	<parameter name="qty2" class="java.lang.String"/>
+	<parameter name="qty3" class="java.lang.String"/>
+	<parameter name="total" class="java.lang.String"/>
+	<parameter name="discount" class="java.lang.String"/>
+	<parameter name="subTotal" class="java.lang.String"/>
+	<parameter name="anyOtherChg" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     billcce.`BILL_NO` AS billcce_BILL_NO,
+     billcce.`VNO` AS billcce_VNO,
+     billcce.`DATE` AS billcce_DATE,
+     billcce.`MILLAGE` AS billcce_MILLAGE,
+     billcce.`NAME` AS billcce_NAME,
+     billcce.`ADDRESS` AS billcce_ADDRESS,
+     billcce.`PHONE` AS billcce_PHONE,
+     billcce.`ChasiNo` AS billcce_ChasiNo,
+     billcce.`FIX_CM_R_F` AS billcce_FIX_CM_R_F,
+     billcce.`FIX_CM_R_R` AS billcce_FIX_CM_R_R,
+     billcce.`WB_RA` AS billcce_WB_RA,
+     billcce.`W_RA` AS billcce_W_RA,
+     billcce.`TYRE_RA` AS billcce_TYRE_RA,
+     billcce.`OTHER1_RA` AS billcce_OTHER1_RA,
+     billcce.`OTHER2_RA` AS billcce_OTHER2_RA,
+     billcce.`OTHER3_RA` AS billcce_OTHER3_RA,
+     billcce.`FIX_C_Q_F` AS billcce_FIX_C_Q_F,
+     billcce.`FIX_C_Q_R` AS billcce_FIX_C_Q_R,
+     billcce.`WB_QT` AS billcce_WB_QT,
+     billcce.`W_QT` AS billcce_W_QT,
+     billcce.`TYRES_QT` AS billcce_TYRES_QT,
+     billcce.`OTHER1_QT` AS billcce_OTHER1_QT,
+     billcce.`OTHER2_QT` AS billcce_OTHER2_QT,
+     billcce.`OTHER3_QT` AS billcce_OTHER3_QT,
+     billcce.`DISCOUNT` AS billcce_DISCOUNT,
+     billcce.`OTHER1_Txt` AS billcce_OTHER1_Txt,
+     billcce.`OTHER2_Txt` AS billcce_OTHER2_Txt,
+     billcce.`OTHER3_Txt` AS billcce_OTHER3_Txt,
+     billcce.`Amount` AS billcce_Amount,
+     billcce.`Free1` AS billcce_Free1,
+     billcce.`Free2` AS billcce_Free2,
+     billcce.`Free3` AS billcce_Free3,
+     billcce.`Free4` AS billcce_Free4,
+     billcce.`ID` AS billcce_ID,
+     billcce.`ADDBY` AS billcce_ADDBY,
+     billcce.`PAYMETHOD` AS billcce_PAYMETHOD
+FROM
+     `billcce` billcce
+where 
+     billcce.`VNO` = $P{vno} and billcce.`DATE` like '$P!{date}%']]>
+	</queryString>
+	<field name="billcce_BILL_NO" class="java.lang.Double"/>
+	<field name="billcce_VNO" class="java.lang.String"/>
+	<field name="billcce_DATE" class="java.sql.Timestamp"/>
+	<field name="billcce_MILLAGE" class="java.lang.Double"/>
+	<field name="billcce_NAME" class="java.lang.String"/>
+	<field name="billcce_ADDRESS" class="java.lang.String"/>
+	<field name="billcce_PHONE" class="java.lang.String"/>
+	<field name="billcce_ChasiNo" class="java.lang.String"/>
+	<field name="billcce_FIX_CM_R_F" class="java.lang.Integer"/>
+	<field name="billcce_FIX_CM_R_R" class="java.lang.Integer"/>
+	<field name="billcce_WB_RA" class="java.lang.Integer"/>
+	<field name="billcce_W_RA" class="java.lang.Integer"/>
+	<field name="billcce_TYRE_RA" class="java.lang.Integer"/>
+	<field name="billcce_OTHER1_RA" class="java.lang.Integer"/>
+	<field name="billcce_OTHER2_RA" class="java.lang.Integer"/>
+	<field name="billcce_OTHER3_RA" class="java.lang.Integer"/>
+	<field name="billcce_FIX_C_Q_F" class="java.lang.Integer"/>
+	<field name="billcce_FIX_C_Q_R" class="java.lang.Integer"/>
+	<field name="billcce_WB_QT" class="java.lang.Integer"/>
+	<field name="billcce_W_QT" class="java.lang.Integer"/>
+	<field name="billcce_TYRES_QT" class="java.lang.Integer"/>
+	<field name="billcce_OTHER1_QT" class="java.lang.Integer"/>
+	<field name="billcce_OTHER2_QT" class="java.lang.Integer"/>
+	<field name="billcce_OTHER3_QT" class="java.lang.Integer"/>
+	<field name="billcce_DISCOUNT" class="java.lang.Integer"/>
+	<field name="billcce_OTHER1_Txt" class="java.lang.String"/>
+	<field name="billcce_OTHER2_Txt" class="java.lang.String"/>
+	<field name="billcce_OTHER3_Txt" class="java.lang.String"/>
+	<field name="billcce_Amount" class="java.lang.Integer"/>
+	<field name="billcce_Free1" class="java.lang.Boolean"/>
+	<field name="billcce_Free2" class="java.lang.Boolean"/>
+	<field name="billcce_Free3" class="java.lang.Boolean"/>
+	<field name="billcce_Free4" class="java.lang.Boolean"/>
+	<field name="billcce_ID" class="java.lang.Integer"/>
+	<field name="billcce_ADDBY" class="java.lang.String"/>
+	<field name="billcce_PAYMETHOD" class="java.lang.Boolean"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="148" y="24" width="100" height="20" uuid="4ba3d0af-4094-4db5-b471-9461ef59bb51"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ENTERPRISES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="357" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table 2" style="table 2" x="20" y="108" width="297" height="80" uuid="a594d273-bb16-4802-ba1b-7254511141b8"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Table Dataset 1" uuid="d0242f2a-0915-4f41-923b-a9aa0e29a254">
+						<datasetParameter name="parameter1">
+							<datasetParameterExpression><![CDATA[$P{qty1}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter2">
+							<datasetParameterExpression><![CDATA[$P{qty2}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter3">
+							<datasetParameterExpression><![CDATA[$P{qty3}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter4">
+							<datasetParameterExpression><![CDATA[$P{val1}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter5">
+							<datasetParameterExpression><![CDATA[$P{val2}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter6">
+							<datasetParameterExpression><![CDATA[$P{val3}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter7">
+							<datasetParameterExpression><![CDATA[$P{val4}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter8">
+							<datasetParameterExpression><![CDATA[$P{val5}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter9">
+							<datasetParameterExpression><![CDATA[$P{val6}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter10">
+							<datasetParameterExpression><![CDATA[$P{val7}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter12">
+							<datasetParameterExpression><![CDATA[$F{billcce_Free1}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter13">
+							<datasetParameterExpression><![CDATA[$F{billcce_Free2}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter14">
+							<datasetParameterExpression><![CDATA[$F{billcce_Free3}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter15">
+							<datasetParameterExpression><![CDATA[$F{billcce_Free4}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter16">
+							<datasetParameterExpression><![CDATA[$P{description1}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter17">
+							<datasetParameterExpression><![CDATA[$P{description2}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter18">
+							<datasetParameterExpression><![CDATA[$P{description3}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter19">
+							<datasetParameterExpression><![CDATA[$P{description4}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter20">
+							<datasetParameterExpression><![CDATA[$P{description5}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter21">
+							<datasetParameterExpression><![CDATA[$P{description6}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter11">
+							<datasetParameterExpression><![CDATA[$P{description7}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter22">
+							<datasetParameterExpression><![CDATA[$P{subTotal}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter23">
+							<datasetParameterExpression><![CDATA[$P{discount}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter24">
+							<datasetParameterExpression><![CDATA[$P{total}]]></datasetParameterExpression>
+						</datasetParameter>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="125" uuid="18881ef5-b07a-48c0-bf35-8ee2f70516da">
+						<jr:columnHeader style="table 2_CH" height="21" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="125" height="20" uuid="848ce680-1bd6-42b0-9e1c-293d616d1f4d"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Description]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter height="23" rowSpan="1">
+							<box>
+								<rightPen lineWidth="0.0"/>
+							</box>
+							<staticText>
+								<reportElement mode="Opaque" x="14" y="2" width="111" height="19" uuid="2b9ebad8-6e58-4ac2-b014-871469982413"/>
+								<textElement markup="none">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[TOTAL]]></text>
+							</staticText>
+						</jr:columnFooter>
+						<jr:detailCell style="table 2_TD" height="108" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement x="14" y="0" width="111" height="15" uuid="cc01fb95-9847-4073-a1dd-4722645a6f5c"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle" markup="none"/>
+								<textFieldExpression><![CDATA[$P{parameter16}]]></textFieldExpression>
+							</textField>
+							<textField isBlankWhenNull="true">
+								<reportElement mode="Transparent" x="14" y="15" width="111" height="15" uuid="b188957a-e17b-42f2-a0b1-e5bd10563355"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle" markup="none"/>
+								<textFieldExpression><![CDATA[$P{parameter17}]]></textFieldExpression>
+							</textField>
+							<textField isBlankWhenNull="true">
+								<reportElement x="14" y="30" width="111" height="15" uuid="52457a96-c08e-4103-9159-7b568c13b0a8"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle" markup="none"/>
+								<textFieldExpression><![CDATA[$P{parameter18}]]></textFieldExpression>
+							</textField>
+							<textField isBlankWhenNull="true">
+								<reportElement x="14" y="45" width="111" height="15" uuid="2b9d05f9-5d10-422c-adca-4d2e5525e6f7"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle" markup="none"/>
+								<textFieldExpression><![CDATA[$P{parameter19}]]></textFieldExpression>
+							</textField>
+							<textField isBlankWhenNull="true">
+								<reportElement x="14" y="60" width="111" height="15" uuid="58a85bcb-c39d-4e29-b171-4ae5e3070701"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle" markup="none"/>
+								<textFieldExpression><![CDATA[$P{parameter20}]]></textFieldExpression>
+							</textField>
+							<textField isBlankWhenNull="true">
+								<reportElement x="14" y="75" width="111" height="15" uuid="49a2e914-07a0-48ae-a331-d15b51a6cdd3"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle" markup="none"/>
+								<textFieldExpression><![CDATA[$P{parameter21}]]></textFieldExpression>
+							</textField>
+							<textField isBlankWhenNull="true">
+								<reportElement x="14" y="90" width="111" height="15" uuid="c4b2c605-6ea0-4b95-a4f9-85f1c336db70"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle" markup="none"/>
+								<textFieldExpression><![CDATA[$P{parameter11}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="46" uuid="08ab1b99-f15b-48c3-8ff0-37741f2facdb">
+						<jr:columnHeader style="table 2_CH" height="21" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="46" height="20" uuid="2aa54c2d-54a6-400b-ae94-0ea42e31c760"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Qty]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 2_TD" height="108" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="46" height="15" uuid="985b16c1-69f3-435a-9a7b-f57f172485a2"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[($P{parameter1} != null ? Integer.parseInt($P{parameter1}) : null )]]></textFieldExpression>
+							</textField>
+							<textField isBlankWhenNull="true">
+								<reportElement mode="Transparent" x="0" y="15" width="46" height="15" uuid="9d01c360-5091-480b-9feb-5ace8ad6792f"/>
+								<textElement textAlignment="Center" markup="none"/>
+								<textFieldExpression><![CDATA[($P{parameter5} != null ? "1" : null)]]></textFieldExpression>
+							</textField>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="30" width="46" height="15" uuid="369caa43-5902-443a-b72e-d1e82dc16bc8"/>
+								<textElement textAlignment="Center" markup="none"/>
+								<textFieldExpression><![CDATA[($P{parameter6} != null ? "1" : null)]]></textFieldExpression>
+							</textField>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="45" width="46" height="15" uuid="5bd4c1f1-8917-403d-ae5b-0a9aab13f909"/>
+								<textElement textAlignment="Center" markup="none"/>
+								<textFieldExpression><![CDATA[($P{parameter7} != null ? "1" : null)]]></textFieldExpression>
+							</textField>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="60" width="46" height="15" uuid="1c929809-e519-4709-ba0a-0fe9682ca512"/>
+								<textElement textAlignment="Center" markup="none"/>
+								<textFieldExpression><![CDATA[($P{parameter8} != null ? "4" : null)]]></textFieldExpression>
+							</textField>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="75" width="46" height="15" uuid="e5e53ad8-3421-4bd3-a9c2-1158b2a0e9bc"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[($P{parameter2} != null ? Integer.parseInt($P{parameter2}) : null )]]></textFieldExpression>
+							</textField>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="90" width="46" height="15" uuid="38920508-6424-48ac-9ce5-4cc00900a729"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[($P{parameter3} != null ? Integer.parseInt($P{parameter3}) : null )]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="73" uuid="e0ae38cc-391c-4c53-b706-fe0c2a64f404">
+						<jr:columnHeader style="table 2_CH" height="21" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="71" height="20" uuid="cae71e4f-fe64-4027-95b9-6ac0783d4a66"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Rate]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 2_TD" height="108" rowSpan="1">
+							<textField pattern="##0.00" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="60" height="15" uuid="32e41fce-210f-4be6-b3fc-b00663c45e2d"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[($P{parameter4} != null ? Integer.parseInt($P{parameter4}) : null )]]></textFieldExpression>
+							</textField>
+							<textField pattern="##0.00" isBlankWhenNull="true">
+								<reportElement x="0" y="15" width="60" height="15" uuid="8948c0b3-a103-4cec-b3cf-6c0218f1a089"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[($P{parameter5} != null ? Integer.parseInt($P{parameter5}) : null )]]></textFieldExpression>
+							</textField>
+							<textField pattern="##0.00" isBlankWhenNull="true">
+								<reportElement x="0" y="30" width="60" height="15" uuid="d308e957-f492-43e1-bd35-78a67046459f"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[($P{parameter6} != null ? Integer.parseInt($P{parameter6}) : null )]]></textFieldExpression>
+							</textField>
+							<textField pattern="##0.00" isBlankWhenNull="true">
+								<reportElement x="0" y="45" width="60" height="15" uuid="898c169e-664b-4b16-a9b8-7778c13058a0"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[($P{parameter7} != null ? Integer.parseInt($P{parameter7}) : null )]]></textFieldExpression>
+							</textField>
+							<textField pattern="##0.00" isBlankWhenNull="true">
+								<reportElement x="0" y="60" width="60" height="15" uuid="cb16ad31-0c09-45be-a0c8-814bb3a91025"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[($P{parameter8} != null ? Integer.parseInt($P{parameter8}) : null )]]></textFieldExpression>
+							</textField>
+							<textField pattern="##0.00" isBlankWhenNull="true">
+								<reportElement x="0" y="75" width="60" height="15" uuid="a1b80576-4fd2-483d-be1f-d99f326bf0ac"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[($P{parameter9} != null ? Integer.parseInt($P{parameter9}) : null )]]></textFieldExpression>
+							</textField>
+							<textField pattern="##0.00" isBlankWhenNull="true">
+								<reportElement x="0" y="90" width="60" height="15" uuid="1941ebb7-2c6d-41eb-b258-186ab66b9b27"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[($P{parameter10} != null ? Integer.parseInt($P{parameter10}) : null )]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="67" uuid="338ac85e-55d9-4a29-b25d-8a07ccbea802">
+						<jr:columnHeader style="table 2_CH" height="21" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="66" height="20" uuid="97b8a556-278c-45e8-a8f5-11f67a24e97f"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Amount]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter height="23" rowSpan="1">
+							<box>
+								<leftPen lineWidth="0.5"/>
+							</box>
+							<textField pattern="##0.00" isBlankWhenNull="true">
+								<reportElement mode="Opaque" x="2" y="2" width="50" height="19" uuid="fcfa88ce-de6d-4443-8dfa-e17b4ba74438"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[$P{parameter24} != null ? Integer.parseInt($P{parameter24}): null]]></textFieldExpression>
+							</textField>
+						</jr:columnFooter>
+						<jr:detailCell style="table 2_TD" height="108" rowSpan="1">
+							<textField pattern="##0.00" isBlankWhenNull="true">
+								<reportElement style="fee1" x="0" y="0" width="52" height="15" uuid="92c9ebe9-2527-4579-ba11-0b11dde27a63"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[($P{parameter1} != null ? Integer.parseInt($P{parameter1})*Integer.parseInt($P{parameter5}) : null )]]></textFieldExpression>
+							</textField>
+							<textField pattern="##0.00" isBlankWhenNull="true">
+								<reportElement style="fee2" x="0" y="15" width="52" height="15" uuid="b32bfdc0-d4d3-408f-b985-11eb6330c976"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[($P{parameter5} != null ? Integer.parseInt($P{parameter5}) : null )]]></textFieldExpression>
+							</textField>
+							<textField pattern="##0.00" isBlankWhenNull="true">
+								<reportElement style="fee3" x="0" y="30" width="52" height="15" uuid="69877503-fb96-4036-afab-3991576bbade"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[($P{parameter6} != null ? Integer.parseInt($P{parameter6}) : null )]]></textFieldExpression>
+							</textField>
+							<textField pattern="##0.00" isBlankWhenNull="true">
+								<reportElement style="fee4" x="0" y="45" width="52" height="15" uuid="95ab523f-f5c3-472c-a207-1a2817df7764"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[($P{parameter7} != null ? Integer.parseInt($P{parameter7}) : null )]]></textFieldExpression>
+							</textField>
+							<textField pattern="##0.00" isBlankWhenNull="true">
+								<reportElement x="0" y="60" width="52" height="15" uuid="3ea23a8d-b8ea-43a5-8847-7dab515f41c3"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[($P{parameter8} != null ? Integer.parseInt($P{parameter8})*4 : null )]]></textFieldExpression>
+							</textField>
+							<textField pattern="##0.00" isBlankWhenNull="true">
+								<reportElement x="0" y="75" width="52" height="15" uuid="849addb2-7740-48c8-9882-de326f149ded"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[($P{parameter2} != null && $P{parameter9} != null ? Integer.parseInt($P{parameter2})*Integer.parseInt($P{parameter9}) : null )]]></textFieldExpression>
+							</textField>
+							<textField pattern="##0.00" isBlankWhenNull="true">
+								<reportElement x="0" y="90" width="52" height="15" uuid="2cca89c3-44c2-4aef-9f55-2d175ea31ef6"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[($P{parameter3} != null ? Integer.parseInt($P{parameter3})*Integer.parseInt($P{parameter10}) : null )]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="150" y="6" width="100" height="20" uuid="45a14a0f-9e1f-4f10-91a2-350e9a6d294c"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Invoice]]></text>
+			</staticText>
+			<textField pattern="###0">
+				<reportElement x="331" y="37" width="49" height="20" uuid="21c7be43-e9e8-4314-9c6a-35b622f45ad0"/>
+				<textFieldExpression><![CDATA[$F{billcce_BILL_NO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="71" width="150" height="17" uuid="2d6cec39-3da4-4d01-a5ee-d8e342f04cb7"/>
+				<textFieldExpression><![CDATA[$F{billcce_NAME}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="37" width="50" height="17" uuid="eebf7cda-c80f-49d0-807d-d5fbccad4095"/>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="37" width="100" height="17" uuid="52a75ffc-8971-491a-850a-6daa2092ea41"/>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{billcce_DATE})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="71" width="50" height="17" uuid="bdd77c6e-f103-4c06-9225-8b5ee581dd18"/>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="54" width="50" height="17" uuid="55c7b7df-1f3d-45cd-9d78-32f3af997a31"/>
+				<text><![CDATA[Veh. No]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="54" width="100" height="17" uuid="25c6463f-6f85-4ea1-afb3-c04309a39372"/>
+				<textFieldExpression><![CDATA[$F{billcce_VNO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="88" width="50" height="17" uuid="3368b61b-37f6-4ed1-b0d5-59905203eb92"/>
+				<text><![CDATA[Milage]]></text>
+			</staticText>
+			<textField pattern="###0">
+				<reportElement x="70" y="88" width="100" height="17" uuid="f69d663d-9621-4708-8539-0b9199ab33b1"/>
+				<textFieldExpression><![CDATA[$F{billcce_MILLAGE}.intValue() + " Km"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="331" y="68" width="49" height="20" uuid="3d73ed0f-f3b3-4e53-87ff-d240df6d6334"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{rePrintType}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="36" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="32" splitType="Stretch"/>
+	</summary>
+</jasperReport>
