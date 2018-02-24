@@ -320,12 +320,12 @@ where
 								<text><![CDATA[Description]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="table 2_CH" height="58" rowSpan="1">
+						<jr:columnFooter height="58" rowSpan="1">
 							<box>
 								<rightPen lineWidth="0.0"/>
 							</box>
 							<staticText>
-								<reportElement mode="Opaque" x="14" y="0" width="111" height="19" uuid="0df2040b-2bd3-43f6-a7bb-e48c810cf49f"/>
+								<reportElement mode="Opaque" x="14" y="2" width="111" height="16" uuid="0df2040b-2bd3-43f6-a7bb-e48c810cf49f"/>
 								<textElement markup="none"/>
 								<text><![CDATA[Sub Total]]></text>
 							</staticText>
@@ -486,12 +486,12 @@ where
 								<text><![CDATA[Amount]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="table 2_CH" height="58" rowSpan="1">
+						<jr:columnFooter height="58" rowSpan="1">
 							<box>
 								<leftPen lineWidth="0.5"/>
 							</box>
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement mode="Opaque" x="0" y="0" width="52" height="19" uuid="eb657e01-3fc0-461f-94fa-a5773ef7388e"/>
+								<reportElement mode="Opaque" x="0" y="2" width="52" height="16" uuid="eb657e01-3fc0-461f-94fa-a5773ef7388e"/>
 								<textElement textAlignment="Right" markup="none">
 									<font size="10"/>
 								</textElement>

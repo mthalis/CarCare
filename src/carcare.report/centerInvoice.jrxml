@@ -393,9 +393,12 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` like '$P!{date}%']]>
 								<text><![CDATA[Description]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="table 1_CH" height="58" rowSpan="1">
+						<jr:columnFooter height="58" rowSpan="1">
+							<box>
+								<rightPen lineWidth="0.5"/>
+							</box>
 							<textField>
-								<reportElement mode="Opaque" x="15" y="0" width="104" height="19" uuid="2fb8e8ea-3a72-406a-9db5-a48e3c60ea22"/>
+								<reportElement mode="Opaque" x="15" y="2" width="104" height="16" uuid="2fb8e8ea-3a72-406a-9db5-a48e3c60ea22"/>
 								<textElement markup="none">
 									<font size="10"/>
 								</textElement>
@@ -469,23 +472,23 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` like '$P!{date}%']]>
 								<text><![CDATA[Amount Rs.]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="table 1_CH" height="58" rowSpan="1">
+						<jr:columnFooter height="58" rowSpan="1">
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement mode="Opaque" x="0" y="0" width="64" height="19" uuid="eb657e01-3fc0-461f-94fa-a5773ef7388e"/>
+								<reportElement mode="Opaque" x="2" y="2" width="62" height="17" uuid="eb657e01-3fc0-461f-94fa-a5773ef7388e"/>
 								<textElement textAlignment="Right" markup="none">
 									<font size="10"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$P{parameter34} != null ? Integer.parseInt($P{parameter34}): null]]></textFieldExpression>
 							</textField>
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement mode="Opaque" x="0" y="19" width="64" height="19" uuid="41a9a706-e5d4-48ed-93d8-c8684a85e423"/>
+								<reportElement mode="Opaque" x="2" y="19" width="62" height="19" uuid="41a9a706-e5d4-48ed-93d8-c8684a85e423"/>
 								<textElement textAlignment="Right">
 									<font size="10"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$P{parameter35} != null ? Integer.parseInt($P{parameter35}): null]]></textFieldExpression>
 							</textField>
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement mode="Opaque" x="0" y="38" width="64" height="19" uuid="fcfa88ce-de6d-4443-8dfa-e17b4ba74438"/>
+								<reportElement mode="Opaque" x="2" y="38" width="62" height="19" uuid="fcfa88ce-de6d-4443-8dfa-e17b4ba74438"/>
 								<textElement textAlignment="Right">
 									<font size="10"/>
 								</textElement>
