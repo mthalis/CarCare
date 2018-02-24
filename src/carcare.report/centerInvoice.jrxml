@@ -604,7 +604,7 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` like '$P!{date}%']]>
 			</staticText>
 			<line>
 				<reportElement x="140" y="388" width="75" height="1" uuid="1aa81d4d-cc06-4c59-a173-7c23dcb7ddeb">
-					<printWhenExpression><![CDATA[$P{anyOtherChg}.equals("N")]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$P{anyOtherChg}.equals("Y")]]></printWhenExpression>
 				</reportElement>
 			</line>
 			<line>
