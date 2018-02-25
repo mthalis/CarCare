@@ -819,7 +819,7 @@ public class Billing extends javax.swing.JInternalFrame {
                 List<String> descList = new ArrayList<>();
                 List<String> valList = new ArrayList<>();
                 if(!txtChkAlign.getText().equals("0")){
-                    descList.add("Checking Align");
+                    descList.add("Checking Alignment");
                     valList.add(txtChkAlign.getText());
                 }                
                 if(!txtAdstToe.getText().equals("0")){
@@ -873,19 +873,19 @@ public class Billing extends javax.swing.JInternalFrame {
                     params.put("val12", txtDisCCCTotal.getText());
                     params.put("val13", txtCCCTotal.getText());
                     
-                    reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
+                    reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
                 }else{                    
                     params.put("description13", "TOTAL");
 
                     params.put("val13", txtCCCTotal.getText());
                     
-                    reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoiceNoDiscount.jasper";
+                    reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoiceNoDiscount.jasper";
                 }
             }else{
                 String formatDate = format.format( dateBill.getDate());
                 String reportTitle = "CarCare Enterprise Invoice";
-                reportSource = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
-                //reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
+                //reportSource = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
+                //reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
                 
                 params.put("reportName", reportTitle);
                 params.put("vno", txtVNo.getText());
@@ -936,7 +936,19 @@ public class Billing extends javax.swing.JInternalFrame {
                 }                
                 for (int x = 0; x<qtyList.size() ;x++) {
                     params.put("qty"+(x+1), qtyList.get(x));
-                }                
+                }
+                
+                if(null != jTextField35.getText() && Integer.parseInt(jTextField35.getText()) > 0){                        
+                    params.put("subTotal", jTextField44.getText());
+                    params.put("discount", jTextField35.getText());
+                    params.put("total", jTextField46.getText());
+                    
+                    reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
+                }else{                    
+                    params.put("total", jTextField46.getText());
+                    
+                    reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoiceNoDiscount.jasper";
+                }
             }
             
             JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,

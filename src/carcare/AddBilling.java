@@ -1263,7 +1263,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
                         List<String> descList = new ArrayList<>();
                         List<String> valList = new ArrayList<>();
                         if(!txtChkAlign.getText().equals("") && !txtChkAlign.getText().equals("0") ){
-                            descList.add("Checking Align");
+                            descList.add("Checking Alignment");
                             valList.add(txtChkAlign.getText());
                         }                
                         if(!txtAdstToe.getText().equals("") && !txtAdstToe.getText().equals("0")){
@@ -1318,13 +1318,13 @@ public class AddBilling extends javax.swing.JInternalFrame {
                             params.put("val12", txtDisCCCTotal.getText());
                             params.put("val13", txtCCCTotal.getText());
 
-                            reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
+                            reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
                         }else{
                             params.put("description13", "TOTAL");
 
                             params.put("val13", txtCCCTotal.getText());
 
-                            reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoiceNoDiscount.jasper";
+                            reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoiceNoDiscount.jasper";
                         }                        
                         
                         JasperPrint jasperPrintCenter = JasperFillManager.fillReport(reportSource, params,
@@ -1424,7 +1424,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
                         List<String> descList = new ArrayList<>();
                         List<String> valList = new ArrayList<>();
                         if(!txtChkAlign.getText().equals("") && !txtChkAlign.getText().equals("0") ){
-                            descList.add("Checking Align");
+                            descList.add("Checking Alignment");
                             valList.add(txtChkAlign.getText());
                         }                
                         if(!txtAdstToe.getText().equals("") && !txtAdstToe.getText().equals("0")){
@@ -1478,13 +1478,13 @@ public class AddBilling extends javax.swing.JInternalFrame {
                             params.put("val12", txtDisCCCTotal.getText());
                             params.put("val13", txtCCCTotal.getText());
 
-                            reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
+                            reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
                         }else{
                             params.put("description13", "TOTAL");
 
                             params.put("val13", txtCCCTotal.getText());
 
-                            reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoiceNoDiscount.jasper";
+                            reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoiceNoDiscount.jasper";
                         }
                         
                         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,

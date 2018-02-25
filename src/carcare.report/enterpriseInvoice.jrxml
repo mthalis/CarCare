@@ -602,6 +602,9 @@ where
 				</textElement>
 				<textFieldExpression><![CDATA[$P{rePrintType}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="20" y="270" width="312" height="1" uuid="da1232b6-beba-41c3-872e-f3ca92c503da"/>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>
