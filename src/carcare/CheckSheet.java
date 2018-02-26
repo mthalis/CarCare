@@ -5,6 +5,7 @@
  */
 package carcare;
 
+import static carcare.AuthorizedPanel.loggUser;
 import static carcare.CarCare.view_check_window;
 import carcare.controller.BillcccJpaController;
 import carcare.controller.BillcceJpaController;
@@ -48,6 +49,8 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         ((AbstractDocument) txtVNo.getDocument()).setDocumentFilter(filter);
         ((AbstractDocument) jTextField12.getDocument()).setDocumentFilter(filter);
         ((AbstractDocument) jTextField11.getDocument()).setDocumentFilter(filter);
+        
+        jTextField11.setText(loggUser);
     }
 
     CheckSheet(Chksht checkSheet) {

@@ -30,6 +30,7 @@ public class CarCare extends javax.swing.JFrame {
     public static int summaryRe_window = 0;
     public static int sequence_window = 0;
     public static int user_window = 0;
+    public static boolean authorizedUser = false;
     private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(CarCare.class);
     
     public CarCare() {
@@ -225,11 +226,17 @@ public class CarCare extends javax.swing.JFrame {
     }//GEN-LAST:event_pasteMenuItemActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        if(view_check_window == 0 && check_window == 0){
-            CheckSheet checkSheet = new CheckSheet();
+        if(authorizedUser){
+            if(view_check_window == 0 && check_window == 0){
+                CheckSheet checkSheet = new CheckSheet();
+                jDesktopPane1.add(checkSheet);
+                checkSheet.setVisible(true);
+                view_check_window = 1;
+            }
+        }else{
+            AuthorizedPanel checkSheet = new AuthorizedPanel();//9
             jDesktopPane1.add(checkSheet);
             checkSheet.setVisible(true);
-            view_check_window = 1;
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 

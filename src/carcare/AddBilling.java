@@ -1318,13 +1318,13 @@ public class AddBilling extends javax.swing.JInternalFrame {
                             params.put("val12", txtDisCCCTotal.getText());
                             params.put("val13", txtCCCTotal.getText());
 
-                            reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
+                            reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
                         }else{
                             params.put("description13", "TOTAL");
 
                             params.put("val13", txtCCCTotal.getText());
 
-                            reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoiceNoDiscount.jasper";
+                            reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoiceNoDiscount.jasper";
                         }                        
                         
                         JasperPrint jasperPrintCenter = JasperFillManager.fillReport(reportSource, params,
@@ -1332,7 +1332,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
                         
                         String title1 = "CarCare Enterprise Invoice";
                         //String reportSource1 = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
-                        String reportSource1 = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\enterpriseInvoice.jasper";
+                        String reportSource1 = "";//C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\enterpriseInvoice.jasper";
                         Map<String, Object> params1 = new HashMap();
                         params1.put("reportName", title1);
                         params1.put("vno", billcce.getVno());
@@ -1383,6 +1383,18 @@ public class AddBilling extends javax.swing.JInternalFrame {
                         }                
                         for (int x = 0; x<qtyList1.size() ;x++) {
                             params1.put("qty"+(x+1), qtyList1.get(x));
+                        }
+                        
+                        if(null != txtDisCCETotal.getText() && Integer.parseInt(txtDisCCETotal.getText()) > 0){                        
+                            params.put("subTotal", txtSubCCETotal.getText());
+                            params.put("discount", txtDisCCETotal.getText());
+                            params.put("total", txtCCETotal.getText());
+
+                            reportSource1 = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
+                        }else{                    
+                            params.put("total", txtCCETotal.getText());
+
+                            reportSource1 = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoiceNoDiscount.jasper";
                         }
                         
                         JasperPrint jasperPrintEnterPrice = JasperFillManager.fillReport(reportSource1, params1,
@@ -1478,13 +1490,13 @@ public class AddBilling extends javax.swing.JInternalFrame {
                             params.put("val12", txtDisCCCTotal.getText());
                             params.put("val13", txtCCCTotal.getText());
 
-                            reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
+                            reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
                         }else{
                             params.put("description13", "TOTAL");
 
                             params.put("val13", txtCCCTotal.getText());
 
-                            reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoiceNoDiscount.jasper";
+                            reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoiceNoDiscount.jasper";
                         }
                         
                         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
@@ -1508,7 +1520,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
                     try{
                         String title = "CarCare Enterprise Invoice";
                         //String reportSource = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
-                        String reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
+                        String reportSource = "";//C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
                         Map<String, Object> params = new HashMap();
                         params.put("reportName", title);
                         params.put("vno", billcce.getVno());
@@ -1559,6 +1571,18 @@ public class AddBilling extends javax.swing.JInternalFrame {
                         }                
                         for (int x = 0; x<qtyList1.size() ;x++) {
                             params.put("qty"+(x+1), qtyList1.get(x));
+                        }
+                        
+                        if(null != txtDisCCETotal.getText() && Integer.parseInt(txtDisCCETotal.getText()) > 0){                        
+                            params.put("subTotal", txtSubCCETotal.getText());
+                            params.put("discount", txtDisCCETotal.getText());
+                            params.put("total", txtCCETotal.getText());
+
+                            reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
+                        }else{                    
+                            params.put("total", txtCCETotal.getText());
+
+                            reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoiceNoDiscount.jasper";
                         }
 
                         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,

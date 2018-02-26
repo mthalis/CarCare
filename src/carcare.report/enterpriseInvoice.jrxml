@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="420" pageHeight="565" columnWidth="380" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="3e919b32-5197-4282-9668-7a22db27f318">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="6"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -431,7 +431,7 @@ where
 					<jr:column width="73" uuid="e0ae38cc-391c-4c53-b706-fe0c2a64f404">
 						<jr:columnHeader style="table 2_CH" height="21" rowSpan="1">
 							<staticText>
-								<reportElement mode="Opaque" x="0" y="0" width="71" height="20" uuid="cae71e4f-fe64-4027-95b9-6ac0783d4a66"/>
+								<reportElement mode="Opaque" x="0" y="0" width="73" height="20" uuid="cae71e4f-fe64-4027-95b9-6ac0783d4a66"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font isBold="true"/>
 								</textElement>
