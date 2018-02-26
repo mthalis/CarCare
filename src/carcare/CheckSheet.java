@@ -85,23 +85,43 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         jTextField26.setText(checkSheet.getFrCmR1());
         jTextField25.setText(checkSheet.getFrCsR());
         jTextField28.setText(checkSheet.getFrCsR1());
+        jTextField23.setEnabled(false);
+        jTextField27.setEnabled(false);
+        jTextField24.setEnabled(false);
+        jTextField26.setEnabled(false);
+        jTextField25.setEnabled(false);
+        jTextField28.setEnabled(false);
 
         jTextField33.setText(checkSheet.getFrSb());
         jTextField29.setText(checkSheet.getFrCmL());
         jTextField32.setText(checkSheet.getFrCmL1());
         jTextField30.setText(checkSheet.getFrCsL());
         jTextField31.setText(checkSheet.getFrCsL1());
+        jTextField33.setEnabled(false);
+        jTextField29.setEnabled(false);
+        jTextField32.setEnabled(false);
+        jTextField30.setEnabled(false);
+        jTextField31.setEnabled(false);
 
         jTextField3.setText(checkSheet.getReToeR());
         jTextField19.setText(checkSheet.getReToeR1());
         jTextField10.setText(checkSheet.getReCmR());
         jTextField18.setText(checkSheet.getReCmR1());
         jTextField20.setText(checkSheet.getReSb());
+        jTextField3.setEnabled(false);
+        jTextField19.setEnabled(false);
+        jTextField10.setEnabled(false);
+        jTextField18.setEnabled(false);
+        jTextField20.setEnabled(false);
 
         jTextField22.setText(checkSheet.getReToeL());
         jTextField41.setText(checkSheet.getReToeL1());
         jTextField21.setText(checkSheet.getReCmL());
         jTextField40.setText(checkSheet.getReCmL1());
+        jTextField22.setEnabled(false);
+        jTextField41.setEnabled(false);
+        jTextField21.setEnabled(false);
+        jTextField40.setEnabled(false);
 
         jTextField7.setText(checkSheet.getTc1N());
         jTextField16.setText(checkSheet.getTc1I());
@@ -115,25 +135,51 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         jTextField35.setText(checkSheet.getTc4N());
         jTextField34.setText(checkSheet.getTc4I());
         jTextField39.setText(checkSheet.getTc4O());
+        jTextField7.setEnabled(false);
+        jTextField16.setEnabled(false);
+        jTextField36.setEnabled(false);
+        jTextField13.setEnabled(false);
+        jTextField15.setEnabled(false);
+        jTextField37.setEnabled(false);
+        jTextField14.setEnabled(false);
+        jTextField17.setEnabled(false);
+        jTextField38.setEnabled(false);
+        jTextField35.setEnabled(false);
+        jTextField34.setEnabled(false);
+        jTextField39.setEnabled(false);
 
         jTextField6.setText(Integer.toString(checkSheet.getBwi1()));
         jTextField53.setText(Integer.toString(checkSheet.getBw1()));
         jTextField51.setText(Integer.toString(checkSheet.getBwi3()));
         jTextField52.setText(Integer.toString(checkSheet.getBw3()));
+        jTextField6.setEnabled(false);
+        jTextField53.setEnabled(false);
+        jTextField51.setEnabled(false);
+        jTextField52.setEnabled(false);
 
         jTextField55.setText(Integer.toString(checkSheet.getBwi2()));
         jTextField57.setText(Integer.toString(checkSheet.getBw2()));
         jTextField54.setText(Integer.toString(checkSheet.getBwi4()));
         jTextField56.setText(Integer.toString(checkSheet.getBw4()));
+        jTextField55.setEnabled(false);
+        jTextField57.setEnabled(false);
+        jTextField54.setEnabled(false);
+        jTextField56.setEnabled(false);
 
         jCheckBox3.setSelected(checkSheet.getSt());
         jCheckBox1.setSelected(checkSheet.getHlt());
         jCheckBox2.setSelected(checkSheet.getN2());
+        jCheckBox3.setEnabled(false);
+        jCheckBox1.setEnabled(false);
+        jCheckBox2.setEnabled(false);
 
         jTextArea1.setText(checkSheet.getRem());
+        jTextArea1.setEnabled(false);
 
         jTextField12.setText(checkSheet.getJobby());
         jTextField11.setText(checkSheet.getAddby());
+        jTextField12.setEnabled(false);
+        jTextField11.setEnabled(false);
 
         jTextField8.setText(Integer.toString(checkSheet.getBAmount()));            
             
@@ -144,6 +190,11 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         int newMilage = (int) (checkSheet.getMilage() + 6000);
         jTextField5.setText(Integer.toString(newMilage));
         
+        txtDate1.setEnabled(false);
+        jPasswordField1.setEnabled(false);
+        btnClear.setEnabled(false);
+        btnSave.setEnabled(false);
+        jButton1.setEnabled(false);
     }
 
     /**
