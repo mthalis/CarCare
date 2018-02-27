@@ -8,9 +8,13 @@ package carcare;
 import static carcare.CarCare.user_window;
 import carcare.controller.UserJpaController;
 import carcare.model.User;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.DocumentFilter;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -313,6 +317,7 @@ public class AddUser extends javax.swing.JInternalFrame {
             jTable2.getColumnModel().getColumn(0).setResizable(false);
             jTable2.getColumnModel().getColumn(1).setResizable(false);
             jTable2.getColumnModel().getColumn(2).setResizable(false);
+            jTable2.getColumnModel().getColumn(2).setCellRenderer(new CustomRenderer());
         }
 
         jPanel10.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 360, 310));
@@ -626,4 +631,17 @@ public class AddUser extends javax.swing.JInternalFrame {
     private void showPopupMessage(String msg){
         JOptionPane.showMessageDialog(null, msg);
     }
+}
+
+class CustomRenderer extends DefaultTableCellRenderer {
+    
+    @Override
+    public void setValue(Object value){
+        if( (Short)value == 1){
+            value = "Yes";
+        } else {
+            value = "No";
+        } 
+        super.setValue(value);
+    }    
 }

@@ -9,6 +9,7 @@ import carcare.controller.CustdataJpaController;
 import static carcare.CarCare.view_bill_window;
 import carcare.controller.BillcccJpaController;
 import carcare.controller.BillcceJpaController;
+import carcare.controller.UserJpaController;
 import carcare.model.Billccc;
 import carcare.model.Billcce;
 import db.ConnectionManager;
@@ -24,11 +25,12 @@ import java.util.List;
 import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.DocumentFilter;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.swing.JRViewer;
-import net.sf.jasperreports.view.JasperViewer;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 
 /**
@@ -40,6 +42,7 @@ public class Billing extends javax.swing.JInternalFrame {
     CustdataJpaController custdataJpaController = new CustdataJpaController(CarCare.EMF);
     BillcceJpaController billcceJpaController = new BillcceJpaController(CarCare.EMF);
     BillcccJpaController billcccJpaController = new BillcccJpaController(CarCare.EMF);
+    UserJpaController userJpaController = new UserJpaController(CarCare.EMF);
     boolean carCareCenter;
     private static final Logger logger = Logger.getLogger(Billing.class);
     
@@ -105,6 +108,9 @@ public class Billing extends javax.swing.JInternalFrame {
         jRadioButton3.setSelected(true);
         buttonGroup1.add(jRadioButton3);
         buttonGroup1.add(jRadioButton4);
+        
+        DocumentFilter filter = new UppercaseDocumentFilter ();
+        ((AbstractDocument) jTextField1.getDocument()).setDocumentFilter(filter);
     }
 
     Billing(Billcce billcce) {
@@ -182,6 +188,9 @@ public class Billing extends javax.swing.JInternalFrame {
         jRadioButton3.setSelected(true);
         buttonGroup1.add(jRadioButton3);
         buttonGroup1.add(jRadioButton4);
+        
+        DocumentFilter filter = new UppercaseDocumentFilter ();
+        ((AbstractDocument) jTextField1.getDocument()).setDocumentFilter(filter);
     }
     
     void drawLines(Graphics g) {
@@ -239,6 +248,7 @@ public class Billing extends javax.swing.JInternalFrame {
         jLabel34 = new javax.swing.JLabel();
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
+        jTextField1 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -444,7 +454,13 @@ public class Billing extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 90, -1));
-        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 130, -1));
+
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 170, 130, -1));
 
         jLabel34.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel34.setText("Re Print");
@@ -457,6 +473,19 @@ public class Billing extends javax.swing.JInternalFrame {
         jRadioButton4.setText("Original");
         jRadioButton4.setEnabled(false);
         jPanel1.add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, -1, -1));
+
+        jTextField1.setText("User Name");
+        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField1MouseClicked(evt);
+            }
+        });
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 130, -1));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CAR CARE CENTER", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 0, 51))); // NOI18N
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -765,13 +794,34 @@ public class Billing extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        String userName = jTextField1.getText();
         char[] passWd = jPasswordField1.getPassword();
-            String pwd = "";
+        String pwd = "";
 
-            for(char pw : passWd){
-                pwd = pwd + pw;
+        for(char pw : passWd){
+            pwd = pwd + pw;
+        }
+
+        boolean authenticate= false;
+        boolean msgDispaly = false;
+        if (userName.isEmpty()) {
+            JOptionPane.showMessageDialog(jPanel1, "Please enter User Name !");
+            jTextField1.requestFocus();
+            msgDispaly = true;
+        }else{
+            if (pwd.isEmpty()){
+                JOptionPane.showMessageDialog(jPanel1, "Please Enter Password !");
+                jPasswordField1.requestFocus();
+                msgDispaly = true;
+            }else{
+                msgDispaly = false;
+                String pw = DigestUtils.sha256Hex(pwd);                    
+                authenticate  = userJpaController.authenticateUserWithRole(userName, pw);
             }
-        if(pwd.equals("123")){
+        }
+
+        if(authenticate){
             txtName.setEnabled(true);
             txtAddr.setEnabled(true);
             txtPhone.setEnabled(true);
@@ -780,13 +830,20 @@ public class Billing extends javax.swing.JInternalFrame {
             jRadioButton3.setEnabled(true);
             jRadioButton4.setEnabled(true);
         }else{
+            
             txtName.setEnabled(false);
             txtAddr.setEnabled(false);
             txtPhone.setEnabled(false);
             jButton2.setEnabled(false);
             jRadioButton3.setEnabled(false);
             jRadioButton4.setEnabled(false);
-            JOptionPane.showMessageDialog(null, "You are not authorize to update Customer Details !");
+            
+            if(!msgDispaly){
+                jTextField1.setText("");
+                jPasswordField1.setText("");
+                jTextField1.requestFocusInWindow();
+                JOptionPane.showMessageDialog(jPanel1, "You are not authorize to update Customer Details !");
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -873,13 +930,13 @@ public class Billing extends javax.swing.JInternalFrame {
                     params.put("val12", txtDisCCCTotal.getText());
                     params.put("val13", txtCCCTotal.getText());
                     
-                    reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
+                    reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
                 }else{                    
                     params.put("description13", "TOTAL");
 
                     params.put("val13", txtCCCTotal.getText());
                     
-                    reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoiceNoDiscount.jasper";
+                    reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoiceNoDiscount.jasper";
                 }
             }else{
                 String formatDate = format.format( dateBill.getDate());
@@ -943,11 +1000,11 @@ public class Billing extends javax.swing.JInternalFrame {
                     params.put("discount", jTextField35.getText());
                     params.put("total", jTextField46.getText());
                     
-                    reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
+                    reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
                 }else{                    
                     params.put("total", jTextField46.getText());
                     
-                    reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoiceNoDiscount.jasper";
+                    reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoiceNoDiscount.jasper";
                 }
             }
             
@@ -996,6 +1053,18 @@ public class Billing extends javax.swing.JInternalFrame {
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        jPasswordField1.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        jButton1.requestFocusInWindow();
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
+
+    private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
+        jTextField1.setText("");
+    }//GEN-LAST:event_jTextField1MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
@@ -1061,6 +1130,7 @@ public class Billing extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;

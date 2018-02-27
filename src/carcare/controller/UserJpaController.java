@@ -194,6 +194,27 @@ public class UserJpaController implements Serializable {
        return authenticated;
     }
     
+    public boolean authenticateUserWithRole(String userName, String pwd){
+        boolean authenticated = false;
+        EntityManager em = getEntityManager();
+        try{
+            em.getTransaction().begin();
+            Query query = em.createQuery("select u.id from User u where u.username = :userName and u.password = :pwd and u.active = :status and u.role = 'Administrator'");
+            query.setParameter("userName", userName);
+            query.setParameter("pwd", pwd);
+            query.setParameter("status", (short)1);
+            int log = query.getResultList().size();
+            em.getTransaction().commit();
+            if(log > 0){
+               authenticated = true;
+            }
+           logger.debug("authenticated -> " + authenticated);
+       }catch(Exception e){
+           logger.fatal("Error Occured while authenticateUser -> " + e);
+       }
+       return authenticated;
+    }
+    
     public int updateUserPWD(User user){
         EntityManager em = getEntityManager();
         int outPut = 0;

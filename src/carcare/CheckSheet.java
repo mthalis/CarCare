@@ -11,6 +11,7 @@ import carcare.controller.BillcccJpaController;
 import carcare.controller.BillcceJpaController;
 import carcare.controller.ChkshtJpaController;
 import carcare.controller.CustdataJpaController;
+import carcare.controller.UserJpaController;
 import carcare.model.Chksht;
 import carcare.model.Custdata;
 import java.awt.Dimension;
@@ -23,6 +24,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.DocumentFilter;
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *
@@ -34,6 +36,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
     ChkshtJpaController chkshtJpaController = new ChkshtJpaController(CarCare.EMF);
     BillcccJpaController billcccJpaController = new BillcccJpaController(CarCare.EMF);
     BillcceJpaController billcceJpaController = new BillcceJpaController(CarCare.EMF);
+    UserJpaController userJpaController = new UserJpaController(CarCare.EMF);
     boolean vNoEventFire = true;
     
     public CheckSheet() {
@@ -49,7 +52,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         ((AbstractDocument) txtVNo.getDocument()).setDocumentFilter(filter);
         ((AbstractDocument) jTextField12.getDocument()).setDocumentFilter(filter);
         ((AbstractDocument) jTextField11.getDocument()).setDocumentFilter(filter);
-        
+        ((AbstractDocument) jTextField1.getDocument()).setDocumentFilter(filter);
         jTextField11.setText(loggUser);
     }
 
@@ -192,6 +195,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         
         txtDate1.setEnabled(false);
         jPasswordField1.setEnabled(false);
+        jTextField1.setEnabled(false);
         btnClear.setEnabled(false);
         btnSave.setEnabled(false);
         jButton1.setEnabled(false);
@@ -319,6 +323,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         btnSave = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jPasswordField1 = new javax.swing.JPasswordField();
+        jTextField1 = new javax.swing.JTextField();
         txtMilage = new javax.swing.JTextField();
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
@@ -945,7 +950,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                 btnClearActionPerformed(evt);
             }
         });
-        jPanel9.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 90, -1));
+        jPanel9.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 90, -1));
 
         btnClose.setText("Close");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
@@ -953,7 +958,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                 btnCloseActionPerformed(evt);
             }
         });
-        jPanel9.add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 90, -1));
+        jPanel9.add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 90, -1));
 
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -961,7 +966,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                 btnSaveActionPerformed(evt);
             }
         });
-        jPanel9.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 90, -1));
+        jPanel9.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 90, -1));
 
         jButton1.setText("Login");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -969,10 +974,29 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel9.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 90, -1));
-        jPanel9.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 110, 25));
+        jPanel9.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 90, -1));
 
-        jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, 133, 360));
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
+        jPanel9.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 110, 20));
+
+        jTextField1.setText("User Name");
+        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField1MouseClicked(evt);
+            }
+        });
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jPanel9.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 205, 110, 20));
+
+        jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, 133, 380));
 
         txtMilage.setEnabled(false);
         jPanel1.add(txtMilage, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 120, 25));
@@ -1135,14 +1159,14 @@ public class CheckSheet extends javax.swing.JInternalFrame {
             checkSheet.setTc4O(jTextField39.getText());
             
             checkSheet.setBwi1(!jTextField6.getText().isEmpty() ? Integer.parseInt(jTextField6.getText()) : 0);
-            checkSheet.setBw1(!jTextField6.getText().isEmpty() ? Integer.parseInt(jTextField53.getText()): 0);
-            checkSheet.setBwi3(!jTextField6.getText().isEmpty() ? Integer.parseInt(jTextField51.getText()): 0);
-            checkSheet.setBw3(!jTextField6.getText().isEmpty() ? Integer.parseInt(jTextField52.getText()): 0);
+            checkSheet.setBw1(!jTextField53.getText().isEmpty() ? Integer.parseInt(jTextField53.getText()): 0);
+            checkSheet.setBwi3(!jTextField51.getText().isEmpty() ? Integer.parseInt(jTextField51.getText()): 0);
+            checkSheet.setBw3(!jTextField52.getText().isEmpty() ? Integer.parseInt(jTextField52.getText()): 0);
             
-            checkSheet.setBwi2(!jTextField6.getText().isEmpty() ? Integer.parseInt(jTextField55.getText()): 0);
-            checkSheet.setBw2(!jTextField6.getText().isEmpty() ? Integer.parseInt(jTextField57.getText()): 0);
-            checkSheet.setBwi4(!jTextField6.getText().isEmpty() ? Integer.parseInt(jTextField54.getText()): 0);
-            checkSheet.setBw4(!jTextField6.getText().isEmpty() ? Integer.parseInt(jTextField56.getText()): 0);
+            checkSheet.setBwi2(!jTextField55.getText().isEmpty() ? Integer.parseInt(jTextField55.getText()): 0);
+            checkSheet.setBw2(!jTextField57.getText().isEmpty() ? Integer.parseInt(jTextField57.getText()): 0);
+            checkSheet.setBwi4(!jTextField54.getText().isEmpty() ? Integer.parseInt(jTextField54.getText()): 0);
+            checkSheet.setBw4(!jTextField56.getText().isEmpty() ? Integer.parseInt(jTextField56.getText()): 0);
             
             checkSheet.setSt(jCheckBox3.isSelected());
             checkSheet.setHlt(jCheckBox1.isSelected());
@@ -1472,13 +1496,33 @@ public class CheckSheet extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtVNoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String userName = jTextField1.getText();
         char[] passWd = jPasswordField1.getPassword();
-            String pwd = "";
+        String pwd = "";
 
-            for(char pw : passWd){
-                pwd = pwd + pw;
+        for(char pw : passWd){
+            pwd = pwd + pw;
+        }
+
+        boolean authenticate= false;
+        boolean msgDispaly = false;
+        if (userName.isEmpty()) {
+            JOptionPane.showMessageDialog(jPanel1, "Please enter User Name !");
+            jTextField1.requestFocus();
+            msgDispaly = true;
+        }else{
+            if (pwd.isEmpty()){
+                JOptionPane.showMessageDialog(jPanel1, "Please Enter Password !");
+                jPasswordField1.requestFocus();
+                msgDispaly = true;
+            }else{
+                msgDispaly = false;
+                String pw = DigestUtils.sha256Hex(pwd);                    
+                authenticate  = userJpaController.authenticateUserWithRole(userName, pw);
             }
-        if(pwd.equals("123")){
+        }
+
+        if(authenticate){
             jTextField4.setEnabled(true);
             jTextField5.setEnabled(true);
             jTextField8.setEnabled(true);
@@ -1486,7 +1530,13 @@ public class CheckSheet extends javax.swing.JInternalFrame {
             jTextField4.setEnabled(false);
             jTextField5.setEnabled(false);
             jTextField8.setEnabled(false);
-            JOptionPane.showMessageDialog(null, "You are not authorize to update Milage & Payment Details !");
+            
+            if(!msgDispaly){
+                jTextField1.setText("");
+                jPasswordField1.setText("");
+                jTextField1.requestFocusInWindow();
+                JOptionPane.showMessageDialog(null, "You are not authorize to update Milage & Payment Details !");
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -1500,6 +1550,18 @@ public class CheckSheet extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_jTextField12KeyTyped
+
+    private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
+        jTextField1.setText("");
+    }//GEN-LAST:event_jTextField1MouseClicked
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        jPasswordField1.requestFocusInWindow();
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        jButton1.requestFocusInWindow();
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     public void keyTyped(KeyEvent e) {
       char c = e.getKeyChar();
@@ -1579,6 +1641,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
