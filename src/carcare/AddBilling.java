@@ -25,8 +25,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.text.AbstractDocument;
@@ -809,7 +807,21 @@ public class AddBilling extends javax.swing.JInternalFrame {
         jPanel5.add(jTextField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 40, -1));
 
         txtOther1Qt.setText("4");
-        txtOther1Qt.setEnabled(false);
+        txtOther1Qt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtOther1QtFocusLost(evt);
+            }
+        });
+        txtOther1Qt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtOther1QtActionPerformed(evt);
+            }
+        });
+        txtOther1Qt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtOther1QtKeyTyped(evt);
+            }
+        });
         jPanel5.add(txtOther1Qt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 40, -1));
 
         jTextField34.setEnabled(false);
@@ -1338,14 +1350,12 @@ public class AddBilling extends javax.swing.JInternalFrame {
                         params1.put("vno", billcce.getVno());
                         params1.put("date", format.format(billcce.getDate()));
                         params1.put("rePrintType", "");
-                        params1.put("subTotal", txtSubCCETotal.getText());
-                        params1.put("discount", !txtDisCCETotal.getText().equals("") ? txtDisCCETotal.getText() : "0");
-                        params1.put("total", txtCCETotal.getText());
 
                         List<String> descList1 = new ArrayList<>();
                         List<String> valList1 = new ArrayList<>();
                         List<String> qtyList1 = new ArrayList<>();
-                        if(!jTextField27.getText().equals("") && !jTextField27.getText().equals("0")){
+                        if((!jTextField27.getText().equals("") && !jTextField27.getText().equals("0")) && 
+                                (!jTextField20.getText().equals("") && !jTextField20.getText().equals("0"))){
                             descList1.add("Wheel Balancing");
                             valList1.add(jTextField27.getText());
                             qtyList1.add(jTextField20.getText());
@@ -1353,18 +1363,23 @@ public class AddBilling extends javax.swing.JInternalFrame {
                         if(!jTextField33.getText().equals("") && !jTextField33.getText().equals("0")){
                             descList1.add("Weights");
                             valList1.add(jTextField33.getText());
+                            qtyList1.add("1");
                         }
                         if(!jTextField32.getText().equals("") && !jTextField32.getText().equals("0")){
                             descList1.add("Fixed Camber Fr.");
                             valList1.add(jTextField32.getText());
+                            qtyList1.add("1");
                         }
                         if(!jTextField31.getText().equals("") && !jTextField31.getText().equals("0")){
                             descList1.add("Fixed Camber Re.");
                             valList1.add(jTextField31.getText());
+                            qtyList1.add("1");
                         }
-                        if(!jTextField30.getText().equals("") && !jTextField30.getText().equals("0")){
+                        if((!jTextField30.getText().equals("") && !jTextField30.getText().equals("0")) && 
+                                (!txtOther1Qt.getText().equals("") && !txtOther1Qt.getText().equals("0"))){
                             descList1.add("N2");
                             valList1.add(jTextField30.getText());
+                            qtyList1.add(txtOther1Qt.getText());
                         }
                         if(!jTextField29.getText().equals("") && !jTextField29.getText().equals("0")){
                             descList1.add("Tyre Change");
@@ -1376,7 +1391,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
                             valList1.add(jTextField28.getText());
                             qtyList1.add(txtOther3Qt.getText());
                         }
-
+                        
                         for (int x = 0; x<descList1.size() ;x++) {
                             params1.put("description"+(x+1), descList1.get(x));
                             params1.put("val"+(x+1), valList1.get(x));
@@ -1385,14 +1400,14 @@ public class AddBilling extends javax.swing.JInternalFrame {
                             params1.put("qty"+(x+1), qtyList1.get(x));
                         }
                         
-                        if(null != txtDisCCETotal.getText() && Integer.parseInt(txtDisCCETotal.getText()) > 0){                        
-                            params.put("subTotal", txtSubCCETotal.getText());
-                            params.put("discount", txtDisCCETotal.getText());
-                            params.put("total", txtCCETotal.getText());
+                        if(!txtDisCCETotal.getText().equals("") && !txtDisCCETotal.getText().equals("0")){                       
+                            params1.put("subTotal", txtSubCCETotal.getText());
+                            params1.put("discount", txtDisCCETotal.getText());
+                            params1.put("total", txtCCETotal.getText());
 
                             reportSource1 = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
                         }else{                    
-                            params.put("total", txtCCETotal.getText());
+                            params1.put("total", txtCCETotal.getText());
 
                             reportSource1 = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoiceNoDiscount.jasper";
                         }
@@ -1526,14 +1541,12 @@ public class AddBilling extends javax.swing.JInternalFrame {
                         params.put("vno", billcce.getVno());
                         params.put("date", format.format(billcce.getDate()));
                         params.put("rePrintType", "");
-                        params.put("subTotal", txtSubCCETotal.getText());
-                        params.put("discount", !txtDisCCETotal.getText().equals("") ? txtDisCCETotal.getText() : "0");
-                        params.put("total", txtCCETotal.getText());
-
+                        
                         List<String> descList1 = new ArrayList<>();
                         List<String> valList1 = new ArrayList<>();
                         List<String> qtyList1 = new ArrayList<>();
-                        if(!jTextField27.getText().equals("") && !jTextField27.getText().equals("0")){
+                        if((!jTextField27.getText().equals("") && !jTextField27.getText().equals("0")) && 
+                                (!jTextField20.getText().equals("") && !jTextField20.getText().equals("0"))){
                             descList1.add("Wheel Balancing");
                             valList1.add(jTextField27.getText());
                             qtyList1.add(jTextField20.getText());
@@ -1541,18 +1554,23 @@ public class AddBilling extends javax.swing.JInternalFrame {
                         if(!jTextField33.getText().equals("") && !jTextField33.getText().equals("0")){
                             descList1.add("Weights");
                             valList1.add(jTextField33.getText());
+                            qtyList1.add("1");
                         }
                         if(!jTextField32.getText().equals("") && !jTextField32.getText().equals("0")){
                             descList1.add("Fixed Camber Fr.");
                             valList1.add(jTextField32.getText());
+                            qtyList1.add("1");
                         }
                         if(!jTextField31.getText().equals("") && !jTextField31.getText().equals("0")){
                             descList1.add("Fixed Camber Re.");
                             valList1.add(jTextField31.getText());
+                            qtyList1.add("1");
                         }
-                        if(!jTextField30.getText().equals("") && !jTextField30.getText().equals("0")){
+                        if((!jTextField30.getText().equals("") && !jTextField30.getText().equals("0")) && 
+                                (!txtOther1Qt.getText().equals("") && !txtOther1Qt.getText().equals("0"))){
                             descList1.add("N2");
                             valList1.add(jTextField30.getText());
+                            qtyList1.add(txtOther1Qt.getText());
                         }
                         if(!jTextField29.getText().equals("") && !jTextField29.getText().equals("0")){
                             descList1.add("Tyre Change");
@@ -1573,16 +1591,16 @@ public class AddBilling extends javax.swing.JInternalFrame {
                             params.put("qty"+(x+1), qtyList1.get(x));
                         }
                         
-                        if(null != txtDisCCETotal.getText() && Integer.parseInt(txtDisCCETotal.getText()) > 0){                        
+                        if(!txtDisCCETotal.getText().equals("") && !txtDisCCETotal.getText().equals("0")){                        
                             params.put("subTotal", txtSubCCETotal.getText());
                             params.put("discount", txtDisCCETotal.getText());
                             params.put("total", txtCCETotal.getText());
 
-                            reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
+                            reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
                         }else{                    
                             params.put("total", txtCCETotal.getText());
 
-                            reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoiceNoDiscount.jasper";
+                            reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoiceNoDiscount.jasper";
                         }
 
                         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
@@ -1641,8 +1659,9 @@ public class AddBilling extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField31FocusLost
 
     private void jTextField30FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField30FocusLost
-        int outPut = Integer.parseInt(!jTextField30.getText().isEmpty() ? jTextField30.getText() : "0")*4; 
-        jTextField41.setText(Integer.toString(outPut));
+        int val1 = Integer.parseInt(!txtOther1Qt.getText().isEmpty() ? txtOther1Qt.getText() : "0"); 
+        int val2 = Integer.parseInt(!jTextField30.getText().isEmpty() ? jTextField30.getText() : "0");         
+        jTextField41.setText(Integer.toString(val1*val2));
         setCCETotal();
     }//GEN-LAST:event_jTextField30FocusLost
 
@@ -1878,7 +1897,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField32ActionPerformed
 
     private void jTextField31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField31ActionPerformed
-        jTextField30.requestFocusInWindow();
+        txtOther1Qt.requestFocusInWindow();
     }//GEN-LAST:event_jTextField31ActionPerformed
 
     private void jTextField30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField30ActionPerformed
@@ -1945,6 +1964,24 @@ public class AddBilling extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(jPanel1, "AddBy and Passwordd Combination Incorrect !");
         }
     }//GEN-LAST:event_txtPassWdActionPerformed
+
+    private void txtOther1QtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOther1QtActionPerformed
+        jTextField30.requestFocusInWindow();
+    }//GEN-LAST:event_txtOther1QtActionPerformed
+
+    private void txtOther1QtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtOther1QtKeyTyped
+        keyTyped(evt);
+        if(txtOther1Qt.getText().length()>=4) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtOther1QtKeyTyped
+
+    private void txtOther1QtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtOther1QtFocusLost
+        int val1 = Integer.parseInt(!txtOther1Qt.getText().isEmpty() ? txtOther1Qt.getText() : "0"); 
+        int val2 = Integer.parseInt(!jTextField30.getText().isEmpty() ? jTextField30.getText() : "0");         
+        jTextField41.setText(Integer.toString(val1*val2));
+        setCCETotal();
+    }//GEN-LAST:event_txtOther1QtFocusLost
 
     public void keyTyped(KeyEvent e) {
       char c = e.getKeyChar();

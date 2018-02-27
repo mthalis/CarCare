@@ -948,9 +948,6 @@ public class Billing extends javax.swing.JInternalFrame {
                 params.put("vno", txtVNo.getText());
                 params.put("date", formatDate);
                 params.put("rePrintType", rePrintType);
-                params.put("subTotal", jTextField44.getText());
-                params.put("discount", jTextField35.getText());
-                params.put("total", jTextField46.getText());
                 
                 List<String> descList = new ArrayList<>();
                 List<String> valList = new ArrayList<>();
@@ -963,18 +960,22 @@ public class Billing extends javax.swing.JInternalFrame {
                 if(!jTextField33.getText().equals("0")){
                     descList.add("Weights");
                     valList.add(jTextField33.getText());
+                    qtyList.add("1");
                 }
                 if(!jTextField32.getText().equals("0")){
                     descList.add("Fixed Camber Fr.");
                     valList.add(jTextField32.getText());
+                    qtyList.add("1");
                 }
                 if(!jTextField31.getText().equals("0")){
                     descList.add("Fixed Camber Re.");
                     valList.add(jTextField31.getText());
+                    qtyList.add("1");
                 }
                 if(!jTextField30.getText().equals("0")){
                     descList.add("N2");
                     valList.add(jTextField30.getText());
+                    qtyList.add(jTextField24.getText());
                 }
                 if(!jTextField29.getText().equals("0")){
                     descList.add("Tyre Change");
@@ -1000,11 +1001,11 @@ public class Billing extends javax.swing.JInternalFrame {
                     params.put("discount", jTextField35.getText());
                     params.put("total", jTextField46.getText());
                     
-                    reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
+                    reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
                 }else{                    
                     params.put("total", jTextField46.getText());
                     
-                    reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoiceNoDiscount.jasper";
+                    reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoiceNoDiscount.jasper";
                 }
             }
             
