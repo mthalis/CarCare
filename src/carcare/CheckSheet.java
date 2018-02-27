@@ -1088,6 +1088,10 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                     txtPhone.setText("");
                     txtDate.setDate(null);
                     txtMilage.setText("");
+                    txtDate1.setDate(new Date());
+                    jTextField4.setText("");
+                    jTextField5.setText("");
+                    jTextField8.setText("");
                     txtVNo.requestFocus();
                 }
             }
