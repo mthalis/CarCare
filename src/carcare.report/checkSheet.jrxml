@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CarCare Center Invoice" pageWidth="420" pageHeight="585" columnWidth="380" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="16c86867-cc8d-471c-b025-971dc6f1ee0c">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CarCare Center Check Sheet" pageWidth="420" pageHeight="595" columnWidth="380" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" isIgnorePagination="true" uuid="16c86867-cc8d-471c-b025-971dc6f1ee0c">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -23,56 +23,95 @@
 			<pen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
-	<style name="table 1">
-		<box>
-			<pen lineWidth="1.0" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
+	<subDataset name="Table Dataset 4" uuid="d6339841-be07-4e1e-8afc-230ffc5a184d">
+		<parameter name="parameter1" class="java.lang.String"/>
+		<parameter name="parameter2" class="java.lang.String"/>
+		<parameter name="parameter3" class="java.lang.String"/>
+		<parameter name="parameter4" class="java.lang.String"/>
+		<parameter name="parameter5" class="java.lang.String"/>
+		<parameter name="parameter6" class="java.lang.String"/>
+		<parameter name="parameter7" class="java.lang.String"/>
+		<parameter name="parameter8" class="java.lang.String"/>
+		<parameter name="parameter9" class="java.lang.String"/>
+		<parameter name="parameter10" class="java.lang.String"/>
+		<parameter name="parameter11" class="java.lang.String"/>
+		<parameter name="parameter12" class="java.lang.String"/>
+		<parameter name="parameter13" class="java.lang.String"/>
+		<parameter name="parameter14" class="java.lang.String"/>
+		<parameter name="parameter15" class="java.lang.String"/>
+		<parameter name="parameter16" class="java.lang.String"/>
+		<parameter name="parameter17" class="java.lang.String"/>
+		<parameter name="parameter18" class="java.lang.String"/>
+		<parameter name="parameter19" class="java.lang.String"/>
+		<parameter name="parameter20" class="java.lang.String"/>
+		<parameter name="parameter21" class="java.lang.String"/>
+		<parameter name="parameter22" class="java.lang.String"/>
+		<parameter name="parameter23" class="java.lang.String"/>
+		<parameter name="parameter24" class="java.lang.String"/>
+		<parameter name="parameter25" class="java.lang.String"/>
+		<parameter name="parameter26" class="java.lang.String"/>
+		<parameter name="parameter27" class="java.lang.String"/>
+		<parameter name="parameter28" class="java.lang.String"/>
+		<parameter name="parameter29" class="java.lang.String"/>
+		<parameter name="parameter30" class="java.lang.String"/>
+		<parameter name="parameter31" class="java.lang.String"/>
+		<parameter name="parameter32" class="java.lang.String"/>
+		<parameter name="parameter33" class="java.lang.String"/>
+		<parameter name="parameter34" class="java.lang.String"/>
+		<parameter name="parameter35" class="java.lang.String"/>
+		<parameter name="parameter36" class="java.lang.String"/>
+		<parameter name="parameter37" class="java.lang.String"/>
+		<parameter name="parameter38" class="java.lang.String"/>
+		<parameter name="parameter39" class="java.lang.String"/>
+		<parameter name="parameter40" class="java.lang.String"/>
+	</subDataset>
 	<parameter name="vno" class="java.lang.String"/>
 	<parameter name="date" class="java.lang.String"/>
 	<parameter name="name" class="java.lang.String"/>
 	<parameter name="milage" class="java.lang.String"/>
 	<parameter name="nextAlogn" class="java.lang.String"/>
-	<parameter name="description3" class="java.lang.String"/>
-	<parameter name="description4" class="java.lang.String"/>
-	<parameter name="description5" class="java.lang.String"/>
-	<parameter name="description6" class="java.lang.String"/>
-	<parameter name="description7" class="java.lang.String"/>
-	<parameter name="description8" class="java.lang.String"/>
-	<parameter name="description9" class="java.lang.String"/>
-	<parameter name="description10" class="java.lang.String"/>
-	<parameter name="description11" class="java.lang.String"/>
-	<parameter name="description12" class="java.lang.String"/>
-	<parameter name="description13" class="java.lang.String"/>
-	<parameter name="val1" class="java.lang.String"/>
-	<parameter name="val2" class="java.lang.String"/>
-	<parameter name="val3" class="java.lang.String"/>
-	<parameter name="val4" class="java.lang.String"/>
-	<parameter name="val5" class="java.lang.String"/>
-	<parameter name="val6" class="java.lang.String"/>
-	<parameter name="val7" class="java.lang.String"/>
-	<parameter name="val8" class="java.lang.String"/>
-	<parameter name="val9" class="java.lang.String"/>
-	<parameter name="val10" class="java.lang.String"/>
-	<parameter name="val11" class="java.lang.String"/>
-	<parameter name="val12" class="java.lang.String"/>
-	<parameter name="val13" class="java.lang.String"/>
-	<parameter name="anyOtherChg" class="java.lang.String"/>
+	<parameter name="parameter1" class="java.lang.String"/>
+	<parameter name="parameter2" class="java.lang.String"/>
+	<parameter name="parameter3" class="java.lang.String"/>
+	<parameter name="parameter4" class="java.lang.String"/>
+	<parameter name="parameter5" class="java.lang.String"/>
+	<parameter name="parameter6" class="java.lang.String"/>
+	<parameter name="parameter7" class="java.lang.String"/>
+	<parameter name="parameter8" class="java.lang.String"/>
+	<parameter name="parameter9" class="java.lang.String"/>
+	<parameter name="parameter10" class="java.lang.String"/>
+	<parameter name="parameter11" class="java.lang.String"/>
+	<parameter name="parameter12" class="java.lang.String"/>
+	<parameter name="parameter13" class="java.lang.String"/>
+	<parameter name="parameter14" class="java.lang.String"/>
+	<parameter name="parameter15" class="java.lang.String"/>
+	<parameter name="parameter16" class="java.lang.String"/>
+	<parameter name="parameter17" class="java.lang.String"/>
+	<parameter name="parameter18" class="java.lang.String"/>
+	<parameter name="parameter19" class="java.lang.String"/>
+	<parameter name="parameter20" class="java.lang.String"/>
+	<parameter name="parameter21" class="java.lang.String"/>
+	<parameter name="parameter22" class="java.lang.String"/>
+	<parameter name="parameter23" class="java.lang.String"/>
+	<parameter name="parameter24" class="java.lang.String"/>
+	<parameter name="parameter25" class="java.lang.String"/>
+	<parameter name="parameter26" class="java.lang.String"/>
+	<parameter name="parameter27" class="java.lang.String"/>
+	<parameter name="parameter28" class="java.lang.String"/>
+	<parameter name="parameter29" class="java.lang.String"/>
+	<parameter name="parameter30" class="java.lang.String"/>
+	<parameter name="parameter31" class="java.lang.String"/>
+	<parameter name="parameter32" class="java.lang.String"/>
+	<parameter name="parameter33" class="java.lang.String"/>
+	<parameter name="parameter34" class="java.lang.String"/>
+	<parameter name="parameter35" class="java.lang.String"/>
+	<parameter name="parameter36" class="java.lang.String"/>
+	<parameter name="parameter37" class="java.lang.String"/>
+	<parameter name="parameter38" class="java.lang.String"/>
+	<parameter name="parameter39" class="java.lang.String"/>
+	<parameter name="parameter40" class="java.lang.String"/>
+	<parameter name="parameter41" class="java.lang.String"/>
+	<parameter name="parameter42" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -107,7 +146,7 @@
 			</staticText>
 			<textField pattern="###0">
 				<reportElement x="70" y="88" width="100" height="17" uuid="85abe481-c16a-4cc1-afd7-0f9267df037a"/>
-				<textFieldExpression><![CDATA[$F{$P{milage}}.intValue() + " Km"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{milage} + " Km"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="20" y="88" width="50" height="17" uuid="bfea285d-d04a-4beb-9d14-5044b01499c5"/>
@@ -130,12 +169,872 @@
 			</staticText>
 			<textField pattern="###0">
 				<reportElement x="280" y="88" width="86" height="17" uuid="091a5172-31ed-4940-b14f-d6189a520a9e"/>
-				<textFieldExpression><![CDATA[$F{billccc_MILLAGE}.intValue() + " Km"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{nextAlogn} + " Km"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="216" y="88" width="50" height="17" uuid="88c0a952-98ef-4b19-9440-b2d91b4a9e8d"/>
 				<text><![CDATA[Next Align]]></text>
 			</staticText>
+			<componentElement>
+				<reportElement key="table" style="table" x="20" y="225" width="147" height="60" uuid="efe79006-af3c-423a-b3f6-c2a7c4c582c0"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Table Dataset 4" uuid="ec475f66-9be9-4f5f-a767-f4a1c8141386">
+						<datasetParameter name="parameter21">
+							<datasetParameterExpression><![CDATA[$P{parameter21}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter22">
+							<datasetParameterExpression><![CDATA[$P{parameter22}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter23">
+							<datasetParameterExpression><![CDATA[$P{parameter23}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter24">
+							<datasetParameterExpression><![CDATA[$P{parameter24}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter25">
+							<datasetParameterExpression><![CDATA[$P{parameter25}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter26">
+							<datasetParameterExpression><![CDATA[$P{parameter26}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter27">
+							<datasetParameterExpression><![CDATA[$P{parameter27}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter28">
+							<datasetParameterExpression><![CDATA[$P{parameter28}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter29">
+							<datasetParameterExpression><![CDATA[$P{parameter29}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter30">
+							<datasetParameterExpression><![CDATA[$P{parameter30}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter31">
+							<datasetParameterExpression><![CDATA[$P{parameter31}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter32">
+							<datasetParameterExpression><![CDATA[$P{parameter32}]]></datasetParameterExpression>
+						</datasetParameter>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="27" uuid="59571dcd-ea6b-42fc-a3c7-aa895818f647">
+						<jr:tableHeader height="15" rowSpan="1">
+							<box>
+								<bottomPen lineWidth="0.5"/>
+							</box>
+						</jr:tableHeader>
+						<jr:columnHeader height="13" rowSpan="1">
+							<box>
+								<rightPen lineWidth="0.5"/>
+							</box>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="26" rowSpan="1">
+							<staticText>
+								<reportElement x="2" y="0" width="25" height="13" uuid="af83d55f-2c06-4b97-ae4f-136d3857496a"/>
+								<text><![CDATA[Front]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="2" y="13" width="25" height="13" uuid="49eb1271-d2cc-4cab-9be9-2985286a9c05"/>
+								<text><![CDATA[Rear]]></text>
+							</staticText>
+						</jr:detailCell>
+					</jr:column>
+					<jr:columnGroup width="81" uuid="c2022213-9301-44fc-940d-6cb4e07e0997">
+						<jr:tableHeader height="15" rowSpan="1">
+							<box>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="81" height="15" uuid="f0bc8b20-9cb9-4b37-a4dd-7eda238173f4"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[RIGHT]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:column width="27" uuid="aff099a9-5849-4eb4-8394-bc60d2d101ba">
+							<jr:columnHeader height="13" rowSpan="1">
+								<box>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<staticText>
+									<reportElement x="0" y="0" width="27" height="13" uuid="d9d4b8c0-1741-4f30-a2bd-ded6a38394f2"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<text><![CDATA[Norm]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table_TD" height="26" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="27" height="13" uuid="bfbdd12f-2dac-4881-b0d5-2f9514234b07"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{parameter21}]]></textFieldExpression>
+								</textField>
+								<textField>
+									<reportElement x="0" y="13" width="27" height="13" uuid="6e8c0d44-2eb6-4602-813f-5e53958a7151"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{parameter22}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="27" uuid="e9629ac1-1c23-43e8-86ef-d67f180e355f">
+							<jr:columnHeader height="13" rowSpan="1">
+								<box>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<staticText>
+									<reportElement x="0" y="0" width="27" height="13" uuid="10815ae7-55a6-4748-9215-7c7c9436ce47"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<text><![CDATA[In.]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table_TD" height="26" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="27" height="13" uuid="e1a28c22-c34f-4539-acdb-8d848ef8731d"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{parameter23}]]></textFieldExpression>
+								</textField>
+								<textField>
+									<reportElement x="0" y="13" width="27" height="13" uuid="7586a782-c4d0-4914-9ab0-63fe0900a334"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{parameter24}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="27" uuid="2e5d0b20-cfee-4a87-ab28-7687df455e96">
+							<jr:columnHeader height="13" rowSpan="1">
+								<box>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<staticText>
+									<reportElement x="0" y="0" width="27" height="13" uuid="4df30cb5-86ca-4e22-96c8-c5f19c994cd8"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<text><![CDATA[Out.]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table_TD" height="26" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="27" height="13" uuid="3443c1e7-76c7-43af-a1c5-2cec536240b9"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{parameter25}]]></textFieldExpression>
+								</textField>
+								<textField>
+									<reportElement x="0" y="13" width="27" height="13" uuid="e6693da5-31d4-4cf1-ae01-fe34becdfa39"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{parameter26}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+					<jr:column width="27" uuid="dd6c5046-9fc4-4c36-935a-8f0acfa219ac">
+						<jr:tableHeader height="15" rowSpan="1">
+							<box>
+								<bottomPen lineWidth="0.5"/>
+							</box>
+						</jr:tableHeader>
+						<jr:columnHeader height="13" rowSpan="1">
+							<box>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="27" height="13" uuid="d8f2c5cb-8a62-436f-bfc5-60aaae6d6d64"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Norm]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="26" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="27" height="13" uuid="8bec8da4-e548-4452-85eb-096a08587a63"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$P{parameter27}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="13" width="27" height="13" uuid="1afef535-d227-4c8b-aa6e-0d4411cf2fde"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$P{parameter28}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="27" uuid="af7ff254-e777-4022-b382-30842c2b153a">
+						<jr:tableHeader height="15" rowSpan="1">
+							<box>
+								<bottomPen lineWidth="0.5"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="27" height="15" uuid="19a73e59-bba9-4c23-8475-bd6b0e195bec"/>
+								<textElement verticalAlignment="Middle"/>
+								<text><![CDATA[LEFT]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:columnHeader height="13" rowSpan="1">
+							<box>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="27" height="13" uuid="2b647a5a-6d6d-4d66-856f-2d2e186c1e67"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[In.]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="26" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="27" height="13" uuid="1c9c6f96-5187-4549-b41f-948b08218fc0"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$P{parameter29}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="13" width="27" height="13" uuid="abd0ec50-64d5-480d-92d5-dd366b745ac2"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$P{parameter30}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="27" uuid="59f07f62-b842-4e2f-848c-37ce394bfa9d">
+						<jr:tableHeader height="15" rowSpan="1">
+							<box>
+								<bottomPen lineWidth="0.5"/>
+							</box>
+						</jr:tableHeader>
+						<jr:columnHeader height="13" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="27" height="13" uuid="7bfb9012-9ee4-43c9-adec-9c5228525c56"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Out.]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="26" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="27" height="13" uuid="d1414453-06f4-43c0-9fca-d5b7c4b8f512"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$P{parameter31}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="13" width="27" height="13" uuid="2a5098fd-ed64-46ce-88bc-18e2dbf495c6"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$P{parameter32}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table" style="table" x="217" y="225" width="147" height="60" uuid="59f594c7-f0d8-4125-8420-692e987f04f9"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Table Dataset 4" uuid="bf5e25c3-1560-48e7-940e-f2fb535b0b8c">
+						<datasetParameter name="parameter33">
+							<datasetParameterExpression><![CDATA[$P{parameter33}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter34">
+							<datasetParameterExpression><![CDATA[$P{parameter34}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter35">
+							<datasetParameterExpression><![CDATA[$P{parameter35}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter36">
+							<datasetParameterExpression><![CDATA[$P{parameter36}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter37">
+							<datasetParameterExpression><![CDATA[$P{parameter37}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter38">
+							<datasetParameterExpression><![CDATA[$P{parameter38}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter39">
+							<datasetParameterExpression><![CDATA[$P{parameter39}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter40">
+							<datasetParameterExpression><![CDATA[$P{parameter40}]]></datasetParameterExpression>
+						</datasetParameter>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="27" uuid="5d9a42c9-02af-4101-8af6-e37568f5582f">
+						<jr:tableHeader height="15" rowSpan="1">
+							<box>
+								<bottomPen lineWidth="0.5"/>
+							</box>
+						</jr:tableHeader>
+						<jr:columnHeader height="13" rowSpan="1">
+							<box>
+								<rightPen lineWidth="0.5"/>
+							</box>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="26" rowSpan="1">
+							<staticText>
+								<reportElement x="2" y="0" width="25" height="13" uuid="822b01df-2d6e-4250-8ecd-d66350de0477"/>
+								<text><![CDATA[Front]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="2" y="13" width="25" height="13" uuid="3504d6b5-730c-4363-8903-9782505b8b58"/>
+								<text><![CDATA[Rear]]></text>
+							</staticText>
+						</jr:detailCell>
+					</jr:column>
+					<jr:columnGroup width="54" uuid="327bc0f9-b647-48c9-940a-b714d05fcc89">
+						<jr:tableHeader height="15" rowSpan="1">
+							<box>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="54" height="15" uuid="2066fbe4-0a43-4c9e-a03a-a3d0d4b42989"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[RIGHT]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:column width="27" uuid="e9e9ab81-d37c-46e2-912d-3566a9cc6d3e">
+							<jr:columnHeader height="13" rowSpan="1">
+								<box>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<staticText>
+									<reportElement x="0" y="0" width="27" height="13" uuid="75e3c84d-6735-4dd1-824d-9aeb2b39960a"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<text><![CDATA[In.]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table_TD" height="26" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="27" height="13" uuid="5f4a057c-1be6-4f81-8117-474fc15ad78d"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{parameter33}]]></textFieldExpression>
+								</textField>
+								<textField>
+									<reportElement x="0" y="13" width="27" height="13" uuid="0421c11c-a69f-4ce9-8002-5e02b1fbd90f"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{parameter34}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="27" uuid="6a48ef7e-fcd0-4c6e-8aa3-49d288d1e3c1">
+							<jr:columnHeader height="13" rowSpan="1">
+								<box>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<staticText>
+									<reportElement x="0" y="0" width="27" height="13" uuid="f1ba5c60-33b2-4e3a-8eaa-54236d0e5e5e"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<text><![CDATA[Out.]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table_TD" height="26" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="27" height="13" uuid="2cb4546f-71f8-43ba-b45a-5673cc0842b4"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{parameter35}]]></textFieldExpression>
+								</textField>
+								<textField>
+									<reportElement x="0" y="13" width="27" height="13" uuid="4425be12-e9f8-4780-9bf6-dd85b81f11a9"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{parameter36}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+					<jr:columnGroup width="54" uuid="cf9dc4b3-2db1-44a5-bf37-eecc49890a78">
+						<jr:tableHeader height="15" rowSpan="1">
+							<box>
+								<bottomPen lineWidth="0.5"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="54" height="15" uuid="a935846c-b702-474e-957d-219d14312000"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[LEFT]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:column width="27" uuid="efafde10-8bf7-4183-a2a6-d1edabe87d36">
+							<jr:columnHeader height="13" rowSpan="1">
+								<box>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<staticText>
+									<reportElement x="0" y="0" width="27" height="13" uuid="580dab56-1ebf-4471-abed-a0f4f21dc59f"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<text><![CDATA[In.]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table_TD" height="26" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="27" height="13" uuid="b2531ed1-0d76-4ec8-9f02-8c432eb3ada1"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{parameter37}]]></textFieldExpression>
+								</textField>
+								<textField>
+									<reportElement x="0" y="13" width="27" height="13" uuid="9a0601d1-0fd5-4b15-b247-0262e7cf05cc"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{parameter38}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="27" uuid="76042fd2-566b-4dff-9644-5a4127aafefb">
+							<jr:columnHeader height="13" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="27" height="13" uuid="31522bf5-ad64-4cf0-8313-1dfde58835a5"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<text><![CDATA[Out.]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table_TD" height="26" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="27" height="13" uuid="ba2d22f1-e566-461c-bf2a-050d0550877c"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{parameter39}]]></textFieldExpression>
+								</textField>
+								<textField>
+									<reportElement x="0" y="13" width="27" height="13" uuid="c51de497-c4b5-47cb-ae99-ac3b2c129c66"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{parameter40}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table" style="table" x="20" y="125" width="147" height="80" uuid="55af6808-bf30-4d2e-8ca2-9caea4213b56"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Table Dataset 4" uuid="116b39d8-4678-4f5e-869c-8082316a869b">
+						<datasetParameter name="parameter1">
+							<datasetParameterExpression><![CDATA[$P{parameter1}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter2">
+							<datasetParameterExpression><![CDATA[$P{parameter2}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter3">
+							<datasetParameterExpression><![CDATA[$P{parameter3}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter4">
+							<datasetParameterExpression><![CDATA[$P{parameter4}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter5">
+							<datasetParameterExpression><![CDATA[$P{parameter5}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter6">
+							<datasetParameterExpression><![CDATA[$P{parameter6}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter7">
+							<datasetParameterExpression><![CDATA[$P{parameter7}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter8">
+							<datasetParameterExpression><![CDATA[$P{parameter8}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter9">
+							<datasetParameterExpression><![CDATA[$P{parameter9}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter10">
+							<datasetParameterExpression><![CDATA[$P{parameter10}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter11">
+							<datasetParameterExpression><![CDATA[$P{parameter11}]]></datasetParameterExpression>
+						</datasetParameter>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="45" uuid="2e15fc95-6d9a-4465-b491-1889f7a0d108">
+						<jr:tableHeader height="15" rowSpan="1">
+							<box>
+								<bottomPen lineWidth="0.5"/>
+							</box>
+						</jr:tableHeader>
+						<jr:columnHeader height="14" rowSpan="1">
+							<box>
+								<rightPen lineWidth="0.5"/>
+							</box>
+						</jr:columnHeader>
+						<jr:columnFooter height="14" rowSpan="1">
+							<staticText>
+								<reportElement x="2" y="0" width="43" height="13" uuid="d3b78e59-4378-4ad3-ba04-0c56e90d0495"/>
+								<box>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<text><![CDATA[Set Back]]></text>
+							</staticText>
+						</jr:columnFooter>
+						<jr:detailCell style="table_TD" height="39" rowSpan="1">
+							<staticText>
+								<reportElement x="2" y="0" width="43" height="13" uuid="fb0fa823-f1fc-4109-9dc7-08bdce008ad3"/>
+								<text><![CDATA[Toe]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="2" y="13" width="43" height="13" uuid="ecd8afd6-fcc4-47ee-bc75-1a847774c21f"/>
+								<text><![CDATA[Camber]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="2" y="26" width="43" height="13" uuid="f63a1cc8-de86-4fcf-bd84-9f052da7281d"/>
+								<text><![CDATA[Caster]]></text>
+							</staticText>
+						</jr:detailCell>
+					</jr:column>
+					<jr:columnGroup width="54" uuid="afad52e5-03a7-4dcf-a3a1-636f7e18bc5b">
+						<jr:tableHeader height="15" rowSpan="1">
+							<box>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="54" height="15" uuid="36ae8500-bea3-458a-b06a-b2d8d5396337"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[RIGHT]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:columnFooter height="14" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="54" height="14" uuid="eeafd5cc-e8fb-45e0-92aa-e303c5ac97c6"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle" markup="none"/>
+								<textFieldExpression><![CDATA[$P{parameter11}]]></textFieldExpression>
+							</textField>
+						</jr:columnFooter>
+						<jr:column width="27" uuid="eddc6f21-c963-461f-a6cf-3ab083232f80">
+							<jr:columnHeader height="14" rowSpan="1">
+								<box>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<staticText>
+									<reportElement x="0" y="0" width="27" height="13" uuid="ed9bdba1-9431-4ccc-bafa-7f8c08aed8fa"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<text><![CDATA[Prv.]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table_TD" height="39" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="27" height="13" uuid="0aecfc26-3977-4847-9da9-90f2575e4d99"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{parameter1}]]></textFieldExpression>
+								</textField>
+								<textField>
+									<reportElement x="0" y="13" width="27" height="13" uuid="538e6b55-efe6-4647-bb4c-a1ebf39f93ac"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{parameter2}]]></textFieldExpression>
+								</textField>
+								<textField>
+									<reportElement x="0" y="26" width="27" height="13" uuid="00d1188b-433f-47d2-8c62-32f849c23fe3"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{parameter3}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="27" uuid="cdd306c9-c37f-4688-8245-65038070051a">
+							<jr:columnHeader height="14" rowSpan="1">
+								<box>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<staticText>
+									<reportElement x="0" y="0" width="27" height="13" uuid="f9f57178-eefc-4ceb-85af-e71d9837331b"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<text><![CDATA[Ajs.]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table_TD" height="39" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="27" height="13" uuid="8f801b3e-8518-45f1-aa5e-ab297ebb3485"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{parameter4}]]></textFieldExpression>
+								</textField>
+								<textField>
+									<reportElement x="0" y="13" width="27" height="13" uuid="88e601f7-a71b-4bc6-ba94-322e8978de6e"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{parameter5}]]></textFieldExpression>
+								</textField>
+								<textField>
+									<reportElement x="0" y="26" width="27" height="13" uuid="8719dde8-d24c-4136-a520-309eed890462"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{parameter6}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+					<jr:columnGroup width="54" uuid="48414647-61b3-4250-b228-583b1c1ae1ee">
+						<jr:tableHeader height="15" rowSpan="1">
+							<box>
+								<bottomPen lineWidth="0.5"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="54" height="15" uuid="485ebef0-c891-43db-8c9b-156c92ffae8c"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[LEFT]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:column width="27" uuid="4c7b6a9a-b2eb-4469-a2d8-b5e1bd5f6a8d">
+							<jr:columnHeader height="14" rowSpan="1">
+								<box>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<staticText>
+									<reportElement x="0" y="0" width="27" height="13" uuid="e3b98fd0-4e27-4e68-ab3b-553360878717"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<text><![CDATA[Prv.]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table_TD" height="39" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="27" height="13" uuid="899f4503-e0fb-41a4-9603-88782b41f535"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+									<text><![CDATA[]]></text>
+								</staticText>
+								<textField>
+									<reportElement x="0" y="13" width="27" height="13" uuid="87f521d7-c8a7-4a7a-b455-979b8516d6d4"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{parameter7}]]></textFieldExpression>
+								</textField>
+								<textField>
+									<reportElement x="0" y="26" width="27" height="13" uuid="109b4e47-f4ff-44e1-a067-58091b52a973"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{parameter8}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="27" uuid="57751fd5-e64d-4bee-a9c5-6ec7c8351a0d">
+							<jr:columnHeader height="14" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="27" height="13" uuid="29571912-d7fc-4646-9d41-d5ed81542d43"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<text><![CDATA[Ajs.]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table_TD" height="39" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="27" height="13" uuid="da7e6e04-6609-4629-b33f-ecb78e6cd4e9"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+									<text><![CDATA[]]></text>
+								</staticText>
+								<textField>
+									<reportElement x="0" y="13" width="27" height="13" uuid="3ca5afaa-a5fa-48e3-bfa2-acd04abe5e82"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{parameter9}]]></textFieldExpression>
+								</textField>
+								<textField>
+									<reportElement x="0" y="26" width="27" height="13" uuid="5c4f583a-828a-4649-accf-d4149e41fdb3"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{parameter10}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table" style="table" x="197" y="125" width="147" height="80" uuid="ee8a0139-c466-48f5-8912-e6ded63d7f57"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Table Dataset 4" uuid="9855a752-b30a-476d-bf5f-0c304cbe5834">
+						<datasetParameter name="parameter12">
+							<datasetParameterExpression><![CDATA[$P{parameter12}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter13">
+							<datasetParameterExpression><![CDATA[$P{parameter13}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter14">
+							<datasetParameterExpression><![CDATA[$P{parameter14}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter15">
+							<datasetParameterExpression><![CDATA[$P{parameter15}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter16">
+							<datasetParameterExpression><![CDATA[$P{parameter16}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter17">
+							<datasetParameterExpression><![CDATA[$P{parameter17}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter18">
+							<datasetParameterExpression><![CDATA[$P{parameter18}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter19">
+							<datasetParameterExpression><![CDATA[$P{parameter19}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="parameter20">
+							<datasetParameterExpression><![CDATA[$P{parameter20}]]></datasetParameterExpression>
+						</datasetParameter>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="47" uuid="403dedbb-9368-447b-bad0-2571990cd432">
+						<jr:tableHeader height="15" rowSpan="1">
+							<box>
+								<bottomPen lineWidth="0.5"/>
+							</box>
+						</jr:tableHeader>
+						<jr:columnHeader height="13" rowSpan="1">
+							<box>
+								<rightPen lineWidth="0.5"/>
+							</box>
+						</jr:columnHeader>
+						<jr:columnFooter height="14" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="47" height="13" uuid="9f21192b-8b8e-44e4-85bf-dc730ae05f6a"/>
+								<box>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<text><![CDATA[Set Back]]></text>
+							</staticText>
+						</jr:columnFooter>
+						<jr:detailCell style="table_TD" height="26" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="47" height="13" uuid="9dadc6b2-8ff4-4a4b-81ef-fdb47f4cd8a6"/>
+								<text><![CDATA[Toe]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="0" y="13" width="47" height="13" uuid="0d3beef7-d0e4-4bd6-a3f7-f90686592a46"/>
+								<text><![CDATA[Camber]]></text>
+							</staticText>
+						</jr:detailCell>
+					</jr:column>
+					<jr:columnGroup width="54" uuid="eeee03a8-548b-472a-aba3-c6f09ac448fc">
+						<jr:tableHeader height="15" rowSpan="1">
+							<box>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="54" height="15" uuid="a0828090-9864-4b0b-ac04-fc7e221dd1dd"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[RIGHT]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:columnFooter height="14" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="54" height="14" uuid="29bdd375-1ec6-4db1-9ae6-e1bafd9126cc"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$P{parameter20}]]></textFieldExpression>
+							</textField>
+						</jr:columnFooter>
+						<jr:column width="27" uuid="198ac22b-d0b2-486a-b535-0df65fa674ca">
+							<jr:columnHeader height="13" rowSpan="1">
+								<box>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<staticText>
+									<reportElement x="0" y="0" width="27" height="13" uuid="45edff9f-36fb-4608-8ac6-e0c702809e90"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<text><![CDATA[Prv.]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table_TD" height="26" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="27" height="13" uuid="928ffc8a-48a3-4b8d-9cdc-43de6bdc9cf4"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+									<textFieldExpression><![CDATA[$P{parameter12}]]></textFieldExpression>
+								</textField>
+								<textField>
+									<reportElement x="0" y="13" width="27" height="13" uuid="8715255c-718f-4d26-9823-11043960d423"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+									<textFieldExpression><![CDATA[$P{parameter13}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="27" uuid="6b652a50-8777-47c3-b9ed-2a50b393f7ea">
+							<jr:columnHeader height="13" rowSpan="1">
+								<box>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<staticText>
+									<reportElement x="0" y="0" width="27" height="13" uuid="80e18d87-667b-4cd0-90d4-a365d8a850ae"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<text><![CDATA[Ajs.]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table_TD" height="26" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="27" height="13" uuid="bf783795-f37a-411c-9f73-45d8c1616ce5"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+									<textFieldExpression><![CDATA[$P{parameter14}]]></textFieldExpression>
+								</textField>
+								<textField>
+									<reportElement x="0" y="13" width="27" height="13" uuid="630b67e4-61d6-46db-a5ed-8393a5602627"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+									<textFieldExpression><![CDATA[$P{parameter15}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+					<jr:columnGroup width="54" uuid="c72cd454-48e1-411f-9b68-e523979d59c3">
+						<jr:tableHeader height="15" rowSpan="1">
+							<box>
+								<bottomPen lineWidth="0.5"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="54" height="15" uuid="15aee0eb-795f-4453-903a-e1b6b1d87259"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[LEFT]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:column width="27" uuid="6ede4fc1-0aa5-4326-a543-c228cddcb7eb">
+							<jr:columnHeader height="13" rowSpan="1">
+								<box>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<staticText>
+									<reportElement x="0" y="0" width="27" height="13" uuid="db27068b-31b8-4857-a59f-9f8eea7ef712"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<text><![CDATA[Prv.]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table_TD" height="26" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="27" height="13" uuid="bead0212-6f2b-46eb-a50f-13f1f2d3b03f"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+									<textFieldExpression><![CDATA[$P{parameter16}]]></textFieldExpression>
+								</textField>
+								<textField>
+									<reportElement x="0" y="13" width="27" height="13" uuid="622e2d3e-a877-4730-8051-d6eb02319978"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+									<textFieldExpression><![CDATA[$P{parameter17}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="27" uuid="931e14fe-9ee0-4d25-8cea-163582703838">
+							<jr:columnHeader height="13" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="27" height="13" uuid="ee0507ab-81ad-49b1-8d03-6d7d1b783e0f"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<text><![CDATA[Ajs.]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table_TD" height="26" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="27" height="13" uuid="0da83787-47db-40ee-ba8c-ccc975a6803f"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+									<textFieldExpression><![CDATA[$P{parameter18}]]></textFieldExpression>
+								</textField>
+								<textField>
+									<reportElement x="0" y="13" width="27" height="13" uuid="c59f0232-cf7b-4c65-8cdb-beb358e9d153"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+									<textFieldExpression><![CDATA[$P{parameter19}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="20" y="110" width="66" height="15" uuid="aa77d7c4-774a-465a-86ea-a9c7dbd511fc"/>
+				<text><![CDATA[FRONT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="197" y="110" width="66" height="15" uuid="8af8697a-63b9-4d56-94b5-89bedfed4b79"/>
+				<text><![CDATA[REAR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="210" width="95" height="15" uuid="4a08d973-2886-4740-af89-2d5ba9d13790"/>
+				<text><![CDATA[TYRE CONDITION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="216" y="210" width="116" height="15" uuid="da8f9ae2-9a20-45b7-8675-7437f5e8124e"/>
+				<text><![CDATA[BALANCING WEIGHTS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="295" width="50" height="17" uuid="705f1b1d-1a83-4d08-8285-35e0fe6deea9"/>
+				<text><![CDATA[Job By]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="315" width="50" height="17" uuid="d8aa29ce-5df3-45ee-b114-fb5a84963c68"/>
+				<text><![CDATA[Add by]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="67" y="295" width="100" height="17" uuid="0b3f9c2c-8349-4f9a-9153-f6c6f87065ed"/>
+				<textFieldExpression><![CDATA[$P{parameter41}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="67" y="315" width="100" height="17" uuid="06e5e7c2-e278-498f-bf07-374ae1282c3c"/>
+				<textFieldExpression><![CDATA[$P{parameter42}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 </jasperReport>

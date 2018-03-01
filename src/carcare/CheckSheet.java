@@ -14,17 +14,26 @@ import carcare.controller.CustdataJpaController;
 import carcare.controller.UserJpaController;
 import carcare.model.Chksht;
 import carcare.model.Custdata;
+import db.ConnectionManager;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.DocumentFilter;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.swing.JRViewer;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -38,6 +47,8 @@ public class CheckSheet extends javax.swing.JInternalFrame {
     BillcceJpaController billcceJpaController = new BillcceJpaController(CarCare.EMF);
     UserJpaController userJpaController = new UserJpaController(CarCare.EMF);
     boolean vNoEventFire = true;
+    boolean viewCheckSheet;
+    private static final Logger LOGGER = Logger.getLogger(Billing.class);
     
     public CheckSheet() {
         initComponents();
@@ -54,6 +65,8 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         ((AbstractDocument) jTextField11.getDocument()).setDocumentFilter(filter);
         ((AbstractDocument) jTextField1.getDocument()).setDocumentFilter(filter);
         jTextField11.setText(loggUser);
+        
+        viewCheckSheet = false;
     }
 
     CheckSheet(Chksht checkSheet) {
@@ -197,8 +210,14 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         jPasswordField1.setEnabled(false);
         jTextField1.setEnabled(false);
         btnClear.setEnabled(false);
-        btnSave.setEnabled(false);
         jButton1.setEnabled(false);
+        
+        jButton1.setVisible(false);
+        btnClear.setVisible(false);
+        jPanel9.add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 90, -1));
+        btnSave.setText("Re Print");
+        
+        viewCheckSheet = true;
     }
 
     /**
@@ -1080,6 +1099,12 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                         jTextField8.setText( Integer.toString(billcccAmt + Integer.parseInt(outPut1[0].toString())));
                     }
                     
+                    if(null == outPut && null == outPut1){
+                        jTextField4.setText("");
+                        jTextField5.setText("");
+                        jTextField8.setText("");
+                    }
+                    
                 }else{
                     JOptionPane.showMessageDialog(jPanel1, "Vehicle number did not find !");
                     txtVNo.setText("");
@@ -1099,94 +1124,101 @@ public class CheckSheet extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtVNoFocusLost
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        if(txtVNo.getText() == null || txtVNo.getText().equals("")){
-            JOptionPane.showMessageDialog(jPanel1, "Please enter Vehicle no !");
-            txtVNo.requestFocus();
-        } else if(jTextField12.getText() == null || jTextField12.getText().equals("")){
-            JOptionPane.showMessageDialog(jPanel1, "Please enter Job by !");
-            jTextField12.requestFocus();
-        }else if(jTextField11.getText() == null || jTextField11.getText().equals("")){
-            JOptionPane.showMessageDialog(jPanel1, "Please enter Add by !");
-            jTextField11.requestFocus();
-        }else if(jTextField4.getText() == null || jTextField4.getText().equals("")){
-            JOptionPane.showMessageDialog(jPanel1, "Please enter Milage !");
-            jTextField4.requestFocus();
-        }else if(jTextField8.getText() == null || jTextField8.getText().equals("")){
-            JOptionPane.showMessageDialog(jPanel1, "Please enter Amount !");
-            jTextField8.requestFocus();
-        }else{
-            Chksht checkSheet = new Chksht();
-            
-            List<Custdata> cusdate = custdataJpaController.findCustdataByVno(txtVNo.getText());
-            checkSheet.setCustdata(cusdate.get(0));
-            
-            //checkSheet.setVno(txtVNo.getText());
-            checkSheet.setDate(txtDate1.getDate());
-            checkSheet.setMilage(Double.parseDouble(jTextField4.getText()));
-            checkSheet.setNmilage(Double.parseDouble(jTextField5.getText()));
-            
-            checkSheet.setFrToe(jTextField23.getText());
-            checkSheet.setFrToe1(jTextField27.getText());
-            checkSheet.setFrCmR(jTextField24.getText());
-            checkSheet.setFrCmR1(jTextField26.getText());
-            checkSheet.setFrCsR(jTextField25.getText());
-            checkSheet.setFrCsR1(jTextField28.getText());
+        
+        if(!viewCheckSheet){        
+            if(txtVNo.getText() == null || txtVNo.getText().equals("")){
+                JOptionPane.showMessageDialog(jPanel1, "Please enter Vehicle no !");
+                txtVNo.requestFocus();
+            } else if(jTextField12.getText() == null || jTextField12.getText().equals("")){
+                JOptionPane.showMessageDialog(jPanel1, "Please enter Job by !");
+                jTextField12.requestFocus();
+            }else if(jTextField11.getText() == null || jTextField11.getText().equals("")){
+                JOptionPane.showMessageDialog(jPanel1, "Please enter Add by !");
+                jTextField11.requestFocus();
+            }else if(jTextField4.getText() == null || jTextField4.getText().equals("")){
+                JOptionPane.showMessageDialog(jPanel1, "Please enter Milage !");
+                jTextField4.requestFocus();
+            }else if(jTextField8.getText() == null || jTextField8.getText().equals("")){
+                JOptionPane.showMessageDialog(jPanel1, "Please enter Amount !");
+                jTextField8.requestFocus();
+            }else{
+                Chksht checkSheet = new Chksht();
 
-            checkSheet.setFrSb(jTextField33.getText());
-            checkSheet.setFrCmL(jTextField29.getText());
-            checkSheet.setFrCmL1(jTextField32.getText());
-            checkSheet.setFrCsL(jTextField30.getText());
-            checkSheet.setFrCsL1(jTextField31.getText());
-            
-            checkSheet.setReToeR(jTextField3.getText());
-            checkSheet.setReToeR1(jTextField19.getText());
-            checkSheet.setReCmR(jTextField10.getText());
-            checkSheet.setReCmR1(jTextField18.getText());
-            checkSheet.setReSb(jTextField20.getText());
-            
-            checkSheet.setReToeL(jTextField22.getText());
-            checkSheet.setReToeL1(jTextField41.getText());
-            checkSheet.setReCmL(jTextField21.getText());
-            checkSheet.setReCmL1(jTextField40.getText());
-            
-            checkSheet.setTc1N(jTextField7.getText());
-            checkSheet.setTc1I(jTextField16.getText());
-            checkSheet.setTc1O(jTextField36.getText());
-            checkSheet.setTc2N(jTextField13.getText());
-            checkSheet.setTc2I(jTextField15.getText());
-            checkSheet.setTc2O(jTextField37.getText());
-            checkSheet.setTc3N(jTextField14.getText());
-            checkSheet.setTc3I(jTextField17.getText());
-            checkSheet.setTc3O(jTextField38.getText());
-            checkSheet.setTc4N(jTextField35.getText());
-            checkSheet.setTc4I(jTextField34.getText());
-            checkSheet.setTc4O(jTextField39.getText());
-            
-            checkSheet.setBwi1(!jTextField6.getText().isEmpty() ? Integer.parseInt(jTextField6.getText()) : 0);
-            checkSheet.setBw1(!jTextField53.getText().isEmpty() ? Integer.parseInt(jTextField53.getText()): 0);
-            checkSheet.setBwi3(!jTextField51.getText().isEmpty() ? Integer.parseInt(jTextField51.getText()): 0);
-            checkSheet.setBw3(!jTextField52.getText().isEmpty() ? Integer.parseInt(jTextField52.getText()): 0);
-            
-            checkSheet.setBwi2(!jTextField55.getText().isEmpty() ? Integer.parseInt(jTextField55.getText()): 0);
-            checkSheet.setBw2(!jTextField57.getText().isEmpty() ? Integer.parseInt(jTextField57.getText()): 0);
-            checkSheet.setBwi4(!jTextField54.getText().isEmpty() ? Integer.parseInt(jTextField54.getText()): 0);
-            checkSheet.setBw4(!jTextField56.getText().isEmpty() ? Integer.parseInt(jTextField56.getText()): 0);
-            
-            checkSheet.setSt(jCheckBox3.isSelected());
-            checkSheet.setHlt(jCheckBox1.isSelected());
-            checkSheet.setN2(jCheckBox2.isSelected());
-            
-            checkSheet.setRem(jTextArea1.getText());
-            
-            checkSheet.setJobby(jTextField12.getText());
-            checkSheet.setAddby(jTextField11.getText());
-            
-            checkSheet.setBAmount(Integer.parseInt(jTextField8.getText()));
-            checkSheet.setDeDate(new Timestamp(System.currentTimeMillis()));
-            
-            chkshtJpaController.create(checkSheet);
-            
-            dispose();
+                List<Custdata> cusdate = custdataJpaController.findCustdataByVno(txtVNo.getText());
+                checkSheet.setCustdata(cusdate.get(0));
+
+                //checkSheet.setVno(txtVNo.getText());
+                checkSheet.setDate(txtDate1.getDate());
+                checkSheet.setMilage(Double.parseDouble(jTextField4.getText()));
+                checkSheet.setNmilage(Double.parseDouble(jTextField5.getText()));
+
+                checkSheet.setFrToe(jTextField23.getText());
+                checkSheet.setFrToe1(jTextField27.getText());
+                checkSheet.setFrCmR(jTextField24.getText());
+                checkSheet.setFrCmR1(jTextField26.getText());
+                checkSheet.setFrCsR(jTextField25.getText());
+                checkSheet.setFrCsR1(jTextField28.getText());
+
+                checkSheet.setFrSb(jTextField33.getText());
+                checkSheet.setFrCmL(jTextField29.getText());
+                checkSheet.setFrCmL1(jTextField32.getText());
+                checkSheet.setFrCsL(jTextField30.getText());
+                checkSheet.setFrCsL1(jTextField31.getText());
+
+                checkSheet.setReToeR(jTextField3.getText());
+                checkSheet.setReToeR1(jTextField19.getText());
+                checkSheet.setReCmR(jTextField10.getText());
+                checkSheet.setReCmR1(jTextField18.getText());
+                checkSheet.setReSb(jTextField20.getText());
+
+                checkSheet.setReToeL(jTextField22.getText());
+                checkSheet.setReToeL1(jTextField41.getText());
+                checkSheet.setReCmL(jTextField21.getText());
+                checkSheet.setReCmL1(jTextField40.getText());
+
+                checkSheet.setTc1N(jTextField7.getText());
+                checkSheet.setTc1I(jTextField16.getText());
+                checkSheet.setTc1O(jTextField36.getText());
+                checkSheet.setTc2N(jTextField13.getText());
+                checkSheet.setTc2I(jTextField15.getText());
+                checkSheet.setTc2O(jTextField37.getText());
+                checkSheet.setTc3N(jTextField14.getText());
+                checkSheet.setTc3I(jTextField17.getText());
+                checkSheet.setTc3O(jTextField38.getText());
+                checkSheet.setTc4N(jTextField35.getText());
+                checkSheet.setTc4I(jTextField34.getText());
+                checkSheet.setTc4O(jTextField39.getText());
+
+                checkSheet.setBwi1(!jTextField6.getText().isEmpty() ? Integer.parseInt(jTextField6.getText()) : 0);
+                checkSheet.setBw1(!jTextField53.getText().isEmpty() ? Integer.parseInt(jTextField53.getText()): 0);
+                checkSheet.setBwi3(!jTextField51.getText().isEmpty() ? Integer.parseInt(jTextField51.getText()): 0);
+                checkSheet.setBw3(!jTextField52.getText().isEmpty() ? Integer.parseInt(jTextField52.getText()): 0);
+
+                checkSheet.setBwi2(!jTextField55.getText().isEmpty() ? Integer.parseInt(jTextField55.getText()): 0);
+                checkSheet.setBw2(!jTextField57.getText().isEmpty() ? Integer.parseInt(jTextField57.getText()): 0);
+                checkSheet.setBwi4(!jTextField54.getText().isEmpty() ? Integer.parseInt(jTextField54.getText()): 0);
+                checkSheet.setBw4(!jTextField56.getText().isEmpty() ? Integer.parseInt(jTextField56.getText()): 0);
+
+                checkSheet.setSt(jCheckBox3.isSelected());
+                checkSheet.setHlt(jCheckBox1.isSelected());
+                checkSheet.setN2(jCheckBox2.isSelected());
+
+                checkSheet.setRem(jTextArea1.getText());
+
+                checkSheet.setJobby(jTextField12.getText());
+                checkSheet.setAddby(jTextField11.getText());
+
+                checkSheet.setBAmount(Integer.parseInt(jTextField8.getText()));
+                checkSheet.setDeDate(new Timestamp(System.currentTimeMillis()));
+
+                chkshtJpaController.create(checkSheet);
+
+                dispose();
+                
+                generateReport();
+            }
+        }else{
+            generateReport();
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -1575,6 +1607,89 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         getToolkit().beep();
         e.consume();
       }
+    }
+    
+    private void generateReport(){
+        try{
+                dispose();
+                String reportSource = "";
+                Map<String, Object> params = new HashMap();
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String rePrintType = "";
+
+                String formatDate = format.format( txtDate1.getDate());
+                String reportTitle = "CarCare Check Sheet";
+                //reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
+                reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\checkSheet.jasper";
+
+                params.put("reportName", reportTitle);
+                params.put("vno", txtVNo.getText());
+                params.put("date", formatDate);
+                params.put("name", txtName.getText());
+                params.put("milage", jTextField4.getText());
+                params.put("nextAlogn", jTextField5.getText());
+                params.put("rePrintType", rePrintType);
+                params.put("parameter1", jTextField23.getText());
+                params.put("parameter2", jTextField24.getText());
+                params.put("parameter3", jTextField25.getText());
+                params.put("parameter4", jTextField27.getText());
+                params.put("parameter5", jTextField26.getText());
+                params.put("parameter6", jTextField28.getText());
+                params.put("parameter7", jTextField29.getText());
+                params.put("parameter8", jTextField30.getText());
+                params.put("parameter9", jTextField32.getText());
+                params.put("parameter10", jTextField31.getText());
+                params.put("parameter11", jTextField33.getText());
+                
+                params.put("parameter12", jTextField3.getText());
+                params.put("parameter13", jTextField10.getText());
+                params.put("parameter14", jTextField19.getText());
+                params.put("parameter15", jTextField18.getText());
+                params.put("parameter16", jTextField22.getText());
+                params.put("parameter17", jTextField21.getText());
+                params.put("parameter18", jTextField41.getText());
+                params.put("parameter19", jTextField40.getText());
+                params.put("parameter20", jTextField20.getText());
+                
+                params.put("parameter21", jTextField13.getText());
+                params.put("parameter22", jTextField35.getText());
+                params.put("parameter23", jTextField15.getText());
+                params.put("parameter24", jTextField39.getText());
+                params.put("parameter25", jTextField37.getText());
+                params.put("parameter26", jTextField34.getText());
+                params.put("parameter27", jTextField7.getText());
+                params.put("parameter28", jTextField14.getText());
+                params.put("parameter29", jTextField16.getText());
+                params.put("parameter30", jTextField17.getText());
+                params.put("parameter31", jTextField36.getText());                
+                params.put("parameter32", jTextField38.getText());
+                
+                params.put("parameter33", jTextField6.getText());
+                params.put("parameter34", jTextField51.getText());
+                params.put("parameter35", jTextField53.getText());
+                params.put("parameter36", jTextField52.getText());
+                params.put("parameter37", jTextField55.getText());
+                params.put("parameter38", jTextField53.getText());
+                params.put("parameter39", jTextField57.getText());
+                params.put("parameter40", jTextField56.getText());
+                
+                params.put("parameter41", jTextField12.getText());
+                params.put("parameter42", jTextField11.getText());
+
+                JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params, new JREmptyDataSource(1));
+                JRViewer jv = new JRViewer(jasperPrint);
+                JFrame jf = new JFrame();
+                jf.getContentPane().add(jv);
+                jf.setTitle(title);
+
+                jf.validate();
+                jf.setVisible(true);
+                jf.setSize(new Dimension(900,700));
+                jf.setLocation(300,0);
+                jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            }catch(Exception e){
+                LOGGER.fatal("Error Occured while generating checksheet " + e);
+            }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
