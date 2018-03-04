@@ -268,12 +268,9 @@ public class CarCare extends javax.swing.JFrame {
     }//GEN-LAST:event_contentsMenuItemActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        if(user_window == 0){
-            AddUser user = new AddUser();
-            jDesktopPane1.add(user);
-            user.setVisible(true);
-            user_window = 1;
-        }
+        AuthorizedPanel checkSheet = new AuthorizedPanel("addUser");//9
+        jDesktopPane1.add(checkSheet);
+        checkSheet.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**

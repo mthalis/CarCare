@@ -9,6 +9,8 @@ import static carcare.CarCare.check_window;
 import static carcare.CarCare.jDesktopPane1;
 import static carcare.CarCare.view_check_window;
 import static carcare.CarCare.authorizedUser;
+import static carcare.CarCare.jDesktopPane1;
+import static carcare.CarCare.user_window;
 import carcare.controller.UserJpaController;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -26,6 +28,7 @@ public class AuthorizedPanel extends javax.swing.JInternalFrame {
 
     private static final Logger logger = Logger.getLogger(AuthorizedPanel.class);   
     public static String loggUser;
+    String panelType = "";
     
     public AuthorizedPanel() {
         initComponents();
@@ -35,6 +38,18 @@ public class AuthorizedPanel extends javax.swing.JInternalFrame {
         
         DocumentFilter filter = new UppercaseDocumentFilter ();
         ((AbstractDocument) txtUserName.getDocument()).setDocumentFilter(filter);
+    }
+    
+    public AuthorizedPanel(String panelType) {
+        initComponents();
+        
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();        
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        
+        DocumentFilter filter = new UppercaseDocumentFilter ();
+        ((AbstractDocument) txtUserName.getDocument()).setDocumentFilter(filter);
+        
+        this.panelType = panelType;
     }
 
     /**
@@ -131,18 +146,33 @@ public class AuthorizedPanel extends javax.swing.JInternalFrame {
                     txtPassWd.requestFocus();
                 }else{
                     String pw = DigestUtils.sha256Hex(pwd);
-                    boolean authenticate  = userJpaController.authenticateUser(userName, pw);
+                    boolean authenticate;
+                    if("addUser".equals(panelType)){
+                        authenticate  = userJpaController.authenticateUserWithRole(userName, pw);
+                    }else{
+                        authenticate  = userJpaController.authenticateUser(userName, pw);
+                    }
 
                     if(authenticate){
-                        if(view_check_window == 0 && check_window == 0){
-                            loggUser = txtUserName.getText();
-                            authorizedUser = true;
-                            CheckSheet checkSheet = new CheckSheet();
-                            jDesktopPane1.add(checkSheet);
-                            checkSheet.setVisible(true);
-                            view_check_window = 1;
-                            this.dispose();
-                        };
+                        if("addUser".equals(panelType)){
+                            if(user_window == 0){
+                                AddUser user = new AddUser();
+                                jDesktopPane1.add(user);
+                                user.setVisible(true);
+                                user_window = 1;
+                                this.dispose();
+                            }
+                        }else{
+                            if(view_check_window == 0 && check_window == 0){
+                                loggUser = txtUserName.getText();
+                                authorizedUser = true;
+                                CheckSheet checkSheet = new CheckSheet();
+                                jDesktopPane1.add(checkSheet);
+                                checkSheet.setVisible(true);
+                                view_check_window = 1;
+                                this.dispose();
+                            }
+                        }
                     }else{
                         txtUserName.setText("");
                         txtPassWd.setText("");
