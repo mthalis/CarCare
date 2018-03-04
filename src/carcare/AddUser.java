@@ -8,12 +8,9 @@ package carcare;
 import static carcare.CarCare.user_window;
 import carcare.controller.UserJpaController;
 import carcare.model.User;
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.DocumentFilter;
@@ -46,6 +43,8 @@ public class AddUser extends javax.swing.JInternalFrame {
         buttonGroup1.add(jRadioButton4);
         
         jTextField1.setVisible(false);
+        
+        refreshTable();
     }
 
     /**
@@ -651,6 +650,12 @@ public class AddUser extends javax.swing.JInternalFrame {
 
     private void showPopupMessage(String msg){
         JOptionPane.showMessageDialog(null, msg);
+    }
+    
+     private void refreshTable() {      
+        userList.clear();
+        userList.addAll(userJpaController.findUserEntities());        
+        jTable2.updateUI();       
     }
 }
 
