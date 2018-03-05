@@ -317,8 +317,6 @@ public class Billing extends javax.swing.JInternalFrame {
         jCheckBox13 = new javax.swing.JCheckBox();
         jCheckBox14 = new javax.swing.JCheckBox();
         jTextField41 = new javax.swing.JTextField();
-        jTextField42 = new javax.swing.JTextField();
-        jTextField43 = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
@@ -330,6 +328,8 @@ public class Billing extends javax.swing.JInternalFrame {
         jTextField46 = new javax.swing.JTextField();
         btnExit = new javax.swing.JButton();
         btnPrint = new javax.swing.JButton();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
 
         setClosable(true);
         setTitle("Billing");
@@ -604,10 +604,10 @@ public class Billing extends javax.swing.JInternalFrame {
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel21.setText("Fixed Camber Fr.");
-        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 100, 130, -1));
+        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 141, 130, -1));
 
         jLabel22.setText("Fixed Camber Re.");
-        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 120, 130, -1));
+        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 160, 130, -1));
 
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel23.setText("Amount");
@@ -625,18 +625,18 @@ public class Billing extends javax.swing.JInternalFrame {
 
         jTextField22.setText("1");
         jTextField22.setEnabled(false);
-        jPanel5.add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 40, -1));
+        jPanel5.add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 40, -1));
 
         jTextField23.setText("1");
         jTextField23.setEnabled(false);
-        jPanel5.add(jTextField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 40, -1));
+        jPanel5.add(jTextField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 40, -1));
 
         jTextField24.setText("4");
         jTextField24.setEnabled(false);
-        jPanel5.add(jTextField24, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 40, -1));
+        jPanel5.add(jTextField24, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 40, -1));
 
         jTextField25.setEnabled(false);
-        jPanel5.add(jTextField25, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 40, -1));
+        jPanel5.add(jTextField25, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 40, -1));
 
         jTextField26.setEnabled(false);
         jPanel5.add(jTextField26, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 40, -1));
@@ -648,16 +648,16 @@ public class Billing extends javax.swing.JInternalFrame {
         jPanel5.add(jTextField28, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 40, -1));
 
         jTextField29.setEnabled(false);
-        jPanel5.add(jTextField29, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 40, -1));
+        jPanel5.add(jTextField29, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 40, -1));
 
         jTextField30.setEnabled(false);
-        jPanel5.add(jTextField30, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 40, -1));
+        jPanel5.add(jTextField30, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 40, -1));
 
         jTextField31.setEnabled(false);
-        jPanel5.add(jTextField31, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 40, -1));
+        jPanel5.add(jTextField31, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 40, -1));
 
         jTextField32.setEnabled(false);
-        jPanel5.add(jTextField32, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 40, -1));
+        jPanel5.add(jTextField32, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 40, -1));
 
         jTextField33.setEnabled(false);
         jPanel5.add(jTextField33, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 40, -1));
@@ -669,42 +669,34 @@ public class Billing extends javax.swing.JInternalFrame {
         jPanel5.add(jTextField35, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 70, -1));
 
         jTextField36.setEnabled(false);
-        jPanel5.add(jTextField36, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 70, -1));
+        jPanel5.add(jTextField36, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 70, -1));
 
         jTextField37.setEnabled(false);
         jPanel5.add(jTextField37, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 180, 110, -1));
 
         jTextField38.setEnabled(false);
-        jPanel5.add(jTextField38, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 70, -1));
+        jPanel5.add(jTextField38, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 70, -1));
 
         jTextField39.setEnabled(false);
-        jPanel5.add(jTextField39, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 70, -1));
+        jPanel5.add(jTextField39, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 70, -1));
 
         jTextField40.setEnabled(false);
         jPanel5.add(jTextField40, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 70, -1));
 
         jCheckBox11.setEnabled(false);
-        jPanel5.add(jCheckBox11, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 60, -1, -1));
+        jPanel5.add(jCheckBox11, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, -1, -1));
 
         jCheckBox12.setEnabled(false);
-        jPanel5.add(jCheckBox12, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 80, -1, -1));
+        jPanel5.add(jCheckBox12, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, -1, -1));
 
         jCheckBox13.setEnabled(false);
-        jPanel5.add(jCheckBox13, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 100, -1, -1));
+        jPanel5.add(jCheckBox13, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, -1, -1));
 
         jCheckBox14.setEnabled(false);
-        jPanel5.add(jCheckBox14, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 120, -1, -1));
+        jPanel5.add(jCheckBox14, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, -1, -1));
 
         jTextField41.setEnabled(false);
-        jPanel5.add(jTextField41, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 70, -1));
-
-        jTextField42.setText("Tyre Change");
-        jTextField42.setEnabled(false);
-        jPanel5.add(jTextField42, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 160, 110, -1));
-
-        jTextField43.setText("N2");
-        jTextField43.setEnabled(false);
-        jPanel5.add(jTextField43, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 140, 110, -1));
+        jPanel5.add(jTextField41, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 70, -1));
 
         jLabel25.setText("Weights");
         jPanel5.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 80, 130, -1));
@@ -752,6 +744,12 @@ public class Billing extends javax.swing.JInternalFrame {
             }
         });
         jPanel5.add(btnPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 90, -1));
+
+        jLabel35.setText("N2");
+        jPanel5.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 102, 130, -1));
+
+        jLabel37.setText("Tyre Change");
+        jPanel5.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 122, 130, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -930,13 +928,13 @@ public class Billing extends javax.swing.JInternalFrame {
                     params.put("val12", txtDisCCCTotal.getText());
                     params.put("val13", txtCCCTotal.getText());
                     
-                    reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
+                    reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
                 }else{                    
                     params.put("description13", "TOTAL");
 
                     params.put("val13", txtCCCTotal.getText());
                     
-                    reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoiceNoDiscount.jasper";
+                    reportSource = "C:\\CarCare\\report\\centerInvoiceNoDiscount.jasper";
                 }
             }else{
                 String formatDate = format.format( dateBill.getDate());
@@ -1001,11 +999,11 @@ public class Billing extends javax.swing.JInternalFrame {
                     params.put("discount", jTextField35.getText());
                     params.put("total", jTextField46.getText());
                     
-                    reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
+                    reportSource = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
                 }else{                    
                     params.put("total", jTextField46.getText());
                     
-                    reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoiceNoDiscount.jasper";
+                    reportSource = "C:\\CarCare\\report\\enterpriseInvoiceNoDiscount.jasper";
                 }
             }
             
@@ -1116,7 +1114,9 @@ public class Billing extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1154,8 +1154,6 @@ public class Billing extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField39;
     private javax.swing.JTextField jTextField40;
     private javax.swing.JTextField jTextField41;
-    private javax.swing.JTextField jTextField42;
-    private javax.swing.JTextField jTextField43;
     private javax.swing.JTextField jTextField44;
     private javax.swing.JTextField jTextField45;
     private javax.swing.JTextField jTextField46;

@@ -159,8 +159,6 @@ public class AddBilling extends javax.swing.JInternalFrame {
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
-        txtOther1Txt = new javax.swing.JTextField();
-        txtOther2Txt = new javax.swing.JTextField();
         jTextField21 = new javax.swing.JTextField();
         jTextField22 = new javax.swing.JTextField();
         jTextField23 = new javax.swing.JTextField();
@@ -176,6 +174,8 @@ public class AddBilling extends javax.swing.JInternalFrame {
         txtCCETotal = new javax.swing.JTextField();
         btnPrint = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
+        jLabel34 = new javax.swing.JLabel();
+        txtOther1Txt = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -530,10 +530,10 @@ public class AddBilling extends javax.swing.JInternalFrame {
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel21.setText("Fixed Camber Fr.");
-        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 100, 130, -1));
+        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 142, 130, -1));
 
         jLabel22.setText("Fixed Camber Re.");
-        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 120, 130, -1));
+        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 161, 130, -1));
 
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel23.setText("Amount");
@@ -574,7 +574,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 txtOther2QtKeyTyped(evt);
             }
         });
-        jPanel5.add(txtOther2Qt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 40, -1));
+        jPanel5.add(txtOther2Qt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 40, -1));
 
         txtOther3Qt.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -642,7 +642,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 jTextField29KeyTyped(evt);
             }
         });
-        jPanel5.add(jTextField29, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 40, -1));
+        jPanel5.add(jTextField29, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 40, -1));
 
         jTextField30.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -659,7 +659,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 jTextField30KeyTyped(evt);
             }
         });
-        jPanel5.add(jTextField30, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 40, -1));
+        jPanel5.add(jTextField30, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 40, -1));
 
         jTextField31.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -676,7 +676,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 jTextField31KeyTyped(evt);
             }
         });
-        jPanel5.add(jTextField31, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 40, -1));
+        jPanel5.add(jTextField31, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 40, -1));
 
         jTextField32.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -693,7 +693,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 jTextField32KeyTyped(evt);
             }
         });
-        jPanel5.add(jTextField32, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 40, -1));
+        jPanel5.add(jTextField32, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 40, -1));
 
         jTextField33.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -755,17 +755,17 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 jCheckBox13MouseClicked(evt);
             }
         });
-        jPanel5.add(jCheckBox13, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 100, -1, -1));
+        jPanel5.add(jCheckBox13, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 140, -1, -1));
 
         jCheckBox14.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jCheckBox14MouseClicked(evt);
             }
         });
-        jPanel5.add(jCheckBox14, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 120, -1, -1));
+        jPanel5.add(jCheckBox14, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 160, -1, -1));
 
-        jLabel25.setText("Weights");
-        jPanel5.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 80, 130, -1));
+        jLabel25.setText("Tyre Change");
+        jPanel5.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 122, 130, -1));
 
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel26.setText("Qty");
@@ -786,25 +786,17 @@ public class AddBilling extends javax.swing.JInternalFrame {
         jLabel30.setText("TOTAL");
         jPanel5.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 70, -1));
 
-        txtOther1Txt.setText("N2");
-        txtOther1Txt.setEnabled(false);
-        jPanel5.add(txtOther1Txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 140, 110, -1));
-
-        txtOther2Txt.setText("Tyre Change");
-        txtOther2Txt.setEnabled(false);
-        jPanel5.add(txtOther2Txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 160, 110, -1));
-
         jTextField21.setText("1");
         jTextField21.setEnabled(false);
         jPanel5.add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 40, -1));
 
         jTextField22.setText("1");
         jTextField22.setEnabled(false);
-        jPanel5.add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 40, -1));
+        jPanel5.add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 40, -1));
 
         jTextField23.setText("1");
         jTextField23.setEnabled(false);
-        jPanel5.add(jTextField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 40, -1));
+        jPanel5.add(jTextField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 40, -1));
 
         txtOther1Qt.setText("4");
         txtOther1Qt.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -822,7 +814,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 txtOther1QtKeyTyped(evt);
             }
         });
-        jPanel5.add(txtOther1Qt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 40, -1));
+        jPanel5.add(txtOther1Qt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 40, -1));
 
         jTextField34.setEnabled(false);
         jPanel5.add(jTextField34, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 70, -1));
@@ -831,16 +823,16 @@ public class AddBilling extends javax.swing.JInternalFrame {
         jPanel5.add(jTextField40, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 70, -1));
 
         jTextField39.setEnabled(false);
-        jPanel5.add(jTextField39, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 70, -1));
+        jPanel5.add(jTextField39, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 70, -1));
 
         jTextField38.setEnabled(false);
-        jPanel5.add(jTextField38, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 70, -1));
+        jPanel5.add(jTextField38, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 70, -1));
 
         jTextField41.setEnabled(false);
-        jPanel5.add(jTextField41, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 70, -1));
+        jPanel5.add(jTextField41, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 70, -1));
 
         jTextField36.setEnabled(false);
-        jPanel5.add(jTextField36, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 70, 20));
+        jPanel5.add(jTextField36, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 70, 20));
 
         jTextField45.setEnabled(false);
         jPanel5.add(jTextField45, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 70, -1));
@@ -866,6 +858,12 @@ public class AddBilling extends javax.swing.JInternalFrame {
             }
         });
         jPanel5.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 75, 25));
+
+        jLabel34.setText("Weights");
+        jPanel5.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 80, 130, -1));
+
+        txtOther1Txt.setText("N2");
+        jPanel5.add(txtOther1Txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 102, 130, -1));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1330,17 +1328,22 @@ public class AddBilling extends javax.swing.JInternalFrame {
                             params.put("val12", txtDisCCCTotal.getText());
                             params.put("val13", txtCCCTotal.getText());
 
-                            reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
+                            reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
                         }else{
                             params.put("description13", "TOTAL");
 
                             params.put("val13", txtCCCTotal.getText());
 
-                            reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoiceNoDiscount.jasper";
+                            reportSource = "C:\\CarCare\\report\\centerInvoiceNoDiscount.jasper";
                         }                        
                         
                         JasperPrint jasperPrintCenter = JasperFillManager.fillReport(reportSource, params,
-                                ConnectionManager.getConnection());                        
+                                ConnectionManager.getConnection());
+
+                        logger.error("JASPER DESIGN  WIDTH BEFORE: " + jasperPrintCenter.getPageHeight());
+                        jasperPrintCenter.setPageHeight(595);
+                        logger.error("JASPER DESIGN  WIDTH after: " + jasperPrintCenter.getPageWidth());
+                        logger.error("JASPER DESIGN  HEIGTH BEFORE: " + jasperPrintCenter.getPageHeight());                        
                         
                         String title1 = "CarCare Enterprise Invoice";
                         //String reportSource1 = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
@@ -1405,15 +1408,20 @@ public class AddBilling extends javax.swing.JInternalFrame {
                             params1.put("discount", txtDisCCETotal.getText());
                             params1.put("total", txtCCETotal.getText());
 
-                            reportSource1 = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
+                            reportSource1 = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
                         }else{                    
                             params1.put("total", txtCCETotal.getText());
 
-                            reportSource1 = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoiceNoDiscount.jasper";
+                            reportSource1 = "C:\\CarCare\\report\\enterpriseInvoiceNoDiscount.jasper";
                         }
                         
                         JasperPrint jasperPrintEnterPrice = JasperFillManager.fillReport(reportSource1, params1,
                                 ConnectionManager.getConnection());
+                        
+                        logger.error("JASPER DESIGN  WIDTH BEFORE: " + jasperPrintEnterPrice.getPageHeight());
+                        jasperPrintEnterPrice.setPageHeight(595);
+                        logger.error("JASPER DESIGN  WIDTH after: " + jasperPrintEnterPrice.getPageWidth());
+                        logger.error("JASPER DESIGN  HEIGTH BEFORE: " + jasperPrintEnterPrice.getPageHeight());
                                                 
                         List pages = jasperPrintEnterPrice.getPages();
                         for (int j = 0; j < pages.size(); j++) {
@@ -1505,17 +1513,22 @@ public class AddBilling extends javax.swing.JInternalFrame {
                             params.put("val12", txtDisCCCTotal.getText());
                             params.put("val13", txtCCCTotal.getText());
 
-                            reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
+                            reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
                         }else{
                             params.put("description13", "TOTAL");
 
                             params.put("val13", txtCCCTotal.getText());
 
-                            reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoiceNoDiscount.jasper";
+                            reportSource = "C:\\CarCare\\report\\centerInvoiceNoDiscount.jasper";
                         }
                         
                         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
                                 ConnectionManager.getConnection());
+                        
+                        logger.error("JASPER DESIGN  WIDTH BEFORE: " + jasperPrint.getPageHeight());
+                        jasperPrint.setPageHeight(595);
+                        logger.error("JASPER DESIGN  WIDTH after: " + jasperPrint.getPageWidth());
+                        logger.error("JASPER DESIGN  HEIGTH BEFORE: " + jasperPrint.getPageHeight());
                         
                         JRViewer jv = new JRViewer(jasperPrint);
                         JFrame jf = new JFrame();
@@ -1596,15 +1609,20 @@ public class AddBilling extends javax.swing.JInternalFrame {
                             params.put("discount", txtDisCCETotal.getText());
                             params.put("total", txtCCETotal.getText());
 
-                            reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
+                            reportSource = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
                         }else{                    
                             params.put("total", txtCCETotal.getText());
 
-                            reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoiceNoDiscount.jasper";
+                            reportSource = "C:\\CarCare\\report\\enterpriseInvoiceNoDiscount.jasper";
                         }
 
                         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
                                 ConnectionManager.getConnection());
+                        
+                        logger.error("JASPER DESIGN  WIDTH BEFORE: " + jasperPrint.getPageHeight());
+                        jasperPrint.setPageHeight(595);
+                        logger.error("JASPER DESIGN  WIDTH after: " + jasperPrint.getPageWidth());
+                        logger.error("JASPER DESIGN  HEIGTH BEFORE: " + jasperPrint.getPageHeight());
 
                         JRViewer jv = new JRViewer(jasperPrint);
                         JFrame jf = new JFrame();
@@ -1889,7 +1907,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField27ActionPerformed
 
     private void jTextField33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField33ActionPerformed
-        jTextField32.requestFocusInWindow();
+        txtOther1Qt.requestFocusInWindow();
     }//GEN-LAST:event_jTextField33ActionPerformed
 
     private void jTextField32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField32ActionPerformed
@@ -1897,7 +1915,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField32ActionPerformed
 
     private void jTextField31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField31ActionPerformed
-        txtOther1Qt.requestFocusInWindow();
+        txtOther3Txt.requestFocusInWindow();
     }//GEN-LAST:event_jTextField31ActionPerformed
 
     private void jTextField30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField30ActionPerformed
@@ -1909,7 +1927,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtOther2QtActionPerformed
 
     private void jTextField29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField29ActionPerformed
-        txtOther3Txt.requestFocusInWindow();
+        jTextField32.requestFocusInWindow();
     }//GEN-LAST:event_jTextField29ActionPerformed
 
     private void txtOther3TxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOther3TxtActionPerformed
@@ -2075,6 +2093,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -2122,9 +2141,8 @@ public class AddBilling extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtMilage;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtOther1Qt;
-    private javax.swing.JTextField txtOther1Txt;
+    private javax.swing.JLabel txtOther1Txt;
     private javax.swing.JTextField txtOther2Qt;
-    private javax.swing.JTextField txtOther2Txt;
     private javax.swing.JTextField txtOther3Qt;
     private javax.swing.JTextField txtOther3Txt;
     private javax.swing.JPasswordField txtPassWd;

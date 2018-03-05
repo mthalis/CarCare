@@ -1620,7 +1620,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                 String formatDate = format.format( txtDate1.getDate());
                 String reportTitle = "CarCare Check Sheet";
                 //reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
-                reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\checkSheet.jasper";
+                reportSource = "C:\\CarCare\\report\\checkSheet.jasper";
 
                 params.put("reportName", reportTitle);
                 params.put("vno", txtVNo.getText());
