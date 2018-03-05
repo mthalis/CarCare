@@ -606,12 +606,12 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` like '$P!{date}%']]>
 				<text><![CDATA[Invoice]]></text>
 			</staticText>
 			<line>
-				<reportElement x="140" y="388" width="75" height="1" uuid="1aa81d4d-cc06-4c59-a173-7c23dcb7ddeb">
+				<reportElement x="140" y="363" width="75" height="1" uuid="1aa81d4d-cc06-4c59-a173-7c23dcb7ddeb">
 					<printWhenExpression><![CDATA[$P{anyOtherChg}.equals("Y")]]></printWhenExpression>
 				</reportElement>
 			</line>
 			<line>
-				<reportElement x="20" y="367" width="195" height="1" uuid="332ae0f6-eb95-4d24-83ae-521f2ac56be7"/>
+				<reportElement x="20" y="340" width="195" height="1" uuid="332ae0f6-eb95-4d24-83ae-521f2ac56be7"/>
 			</line>
 		</band>
 	</detail>
