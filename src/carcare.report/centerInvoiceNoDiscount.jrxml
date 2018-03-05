@@ -384,135 +384,135 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` like '$P!{date}%']]>
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
 					</datasetRun>
 					<jr:column width="120" uuid="ee13d06a-5b36-4a8f-866f-ee97f8099b96">
-						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+						<jr:columnHeader style="table 1_CH" height="26" rowSpan="1">
 							<staticText>
-								<reportElement mode="Opaque" x="0" y="0" width="119" height="30" uuid="b070c3b3-b457-4b43-b50d-bf108ba1d9d0"/>
+								<reportElement mode="Opaque" x="0" y="0" width="119" height="25" uuid="b070c3b3-b457-4b43-b50d-bf108ba1d9d0"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12" isBold="true"/>
 								</textElement>
 								<text><![CDATA[Description]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter height="23" rowSpan="1">
+						<jr:columnFooter height="21" rowSpan="1">
 							<box>
 								<rightPen lineWidth="0.5"/>
 							</box>
 							<textField>
-								<reportElement mode="Opaque" x="15" y="2" width="94" height="19" uuid="00d9dab4-fe1a-4da3-9e55-46918a07c61b"/>
+								<reportElement mode="Opaque" x="15" y="2" width="94" height="17" uuid="00d9dab4-fe1a-4da3-9e55-46918a07c61b"/>
 								<textElement markup="none">
 									<font size="12" isBold="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$P{parameter33}]]></textFieldExpression>
 							</textField>
 						</jr:columnFooter>
-						<jr:detailCell style="table 1_TD" height="189" rowSpan="1">
+						<jr:detailCell style="table 1_TD" height="169" rowSpan="1">
 							<textField isBlankWhenNull="true">
-								<reportElement x="15" y="0" width="94" height="19" uuid="2339e867-f4b8-4cc9-94d8-f5e7c146d77d"/>
+								<reportElement x="15" y="0" width="94" height="17" uuid="2339e867-f4b8-4cc9-94d8-f5e7c146d77d"/>
 								<textFieldExpression><![CDATA[$P{parameter1}]]></textFieldExpression>
 							</textField>
 							<textField isBlankWhenNull="true">
-								<reportElement x="15" y="19" width="94" height="19" uuid="2540fbfe-bf3d-4b48-96d0-5762dc40f7ed"/>
+								<reportElement x="15" y="17" width="94" height="17" uuid="2540fbfe-bf3d-4b48-96d0-5762dc40f7ed"/>
 								<textFieldExpression><![CDATA[$P{parameter2}]]></textFieldExpression>
 							</textField>
 							<textField isBlankWhenNull="true">
-								<reportElement x="15" y="38" width="94" height="19" uuid="46610ca2-07a8-43f3-b9e6-c74199294364"/>
+								<reportElement x="15" y="34" width="94" height="17" uuid="46610ca2-07a8-43f3-b9e6-c74199294364"/>
 								<textFieldExpression><![CDATA[$P{parameter3}]]></textFieldExpression>
 							</textField>
 							<textField isBlankWhenNull="true">
-								<reportElement x="15" y="57" width="94" height="19" uuid="6ef92bca-26c9-4348-9f2f-395a28250190"/>
+								<reportElement x="15" y="51" width="94" height="17" uuid="6ef92bca-26c9-4348-9f2f-395a28250190"/>
 								<textFieldExpression><![CDATA[$P{parameter4}]]></textFieldExpression>
 							</textField>
 							<textField isBlankWhenNull="true">
-								<reportElement x="15" y="76" width="94" height="19" uuid="80e3fbcb-7bfc-4ba9-be02-d9bbf1d670b4"/>
+								<reportElement x="15" y="68" width="94" height="17" uuid="80e3fbcb-7bfc-4ba9-be02-d9bbf1d670b4"/>
 								<textFieldExpression><![CDATA[$P{parameter5}]]></textFieldExpression>
 							</textField>
 							<textField isBlankWhenNull="true">
-								<reportElement x="15" y="94" width="94" height="19" uuid="2652374c-9c5d-4cb7-ba4c-b5427b7517d8"/>
+								<reportElement x="15" y="85" width="94" height="17" uuid="2652374c-9c5d-4cb7-ba4c-b5427b7517d8"/>
 								<textFieldExpression><![CDATA[$P{parameter6}]]></textFieldExpression>
 							</textField>
 							<textField isBlankWhenNull="true">
-								<reportElement x="15" y="113" width="94" height="19" uuid="ec4354d9-7194-4d3a-b95f-954a09c987fd"/>
+								<reportElement x="15" y="102" width="94" height="17" uuid="ec4354d9-7194-4d3a-b95f-954a09c987fd"/>
 								<textFieldExpression><![CDATA[$P{parameter7}]]></textFieldExpression>
 							</textField>
 							<textField isBlankWhenNull="true">
-								<reportElement x="15" y="132" width="94" height="19" uuid="7c6814fe-1eec-43c3-8928-4fdc1fa2dfe3"/>
+								<reportElement x="15" y="119" width="94" height="17" uuid="7c6814fe-1eec-43c3-8928-4fdc1fa2dfe3"/>
 								<textFieldExpression><![CDATA[$P{parameter8}]]></textFieldExpression>
 							</textField>
 							<textField isBlankWhenNull="true">
-								<reportElement x="15" y="151" width="94" height="19" uuid="d43a0af3-796e-442d-b369-72f132a162fb"/>
+								<reportElement x="15" y="136" width="94" height="17" uuid="d43a0af3-796e-442d-b369-72f132a162fb"/>
 								<textFieldExpression><![CDATA[$P{parameter9}]]></textFieldExpression>
 							</textField>
 							<textField isBlankWhenNull="true">
-								<reportElement x="15" y="169" width="94" height="19" uuid="f9cc1898-e367-403e-8c92-6d0cae296806"/>
+								<reportElement x="15" y="152" width="94" height="17" uuid="f9cc1898-e367-403e-8c92-6d0cae296806"/>
 								<textFieldExpression><![CDATA[$P{parameter10}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="76" uuid="1d87076a-7b36-4cab-a164-6d1f12ddd313">
-						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+						<jr:columnHeader style="table 1_CH" height="26" rowSpan="1">
 							<staticText>
-								<reportElement mode="Opaque" x="0" y="0" width="76" height="30" uuid="01400162-19cc-4ba6-801a-11f7c0a69e50"/>
+								<reportElement mode="Opaque" x="0" y="0" width="76" height="25" uuid="01400162-19cc-4ba6-801a-11f7c0a69e50"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12" isBold="true"/>
 								</textElement>
 								<text><![CDATA[Amount Rs.]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter height="23" rowSpan="1">
+						<jr:columnFooter height="21" rowSpan="1">
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement mode="Opaque" x="2" y="2" width="62" height="19" uuid="fcfa88ce-de6d-4443-8dfa-e17b4ba74438"/>
+								<reportElement mode="Opaque" x="2" y="2" width="62" height="17" uuid="fcfa88ce-de6d-4443-8dfa-e17b4ba74438"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter36} != null ? Integer.parseInt($P{parameter36}): null]]></textFieldExpression>
 							</textField>
 						</jr:columnFooter>
-						<jr:detailCell style="table 1_TD" height="189" rowSpan="1">
+						<jr:detailCell style="table 1_TD" height="169" rowSpan="1">
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement style="FREE_ALIGN_STY" x="0" y="0" width="64" height="19" uuid="53aab9dc-d951-4aba-bd83-718962cd1434"/>
+								<reportElement style="FREE_ALIGN_STY" x="0" y="0" width="64" height="17" uuid="53aab9dc-d951-4aba-bd83-718962cd1434"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter11} != null ? Integer.parseInt($P{parameter11}): null]]></textFieldExpression>
 							</textField>
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement style="FREE_TOE_STY" x="0" y="19" width="64" height="19" uuid="988616b9-aa69-4e12-b49c-d33721d81c2e"/>
+								<reportElement style="FREE_TOE_STY" x="0" y="17" width="64" height="17" uuid="988616b9-aa69-4e12-b49c-d33721d81c2e"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter12} != null ? Integer.parseInt($P{parameter12}): null]]></textFieldExpression>
 							</textField>
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement style="FREE_CAMB_STY" x="0" y="38" width="64" height="19" uuid="635657e4-5546-41d9-b384-1fa0546bd7f3"/>
+								<reportElement style="FREE_CAMB_STY" x="0" y="34" width="64" height="17" uuid="635657e4-5546-41d9-b384-1fa0546bd7f3"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter13} != null ? Integer.parseInt($P{parameter13}): null]]></textFieldExpression>
 							</textField>
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement style="FREE_CAST_STY" x="0" y="57" width="64" height="19" uuid="e34cf16f-ac8a-40b0-b4b1-ed5e776c3c5f"/>
+								<reportElement style="FREE_CAST_STY" x="0" y="51" width="64" height="17" uuid="e34cf16f-ac8a-40b0-b4b1-ed5e776c3c5f"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter14} != null ? Integer.parseInt($P{parameter14}): null]]></textFieldExpression>
 							</textField>
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement style="FREE_BHGT_STY" x="0" y="76" width="64" height="19" uuid="8a0448bb-95db-4adf-a6cc-5613682f98d8"/>
+								<reportElement style="FREE_BHGT_STY" x="0" y="68" width="64" height="17" uuid="8a0448bb-95db-4adf-a6cc-5613682f98d8"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter15} != null ? Integer.parseInt($P{parameter15}): null]]></textFieldExpression>
 							</textField>
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement style="FREE_R_TOE_STY" x="0" y="95" width="64" height="19" uuid="78f6e38e-cf2e-4c86-8671-a86bd916ce98"/>
+								<reportElement style="FREE_R_TOE_STY" x="0" y="85" width="64" height="17" uuid="78f6e38e-cf2e-4c86-8671-a86bd916ce98"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter16} != null ? Integer.parseInt($P{parameter16}): null]]></textFieldExpression>
 							</textField>
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement style="FREE_R_CAM_STY" x="0" y="114" width="64" height="19" uuid="7a3576b9-312a-4604-bd2d-f52f32dbf638"/>
+								<reportElement style="FREE_R_CAM_STY" x="0" y="102" width="64" height="17" uuid="7a3576b9-312a-4604-bd2d-f52f32dbf638"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter17} != null ? Integer.parseInt($P{parameter17}): null]]></textFieldExpression>
 							</textField>
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement style="FREE_ANYO_STY" x="0" y="133" width="64" height="19" uuid="3d300184-eddb-42e1-b8e8-d184abd04718"/>
+								<reportElement style="FREE_ANYO_STY" x="0" y="119" width="64" height="17" uuid="3d300184-eddb-42e1-b8e8-d184abd04718"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter18} != null ? Integer.parseInt($P{parameter18}): null]]></textFieldExpression>
 							</textField>
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement style="FREE_ST_STY" x="0" y="150" width="64" height="19" uuid="2b9eb0ba-4e6a-4692-b108-d083e74b21fe"/>
+								<reportElement style="FREE_ST_STY" x="0" y="135" width="64" height="17" uuid="2b9eb0ba-4e6a-4692-b108-d083e74b21fe"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter19} != null ? Integer.parseInt($P{parameter19}): null]]></textFieldExpression>
 							</textField>
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement style="FREE_HLT_STY" x="0" y="169" width="64" height="19" uuid="736882e0-90c2-4ee2-98a3-f2664e0800b9"/>
+								<reportElement style="FREE_HLT_STY" x="0" y="152" width="64" height="17" uuid="736882e0-90c2-4ee2-98a3-f2664e0800b9"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter20} != null ? Integer.parseInt($P{parameter20}): null]]></textFieldExpression>
 							</textField>
@@ -576,7 +576,7 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` like '$P!{date}%']]>
 				<text><![CDATA[Invoice]]></text>
 			</staticText>
 			<line>
-				<reportElement x="140" y="350" width="75" height="1" uuid="1aa81d4d-cc06-4c59-a173-7c23dcb7ddeb">
+				<reportElement x="140" y="327" width="75" height="1" uuid="1aa81d4d-cc06-4c59-a173-7c23dcb7ddeb">
 					<printWhenExpression><![CDATA[$P{anyOtherChg}.equals("Y")]]></printWhenExpression>
 				</reportElement>
 			</line>
