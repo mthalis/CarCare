@@ -10,6 +10,7 @@ import carcare.controller.BillcccJpaController;
 import carcare.controller.BillcceJpaController;
 import carcare.controller.CustdataJpaController;
 import carcare.controller.UserJpaController;
+import carcare.message.ReportPath;
 import carcare.model.Billccc;
 import carcare.model.Billcce;
 import carcare.model.Custdata;
@@ -1328,13 +1329,13 @@ public class AddBilling extends javax.swing.JInternalFrame {
                             params.put("val12", txtDisCCCTotal.getText());
                             params.put("val13", txtCCCTotal.getText());
 
-                            reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
+                            reportSource = ReportPath.RP_CENTER_INVOICE;
                         }else{
                             params.put("description13", "TOTAL");
 
                             params.put("val13", txtCCCTotal.getText());
 
-                            reportSource = "C:\\CarCare\\report\\centerInvoiceNoDiscount.jasper";
+                            reportSource = ReportPath.RP_CENTER_INVOICE_NO_DISCOUNT;
                         }                        
                         
                         JasperPrint jasperPrintCenter = JasperFillManager.fillReport(reportSource, params,
@@ -1408,11 +1409,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
                             params1.put("discount", txtDisCCETotal.getText());
                             params1.put("total", txtCCETotal.getText());
 
-                            reportSource1 = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
+                            reportSource1 = ReportPath.RP_ENTERPRISE_INVOICE;
                         }else{                    
                             params1.put("total", txtCCETotal.getText());
 
-                            reportSource1 = "C:\\CarCare\\report\\enterpriseInvoiceNoDiscount.jasper";
+                            reportSource1 = ReportPath.RP_ENTERPRISE_INVOICE_NO_DISCOUNT;
                         }
                         
                         JasperPrint jasperPrintEnterPrice = JasperFillManager.fillReport(reportSource1, params1,
@@ -1513,13 +1514,13 @@ public class AddBilling extends javax.swing.JInternalFrame {
                             params.put("val12", txtDisCCCTotal.getText());
                             params.put("val13", txtCCCTotal.getText());
 
-                            reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
+                            reportSource = ReportPath.RP_CENTER_INVOICE;
                         }else{
                             params.put("description13", "TOTAL");
 
                             params.put("val13", txtCCCTotal.getText());
 
-                            reportSource = "C:\\CarCare\\report\\centerInvoiceNoDiscount.jasper";
+                            reportSource = ReportPath.RP_CENTER_INVOICE_NO_DISCOUNT;
                         }
                         
                         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
@@ -1609,11 +1610,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
                             params.put("discount", txtDisCCETotal.getText());
                             params.put("total", txtCCETotal.getText());
 
-                            reportSource = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
+                            reportSource = ReportPath.RP_ENTERPRISE_INVOICE;
                         }else{                    
                             params.put("total", txtCCETotal.getText());
 
-                            reportSource = "C:\\CarCare\\report\\enterpriseInvoiceNoDiscount.jasper";
+                            reportSource = ReportPath.RP_ENTERPRISE_INVOICE_NO_DISCOUNT;
                         }
 
                         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,

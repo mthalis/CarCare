@@ -12,6 +12,7 @@ import carcare.controller.BillcceJpaController;
 import carcare.controller.ChkshtJpaController;
 import carcare.controller.CustdataJpaController;
 import carcare.controller.UserJpaController;
+import carcare.message.ReportPath;
 import carcare.model.Chksht;
 import carcare.model.Custdata;
 import db.ConnectionManager;
@@ -19,6 +20,8 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -82,17 +85,19 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         ((AbstractDocument) jTextField12.getDocument()).setDocumentFilter(filter);
         ((AbstractDocument) jTextField11.getDocument()).setDocumentFilter(filter);
         
+        DecimalFormat formatter = new DecimalFormat("#,###");
+        
         txtVNo.setEnabled(false);
         txtVNo.setText(checkSheet.getCustdata().getVno());
         txtDate1.setDate(checkSheet.getDate());
-        jTextField4.setText(Double.toString(checkSheet.getMilage()));
+        jTextField4.setText(formatter.format(checkSheet.getMilage()));
         
         
         Custdata cus = checkSheet.getCustdata();
         txtName.setText(cus.getName());
         txtAddr.setText(cus.getAddress());
         txtPhone.setText(cus.getPhone());
-        txtMilage.setText(Double.toString(cus.getLmilage()));
+        txtMilage.setText(formatter.format(cus.getLmilage()));
         txtDate.setDate(cus.getLdate());
 
         jTextField23.setText(checkSheet.getFrToe());
@@ -203,8 +208,8 @@ public class CheckSheet extends javax.swing.JInternalFrame {
            /*
                 checkSheet.setDeDate(new Timestamp(System.currentTimeMillis()));
             */
-        int newMilage = (int) (checkSheet.getMilage() + 6000);
-        jTextField5.setText(Integer.toString(newMilage));
+        double newMilage = checkSheet.getMilage() + 6000;
+        jTextField5.setText(formatter.format(newMilage));
         
         txtDate1.setEnabled(false);
         jPasswordField1.setEnabled(false);
@@ -1619,8 +1624,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
 
                 String formatDate = format.format( txtDate1.getDate());
                 String reportTitle = "CarCare Check Sheet";
-                //reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
-                reportSource = "C:\\CarCare\\report\\checkSheet.jasper";
+                reportSource = ReportPath.RP_CHECKSHEET;
 
                 params.put("reportName", reportTitle);
                 params.put("vno", txtVNo.getText());

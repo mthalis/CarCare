@@ -130,7 +130,7 @@
 		<band height="400" splitType="Stretch">
 			<textField>
 				<reportElement x="70" y="37" width="100" height="17" uuid="42fb06b5-ce3a-4494-9fec-7fa11e40f202"/>
-				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($P{date})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[($P{date})]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="20" y="37" width="50" height="17" uuid="cdb64579-870b-46ea-891c-d58f40935c15"/>
@@ -857,7 +857,7 @@
 						</jr:columnHeader>
 						<jr:columnFooter height="14" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="47" height="13" uuid="9f21192b-8b8e-44e4-85bf-dc730ae05f6a"/>
+								<reportElement x="2" y="0" width="45" height="13" uuid="9f21192b-8b8e-44e4-85bf-dc730ae05f6a"/>
 								<box>
 									<rightPen lineWidth="0.5"/>
 								</box>
@@ -866,11 +866,11 @@
 						</jr:columnFooter>
 						<jr:detailCell style="table_TD" height="26" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="47" height="13" uuid="9dadc6b2-8ff4-4a4b-81ef-fdb47f4cd8a6"/>
+								<reportElement x="2" y="0" width="45" height="13" uuid="9dadc6b2-8ff4-4a4b-81ef-fdb47f4cd8a6"/>
 								<text><![CDATA[Toe]]></text>
 							</staticText>
 							<staticText>
-								<reportElement x="0" y="13" width="47" height="13" uuid="0d3beef7-d0e4-4bd6-a3f7-f90686592a46"/>
+								<reportElement x="2" y="13" width="45" height="13" uuid="0d3beef7-d0e4-4bd6-a3f7-f90686592a46"/>
 								<text><![CDATA[Camber]]></text>
 							</staticText>
 						</jr:detailCell>

@@ -6,6 +6,7 @@
 package carcare;
 
 import static carcare.CarCare.summaryRe_window;
+import carcare.message.ReportPath;
 import db.ConnectionManager;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -156,11 +157,11 @@ public class SummaryReport extends javax.swing.JInternalFrame {
             String reportSource = "";
             
             if(jRadioButton3.isSelected()){
-                reportSource =  "C:\\CarCare\\report\\SummaryReport.jasper";
+                reportSource =  ReportPath.RP_SUMMARY_REPORT;
             }else if(jRadioButton2.isSelected()){
-                reportSource =  "C:\\CarCare\\report\\SummaryReportCenter.jasper";
+                reportSource =  ReportPath.RP_SUMMARY_CENTER_REPORT;
             }else if(jRadioButton1.isSelected()){
-                reportSource =  "C:\\CarCare\\report\\SummaryReportEnterPrise.jasper";
+                reportSource =  ReportPath.RP_SUMMARY_ENTERPRISE_REPORT;
             }
             
             

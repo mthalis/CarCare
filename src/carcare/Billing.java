@@ -10,6 +10,7 @@ import static carcare.CarCare.view_bill_window;
 import carcare.controller.BillcccJpaController;
 import carcare.controller.BillcceJpaController;
 import carcare.controller.UserJpaController;
+import carcare.message.ReportPath;
 import carcare.model.Billccc;
 import carcare.model.Billcce;
 import db.ConnectionManager;
@@ -928,13 +929,13 @@ public class Billing extends javax.swing.JInternalFrame {
                     params.put("val12", txtDisCCCTotal.getText());
                     params.put("val13", txtCCCTotal.getText());
                     
-                    reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
+                    reportSource = ReportPath.RP_CENTER_INVOICE;
                 }else{                    
                     params.put("description13", "TOTAL");
 
                     params.put("val13", txtCCCTotal.getText());
                     
-                    reportSource = "C:\\CarCare\\report\\centerInvoiceNoDiscount.jasper";
+                    reportSource = ReportPath.RP_CENTER_INVOICE_NO_DISCOUNT;
                 }
             }else{
                 String formatDate = format.format( dateBill.getDate());
@@ -999,11 +1000,11 @@ public class Billing extends javax.swing.JInternalFrame {
                     params.put("discount", jTextField35.getText());
                     params.put("total", jTextField46.getText());
                     
-                    reportSource = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
+                    reportSource = ReportPath.RP_ENTERPRISE_INVOICE;
                 }else{                    
                     params.put("total", jTextField46.getText());
                     
-                    reportSource = "C:\\CarCare\\report\\enterpriseInvoiceNoDiscount.jasper";
+                    reportSource = ReportPath.RP_ENTERPRISE_INVOICE_NO_DISCOUNT;
                 }
             }
             
