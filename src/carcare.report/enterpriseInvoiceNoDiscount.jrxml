@@ -500,44 +500,44 @@ where
 							<box>
 								<leftPen lineWidth="0.5"/>
 							</box>
-							<textField pattern="##0.00" isBlankWhenNull="true">
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
 								<reportElement mode="Opaque" x="2" y="2" width="50" height="19" uuid="fcfa88ce-de6d-4443-8dfa-e17b4ba74438"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter24} != null ? Integer.parseInt($P{parameter24}): null]]></textFieldExpression>
 							</textField>
 						</jr:columnFooter>
 						<jr:detailCell style="table 2_TD" height="108" rowSpan="1">
-							<textField pattern="##0.00" isBlankWhenNull="true">
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
 								<reportElement style="fee1" x="0" y="0" width="52" height="15" uuid="92c9ebe9-2527-4579-ba11-0b11dde27a63"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[(($P{parameter1} != null && $P{parameter1} != null) ? Integer.parseInt($P{parameter1})*Integer.parseInt($P{parameter4}) : null )]]></textFieldExpression>
 							</textField>
-							<textField pattern="##0.00" isBlankWhenNull="true">
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
 								<reportElement style="fee2" x="0" y="15" width="52" height="15" uuid="b32bfdc0-d4d3-408f-b985-11eb6330c976"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[(($P{parameter5} != null && $P{parameter2} != null) ? Integer.parseInt($P{parameter5})*Integer.parseInt($P{parameter2}) : null )]]></textFieldExpression>
 							</textField>
-							<textField pattern="##0.00" isBlankWhenNull="true">
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
 								<reportElement style="fee3" x="0" y="30" width="52" height="15" uuid="69877503-fb96-4036-afab-3991576bbade"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[(($P{parameter6} != null && $P{parameter3} != null) ? Integer.parseInt($P{parameter6})*Integer.parseInt($P{parameter3}) : null )]]></textFieldExpression>
 							</textField>
-							<textField pattern="##0.00" isBlankWhenNull="true">
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
 								<reportElement style="fee4" x="0" y="45" width="52" height="15" uuid="95ab523f-f5c3-472c-a207-1a2817df7764"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[(($P{parameter7} != null && $P{parameter25} != null) ? Integer.parseInt($P{parameter7})*Integer.parseInt($P{parameter25}) : null )]]></textFieldExpression>
 							</textField>
-							<textField pattern="##0.00" isBlankWhenNull="true">
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
 								<reportElement x="0" y="60" width="52" height="15" uuid="3ea23a8d-b8ea-43a5-8847-7dab515f41c3"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[(($P{parameter8} != null && $P{parameter26} != null) ? Integer.parseInt($P{parameter8})*Integer.parseInt($P{parameter26}) : null )]]></textFieldExpression>
 							</textField>
-							<textField pattern="##0.00" isBlankWhenNull="true">
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
 								<reportElement x="0" y="75" width="52" height="15" uuid="849addb2-7740-48c8-9882-de326f149ded"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[(($P{parameter27} != null && $P{parameter9} != null) ? Integer.parseInt($P{parameter27})*Integer.parseInt($P{parameter9}) : null )]]></textFieldExpression>
 							</textField>
-							<textField pattern="##0.00" isBlankWhenNull="true">
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
 								<reportElement x="0" y="90" width="52" height="15" uuid="2cca89c3-44c2-4aef-9f55-2d175ea31ef6"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[(($P{parameter28} != null && $P{parameter10} != null) ? Integer.parseInt($P{parameter28})*Integer.parseInt($P{parameter10}) : null )]]></textFieldExpression>

@@ -473,7 +473,7 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` like '$P!{date}%']]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:columnFooter height="57" rowSpan="1">
-							<textField pattern="##0.00" isBlankWhenNull="true">
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
 								<reportElement mode="Opaque" x="2" y="2" width="62" height="15" uuid="eb657e01-3fc0-461f-94fa-a5773ef7388e"/>
 								<textElement textAlignment="Right" markup="none">
 									<font size="10"/>
@@ -487,7 +487,7 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` like '$P!{date}%']]>
 								</textElement>
 								<textFieldExpression><![CDATA[$P{parameter35} != null ? Integer.parseInt($P{parameter35}): null]]></textFieldExpression>
 							</textField>
-							<textField pattern="##0.00" isBlankWhenNull="true">
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
 								<reportElement mode="Opaque" x="2" y="36" width="62" height="19" uuid="fcfa88ce-de6d-4443-8dfa-e17b4ba74438"/>
 								<textElement textAlignment="Right">
 									<font size="10"/>
@@ -496,52 +496,52 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` like '$P!{date}%']]>
 							</textField>
 						</jr:columnFooter>
 						<jr:detailCell style="table 1_TD" height="170" rowSpan="1">
-							<textField pattern="##0.00" isBlankWhenNull="true">
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
 								<reportElement style="FREE_ALIGN_STY" x="0" y="0" width="64" height="17" uuid="53aab9dc-d951-4aba-bd83-718962cd1434"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter11} != null ? Integer.parseInt($P{parameter11}): null]]></textFieldExpression>
 							</textField>
-							<textField pattern="##0.00" isBlankWhenNull="true">
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
 								<reportElement style="FREE_TOE_STY" x="0" y="17" width="64" height="17" uuid="988616b9-aa69-4e12-b49c-d33721d81c2e"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter12} != null ? Integer.parseInt($P{parameter12}): null]]></textFieldExpression>
 							</textField>
-							<textField pattern="##0.00" isBlankWhenNull="true">
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
 								<reportElement style="FREE_CAMB_STY" x="0" y="34" width="64" height="17" uuid="635657e4-5546-41d9-b384-1fa0546bd7f3"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter13} != null ? Integer.parseInt($P{parameter13}): null]]></textFieldExpression>
 							</textField>
-							<textField pattern="##0.00" isBlankWhenNull="true">
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
 								<reportElement style="FREE_CAST_STY" x="0" y="51" width="64" height="17" uuid="e34cf16f-ac8a-40b0-b4b1-ed5e776c3c5f"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter14} != null ? Integer.parseInt($P{parameter14}): null]]></textFieldExpression>
 							</textField>
-							<textField pattern="##0.00" isBlankWhenNull="true">
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
 								<reportElement style="FREE_BHGT_STY" x="0" y="68" width="64" height="17" uuid="8a0448bb-95db-4adf-a6cc-5613682f98d8"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter15} != null ? Integer.parseInt($P{parameter15}): null]]></textFieldExpression>
 							</textField>
-							<textField pattern="##0.00" isBlankWhenNull="true">
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
 								<reportElement style="FREE_R_TOE_STY" x="0" y="85" width="64" height="17" uuid="78f6e38e-cf2e-4c86-8671-a86bd916ce98"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter16} != null ? Integer.parseInt($P{parameter16}): null]]></textFieldExpression>
 							</textField>
-							<textField pattern="##0.00" isBlankWhenNull="true">
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
 								<reportElement style="FREE_R_CAM_STY" x="0" y="102" width="64" height="17" uuid="7a3576b9-312a-4604-bd2d-f52f32dbf638"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter17} != null ? Integer.parseInt($P{parameter17}): null]]></textFieldExpression>
 							</textField>
-							<textField pattern="##0.00" isBlankWhenNull="true">
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
 								<reportElement style="FREE_ANYO_STY" x="0" y="119" width="64" height="17" uuid="3d300184-eddb-42e1-b8e8-d184abd04718"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter18} != null ? Integer.parseInt($P{parameter18}): null]]></textFieldExpression>
 							</textField>
-							<textField pattern="##0.00" isBlankWhenNull="true">
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
 								<reportElement style="FREE_ST_STY" x="0" y="136" width="64" height="17" uuid="2b9eb0ba-4e6a-4692-b108-d083e74b21fe"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter19} != null ? Integer.parseInt($P{parameter19}): null]]></textFieldExpression>
 							</textField>
-							<textField pattern="##0.00" isBlankWhenNull="true">
+							<textField pattern="#,##0.00" isBlankWhenNull="true">
 								<reportElement style="FREE_HLT_STY" x="0" y="153" width="64" height="17" uuid="736882e0-90c2-4ee2-98a3-f2664e0800b9"/>
 								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$P{parameter20} != null ? Integer.parseInt($P{parameter20}): null]]></textFieldExpression>

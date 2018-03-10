@@ -18,6 +18,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -46,6 +47,7 @@ public class Billing extends javax.swing.JInternalFrame {
     UserJpaController userJpaController = new UserJpaController(CarCare.EMF);
     boolean carCareCenter;
     private static final Logger logger = Logger.getLogger(Billing.class);
+    DecimalFormat formatter = new DecimalFormat("#,###");
     
     public Billing() {
         initComponents();
@@ -70,7 +72,7 @@ public class Billing extends javax.swing.JInternalFrame {
         txtBillNo.setText(biillNo.substring(0, biillNo.length()- 2));
         dateBill.setDate(billccc.getDate());
         txtVNo.setText(billccc.getVno());
-        txtMilage.setText(billccc.getMillage().toString());
+        txtMilage.setText(formatter.format(billccc.getMillage()));
         txtName.setText(billccc.getName());
         txtAddr.setText(billccc.getAddress());
         txtPhone.setText(billccc.getPhone());
@@ -103,7 +105,7 @@ public class Billing extends javax.swing.JInternalFrame {
         chkFreeHLT.setSelected(billccc.getFreeHlt());
         txtCCCSubTotal.setText(Integer.toString(billccc.getAmount()+ billccc.getDiscount()));
         txtDisCCCTotal.setText(billccc.getDiscount().toString());
-        txtCCCTotal.setText(billccc.getAmount().toString());
+        txtCCCTotal.setText(formatter.format(billccc.getAmount()));
         carCareCenter = true;
         
         jRadioButton3.setSelected(true);
@@ -126,7 +128,7 @@ public class Billing extends javax.swing.JInternalFrame {
         txtBillNo.setText(biillNo.substring(0, biillNo.length()- 2));
         dateBill.setDate(billcce.getDate());
         txtVNo.setText(billcce.getVno());
-        txtMilage.setText(billcce.getMillage().toString());
+        txtMilage.setText(formatter.format(billcce.getMillage()));
         txtName.setText(billcce.getName());
         txtAddr.setText(billcce.getAddress());
         txtPhone.setText(billcce.getPhone());
@@ -154,7 +156,7 @@ public class Billing extends javax.swing.JInternalFrame {
         
         jTextField44.setText(Integer.toString(billcce.getAmount()+ billcce.getDiscount()));
         jTextField35.setText(billcce.getDiscount().toString());
-        jTextField46.setText(billcce.getAmount().toString());
+        jTextField46.setText(formatter.format(billcce.getAmount()));
         
         jCheckBox11.setSelected(billcce.getFree1());
         jCheckBox12.setSelected(billcce.getFree2());
@@ -927,13 +929,13 @@ public class Billing extends javax.swing.JInternalFrame {
 
                     params.put("val11", txtCCCSubTotal.getText());
                     params.put("val12", txtDisCCCTotal.getText());
-                    params.put("val13", txtCCCTotal.getText());
+                    params.put("val13", txtCCCTotal.getText().replaceAll(",", ""));
                     
                     reportSource = ReportPath.RP_CENTER_INVOICE;
                 }else{                    
                     params.put("description13", "TOTAL");
 
-                    params.put("val13", txtCCCTotal.getText());
+                    params.put("val13", txtCCCTotal.getText().replaceAll(",", ""));
                     
                     reportSource = ReportPath.RP_CENTER_INVOICE_NO_DISCOUNT;
                 }
@@ -998,11 +1000,11 @@ public class Billing extends javax.swing.JInternalFrame {
                 if(null != jTextField35.getText() && Integer.parseInt(jTextField35.getText()) > 0){                        
                     params.put("subTotal", jTextField44.getText());
                     params.put("discount", jTextField35.getText());
-                    params.put("total", jTextField46.getText());
+                    params.put("total", jTextField46.getText().replaceAll(",", ""));
                     
                     reportSource = ReportPath.RP_ENTERPRISE_INVOICE;
-                }else{                    
-                    params.put("total", jTextField46.getText());
+                }else{
+                    params.put("total", jTextField46.getText().replaceAll(",", ""));
                     
                     reportSource = ReportPath.RP_ENTERPRISE_INVOICE_NO_DISCOUNT;
                 }

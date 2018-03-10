@@ -212,15 +212,13 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         jTextField5.setText(formatter.format(newMilage));
         
         txtDate1.setEnabled(false);
-        jPasswordField1.setEnabled(false);
-        jTextField1.setEnabled(false);
-        btnClear.setEnabled(false);
-        jButton1.setEnabled(false);
         
         jButton1.setVisible(false);
         btnClear.setVisible(false);
         jPanel9.add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 90, -1));
         btnSave.setText("Re Print");
+        jTextField1.setVisible(false);
+        jPasswordField1.setVisible(false);
         
         viewCheckSheet = true;
     }
