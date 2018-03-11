@@ -326,7 +326,7 @@ where
 							<datasetParameterExpression><![CDATA[$P{qty6}]]></datasetParameterExpression>
 						</datasetParameter>
 						<datasetParameter name="parameter28">
-							<datasetParameterExpression><![CDATA[$P{val7}]]></datasetParameterExpression>
+							<datasetParameterExpression><![CDATA[$P{qty7}]]></datasetParameterExpression>
 						</datasetParameter>
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
 					</datasetRun>

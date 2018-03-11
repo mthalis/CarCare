@@ -151,6 +151,10 @@ public class Billcce implements Serializable {
     private String addby;
     @Column(name = "PAYMETHOD")
     private Boolean paymethod;
+    @Column(name = "SUS_TEST")
+    private Integer susTest;
+    @Column(name = "H_L_TEST")
+    private Integer hLTest;
 
     public Billcce() {
     }
@@ -522,6 +526,26 @@ public class Billcce implements Serializable {
         Boolean oldPaymethod = this.paymethod;
         this.paymethod = paymethod;
         changeSupport.firePropertyChange("paymethod", oldPaymethod, paymethod);
+    }
+    
+    public Integer getSusTest() {
+        return susTest;
+    }
+
+    public void setSusTest(Integer susTest) {
+        Integer oldSusTest = this.susTest;
+        this.susTest = susTest;
+        changeSupport.firePropertyChange("susTest", oldSusTest, susTest);
+    }
+
+    public Integer getHLTest() {
+        return hLTest;
+    }
+
+    public void setHLTest(Integer hLTest) {
+        Integer oldHLTest = this.hLTest;
+        this.hLTest = hLTest;
+        changeSupport.firePropertyChange("HLTest", oldHLTest, hLTest);
     }
 
     @Override

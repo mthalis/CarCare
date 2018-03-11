@@ -73,8 +73,8 @@ public class AddBilling extends javax.swing.JInternalFrame {
     
     void drawLines(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawLine(38, 455, 263, 455);
-        g2d.drawLine(38, 479, 263, 479);
+        g2d.drawLine(38, 414, 263, 414);
+        g2d.drawLine(38, 436, 263, 436);
         
         g2d.drawLine(355, 430, 666, 430); 
         g2d.drawLine(355, 460, 666, 460);
@@ -105,8 +105,6 @@ public class AddBilling extends javax.swing.JInternalFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
@@ -118,8 +116,6 @@ public class AddBilling extends javax.swing.JInternalFrame {
         txtReToe = new javax.swing.JTextField();
         txtReCamber = new javax.swing.JTextField();
         txtAnyOther = new javax.swing.JTextField();
-        txtSusTest = new javax.swing.JTextField();
-        txtHLTest = new javax.swing.JTextField();
         txtSubCCCTotal = new javax.swing.JTextField();
         txtDisCCCTotal = new javax.swing.JTextField();
         txtCCCTotal = new javax.swing.JTextField();
@@ -131,8 +127,6 @@ public class AddBilling extends javax.swing.JInternalFrame {
         chkFreeRToe = new javax.swing.JCheckBox();
         chkFreeRCam = new javax.swing.JCheckBox();
         chkFreeAnyO = new javax.swing.JCheckBox();
-        chkFreeST = new javax.swing.JCheckBox();
-        chkFreeHLT = new javax.swing.JCheckBox();
         jPanel5 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
@@ -152,8 +146,6 @@ public class AddBilling extends javax.swing.JInternalFrame {
         txtOther3Txt = new javax.swing.JTextField();
         jCheckBox11 = new javax.swing.JCheckBox();
         jCheckBox12 = new javax.swing.JCheckBox();
-        jCheckBox13 = new javax.swing.JCheckBox();
-        jCheckBox14 = new javax.swing.JCheckBox();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
@@ -247,22 +239,16 @@ public class AddBilling extends javax.swing.JInternalFrame {
         jLabel15.setText("Any Other");
         jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 160, 80, 20));
 
-        jLabel16.setText("Susp. Test");
-        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 180, 80, 20));
-
-        jLabel17.setText("Head Light Test");
-        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 200, 120, 20));
-
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 0, 51));
         jLabel18.setText("TOTAL");
-        jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 270, 80, -1));
+        jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 232, 80, -1));
 
         jLabel19.setText("Discount");
-        jPanel3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 250, 80, -1));
+        jPanel3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 80, -1));
 
         jLabel20.setText("Sub Total");
-        jPanel3.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 230, 90, -1));
+        jPanel3.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 90, -1));
 
         txtChkAlign.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -400,42 +386,8 @@ public class AddBilling extends javax.swing.JInternalFrame {
         });
         jPanel3.add(txtAnyOther, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 60, -1));
 
-        txtSusTest.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtSusTestFocusLost(evt);
-            }
-        });
-        txtSusTest.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSusTestActionPerformed(evt);
-            }
-        });
-        txtSusTest.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtSusTestKeyTyped(evt);
-            }
-        });
-        jPanel3.add(txtSusTest, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 60, -1));
-
-        txtHLTest.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtHLTestFocusLost(evt);
-            }
-        });
-        txtHLTest.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtHLTestActionPerformed(evt);
-            }
-        });
-        txtHLTest.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtHLTestKeyTyped(evt);
-            }
-        });
-        jPanel3.add(txtHLTest, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 60, -1));
-
         txtSubCCCTotal.setEnabled(false);
-        jPanel3.add(txtSubCCCTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 60, -1));
+        jPanel3.add(txtSubCCCTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 60, -1));
 
         txtDisCCCTotal.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -452,10 +404,10 @@ public class AddBilling extends javax.swing.JInternalFrame {
                 txtDisCCCTotalKeyTyped(evt);
             }
         });
-        jPanel3.add(txtDisCCCTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 60, -1));
+        jPanel3.add(txtDisCCCTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 60, -1));
 
         txtCCCTotal.setEnabled(false);
-        jPanel3.add(txtCCCTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 274, 60, -1));
+        jPanel3.add(txtCCCTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 232, 60, -1));
 
         chkFreeAlign.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -513,27 +465,13 @@ public class AddBilling extends javax.swing.JInternalFrame {
         });
         jPanel3.add(chkFreeAnyO, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, -1, -1));
 
-        chkFreeST.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                chkFreeSTMouseClicked(evt);
-            }
-        });
-        jPanel3.add(chkFreeST, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, -1, -1));
-
-        chkFreeHLT.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                chkFreeHLTMouseClicked(evt);
-            }
-        });
-        jPanel3.add(chkFreeHLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
-
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CAR CARE ENTERPRISES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 0, 51))); // NOI18N
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel21.setText("Fixed Camber Fr.");
+        jLabel21.setText("Susp. Test");
         jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 142, 130, -1));
 
-        jLabel22.setText("Fixed Camber Re.");
+        jLabel22.setText("Head Light Test");
         jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 161, 130, -1));
 
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -750,20 +688,6 @@ public class AddBilling extends javax.swing.JInternalFrame {
             }
         });
         jPanel5.add(jCheckBox12, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 80, -1, -1));
-
-        jCheckBox13.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCheckBox13MouseClicked(evt);
-            }
-        });
-        jPanel5.add(jCheckBox13, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 140, -1, -1));
-
-        jCheckBox14.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCheckBox14MouseClicked(evt);
-            }
-        });
-        jPanel5.add(jCheckBox14, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 160, -1, -1));
 
         jLabel25.setText("Tyre Change");
         jPanel5.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 122, 130, -1));
@@ -1021,14 +945,6 @@ public class AddBilling extends javax.swing.JInternalFrame {
         setCCCTotal();
     }//GEN-LAST:event_txtAnyOtherFocusLost
 
-    private void txtSusTestFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSusTestFocusLost
-        setCCCTotal();
-    }//GEN-LAST:event_txtSusTestFocusLost
-
-    private void txtHLTestFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHLTestFocusLost
-        setCCCTotal();
-    }//GEN-LAST:event_txtHLTestFocusLost
-
     private void txtDisCCCTotalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDisCCCTotalFocusLost
         setCCCTotal();
     }//GEN-LAST:event_txtDisCCCTotalFocusLost
@@ -1065,14 +981,6 @@ public class AddBilling extends javax.swing.JInternalFrame {
         setCCCTotal();
     }//GEN-LAST:event_chkFreeAnyOMouseClicked
 
-    private void chkFreeSTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkFreeSTMouseClicked
-        setCCCTotal();
-    }//GEN-LAST:event_chkFreeSTMouseClicked
-
-    private void chkFreeHLTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkFreeHLTMouseClicked
-        setCCCTotal();
-    }//GEN-LAST:event_chkFreeHLTMouseClicked
-
     private void txtChkAlignKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtChkAlignKeyTyped
         keyTyped(evt);
     }//GEN-LAST:event_txtChkAlignKeyTyped
@@ -1104,14 +1012,6 @@ public class AddBilling extends javax.swing.JInternalFrame {
     private void txtAnyOtherKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnyOtherKeyTyped
         keyTyped(evt);
     }//GEN-LAST:event_txtAnyOtherKeyTyped
-
-    private void txtSusTestKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSusTestKeyTyped
-        keyTyped(evt);
-    }//GEN-LAST:event_txtSusTestKeyTyped
-
-    private void txtHLTestKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHLTestKeyTyped
-        keyTyped(evt);
-    }//GEN-LAST:event_txtHLTestKeyTyped
 
     private void txtDisCCCTotalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDisCCCTotalKeyTyped
         keyTyped(evt);
@@ -1182,8 +1082,8 @@ public class AddBilling extends javax.swing.JInternalFrame {
             billccc.setReToe((txtReToe.getText() != null && !txtReToe.getText().isEmpty()) ? Integer.parseInt(txtReToe.getText()) : 0);
             billccc.setReCamber((txtReCamber.getText() != null && !txtReCamber.getText().isEmpty()) ? Integer.parseInt(txtReCamber.getText()) : 0);
             billccc.setAnyOther((txtAnyOther.getText() != null && !txtAnyOther.getText().isEmpty()) ? Integer.parseInt(txtAnyOther.getText()) : 0);
-            billccc.setSusTest((txtSusTest.getText() != null && !txtSusTest.getText().isEmpty()) ? Integer.parseInt(txtSusTest.getText()) : 0);
-            billccc.setHLTest((txtHLTest.getText() != null && !txtHLTest.getText().isEmpty()) ? Integer.parseInt(txtHLTest.getText()) : 0);
+            //billccc.setSusTest((txtSusTest.getText() != null && !txtSusTest.getText().isEmpty()) ? Integer.parseInt(txtSusTest.getText()) : 0);
+            //billccc.setHLTest((txtHLTest.getText() != null && !txtHLTest.getText().isEmpty()) ? Integer.parseInt(txtHLTest.getText()) : 0);
             billccc.setDiscount((txtDisCCCTotal.getText() != null && !txtDisCCCTotal.getText().isEmpty()) ? Integer.parseInt(txtDisCCCTotal.getText()) : 0);            
             
             billccc.setFreeAlign(chkFreeAlign.isSelected());
@@ -1194,8 +1094,8 @@ public class AddBilling extends javax.swing.JInternalFrame {
             billccc.setFreeRToe(chkFreeRToe.isSelected());
             billccc.setFreeRCam(chkFreeRCam.isSelected());
             billccc.setFreeAnyo(chkFreeAnyO.isSelected());
-            billccc.setFreeSt(chkFreeST.isSelected());
-            billccc.setFreeHlt(chkFreeHLT.isSelected());
+            //billccc.setFreeSt(chkFreeST.isSelected());
+            //billccc.setFreeHlt(chkFreeHLT.isSelected());
             reprint = chkFreeAnyO.isSelected();
             billccc.setRePrint(reprint);
             billccc.setAmount((txtCCCTotal.getText() != null && !txtCCCTotal.getText().isEmpty()) ? Integer.parseInt(txtCCCTotal.getText()) : 0);            
@@ -1222,14 +1122,14 @@ public class AddBilling extends javax.swing.JInternalFrame {
             
             billcce.setWbRa(Integer.parseInt(!jTextField27.getText().isEmpty() ? jTextField27.getText() : "0"));
             billcce.setWRa(Integer.parseInt(!jTextField33.getText().isEmpty() ? jTextField33.getText() : "0"));
-            billcce.setFixCmRF(Integer.parseInt(!jTextField32.getText().isEmpty() ? jTextField32.getText() : "0"));
-            billcce.setFixCmRR(Integer.parseInt(!jTextField31.getText().isEmpty() ? jTextField31.getText() : "0"));
+            billcce.setSusTest(Integer.parseInt(!jTextField32.getText().isEmpty() ? jTextField32.getText() : "0"));
+            billcce.setHLTest(Integer.parseInt(!jTextField31.getText().isEmpty() ? jTextField31.getText() : "0"));
             billcce.setOther1Ra((jTextField30.getText() != null && !jTextField30.getText().isEmpty()) ? Integer.parseInt(jTextField30.getText()) : 0);
             billcce.setOther2Ra((jTextField29.getText() != null && !jTextField29.getText().isEmpty()) ? Integer.parseInt(jTextField29.getText()) : 0);
             billcce.setOther3Ra((jTextField28.getText() != null && !jTextField28.getText().isEmpty()) ? Integer.parseInt(jTextField28.getText()) : 0);
             
             billcce.setOTHER1Txt(txtOther1Txt.getText());
-            billcce.setOTHER2Txt(jTextField32.getText());
+            //billcce.setOTHER2Txt(jTextField32.getText());
             billcce.setOTHER3Txt(txtOther3Txt.getText());
             
             billcce.setWbQt(Integer.parseInt(!jTextField20.getText().isEmpty() ? jTextField20.getText() : "0"));
@@ -1240,15 +1140,13 @@ public class AddBilling extends javax.swing.JInternalFrame {
             
             billcce.setFree1(jCheckBox11.isSelected());
             billcce.setFree2(jCheckBox12.isSelected());
-            billcce.setFree3(jCheckBox13.isSelected());
-            billcce.setFree4(jCheckBox14.isSelected());
             
             billcce.setDiscount((txtDisCCETotal.getText() != null && !txtDisCCETotal.getText().isEmpty()) ? Integer.parseInt(txtDisCCETotal.getText()) : 0);
             billcce.setAmount((txtCCETotal.getText() != null && !txtCCETotal.getText().isEmpty()) ? Integer.parseInt(txtCCETotal.getText()) : 0);                        
-                        
+            
             if(billcce.getAmount() > 0 ){
                 saveBillcce = billcceJpaController.create(billcce, saveCusdata);
-                if(!saveBillcce){
+                if(false){
                     JOptionPane.showMessageDialog(jPanel1, "Error occured while save record !");
                     return;
                 }                
@@ -1305,14 +1203,14 @@ public class AddBilling extends javax.swing.JInternalFrame {
                             descList.add("Any Other");
                             valList.add(txtAnyOther.getText());
                         }
-                        if(!txtSusTest.getText().equals("") && !txtSusTest.getText().equals("0")){
+                        /*if(!txtSusTest.getText().equals("") && !txtSusTest.getText().equals("0")){
                             descList.add("Susp. Test");
                             valList.add(txtSusTest.getText());
                         }
                         if(!txtHLTest.getText().equals("") && !txtHLTest.getText().equals("0") ){
                             descList.add("Head Light Test");
                             valList.add(txtHLTest.getText());
-                        }
+                        }*/
 
                         for (int x = 0; x<descList.size() ;x++) {
                             params.put("description"+(x+1), descList.get(x));
@@ -1369,16 +1267,6 @@ public class AddBilling extends javax.swing.JInternalFrame {
                             valList1.add(jTextField33.getText());
                             qtyList1.add("1");
                         }
-                        if(!jTextField32.getText().equals("") && !jTextField32.getText().equals("0")){
-                            descList1.add("Fixed Camber Fr.");
-                            valList1.add(jTextField32.getText());
-                            qtyList1.add("1");
-                        }
-                        if(!jTextField31.getText().equals("") && !jTextField31.getText().equals("0")){
-                            descList1.add("Fixed Camber Re.");
-                            valList1.add(jTextField31.getText());
-                            qtyList1.add("1");
-                        }
                         if((!jTextField30.getText().equals("") && !jTextField30.getText().equals("0")) && 
                                 (!txtOther1Qt.getText().equals("") && !txtOther1Qt.getText().equals("0"))){
                             descList1.add("N2");
@@ -1389,7 +1277,17 @@ public class AddBilling extends javax.swing.JInternalFrame {
                             descList1.add("Tyre Change");
                             valList1.add(jTextField29.getText());
                             qtyList1.add(txtOther2Qt.getText());
-                        }                
+                        }
+                        if(!jTextField32.getText().equals("") && !jTextField32.getText().equals("0")){
+                            descList1.add("Susp. Test");
+                            valList1.add(jTextField32.getText());
+                            qtyList1.add("1");
+                        }
+                        if(!jTextField31.getText().equals("") && !jTextField31.getText().equals("0")){
+                            descList1.add("Head Light Test");
+                            valList1.add(jTextField31.getText());
+                            qtyList1.add("1");
+                        }
                         if(!jTextField28.getText().equals("") && !jTextField28.getText().equals("0")){
                             descList1.add(txtOther3Txt.getText());
                             valList1.add(jTextField28.getText());
@@ -1491,14 +1389,14 @@ public class AddBilling extends javax.swing.JInternalFrame {
                             descList.add("Any Other");
                             valList.add(txtAnyOther.getText());
                         }
-                        if(!txtSusTest.getText().equals("") && !txtSusTest.getText().equals("0")){
+                        /*if(!txtSusTest.getText().equals("") && !txtSusTest.getText().equals("0")){
                             descList.add("Susp. Test");
                             valList.add(txtSusTest.getText());
                         }
                         if(!txtHLTest.getText().equals("") && !txtHLTest.getText().equals("0") ){
                             descList.add("Head Light Test");
                             valList.add(txtHLTest.getText());
-                        }
+                        }*/
 
                         for (int x = 0; x<descList.size() ;x++) {
                             params.put("description"+(x+1), descList.get(x));
@@ -1570,16 +1468,6 @@ public class AddBilling extends javax.swing.JInternalFrame {
                             valList1.add(jTextField33.getText());
                             qtyList1.add("1");
                         }
-                        if(!jTextField32.getText().equals("") && !jTextField32.getText().equals("0")){
-                            descList1.add("Fixed Camber Fr.");
-                            valList1.add(jTextField32.getText());
-                            qtyList1.add("1");
-                        }
-                        if(!jTextField31.getText().equals("") && !jTextField31.getText().equals("0")){
-                            descList1.add("Fixed Camber Re.");
-                            valList1.add(jTextField31.getText());
-                            qtyList1.add("1");
-                        }
                         if((!jTextField30.getText().equals("") && !jTextField30.getText().equals("0")) && 
                                 (!txtOther1Qt.getText().equals("") && !txtOther1Qt.getText().equals("0"))){
                             descList1.add("N2");
@@ -1590,7 +1478,17 @@ public class AddBilling extends javax.swing.JInternalFrame {
                             descList1.add("Tyre Change");
                             valList1.add(jTextField29.getText());
                             qtyList1.add(txtOther2Qt.getText());
-                        }                
+                        }
+                        if(!jTextField32.getText().equals("") && !jTextField32.getText().equals("0")){
+                            descList1.add("Susp. Test");
+                            valList1.add(jTextField32.getText());
+                            qtyList1.add("1");
+                        }
+                        if(!jTextField31.getText().equals("") && !jTextField31.getText().equals("0")){
+                            descList1.add("Head Light Test");
+                            valList1.add(jTextField31.getText());
+                            qtyList1.add("1");
+                        }
                         if(!jTextField28.getText().equals("") && !jTextField28.getText().equals("0")){
                             descList1.add(txtOther3Txt.getText());
                             valList1.add(jTextField28.getText());
@@ -1734,14 +1632,6 @@ public class AddBilling extends javax.swing.JInternalFrame {
     private void jCheckBox12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox12MouseClicked
         setCCETotal();
     }//GEN-LAST:event_jCheckBox12MouseClicked
-
-    private void jCheckBox13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox13MouseClicked
-        setCCETotal();
-    }//GEN-LAST:event_jCheckBox13MouseClicked
-
-    private void jCheckBox14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox14MouseClicked
-        setCCETotal();
-    }//GEN-LAST:event_jCheckBox14MouseClicked
 
     private void jTextField20KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField20KeyTyped
         keyTyped(evt);
@@ -1888,16 +1778,8 @@ public class AddBilling extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtReCamberActionPerformed
 
     private void txtAnyOtherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnyOtherActionPerformed
-        txtSusTest.requestFocusInWindow();
-    }//GEN-LAST:event_txtAnyOtherActionPerformed
-
-    private void txtSusTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSusTestActionPerformed
-        txtHLTest.requestFocusInWindow();
-    }//GEN-LAST:event_txtSusTestActionPerformed
-
-    private void txtHLTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHLTestActionPerformed
         txtDisCCCTotal.requestFocusInWindow();
-    }//GEN-LAST:event_txtHLTestActionPerformed
+    }//GEN-LAST:event_txtAnyOtherActionPerformed
 
     private void jTextField20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField20ActionPerformed
         jTextField27.requestFocusInWindow();
@@ -2022,10 +1904,10 @@ public class AddBilling extends javax.swing.JInternalFrame {
         int reToe = !chkFreeRToe.isSelected()? (Integer.parseInt(!txtReToe.getText().isEmpty() ? txtReToe.getText() : "0")) : 0 ;
         int reCamber = !chkFreeRCam .isSelected()? (Integer.parseInt(!txtReCamber.getText().isEmpty() ? txtReCamber.getText() : "0")) : 0 ;
         int anyOther = !chkFreeAnyO .isSelected()? (Integer.parseInt(!txtAnyOther.getText().isEmpty() ? txtAnyOther.getText() : "0")) : 0 ;
-        int susTest = !chkFreeST.isSelected()? (Integer.parseInt(!txtSusTest.getText().isEmpty() ? txtSusTest.getText() : "0")) : 0 ;
-        int hLTest = !chkFreeHLT.isSelected()? (Integer.parseInt(!txtHLTest.getText().isEmpty() ? txtHLTest.getText() : "0")) : 0 ;
+        //int susTest = !chkFreeST.isSelected()? (Integer.parseInt(!txtSusTest.getText().isEmpty() ? txtSusTest.getText() : "0")) : 0 ;
+        //int hLTest = !chkFreeHLT.isSelected()? (Integer.parseInt(!txtHLTest.getText().isEmpty() ? txtHLTest.getText() : "0")) : 0 ;
         
-        outPut = chkAlign + adstToe + camber + caster + bHight + reToe + reCamber + anyOther + susTest + hLTest;
+        outPut = chkAlign + adstToe + camber + caster + bHight + reToe + reCamber + anyOther;
         
         txtSubCCCTotal.setText(Integer.toString(outPut));
         int discount = Integer.parseInt(!txtDisCCCTotal.getText().isEmpty() ? txtDisCCCTotal.getText() : "0"); 
@@ -2036,13 +1918,13 @@ public class AddBilling extends javax.swing.JInternalFrame {
         int outPut = 0;
         int chkAlign = !jCheckBox11.isSelected()? (Integer.parseInt(!jTextField34.getText().isEmpty() ? jTextField34.getText() : "0")) : 0 ;
         int adstToe = !jCheckBox12.isSelected()? (Integer.parseInt(!jTextField40.getText().isEmpty() ? jTextField40.getText() : "0")) : 0 ;
-        int camber = !jCheckBox13.isSelected()? (Integer.parseInt(!jTextField39.getText().isEmpty() ? jTextField39.getText() : "0")) : 0 ;
-        int caster = !jCheckBox14.isSelected()? (Integer.parseInt(!jTextField38.getText().isEmpty() ? jTextField38.getText() : "0")) : 0 ;
-        int bHight = Integer.parseInt(!jTextField41.getText().isEmpty() ? jTextField41.getText() : "0");
-        int reToe = Integer.parseInt(!jTextField36.getText().isEmpty() ? jTextField36.getText() : "0");
+        int susTest = Integer.parseInt(!jTextField39.getText().isEmpty() ? jTextField39.getText() : "0");
+        int HeLTest = Integer.parseInt(!jTextField38.getText().isEmpty() ? jTextField38.getText() : "0");
+        int n2 = Integer.parseInt(!jTextField41.getText().isEmpty() ? jTextField41.getText() : "0");
+        int tyreChg = Integer.parseInt(!jTextField36.getText().isEmpty() ? jTextField36.getText() : "0");
         int reCamber = Integer.parseInt(!jTextField45.getText().isEmpty() ? jTextField45.getText() : "0");
         
-        outPut = chkAlign + adstToe + camber + caster + bHight + reToe + reCamber;
+        outPut = chkAlign + adstToe + susTest + HeLTest + n2 + tyreChg + reCamber;
         
         txtSubCCETotal.setText(Integer.toString(outPut));
         int discount = Integer.parseInt(!txtDisCCETotal.getText().isEmpty() ? txtDisCCETotal.getText() : "0"); 
@@ -2058,15 +1940,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBox chkFreeBHgt;
     private javax.swing.JCheckBox chkFreeCamb;
     private javax.swing.JCheckBox chkFreeCast;
-    private javax.swing.JCheckBox chkFreeHLT;
     private javax.swing.JCheckBox chkFreeRCam;
     private javax.swing.JCheckBox chkFreeRToe;
-    private javax.swing.JCheckBox chkFreeST;
     private javax.swing.JCheckBox chkFreeToe;
     private javax.swing.JCheckBox jCheckBox11;
     private javax.swing.JCheckBox jCheckBox12;
-    private javax.swing.JCheckBox jCheckBox13;
-    private javax.swing.JCheckBox jCheckBox14;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2074,8 +1952,6 @@ public class AddBilling extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -2138,7 +2014,6 @@ public class AddBilling extends javax.swing.JInternalFrame {
     private com.toedter.calendar.JDateChooser txtDate;
     private javax.swing.JTextField txtDisCCCTotal;
     private javax.swing.JTextField txtDisCCETotal;
-    private javax.swing.JTextField txtHLTest;
     private javax.swing.JTextField txtMilage;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtOther1Qt;
@@ -2152,7 +2027,6 @@ public class AddBilling extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtReToe;
     private javax.swing.JTextField txtSubCCCTotal;
     private javax.swing.JTextField txtSubCCETotal;
-    private javax.swing.JTextField txtSusTest;
     private javax.swing.JTextField txtVNo;
     // End of variables declaration//GEN-END:variables
 }
