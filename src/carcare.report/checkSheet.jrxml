@@ -1041,7 +1041,7 @@
 				<text><![CDATA[Remarks]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="70" y="335" width="100" height="42" uuid="6375b19b-8f3a-45d1-a326-6ce834237e6a"/>
+				<reportElement x="70" y="335" width="127" height="48" uuid="6375b19b-8f3a-45d1-a326-6ce834237e6a"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
