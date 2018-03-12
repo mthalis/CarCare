@@ -112,6 +112,7 @@
 	<parameter name="parameter40" class="java.lang.String"/>
 	<parameter name="parameter41" class="java.lang.String"/>
 	<parameter name="parameter42" class="java.lang.String"/>
+	<parameter name="parameter43" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -1034,6 +1035,17 @@
 			<textField>
 				<reportElement x="67" y="315" width="100" height="17" uuid="06e5e7c2-e278-498f-bf07-374ae1282c3c"/>
 				<textFieldExpression><![CDATA[$P{parameter42}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="335" width="50" height="17" uuid="d2dd1c7f-5d4b-4d17-98ff-adc52cd00092"/>
+				<text><![CDATA[Remarks]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="335" width="100" height="42" uuid="6375b19b-8f3a-45d1-a326-6ce834237e6a"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{parameter43}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -15,13 +15,11 @@ import carcare.controller.UserJpaController;
 import carcare.message.ReportPath;
 import carcare.model.Chksht;
 import carcare.model.Custdata;
-import db.ConnectionManager;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -169,19 +167,19 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         jTextField34.setEnabled(false);
         jTextField39.setEnabled(false);
 
-        jTextField6.setText(Integer.toString(checkSheet.getBwi1()));
-        jTextField53.setText(Integer.toString(checkSheet.getBw1()));
-        jTextField51.setText(Integer.toString(checkSheet.getBwi3()));
-        jTextField52.setText(Integer.toString(checkSheet.getBw3()));
+        jTextField6.setText(checkSheet.getBwi1() > 0 ? Integer.toString(checkSheet.getBwi1()) : "");
+        jTextField53.setText(checkSheet.getBw1() > 0 ? Integer.toString(checkSheet.getBw1()) : "");
+        jTextField51.setText(checkSheet.getBwi3() > 0 ? Integer.toString(checkSheet.getBwi3()) : "");
+        jTextField52.setText(checkSheet.getBw3() > 0 ? Integer.toString(checkSheet.getBw3()) : "");
         jTextField6.setEnabled(false);
         jTextField53.setEnabled(false);
         jTextField51.setEnabled(false);
         jTextField52.setEnabled(false);
 
-        jTextField55.setText(Integer.toString(checkSheet.getBwi2()));
-        jTextField57.setText(Integer.toString(checkSheet.getBw2()));
-        jTextField54.setText(Integer.toString(checkSheet.getBwi4()));
-        jTextField56.setText(Integer.toString(checkSheet.getBw4()));
+        jTextField55.setText(checkSheet.getBwi2() > 0 ? Integer.toString(checkSheet.getBwi2()) : "");
+        jTextField57.setText(checkSheet.getBw2() > 0 ? Integer.toString(checkSheet.getBw2()) : "");
+        jTextField54.setText(checkSheet.getBwi4() > 0 ? Integer.toString(checkSheet.getBwi4()) : "");
+        jTextField56.setText(checkSheet.getBw4() > 0 ? Integer.toString(checkSheet.getBw4()) : "");
         jTextField55.setEnabled(false);
         jTextField57.setEnabled(false);
         jTextField54.setEnabled(false);
@@ -1617,7 +1615,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                 dispose();
                 String reportSource = "";
                 Map<String, Object> params = new HashMap();
-                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
                 String rePrintType = "";
 
                 String formatDate = format.format( txtDate1.getDate());
@@ -1677,6 +1675,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                 
                 params.put("parameter41", jTextField12.getText());
                 params.put("parameter42", jTextField11.getText());
+                params.put("parameter43", jTextArea1.getText());
 
                 JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params, new JREmptyDataSource(1));
                 JRViewer jv = new JRViewer(jasperPrint);
