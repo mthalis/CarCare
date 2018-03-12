@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="420" pageHeight="595" columnWidth="380" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="3e919b32-5197-4282-9668-7a22db27f318">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="8"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -340,7 +340,7 @@ where
 								<text><![CDATA[Description]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter height="58" rowSpan="1">
+						<jr:columnFooter height="51" rowSpan="1">
 							<box>
 								<rightPen lineWidth="0.0"/>
 							</box>
@@ -350,19 +350,19 @@ where
 								<text><![CDATA[Sub Total]]></text>
 							</staticText>
 							<staticText>
-								<reportElement mode="Opaque" x="14" y="19" width="111" height="19" uuid="9338e86c-5908-4ce6-93e5-468b53af58cb"/>
+								<reportElement mode="Opaque" x="14" y="18" width="111" height="16" uuid="9338e86c-5908-4ce6-93e5-468b53af58cb"/>
 								<textElement markup="none"/>
 								<text><![CDATA[Discount]]></text>
 							</staticText>
 							<staticText>
-								<reportElement mode="Opaque" x="14" y="38" width="111" height="19" uuid="2b9ebad8-6e58-4ac2-b014-871469982413"/>
+								<reportElement mode="Opaque" x="14" y="34" width="111" height="16" uuid="2b9ebad8-6e58-4ac2-b014-871469982413"/>
 								<textElement markup="none">
 									<font size="12" isBold="true"/>
 								</textElement>
 								<text><![CDATA[TOTAL]]></text>
 							</staticText>
 						</jr:columnFooter>
-						<jr:detailCell style="table 2_TD" height="108" rowSpan="1">
+						<jr:detailCell style="table 2_TD" height="105" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement x="14" y="0" width="111" height="15" uuid="cc01fb95-9847-4073-a1dd-4722645a6f5c"/>
 								<textElement textAlignment="Left" verticalAlignment="Middle" markup="none"/>
@@ -410,7 +410,7 @@ where
 								<text><![CDATA[Qty]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table 2_TD" height="108" rowSpan="1">
+						<jr:detailCell style="table 2_TD" height="105" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="46" height="15" uuid="985b16c1-69f3-435a-9a7b-f57f172485a2"/>
 								<textElement textAlignment="Center"/>
@@ -458,7 +458,7 @@ where
 								<text><![CDATA[Rate]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table 2_TD" height="108" rowSpan="1">
+						<jr:detailCell style="table 2_TD" height="105" rowSpan="1">
 							<textField pattern="##0.00" isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="60" height="15" uuid="32e41fce-210f-4be6-b3fc-b00663c45e2d"/>
 								<textElement textAlignment="Right"/>
@@ -506,7 +506,7 @@ where
 								<text><![CDATA[Amount]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter height="58" rowSpan="1">
+						<jr:columnFooter height="51" rowSpan="1">
 							<box>
 								<leftPen lineWidth="0.5"/>
 							</box>
@@ -518,21 +518,21 @@ where
 								<textFieldExpression><![CDATA[$P{parameter22} != null ? Integer.parseInt($P{parameter22}): null]]></textFieldExpression>
 							</textField>
 							<textField pattern="##0.00" isBlankWhenNull="true">
-								<reportElement mode="Opaque" x="0" y="19" width="52" height="19" uuid="41a9a706-e5d4-48ed-93d8-c8684a85e423"/>
+								<reportElement mode="Opaque" x="0" y="18" width="52" height="16" uuid="41a9a706-e5d4-48ed-93d8-c8684a85e423"/>
 								<textElement textAlignment="Right">
 									<font size="10"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$P{parameter23} != null ? Integer.parseInt($P{parameter23}): null]]></textFieldExpression>
 							</textField>
 							<textField pattern="#,##0.00" isBlankWhenNull="true">
-								<reportElement mode="Opaque" x="0" y="38" width="52" height="19" uuid="fcfa88ce-de6d-4443-8dfa-e17b4ba74438"/>
+								<reportElement mode="Opaque" x="0" y="34" width="52" height="16" uuid="fcfa88ce-de6d-4443-8dfa-e17b4ba74438"/>
 								<textElement textAlignment="Right">
 									<font size="10"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$P{parameter24} != null ? Integer.parseInt($P{parameter24}): null]]></textFieldExpression>
 							</textField>
 						</jr:columnFooter>
-						<jr:detailCell style="table 2_TD" height="108" rowSpan="1">
+						<jr:detailCell style="table 2_TD" height="105" rowSpan="1">
 							<textField pattern="#,##0.00" isBlankWhenNull="true">
 								<reportElement style="fee1" x="0" y="0" width="52" height="15" uuid="92c9ebe9-2527-4579-ba11-0b11dde27a63"/>
 								<textElement textAlignment="Right"/>
@@ -623,7 +623,7 @@ where
 				<textFieldExpression><![CDATA[$P{rePrintType}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="20" y="270" width="312" height="1" uuid="da1232b6-beba-41c3-872e-f3ca92c503da"/>
+				<reportElement x="20" y="267" width="312" height="1" uuid="da1232b6-beba-41c3-872e-f3ca92c503da"/>
 			</line>
 		</band>
 	</detail>
