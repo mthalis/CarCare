@@ -13,8 +13,9 @@ public class ConnectionManager {
     static final Logger LOGGER = Logger.getLogger(ConnectionManager.class);
     
     private static final String URL = "jdbc:mysql://localhost:3306/carcare";    
-    private static final String USERNAME = "root";   
-    private static final String PASSWORD = "rahasak";
+    public static final String USERNAME = "root";   
+    public static final String PASSWORD = "rahasak";
+    public static final String DBNAME = "carcare";
 
     public static Connection getConnection() {
         Connection con = null;
