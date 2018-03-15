@@ -128,7 +128,7 @@
 		</band>
 	</title>
 	<detail>
-		<band height="400" splitType="Stretch">
+		<band height="455" splitType="Stretch">
 			<textField>
 				<reportElement x="70" y="37" width="100" height="17" uuid="42fb06b5-ce3a-4494-9fec-7fa11e40f202"/>
 				<textFieldExpression><![CDATA[($P{date})]]></textFieldExpression>
@@ -1036,12 +1036,8 @@
 				<reportElement x="67" y="315" width="100" height="17" uuid="06e5e7c2-e278-498f-bf07-374ae1282c3c"/>
 				<textFieldExpression><![CDATA[$P{parameter42}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="20" y="335" width="50" height="17" uuid="d2dd1c7f-5d4b-4d17-98ff-adc52cd00092"/>
-				<text><![CDATA[Remarks]]></text>
-			</staticText>
 			<textField>
-				<reportElement x="70" y="335" width="127" height="48" uuid="6375b19b-8f3a-45d1-a326-6ce834237e6a"/>
+				<reportElement x="20" y="408" width="257" height="38" uuid="6375b19b-8f3a-45d1-a326-6ce834237e6a"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
