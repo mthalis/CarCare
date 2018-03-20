@@ -986,8 +986,8 @@ public class Billing extends javax.swing.JInternalFrame {
         String address = txtAddr.getText() != null ? txtAddr.getText() : "";
         String phone = txtPhone.getText() != null ? txtPhone.getText() : "";
         String billno = txtBillNo.getText();
-        boolean center = Integer.parseInt((txtCCCTotal.getText() != null && !txtCCCTotal.getText().isEmpty()) ? txtCCCTotal.getText() : "0") > 0;
-        boolean enterPrice = Integer.parseInt((jTextField46.getText() != null && !jTextField46.getText().isEmpty()) ? jTextField46.getText() : "0") > 0;
+        boolean center = Integer.parseInt((txtCCCTotal.getText() != null && !txtCCCTotal.getText().isEmpty()) ? txtCCCTotal.getText().replaceAll(",", "") : "0") > 0;
+        boolean enterPrice = Integer.parseInt((jTextField46.getText() != null && !jTextField46.getText().isEmpty()) ? jTextField46.getText().replaceAll(",", "") : "0") > 0;
         if(center){
             int outPut = billcccJpaController.updateCusDetailsBillccc(billno, name, address, phone);
             if(outPut == 1){
