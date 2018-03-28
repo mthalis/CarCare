@@ -5,12 +5,15 @@
  */
 package carcare;
 
+import db.ConnectionManager;
 import de.muntjak.tinylookandfeel.TinyLookAndFeel;
+import java.sql.Connection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import org.apache.log4j.xml.DOMConfigurator;
@@ -297,6 +300,13 @@ public class CarCare extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         try {
+            
+            Connection con = ConnectionManager.getConnection();
+            if(con == null){
+                JOptionPane.showMessageDialog(jDesktopPane1, "Database connection failed, Please try again !");
+                System.exit(0);
+            }
+            
             DOMConfigurator.configure(CarCare.class.getResource("/META-INF/log4j.xml"));
             /* Set the Nimbus look and feel */
             //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

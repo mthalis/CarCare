@@ -1238,11 +1238,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
                         
                         JasperPrint jasperPrintCenter = JasperFillManager.fillReport(reportSource, params,
                                 ConnectionManager.getConnection());
-
-                        logger.error("JASPER DESIGN  WIDTH BEFORE: " + jasperPrintCenter.getPageHeight());
                         jasperPrintCenter.setPageHeight(595);
-                        logger.error("JASPER DESIGN  WIDTH after: " + jasperPrintCenter.getPageWidth());
-                        logger.error("JASPER DESIGN  HEIGTH BEFORE: " + jasperPrintCenter.getPageHeight());                        
                         
                         String title1 = "CarCare Enterprise Invoice";
                         //String reportSource1 = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
@@ -1316,11 +1312,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
                         
                         JasperPrint jasperPrintEnterPrice = JasperFillManager.fillReport(reportSource1, params1,
                                 ConnectionManager.getConnection());
-                        
-                        logger.error("JASPER DESIGN  WIDTH BEFORE: " + jasperPrintEnterPrice.getPageHeight());
                         jasperPrintEnterPrice.setPageHeight(595);
-                        logger.error("JASPER DESIGN  WIDTH after: " + jasperPrintEnterPrice.getPageWidth());
-                        logger.error("JASPER DESIGN  HEIGTH BEFORE: " + jasperPrintEnterPrice.getPageHeight());
                                                 
                         List pages = jasperPrintEnterPrice.getPages();
                         for (int j = 0; j < pages.size(); j++) {
@@ -1423,11 +1415,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
                         
                         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
                                 ConnectionManager.getConnection());
-                        
-                        logger.error("JASPER DESIGN  WIDTH BEFORE: " + jasperPrint.getPageHeight());
                         jasperPrint.setPageHeight(595);
-                        logger.error("JASPER DESIGN  WIDTH after: " + jasperPrint.getPageWidth());
-                        logger.error("JASPER DESIGN  HEIGTH BEFORE: " + jasperPrint.getPageHeight());
                         
                         JRViewer jv = new JRViewer(jasperPrint);
                         JFrame jf = new JFrame();
@@ -1517,12 +1505,8 @@ public class AddBilling extends javax.swing.JInternalFrame {
 
                         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
                                 ConnectionManager.getConnection());
-                        
-                        logger.error("JASPER DESIGN  WIDTH BEFORE: " + jasperPrint.getPageHeight());
                         jasperPrint.setPageHeight(595);
-                        logger.error("JASPER DESIGN  WIDTH after: " + jasperPrint.getPageWidth());
-                        logger.error("JASPER DESIGN  HEIGTH BEFORE: " + jasperPrint.getPageHeight());
-
+                        
                         JRViewer jv = new JRViewer(jasperPrint);
                         JFrame jf = new JFrame();
                         jf.getContentPane().add(jv);

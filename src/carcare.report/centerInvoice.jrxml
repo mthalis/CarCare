@@ -51,18 +51,6 @@
 			<style isStrikeThrough="true"/>
 		</conditionalStyle>
 	</style>
-	<style name="FREE_ST_STY">
-		<conditionalStyle>
-			<conditionExpression><![CDATA[$P{parameter29}]]></conditionExpression>
-			<style isStrikeThrough="true"/>
-		</conditionalStyle>
-	</style>
-	<style name="FREE_HLT_STY">
-		<conditionalStyle>
-			<conditionExpression><![CDATA[$P{parameter30}]]></conditionExpression>
-			<style isStrikeThrough="true"/>
-		</conditionalStyle>
-	</style>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>

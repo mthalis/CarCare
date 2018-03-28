@@ -276,6 +276,7 @@ public class Billing extends javax.swing.JInternalFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
@@ -406,7 +407,7 @@ public class Billing extends javax.swing.JInternalFrame {
 
         jRadioButton2.setText("Credit");
         jRadioButton2.setEnabled(false);
-        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, -1, -1));
+        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 70, -1, -1));
 
         txtBillNo.setEnabled(false);
         jPanel1.add(txtBillNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 13, 120, 25));
@@ -496,8 +497,8 @@ public class Billing extends javax.swing.JInternalFrame {
         jLabel13.setText("Rear Toe");
         jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 125, 80, -1));
 
-        jLabel14.setText("Rear Camber");
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 145, 120, -1));
+        jLabel14.setText("Any Other");
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 160, 80, 20));
 
         chkFreeToe.setEnabled(false);
         jPanel3.add(chkFreeToe, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, -1, -1));
@@ -566,6 +567,9 @@ public class Billing extends javax.swing.JInternalFrame {
 
         jLabel20.setText("Sub Total");
         jPanel3.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 184, 90, -1));
+
+        jLabel15.setText("Rear Camber");
+        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 145, 120, -1));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CAR CARE ENTERPRISES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 0, 51))); // NOI18N
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1042,6 +1046,7 @@ public class Billing extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
