@@ -1303,11 +1303,11 @@ public class AddBilling extends javax.swing.JInternalFrame {
                             params1.put("discount", txtDisCCETotal.getText());
                             params1.put("total", txtCCETotal.getText());
 
-                            reportSource1 = ReportPath.RP_ENTERPRISE_INVOICE;
+                            reportSource1 = ReportPath.RP_ENTERPRISE_INVOICE_HED;
                         }else{                    
                             params1.put("total", txtCCETotal.getText());
 
-                            reportSource1 = ReportPath.RP_ENTERPRISE_INVOICE_NO_DISCOUNT;
+                            reportSource1 = ReportPath.RP_ENTERPRISE_INVOICE_NO_DISCOUNT_HED;
                         }
                         
                         JasperPrint jasperPrintEnterPrice = JasperFillManager.fillReport(reportSource1, params1,
