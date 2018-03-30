@@ -12,6 +12,7 @@ import carcare.controller.BillcceJpaController;
 import carcare.controller.ChkshtJpaController;
 import carcare.controller.CustdataJpaController;
 import carcare.controller.UserJpaController;
+import carcare.helper.PrintHelper;
 import carcare.message.ReportPath;
 import carcare.model.Chksht;
 import carcare.model.Custdata;
@@ -32,6 +33,7 @@ import javax.swing.text.DocumentFilter;
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.swing.JRViewer;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
@@ -1678,16 +1680,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                 params.put("parameter43", jTextArea1.getText());
 
                 JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params, new JREmptyDataSource(1));
-                JRViewer jv = new JRViewer(jasperPrint);
-                JFrame jf = new JFrame();
-                jf.getContentPane().add(jv);
-                jf.setTitle(title);
-
-                jf.validate();
-                jf.setVisible(true);
-                jf.setSize(new Dimension(900,700));
-                jf.setLocation(300,0);
-                jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                new PrintHelper().printReport(jasperPrint, reportTitle);
             }catch(Exception e){
                 LOGGER.fatal("Error Occured while generating checksheet " + e);
             }

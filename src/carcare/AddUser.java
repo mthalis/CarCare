@@ -101,6 +101,11 @@ public class AddUser extends javax.swing.JInternalFrame {
         jCheckBox1 = new javax.swing.JCheckBox();
         btnChgAdd1 = new javax.swing.JButton();
         btnChgExit1 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        txtUserName4 = new javax.swing.JTextField();
+        btnChgAdd2 = new javax.swing.JButton();
+        btnChgExit2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
 
@@ -305,6 +310,33 @@ public class AddUser extends javax.swing.JInternalFrame {
         jPanel14.add(btnChgExit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 75, 25));
 
         jTabbedPane3.addTab("Reset Password", jPanel14);
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel24.setText("User Name");
+        jPanel2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, 30));
+
+        txtUserName4.setEnabled(false);
+        jPanel2.add(txtUserName4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 149, 30));
+
+        btnChgAdd2.setText("Delete");
+        btnChgAdd2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChgAdd2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnChgAdd2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 75, 25));
+
+        btnChgExit2.setText("Close");
+        btnChgExit2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChgExit2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnChgExit2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 75, 25));
+
+        jTabbedPane3.addTab("Delete User", jPanel2);
 
         jPanel10.add(jTabbedPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 370, 310));
 
@@ -576,6 +608,7 @@ public class AddUser extends javax.swing.JInternalFrame {
         txtUserName2.setText(cusdate.getUsername());
         txtChgUserName.setText(cusdate.getUsername());
         txtUserName3.setText(cusdate.getUsername());
+        txtUserName4.setText(cusdate.getUsername());
         jTextField1.setText(cusdate.getId().toString());
         txtUserName2.setEnabled(false);
         if(cusdate.getActive()==1){
@@ -597,14 +630,43 @@ public class AddUser extends javax.swing.JInternalFrame {
         user_window = 0;
     }//GEN-LAST:event_formInternalFrameClosed
 
+    private void btnChgAdd2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChgAdd2ActionPerformed
+        String userName = txtUserName4.getText();        
+        if (userName.isEmpty()) {
+                JOptionPane.showMessageDialog(jPanel1, "Please Enter Correct User Name !");
+                txtUserName4.requestFocus();
+        }else{
+            if (!userJpaController.userAvailable(userName)) {
+                JOptionPane.showMessageDialog(jPanel1, "Enter User Name does not in System !");
+                txtUserName4.requestFocus();
+            }else{
+                boolean outPut = userJpaController.deleteuser(userName);
+                if(outPut){
+                    JOptionPane.showMessageDialog(jPanel1, "Successfully Delete User !");
+                    user_window = 0;
+                    dispose();
+                }else{
+                    JOptionPane.showMessageDialog(jPanel1, "Error occured, Please try again !");
+                }
+            }
+        }
+    }//GEN-LAST:event_btnChgAdd2ActionPerformed
+
+    private void btnChgExit2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChgExit2ActionPerformed
+        dispose();
+        user_window = 0;
+    }//GEN-LAST:event_btnChgExit2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd3;
     private javax.swing.JButton btnAdd4;
     private javax.swing.JButton btnChgAdd;
     private javax.swing.JButton btnChgAdd1;
+    private javax.swing.JButton btnChgAdd2;
     private javax.swing.JButton btnChgExit;
     private javax.swing.JButton btnChgExit1;
+    private javax.swing.JButton btnChgExit2;
     private javax.swing.JButton btnExit3;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.persistence.EntityManager entityManager;
@@ -621,12 +683,14 @@ public class AddUser extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JRadioButton jRadioButton3;
@@ -643,6 +707,7 @@ public class AddUser extends javax.swing.JInternalFrame {
     private javax.swing.JPasswordField txtPassWd2;
     private javax.swing.JTextField txtUserName2;
     private javax.swing.JTextField txtUserName3;
+    private javax.swing.JTextField txtUserName4;
     private java.util.List<carcare.model.User> userList;
     private javax.persistence.Query userQuery;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;

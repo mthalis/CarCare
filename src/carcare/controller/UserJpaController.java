@@ -249,4 +249,18 @@ public class UserJpaController implements Serializable {
         return outPut;
     }
     
+    public boolean deleteuser(String userName){
+        EntityManager em = getEntityManager();
+        try{
+            em.getTransaction().begin();
+            Query query = em.createQuery("Delete FROM User u WHERE u.username = :username ");
+            query.setParameter("username", userName);
+            query.executeUpdate();
+            em.getTransaction().commit();
+            return true;
+       }catch(Exception e){
+            logger.fatal("Error Occured while deleting user -> " + e);
+       }
+       return false;
+    }
 }

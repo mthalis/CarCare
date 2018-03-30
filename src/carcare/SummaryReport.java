@@ -6,6 +6,7 @@
 package carcare;
 
 import static carcare.CarCare.summaryRe_window;
+import carcare.helper.PrintHelper;
 import carcare.message.ReportPath;
 import db.ConnectionManager;
 import java.awt.Dimension;
@@ -17,6 +18,7 @@ import java.util.Map;
 import javax.swing.JFrame;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.swing.JRViewer;
 import org.apache.log4j.Logger;
 /**
@@ -178,17 +180,8 @@ public class SummaryReport extends javax.swing.JInternalFrame {
             
             JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
                     ConnectionManager.getConnection());
-
-            JRViewer jv = new JRViewer(jasperPrint);
-            JFrame jf = new JFrame();
-            jf.getContentPane().add(jv);
-            jf.setTitle(title);
-
-            jf.validate();
-            jf.setVisible(true);
-            jf.setSize(new Dimension(900,700));
-            jf.setLocation(300,0);
-            jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            
+            new PrintHelper().printReport(jasperPrint, title);
 
         }catch(Exception e){
             logger.fatal("Error Occured while generating Summary Report " + e);

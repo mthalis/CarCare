@@ -230,7 +230,7 @@ where
 	<title>
 		<band height="50" splitType="Stretch">
 			<staticText>
-				<reportElement x="148" y="14" width="100" height="20" uuid="4ba3d0af-4094-4db5-b471-9461ef59bb51"/>
+				<reportElement x="148" y="10" width="100" height="20" uuid="4ba3d0af-4094-4db5-b471-9461ef59bb51"/>
 				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>

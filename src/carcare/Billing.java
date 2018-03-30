@@ -10,6 +10,7 @@ import static carcare.CarCare.view_bill_window;
 import carcare.controller.BillcccJpaController;
 import carcare.controller.BillcceJpaController;
 import carcare.controller.UserJpaController;
+import carcare.helper.PrintHelper;
 import carcare.message.ReportPath;
 import carcare.model.Billccc;
 import carcare.model.Billcce;
@@ -31,6 +32,7 @@ import javax.swing.text.AbstractDocument;
 import javax.swing.text.DocumentFilter;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.swing.JRViewer;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
@@ -821,12 +823,13 @@ public class Billing extends javax.swing.JInternalFrame {
             Map<String, Object> params = new HashMap();
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String rePrintType = "";
+            String reportTitle = "";
             if(jRadioButton3.isSelected()){
                 rePrintType = "Copy";
             }
             if(carCareCenter){                
                 String formatDate = format.format( dateBill.getDate());
-                String reportTitle = "CarCare Center Invoice";
+                reportTitle = "CarCare Center Invoice";
                 //reportSource = "C:\\CarCare\\report\\centerInvoice.jasper";
                 //reportSource = "C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\centerInvoice.jasper";
                 
@@ -895,7 +898,7 @@ public class Billing extends javax.swing.JInternalFrame {
                 }
             }else{
                 String formatDate = format.format( dateBill.getDate());
-                String reportTitle = "CarCare Enterprise Invoice";
+                reportTitle = "CarCare Enterprises Invoice";
                 //reportSource = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
                 //reportSource = "C:\\Users\\lenovo\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
                 
@@ -967,19 +970,7 @@ public class Billing extends javax.swing.JInternalFrame {
             
             JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
                         ConnectionManager.getConnection());
-            //JasperViewer.viewReport(jasperPrint, false);
-            //JasperPrintManager.printReport(jasperPrint,true);
-            JRViewer jv = new JRViewer(jasperPrint);
-            JFrame jf = new JFrame();
-            jf.getContentPane().add(jv);
-            jf.setTitle(title);
-
-            jf.validate();
-            jf.setVisible(true);
-            jf.setSize(new Dimension(900,700));
-            jf.setLocation(300,0);
-            jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
+            new PrintHelper().printReport(jasperPrint, reportTitle);
         }catch(Exception e){
             logger.fatal("Error Occured while generating InventoryReport " + e);
         }

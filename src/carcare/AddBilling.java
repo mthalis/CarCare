@@ -10,6 +10,7 @@ import carcare.controller.BillcccJpaController;
 import carcare.controller.BillcceJpaController;
 import carcare.controller.CustdataJpaController;
 import carcare.controller.UserJpaController;
+import carcare.helper.PrintHelper;
 import carcare.message.ReportPath;
 import carcare.model.Billccc;
 import carcare.model.Billcce;
@@ -33,6 +34,7 @@ import javax.swing.text.DocumentFilter;
 import net.sf.jasperreports.engine.JRPrintPage;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.swing.JRViewer;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
@@ -1240,7 +1242,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
                                 ConnectionManager.getConnection());
                         jasperPrintCenter.setPageHeight(595);
                         
-                        String title1 = "CarCare Enterprise Invoice";
+                        String title1 = "CarCare Enterprises Invoice";
                         //String reportSource1 = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
                         String reportSource1 = "";//C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\enterpriseInvoice.jasper";
                         Map<String, Object> params1 = new HashMap();
@@ -1320,19 +1322,10 @@ public class AddBilling extends javax.swing.JInternalFrame {
                             jasperPrintCenter.addPage(object);
                         }
                         
-                        JRViewer jv = new JRViewer(jasperPrintCenter);
-                        JFrame jf = new JFrame();
-                        jf.getContentPane().add(jv);
-                        jf.setTitle(title);
-
-                        jf.validate();
-                        jf.setVisible(true);
-                        jf.setSize(new Dimension(900,700));
-                        jf.setLocation(300,0);
-                        jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);                        
+                        new PrintHelper().printReport(jasperPrintCenter, "CarCare Center & Enterprises Invoice");                      
                        
                     }catch(Exception e){
-                        logger.fatal("Error Occured while generating InventoryRepor Enterpriset Center " + e);
+                        logger.fatal("Error Occured while generating InventoryReport Enterprises Center " + e);
                     }
                     
                 }else if(billccc.getAmount() > 0){
@@ -1417,27 +1410,18 @@ public class AddBilling extends javax.swing.JInternalFrame {
                                 ConnectionManager.getConnection());
                         jasperPrint.setPageHeight(595);
                         
-                        JRViewer jv = new JRViewer(jasperPrint);
-                        JFrame jf = new JFrame();
-                        jf.getContentPane().add(jv);
-                        jf.setTitle(title);
-
-                        jf.validate();
-                        jf.setVisible(true);
-                        jf.setSize(new Dimension(900,700));
-                        jf.setLocation(300,0);
-                        jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        new PrintHelper().printReport(jasperPrint, reportTitle);
 
                     }catch(Exception e){
                         logger.fatal("Error Occured while generating InventoryReport " + e);
                     }
                 }else if(billcce.getAmount() > 0){
                     try{
-                        String title = "CarCare Enterprise Invoice";
+                        String reportTitle = "CarCare Enterprises Invoice";
                         //String reportSource = "C:\\CarCare\\report\\enterpriseInvoice.jasper";
                         String reportSource = "";//C:\\Users\\Dinesh\\Documents\\NetBeansProjects\\CarCare\\src\\carcare.report\\\\enterpriseInvoice.jasper";
                         Map<String, Object> params = new HashMap();
-                        params.put("reportName", title);
+                        params.put("reportName", reportTitle);
                         params.put("vno", billcce.getVno());
                         params.put("date", format.format(billcce.getDate()));
                         params.put("rePrintType", "");
@@ -1507,16 +1491,7 @@ public class AddBilling extends javax.swing.JInternalFrame {
                                 ConnectionManager.getConnection());
                         jasperPrint.setPageHeight(595);
                         
-                        JRViewer jv = new JRViewer(jasperPrint);
-                        JFrame jf = new JFrame();
-                        jf.getContentPane().add(jv);
-                        jf.setTitle(title);
-
-                        jf.validate();
-                        jf.setVisible(true);
-                        jf.setSize(new Dimension(900,700));
-                        jf.setLocation(300,0);
-                        jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        new PrintHelper().printReport(jasperPrint, reportTitle);
 
                     }catch(Exception e){
                         logger.fatal("Error Occured while generating InventoryRepor Enterpriset Center " + e);
