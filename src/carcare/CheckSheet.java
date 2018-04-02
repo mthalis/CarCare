@@ -26,15 +26,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.DocumentFilter;
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperPrintManager;
-import net.sf.jasperreports.swing.JRViewer;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 
@@ -1215,10 +1212,11 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                 checkSheet.setDeDate(new Timestamp(System.currentTimeMillis()));
 
                 chkshtJpaController.create(checkSheet);
-
                 dispose();
-                
-                generateReport();
+                int reply = JOptionPane.showConfirmDialog(null, "Do you want to print CheckSheet !");
+                if (reply == JOptionPane.YES_OPTION){
+                    generateReport();
+                }
             }
         }else{
             generateReport();
