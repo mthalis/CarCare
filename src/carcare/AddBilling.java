@@ -1038,6 +1038,9 @@ public class AddBilling extends javax.swing.JInternalFrame {
         }else if(txtMilage.getText() == null || txtMilage.getText().equals("")){
             JOptionPane.showMessageDialog(jPanel1, "Please enter Millage !");
             txtMilage.requestFocus();
+        }else if(txtVNo.getText().length() >8){
+            JOptionPane.showMessageDialog(jPanel1, "Please enter correct Vehicle no !");
+            txtVNo.requestFocus();
         } else {
             
             String userName = txtAddby.getText();
