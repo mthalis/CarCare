@@ -558,7 +558,7 @@ where
 				<textFieldExpression><![CDATA[$F{billcce_BILL_NO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="70" y="71" width="150" height="17" uuid="2d6cec39-3da4-4d01-a5ee-d8e342f04cb7"/>
+				<reportElement x="70" y="71" width="245" height="17" uuid="2d6cec39-3da4-4d01-a5ee-d8e342f04cb7"/>
 				<textFieldExpression><![CDATA[$F{billcce_NAME}]]></textFieldExpression>
 			</textField>
 			<staticText>

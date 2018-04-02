@@ -529,7 +529,7 @@ where billccc.`VNO` = $P{vno} and billccc.`DATE` like '$P!{date}%']]>
 				<text><![CDATA[Milage]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="70" y="71" width="150" height="17" uuid="7ea623b9-0526-4143-a778-da805032cef6"/>
+				<reportElement x="70" y="71" width="245" height="17" uuid="7ea623b9-0526-4143-a778-da805032cef6"/>
 				<textFieldExpression><![CDATA[$F{billccc_NAME}]]></textFieldExpression>
 			</textField>
 			<staticText>
