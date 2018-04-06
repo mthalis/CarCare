@@ -1100,9 +1100,14 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                     }
                     
                     if(null == outPut && null == outPut1){
-                        jTextField4.setText("");
-                        jTextField5.setText("");
-                        jTextField8.setText("");
+                        
+                        if(null != cus.getFmilage()){
+                            int milage = (int) Double.parseDouble(Double.toString(cus.getFmilage()));
+                            int newMilage = milage + 6000;
+                            jTextField4.setText(Integer.toString(milage));
+                            jTextField5.setText(Integer.toString(newMilage));
+                        }
+                        jTextField8.setText("");                        
                     }
                     
                 }else{

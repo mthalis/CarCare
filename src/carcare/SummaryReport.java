@@ -181,7 +181,7 @@ public class SummaryReport extends javax.swing.JInternalFrame {
             JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params,
                     ConnectionManager.getConnection());
             
-            new PrintHelper().printReport(jasperPrint, title);
+            new PrintHelper().printReportWithPreView(jasperPrint, title);
 
         }catch(Exception e){
             logger.fatal("Error Occured while generating Summary Report " + e);

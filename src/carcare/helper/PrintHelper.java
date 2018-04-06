@@ -43,4 +43,17 @@ public class PrintHelper {
             jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         }
     }
+    
+    public void printReportWithPreView(JasperPrint jasperPrint, String title){        
+        JRViewer jv = new JRViewer(jasperPrint);
+        JFrame jf = new JFrame();
+        jf.getContentPane().add(jv);
+        jf.setTitle(title);
+
+        jf.validate();
+        jf.setVisible(true);
+        jf.setSize(new Dimension(900,700));
+        jf.setLocation(300,0);
+        jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }
 }

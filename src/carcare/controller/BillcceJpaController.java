@@ -51,6 +51,7 @@ public class BillcceJpaController implements Serializable {
             
             billcce.setBillNo((double)billcceNo);
             em.persist(billcce);
+            em.flush();
             
             Query query1 = em.createQuery("Select c.fmilage, c.jdate from Custdata c where c.vno = :vno ");
             query1.setParameter("vno", billcce.getVno());
