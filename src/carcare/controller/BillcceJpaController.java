@@ -83,7 +83,8 @@ public class BillcceJpaController implements Serializable {
                     CustdataJpaController custdataJpaController = new CustdataJpaController(CarCare.EMF);
                     custdataJpaController.create(custdata);
                 }
-            }
+            }            
+            em.getTransaction().commit();
         }catch(Exception e){
             logger.warn("Error occured while create Billcce -> " + e);
             return false;

@@ -1211,11 +1211,15 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                 checkSheet.setBAmount(Integer.parseInt(jTextField8.getText()));
                 checkSheet.setDeDate(new Timestamp(System.currentTimeMillis()));
 
-                chkshtJpaController.create(checkSheet);
-                dispose();
-                int reply = JOptionPane.showConfirmDialog(null, "Do you want to print CheckSheet !");
-                if (reply == JOptionPane.YES_OPTION){
-                    generateReport();
+                boolean outPut = chkshtJpaController.create(checkSheet);
+                if(outPut){
+                    dispose();
+                    int reply = JOptionPane.showConfirmDialog(null, "Do you want to print CheckSheet !");
+                    if (reply == JOptionPane.YES_OPTION){
+                        generateReport();
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(jPanel1, "Error occurred, Please try again !");
                 }
             }
         }else{

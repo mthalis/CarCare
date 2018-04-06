@@ -16,6 +16,7 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -23,6 +24,8 @@ import javax.persistence.criteria.Root;
  */
 public class ChkshtJpaController implements Serializable {
 
+    private static final Logger logger = Logger.getLogger(ChkshtJpaController.class);
+    
     public ChkshtJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
@@ -32,18 +35,22 @@ public class ChkshtJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Chksht chksht) {
+    public boolean create(Chksht chksht) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             em.persist(chksht);
             em.getTransaction().commit();
+            return true;
+        }catch(Exception e){
+            logger.error("Erro occured in Chksht create "+ e);
         } finally {
             if (em != null) {
                 em.close();
             }
         }
+        return false;
     }
 
     public void edit(Chksht chksht) throws NonexistentEntityException, Exception {
