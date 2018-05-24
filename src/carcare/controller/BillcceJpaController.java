@@ -44,13 +44,18 @@ public class BillcceJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             
-            Logfile logfile = em.find(Logfile.class, 1);
-            int billcceNo = logfile.getCcebillno();
+            Query query0 = em.createQuery("Select l.ccebillno from Logfile l");
+            int billcceNo = Integer.parseInt(query0.getSingleResult().toString());
+            
             billcceNo++;
-            logfile.setCcebillno(billcceNo);
             
             billcce.setBillNo((double)billcceNo);
             em.persist(billcce);
+            
+            Query query3 = em.createQuery("UPDATE Logfile l set l.ccebillno = :ccebillno ");
+            query3.setParameter("ccebillno",billcceNo);
+            query3.executeUpdate();
+            
             em.flush();
             
             Query query1 = em.createQuery("Select c.fmilage, c.jdate from Custdata c where c.vno = :vno ");

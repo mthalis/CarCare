@@ -44,22 +44,30 @@ public class BillcccJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             
-            Logfile logfile = em.find(Logfile.class, 1);
+            int billRNo = 0;
+            int billcccNo = 0;
             
-            if(billccc.getRePrint()){
-                int billRNo = logfile.getRbillno();
+            Query query0 = em.createQuery("Select l.cccbillno, l.rbillno from Logfile l");
+            Object[] outPut1 = (Object[]) query0.getSingleResult();
+            billcccNo = Integer.parseInt(outPut1[0].toString());
+            billRNo = Integer.parseInt(outPut1[1].toString());
+            
+            if(billccc.getRePrint()){                
                 billRNo++;
-                logfile.setRbillno(billRNo);
-
+                
                 billccc.setBillNo((double)billRNo);
-            }else{
-                int billcccNo = logfile.getCccbillno();
+            }else{                
                 billcccNo++;
-                logfile.setCccbillno(billcccNo);
-
+                
                 billccc.setBillNo((double)billcccNo);
-            }
+            }            
             em.persist(billccc);
+            
+            Query query3 = em.createQuery("UPDATE Logfile l set l.cccbillno = :cccbillno , l.rbillno = :rbillno ");
+            query3.setParameter("cccbillno",billcccNo);
+            query3.setParameter("rbillno", billRNo);
+            query3.executeUpdate();
+            
             em.flush();
             
             Query query1 = em.createQuery("Select c.fmilage, c.jdate from Custdata c where c.vno = :vno ");

@@ -1060,7 +1060,7 @@ public class CheckSheet extends javax.swing.JInternalFrame {
         if(vNoEventFire){
             String vNo = txtVNo.getText();
             if(vNo != null && !vNo.isEmpty()){
-                
+                jTextField8.setText("");
                 SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
                 String formatDate = formater.format(txtDate1.getDate());
                 
