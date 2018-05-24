@@ -1078,9 +1078,14 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                     txtDate.setDate(cus.getLdate());
                     
                     boolean hasBillccc = false;
+                    boolean rBill = false;
                     if(null != outPut && outPut.length != 0){
                         jTextField4.setText(outPut[1].toString());
-                        jTextField8.setText(outPut[0].toString());
+                        rBill = Boolean.parseBoolean(outPut[2].toString());
+                        if(!rBill){
+                            jTextField8.setText(outPut[0].toString());
+                        }
+                        
                         int milage = (int) Double.parseDouble(outPut[1].toString());
                         int newMilage = milage + 6000;
                         jTextField5.setText(Integer.toString(newMilage));
@@ -1095,8 +1100,10 @@ public class CheckSheet extends javax.swing.JInternalFrame {
                             jTextField5.setText(Integer.toString(newMilage));
                         }
                         
-                        int billcccAmt = !jTextField8.getText().isEmpty() ? Integer.parseInt(jTextField8.getText()) : 0;
-                        jTextField8.setText( Integer.toString(billcccAmt + Integer.parseInt(outPut1[0].toString())));
+                        if(!rBill){
+                            int billcccAmt = !jTextField8.getText().isEmpty() ? Integer.parseInt(jTextField8.getText()) : 0;
+                            jTextField8.setText( Integer.toString(billcccAmt + Integer.parseInt(outPut1[0].toString())));
+                        }
                     }
                     
                     if(null == outPut && null == outPut1){
