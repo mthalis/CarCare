@@ -187,4 +187,28 @@ public class ChkshtJpaController implements Serializable {
             em.close();
         }
     }
+     
+     public int getChkshtCount(String vno) {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT count(c) FROM Chksht c WHERE c.custdata.vno = :vno ", Chksht.class);
+            query.setParameter("vno", vno);
+            return ((Long) query.getSingleResult()).intValue();
+        } finally {
+            em.close();
+        }
+    }
+     
+     public List<Chksht> findChkshtEntitiesyVno(String vno, int maxResults, int firstResult) {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT c FROM Chksht c WHERE c.custdata.vno = :vno ", Chksht.class);
+            query.setParameter("vno", vno);
+            query.setMaxResults(maxResults);
+            query.setFirstResult(firstResult);
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
 }

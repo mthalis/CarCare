@@ -25,6 +25,8 @@ public class ViewCheckSheet extends javax.swing.JInternalFrame {
 
     ChkshtJpaController chkshtJpaController = new ChkshtJpaController(CarCare.EMF);
     PaginationController pagination;
+    boolean viewAllchkSht = true;
+    String searchVno = "";
     
     public ViewCheckSheet() {
         initComponents();
@@ -242,22 +244,38 @@ public class ViewCheckSheet extends javax.swing.JInternalFrame {
 
     private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
         pagination.firstPage();
-        refreshTable();
+        if(viewAllchkSht){
+            refreshTable();
+        }else{
+            refreshSearchByVnoTable(searchVno);
+        }
     }//GEN-LAST:event_btnFirstActionPerformed
 
     private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
         pagination.prevPage();
-        refreshTable();
+        if(viewAllchkSht){
+            refreshTable();
+        }else{
+            refreshSearchByVnoTable(searchVno);
+        }
     }//GEN-LAST:event_btnPrevActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         pagination.nextPage();
-        refreshTable();
+        if(viewAllchkSht){
+            refreshTable();
+        }else{
+            refreshSearchByVnoTable(searchVno);
+        }
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
         pagination.lastPage();
-        refreshTable();
+        if(viewAllchkSht){
+            refreshTable();
+        }else{
+            refreshSearchByVnoTable(searchVno);
+        }
     }//GEN-LAST:event_btnLastActionPerformed
 
     private void jTextField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseClicked
@@ -266,51 +284,17 @@ public class ViewCheckSheet extends javax.swing.JInternalFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         String vNo = jTextField2.getText() != null ? jTextField2.getText() : "";
-        /*if(!vNo.isEmpty()){
-            DefaultTableModel y =(DefaultTableModel)jTable2.getModel();       
-            y.setRowCount(0);
-            List<Object[]> aa = chkshtJpaController.getChkshtListByVNo(vNo);
-            if(aa !=null && aa.size() > 0){
-                 for(Object[] xx :aa){
-                    y.addRow(xx);
-                }
-                jTable2.updateUI();
-            }else{
-                jTable2.updateUI();
-                btnSearch.requestFocus();
-            }
-            btnFirst.setEnabled(false);
-            btnPrev.setEnabled(false);
-            btnNext.setEnabled(false);
-            btnLast.setEnabled(false);
-        }else{
-            refreshTable();
-        }*/
-        
-        
         if(!vNo.isEmpty()){
-            chkshtList.clear();
-            List<Chksht> chkshts = chkshtJpaController.findChkshtdataByVno(vNo);
-            if(chkshts !=null && chkshts.size() > 0){
-                chkshtList.addAll(chkshts);
-                jTable1.updateUI();
-            }else{
-                jTable1.updateUI();
-                btnSearch.requestFocus();
-            }
-            btnFirst.setEnabled(false);
-            btnPrev.setEnabled(false);
-            btnNext.setEnabled(false);
-            btnLast.setEnabled(false);
+            searchVno = vNo;
+                
+            viewAllchkSht = false;
+            pagination = new PaginationController(20, chkshtJpaController.getChkshtCount(vNo));
+            refreshSearchByVnoTable(vNo);
         }else{
+            viewAllchkSht = true;
+            pagination = new PaginationController(20, chkshtJpaController.getChkshtCount());
             refreshTable();
-        }
-        
-       /* Chksht  aa = chkshtJpaController.findChksht(Integer.parseInt(vNo));
-        System.out.println("sss" + aa.getDate());
-        System.out.println(aa.getCustdata().getVno());
-        System.out.println(aa.getCustdata().getName());*/
-        
+        }        
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -353,13 +337,6 @@ public class ViewCheckSheet extends javax.swing.JInternalFrame {
 
     private void refreshTable() {
       
-        /*DefaultTableModel y =(DefaultTableModel)jTable2.getModel();       
-        y.setRowCount(0);        
-        List<Object[]> aa = chkshtJpaController.getChkshtList(pagination.getPageSize(), pagination.getCurrentItem());
-        
-        for(Object[] xx :aa){
-            y.addRow(xx);
-        }*/
         chkshtList.clear();
         chkshtList.addAll(chkshtJpaController.findChkshtEntities(pagination.getPageSize(), pagination.getCurrentItem()));        
         jTable1.updateUI();
@@ -369,5 +346,16 @@ public class ViewCheckSheet extends javax.swing.JInternalFrame {
         btnNext.setEnabled(pagination.isHasNextPage());
         btnLast.setEnabled(pagination.isHasNextPage());
         
+    }
+    
+    private void refreshSearchByVnoTable(String vNo) {
+        chkshtList.clear();
+        chkshtList.addAll(chkshtJpaController.findChkshtEntitiesyVno(vNo, pagination.getPageSize(), pagination.getCurrentItem()));
+        jTable1.updateUI();
+        
+        btnFirst.setEnabled(pagination.isHasPrevPage());
+        btnPrev.setEnabled(pagination.isHasPrevPage());
+        btnNext.setEnabled(pagination.isHasNextPage());
+        btnLast.setEnabled(pagination.isHasNextPage());
     }
 }
